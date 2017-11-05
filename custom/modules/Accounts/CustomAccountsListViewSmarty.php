@@ -21,8 +21,8 @@ class CustomAccountsListViewSmarty extends AccountsListViewSmarty {
 			$ret['buttons'][$i] = $tmp;
 		}
 
-        $ret['buttons'][] = $this->buildComposeEmailToContactsInRoleLink('account_johtaja', $this->data['pageData']['offsets']['total'], $location);
-        $ret['buttons'][] = $this->buildComposeEmailToContactsInRoleLink('account_asiantuntija', $this->data['pageData']['offsets']['total'], $location);
+        //$ret['buttons'][] = $this->buildComposeEmailToContactsInRoleLink('account_johtaja', $this->data['pageData']['offsets']['total'], $location);
+       // $ret['buttons'][] = $this->buildComposeEmailToContactsInRoleLink('account_asiantuntija', $this->data['pageData']['offsets']['total'], $location);
 
 		return $ret;
 	}

@@ -325,7 +325,14 @@ $searchFields['Accounts'] = array (
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
-    'subquery' => 'SELECT accounts.id FROM accounts WHERE accounts.id IN (SELECT accounts.id FROM accounts JOIN accounts_nlfbr_businessrelationships_1_c br_rel ON accounts.id=br_rel.accounts_nlfbr_businessrelationships_1accounts_ida JOIN nlfbr_businessrelationships_aos_contracts_1_c contract_rel ON br_rel.accounts_n824donships_idb=contract_rel.nlfbr_busi9351onships_ida WHERE accounts.deleted=0 AND contract_rel.deleted=0 AND (contract_rel.active=1)) OR NOT {0}',
+    //'subquery' => 'SELECT accounts.id FROM accounts WHERE accounts.id IN (SELECT accounts.id FROM accounts JOIN accounts_nlfbr_businessrelationships_1_c br_rel ON accounts.id=br_rel.accounts_nlfbr_businessrelationships_1accounts_ida JOIN nlfbr_businessrelationships_aos_contracts_1_c contract_rel ON br_rel.accounts_n824donships_idb=contract_rel.nlfbr_busi9351onships_ida WHERE accounts.deleted=0 AND contract_rel.deleted=0 AND (contract_rel.active=1)) OR NOT {0}',
+    'subquery' => 'SELECT accounts.id FROM accounts WHERE accounts.id IN (SELECT accounts.id FROM accounts JOIN accounts_nlfbr_businessrelationships_1_c br_rel ON accounts.id=br_rel.accounts_nlfbr_businessrelationships_1accounts_ida JOIN nlfbr_businessrelationships_aos_contracts_1_c contract_rel ON br_rel.accounts_n824donships_idb=contract_rel.nlfbr_busi9351onships_ida {related_subquery.service_join} WHERE accounts.deleted=0 AND contract_rel.deleted=0 AND (contract_rel.active=1) {related_subquery.service_where}) OR NOT {0}',
+    'related_subquery_parts' => array(
+      'related_service' => array(
+        'service_join' => 'JOIN nlfse_services_nlfbr_businessrelationships_1_c s_rel ON br_rel.accounts_n824donships_idb=s_rel.nlfse_serva51aonships_idb',
+        'service_where' => 'AND s_rel.deleted=0 AND s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida IN ({0})',
+      ),
+    ),
     'db_field' => 
     array (
       0 => 'id',
@@ -347,7 +354,14 @@ $searchFields['Accounts'] = array (
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
-    'subquery' => 'SELECT accounts.id FROM accounts JOIN accounts_nlfbr_businessrelationships_1_c br_rel ON accounts.id=br_rel.accounts_nlfbr_businessrelationships_1accounts_ida JOIN nlfbr_businessrelationships_cstm br_cstm ON br_cstm.id_c=br_rel.accounts_n824donships_idb WHERE accounts.deleted=0 AND br_rel.deleted=0 AND br_cstm.palvelu_liittymisen_status_c IN ({0})',
+    //'subquery' => 'SELECT accounts.id FROM accounts JOIN accounts_nlfbr_businessrelationships_1_c br_rel ON accounts.id=br_rel.accounts_nlfbr_businessrelationships_1accounts_ida JOIN nlfbr_businessrelationships_cstm br_cstm ON br_cstm.id_c=br_rel.accounts_n824donships_idb WHERE accounts.deleted=0 AND br_rel.deleted=0 AND br_cstm.palvelu_liittymisen_status_c IN ({0})',
+    'subquery' => 'SELECT accounts.id FROM accounts JOIN accounts_nlfbr_businessrelationships_1_c br_rel ON accounts.id=br_rel.accounts_nlfbr_businessrelationships_1accounts_ida JOIN nlfbr_businessrelationships_cstm br_cstm ON br_cstm.id_c=br_rel.accounts_n824donships_idb {related_subquery.service_join} WHERE accounts.deleted=0 AND br_rel.deleted=0 AND br_cstm.palvelu_liittymisen_status_c IN ({0}) {related_subquery.service_where}',
+    'related_subquery_parts' => array(
+      'related_service' => array(
+        'service_join' => 'JOIN nlfse_services_nlfbr_businessrelationships_1_c s_rel ON br_rel.accounts_n824donships_idb=s_rel.nlfse_serva51aonships_idb',
+        'service_where' => 'AND s_rel.deleted=0 AND s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida IN ({0})',
+      ),
+    ),
     'db_field' => 
     array (
       0 => 'id',

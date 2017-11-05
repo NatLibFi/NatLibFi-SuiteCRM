@@ -12,10 +12,6 @@ $dashletData['ContactsDashlet']['searchFields'] = array (
   array (
     'default' => '',
   ),
-  'palvelu_c' => 
-  array (
-    'default' => '',
-  ),
   'rooli_c' => 
   array (
     'default' => '',
@@ -67,14 +63,7 @@ $dashletData['ContactsDashlet']['columns'] = array (
     'studio' => 'visible',
     'label' => 'LBL_ROOLI',
     'width' => '10%',
-  ),
-  'palvelu_c' => 
-  array (
-    'type' => 'enum',
-    'default' => true,
-    'studio' => 'visible',
-    'label' => 'LBL_PALVELU',
-    'width' => '10%',
+    'name' => 'rooli_c',
   ),
   'phone_work' => 
   array (
@@ -105,6 +94,7 @@ $dashletData['ContactsDashlet']['columns'] = array (
     'default' => true,
     'label' => 'LBL_DO_NOT_CALL',
     'width' => '10%',
+    'name' => 'do_not_call',
   ),
   'description' => 
   array (
@@ -113,6 +103,7 @@ $dashletData['ContactsDashlet']['columns'] = array (
     'sortable' => false,
     'width' => '10%',
     'default' => false,
+    'name' => 'description',
   ),
   'title' => 
   array (

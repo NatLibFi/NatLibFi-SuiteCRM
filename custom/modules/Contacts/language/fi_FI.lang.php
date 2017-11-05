@@ -1,10 +1,9 @@
 <?php
-// created: 2017-09-19 16:23:36
+// created: 2017-10-15 14:42:57
 $mod_strings = array (
   'LBL_LEAD_SOURCE' => 'Liidin lähde:',
   'LBL_LEAD_DESCRIPTION' => 'Liidin lisätieto',
   'LBL_EDITVIEW_PANEL1' => 'Roolit',
-  'LBL_PALVELU' => 'Palvelu',
   'LBL_ROOLI' => 'Rooli',
   'LBL_CONTACTS_NLFRO_ROLES_1_FROM_NLFRO_ROLES_TITLE' => 'Rooli',
   'LNK_NEW_CONTACT' => 'Luo kontakti',

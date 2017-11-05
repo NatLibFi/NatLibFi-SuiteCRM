@@ -13,8 +13,8 @@ array (
       'searchview' => true,
     ),
     'label' => 'LBL_HAS_ACTIVE_CONTRACT_TITLE',
-    'width' => '10%',
-    'default' => false,
+    'width' => '5%',
+    'default' => true,
   ),
   'NAME' => 
   array (

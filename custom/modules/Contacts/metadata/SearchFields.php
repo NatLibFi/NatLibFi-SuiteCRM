@@ -1,5 +1,5 @@
 <?php
-// created: 2017-09-07 17:46:23
+// created: 2017-10-15 13:39:45
 $searchFields['Contacts'] = array (
   'first_name' => 
   array (
@@ -216,7 +216,21 @@ $searchFields['Contacts'] = array (
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
-    'subquery' => 'SELECT contacts.id FROM contacts JOIN accounts_contacts acc_rel ON contacts.id=acc_rel.contact_id WHERE contacts.deleted=0 AND acc_rel.deleted=0 AND acc_rel.role REGEXP {0} UNION SELECT contacts.id FROM contacts JOIN nlfbr_businessrelationships_contacts_1_c br_rel ON contacts.id=br_rel.nlfbr_businessrelationships_contacts_1contacts_idb WHERE contacts.deleted=0 AND br_rel.deleted=0 AND br_rel.role REGEXP {0} UNION SELECT contacts.id FROM contacts JOIN nlfwg_workinggroups_contacts_1_c wg_rel ON contacts.id=wg_rel.nlfwg_workinggroups_contacts_1contacts_idb WHERE contacts.deleted=0 AND wg_rel.deleted=0 AND wg_rel.role REGEXP {0} UNION SELECT contacts.id FROM contacts JOIN nlfal_alliances_contacts_1_c all_rel ON contacts.id=all_rel.nlfal_alliances_contacts_1contacts_idb WHERE contacts.deleted=0 AND all_rel.deleted=0 AND all_rel.role REGEXP {0} ',
+    'subquery' => 'SELECT contacts.id FROM contacts JOIN accounts_contacts acc_rel ON contacts.id=acc_rel.contact_id {related_subquery.industry_join} {related_subquery.service_join_acc} WHERE contacts.deleted=0 AND acc_rel.deleted=0 {related_subquery.industry_where} {related_subquery.service_where} AND acc_rel.role REGEXP {0} UNION SELECT contacts.id FROM contacts JOIN nlfbr_businessrelationships_contacts_1_c br_rel ON contacts.id=br_rel.nlfbr_businessrelationships_contacts_1contacts_idb {related_subquery.service_join_br} WHERE contacts.deleted=0 AND br_rel.deleted=0 {related_subquery.service_where} AND br_rel.role REGEXP {0} UNION SELECT contacts.id FROM contacts JOIN nlfwg_workinggroups_contacts_1_c wg_rel ON contacts.id=wg_rel.nlfwg_workinggroups_contacts_1contacts_idb WHERE contacts.deleted=0 AND wg_rel.deleted=0 AND wg_rel.role REGEXP {0} UNION SELECT contacts.id FROM contacts JOIN nlfal_alliances_contacts_1_c all_rel ON contacts.id=all_rel.nlfal_alliances_contacts_1contacts_idb WHERE contacts.deleted=0 AND all_rel.deleted=0 AND all_rel.role REGEXP {0} ',
+    'related_subquery_parts' => 
+    array (
+      'account_industry' => 
+      array (
+        'industry_join' => 'JOIN accounts acc ON acc_rel.account_id=acc.id',
+        'industry_where' => 'AND acc.deleted=0 AND acc.industry IN ({0})',
+      ),
+      'related_service' => 
+      array (
+        'service_join_acc' => 'JOIN accounts_nlfbr_businessrelationships_1_c acc_br_rel ON (acc_br_rel.accounts_nlfbr_businessrelationships_1accounts_ida=acc_rel.account_id AND acc_br_rel.deleted=0) JOIN nlfse_services_nlfbr_businessrelationships_1_c s_rel ON acc_br_rel.accounts_n824donships_idb=s_rel.nlfse_serva51aonships_idb',
+        'service_join_br' => 'JOIN nlfse_services_nlfbr_businessrelationships_1_c s_rel ON br_rel.nlfbr_busic409onships_ida=s_rel.nlfse_serva51aonships_idb',
+        'service_where' => 'AND s_rel.deleted=0 AND s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida IN ({0})',
+      ),
+    ),
     'subquery_with_multienum_regexp' => true,
     'db_field' => 
     array (
@@ -234,5 +248,16 @@ $searchFields['Contacts'] = array (
       0 => 'id',
     ),
     'vname' => 'LBL_CONTACT_ACCOUNT_INDUSTRY',
+  ),
+  'related_service' => 
+  array (
+    'query_type' => 'format',
+    'operator' => 'subquery',
+    'subquery' => 'SELECT contacts.id FROM contacts JOIN nlfbr_businessrelationships_contacts_1_c c_rel ON contacts.id=c_rel.nlfbr_businessrelationships_contacts_1contacts_idb JOIN nlfse_services_nlfbr_businessrelationships_1_c s_rel ON c_rel.nlfbr_busic409onships_ida=s_rel.nlfse_serva51aonships_idb WHERE contacts.deleted=0 AND c_rel.deleted=0 AND s_rel.deleted=0 AND s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida IN ({0})',
+    'db_field' => 
+    array (
+      0 => 'id',
+    ),
+    'vname' => 'LBL_RELATED_SERVICE_TITLE',
   ),
 );

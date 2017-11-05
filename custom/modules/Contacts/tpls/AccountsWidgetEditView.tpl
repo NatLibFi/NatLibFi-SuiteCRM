@@ -9,7 +9,7 @@ var contactAccountWidgetLoaded = false;
 <table style="border-spacing: 0pt;">
     <tr>
         <td valign="top" NOWRAP>
-            <table id="{$module}AccountsTable">
+            <table id="{$module}AccountsTable" class="accountstable">
                 <tbody id="targetBody"></tbody>
                     <tr>
                         <td scope="row" NOWRAP>

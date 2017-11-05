@@ -5,7 +5,7 @@ require_once 'include/SearchForm/SearchForm2.php';
 class ContactRoleAwareSearchForm extends SearchForm
 {
     /**
-     * @see SearchForm::generateSearchWhereo
+     * @see SearchForm::generateSearchWhere
      *
      * Parent class method is not really extensible,
      * therefore the whole parent implementation body
@@ -431,6 +431,39 @@ class ContactRoleAwareSearchForm extends SearchForm
                                      }
                                     $where .= "{$db_field} $in (select $selectCol from ({$parms['subquery']} ".$this->seed->db->quoted($field_value.'%').") {$field}_derived)";
                                  }
+
+                                 //NLF-specific: allow refering to other fields in the subquery
+                                 if (isset($parms['related_subquery_parts'])) {
+                                     foreach ($parms['related_subquery_parts'] as $relatedField => $relatedFieldData) {
+                                         foreach ($relatedFieldData as $subqueryKey => $subqueryPart) {
+                                             $replacement = '';
+                                             if (isset($this->searchFields[$relatedField]) && isset($this->searchFields[$relatedField]['value']) && $this->searchFields[$relatedField]['value']) {
+                                                 $relatedFieldValue = $this->searchFields[$relatedField]['value'];
+                                                 if (isset($this->searchFields[$relatedField]['operator']) && ($this->searchFields[$relatedField]['operator'] === 'subquery')) {
+                                                     $finalValue = '';
+                                                     foreach($relatedFieldValue as $val) {
+                                                         if($val != ' ' and $val != '') {
+                                                             if (!empty($finalValue)) {
+                                                                 $finalValue .= ',';
+                                                             }
+                                                             $finalValue .= $db->quoteType('varchar', $val);
+                                                         }
+                                                     }
+                                                     $relatedFieldValue = $finalValue;
+                                                 }
+                                                 if (isset($this->searchFields[$relatedField]['query_type']) && $this->searchFields[$relatedField]['query_type'] === 'format') {
+                                                     $stringFormatParams = array(0 => $relatedFieldValue, 1 => $GLOBALS['current_user']->id);
+                                                     $replacement = string_format($subqueryPart, $stringFormatParams);
+                                                 } else {
+                                                     $replacement = $db->quoteType('varchar', $relatedFieldValue);
+                                                 }
+                                             }
+                                             // TODO: if $relatedField has value, put it into $subqueryPart
+                                             $where = str_replace('{related_subquery.' . $subqueryKey . '}', $replacement, $where);
+                                         }
+                                     }
+                                 }
+                                 //end of: allow refering to other fields in the subquery
 
                                  break;
 

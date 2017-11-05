@@ -105,3 +105,12 @@ $dictionary["Contact"]["fields"]['account1'] = array(
   'source' => 'non-db',
   'studio' => array('editField' => true, 'searchview' => false),
 );
+
+$dictionary["Contact"]["fields"]["contact_account_names"] = array (
+    'name' => 'contact_account_names',
+    'type' => 'varchar',
+    'source' => 'non-db',
+    'vname' => 'LBL_CONTACT_ACCOUNT_NAMES',
+    'studio' => array('detailview' => false, 'editview' => false, 'listview' => true, 'searchview' => false),
+);
+

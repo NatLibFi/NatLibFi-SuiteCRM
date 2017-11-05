@@ -37,56 +37,24 @@ array (
         'default' => true,
         'name' => 'contact_roles_all',
       ),
-      'palvelu_c' => 
+      'related_service' => 
       array (
         'type' => 'enum',
-        'default' => true,
-        'studio' => 'visible',
-        'label' => 'LBL_PALVELU',
+        'studio' => 
+        array (
+          'listview' => false,
+          'detailview' => false,
+          'editview' => false,
+          'searchview' => true,
+        ),
+        'label' => 'LBL_RELATED_SERVICE_TITLE',
         'width' => '10%',
-        'name' => 'palvelu_c',
+        'default' => true,
+        'name' => 'related_service',
       ),
     ),
     'advanced_search' => 
     array (
-      'search_name' => 
-      array (
-        'label' => 'LBL_NAME',
-        'type' => 'name',
-        'default' => true,
-        'width' => '10%',
-        'name' => 'search_name',
-      ),
-      'phone' => 
-      array (
-        'name' => 'phone',
-        'label' => 'LBL_ANY_PHONE',
-        'type' => 'name',
-        'default' => true,
-        'width' => '10%',
-      ),
-      'no_mailing_c' => 
-      array (
-        'type' => 'bool',
-        'default' => true,
-        'label' => 'LBL_NO_MAILING',
-        'width' => '10%',
-        'name' => 'no_mailing_c',
-      ),
-      'account_name' => 
-      array (
-        'name' => 'account_name',
-        'default' => true,
-        'width' => '10%',
-      ),
-      'account_industry' => 
-      array (
-        'type' => 'enum',
-        'label' => 'LBL_CONTACT_ACCOUNT_INDUSTRY',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'account_industry',
-      ),
       'nlfwg_workinggroups_contacts_1_id' => 
       array (
         'type' => 'varchar',
@@ -111,14 +79,37 @@ array (
         'default' => true,
         'name' => 'nlfal_alliances_contacts_1_id',
       ),
-      'palvelu_c' => 
+      'search_name' => 
+      array (
+        'label' => 'LBL_NAME',
+        'type' => 'name',
+        'default' => true,
+        'width' => '10%',
+        'name' => 'search_name',
+      ),
+      'phone' => 
+      array (
+        'name' => 'phone',
+        'label' => 'LBL_ANY_PHONE',
+        'type' => 'name',
+        'default' => true,
+        'width' => '10%',
+      ),
+      'no_mailing_c' => 
+      array (
+        'type' => 'bool',
+        'default' => true,
+        'label' => 'LBL_NO_MAILING',
+        'width' => '10%',
+        'name' => 'no_mailing_c',
+      ),
+      'account_industry' => 
       array (
         'type' => 'enum',
-        'default' => true,
-        'studio' => 'visible',
-        'label' => 'LBL_PALVELU',
+        'label' => 'LBL_CONTACT_ACCOUNT_INDUSTRY',
         'width' => '10%',
-        'name' => 'palvelu_c',
+        'default' => true,
+        'name' => 'account_industry',
       ),
       'contact_roles_all' => 
       array (

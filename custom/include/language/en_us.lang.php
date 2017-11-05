@@ -498,14 +498,6 @@ $GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
   'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) br',
   'br_ei_tiedossa' => 'Ei tiedossa',
 );
-
-$GLOBALS['app_list_strings']['account_type_dom']=array (
-  '' => '',
-  'Customer' => 'Customer',
-  'Partner' => 'Partner',
-  'Press' => 'Press',
-  'Other' => 'Other',
-);
 $GLOBALS['app_list_strings']['lead_source_dom']=array (
   '' => '',
   'Cold Call' => 'Cold Call',
@@ -564,4 +556,12 @@ $GLOBALS['app_list_strings']['palvelu_liittymisen_status_list']=array (
 $GLOBALS['app_list_strings']['organisaatio_status_list']=array (
   'toiminnassa' => 'Toiminnassa',
   'lakkautettu' => 'Lakkautettu',
+);
+$GLOBALS['app_list_strings']['account_type_dom']=array (
+  '' => '',
+  'Customer' => 'Customer',
+  'Partner' => 'Partner',
+  'Press' => 'Press',
+  'Other' => 'Other',
+  'User' => 'Käyttäjä',
 );

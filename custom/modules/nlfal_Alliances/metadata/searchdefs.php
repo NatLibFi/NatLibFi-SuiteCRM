@@ -22,21 +22,25 @@ array (
         'default' => true,
         'width' => '10%',
       ),
-      'assigned_user_id' => 
+      'sektorit_c' => 
       array (
-        'name' => 'assigned_user_id',
-        'label' => 'LBL_ASSIGNED_TO',
-        'type' => 'enum',
-        'function' => 
-        array (
-          'name' => 'get_user_array',
-          'params' => 
-          array (
-            0 => false,
-          ),
-        ),
+        'type' => 'multienum',
         'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_SEKTORIT',
         'width' => '10%',
+        'name' => 'sektorit_c',
+      ),
+      'jasenet_c' => 
+      array (
+        'type' => 'relate',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_JASENET',
+        'id' => 'ACCOUNT_ID_C',
+        'link' => true,
+        'width' => '10%',
+        'name' => 'jasenet_c',
       ),
       'alliance_roles' => 
       array (

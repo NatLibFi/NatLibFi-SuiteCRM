@@ -70,13 +70,19 @@ array (
     'label' => 'LBL_ROOLI',
     'width' => '10%',
   ),
-  'PALVELU_C' => 
+  'CONTACT_SERVICE_NAMES' => 
   array (
-    'type' => 'enum',
-    'default' => true,
-    'studio' => 'visible',
-    'label' => 'LBL_PALVELU',
+    'type' => 'varchar',
+    'studio' => 
+    array (
+      'detailview' => false,
+      'editview' => false,
+      'listview' => true,
+      'searchview' => false,
+    ),
+    'label' => 'LBL_CONTACT_SERVICE_NAMES',
     'width' => '10%',
+    'default' => true,
   ),
   'EMAIL1' => 
   array (

@@ -89,3 +89,22 @@ function getSelectedBackEndSystemsForBusinessRelationship($id) {
 
     return $list;
 }
+
+
+
+function getBackEndSystemsForAccountSubpanelQueryParts($params) {
+    $accountId = $params['account_id'];
+
+    $query = array(
+        'select' => 'SELECT nlfbs_backendsystems.*',
+        'from' => 'FROM nlfbs_backendsystems',
+        'where' => 'WHERE nlfbs_backendsystems.deleted=0 AND br_rel.deleted=0 AND acc_rel.deleted=0 AND acc_rel.accounts_nlfbr_businessrelationships_1accounts_ida="' . $GLOBALS['db']->quote($accountId) . '"',
+        'join' => ' JOIN nlfbr_businessrelationships_nlfbs_backendsystems_1_c br_rel ' .
+        'ON br_rel.nlfbr_busi06f0systems_idb=nlfbs_backendsystems.id ' .
+        'JOIN accounts_nlfbr_businessrelationships_1_c acc_rel ' .
+        'ON acc_rel.accounts_n824donships_idb=br_rel.nlfbr_busib52fonships_ida',
+        'join_tables' => '',
+    );
+
+    return $query;
+}

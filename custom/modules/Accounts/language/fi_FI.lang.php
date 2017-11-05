@@ -1,5 +1,5 @@
 <?php
-// created: 2017-09-20 14:07:33
+// created: 2017-10-10 15:40:16
 $mod_strings = array (
   'LBL_NLFSE_SERVICES_ACCOUNTS_1_FROM_NLFSE_SERVICES_TITLE' => 'Palvelut',
   'LBL_ACCOUNTS_NLFBR_BUSINESSRELATIONSHIPS_1_FROM_NLFBR_BUSINESSRELATIONSHIPS_TITLE' => 'Asiakassuhteet',
@@ -43,7 +43,7 @@ $mod_strings = array (
   'LBL_BILLING_ADDRESS_STATE' => 'Laskutusosoite Maakunta/lääni:',
   'LBL_DATE_MODIFIED' => 'Muokkaus pvm:',
   'LBL_LEADS' => 'Potentiaalinen asiakkuus',
-  'LBL_ACCOUNTS_NLFBS_BACKENDSYSTEMS_1_FROM_NLFBS_BACKENDSYSTEMS_TITLE' => 'Tietojärjestelmä',
+  'LBL_ACCOUNTS_NLFBS_BACKENDSYSTEMS_1_FROM_NLFBS_BACKENDSYSTEMS_TITLE' => 'Tietojärjestelmät',
   'LBL_ISIL' => 'ISIL -tunnus',
   'LBL_LIST_ACCOUNT_NAME' => 'Organisaation nimi',
   'AOS_Contracts' => 'Sopimukset',

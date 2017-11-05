@@ -9,7 +9,7 @@ var brContractWidgetLoaded = false;
 <table style="border-spacing: 0pt;">
     <tr>
         <td valign="top" NOWRAP>
-            <table id="{$module}ContractsTable">
+            <table id="{$module}ContractsTable" class="contractstable">
                 <tbody id="targetBody"></tbody>
                     <tr>
                         <td scope="row" NOWRAP>

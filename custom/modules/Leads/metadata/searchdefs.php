@@ -7,7 +7,7 @@ array (
     array (
       0 => 
       array (
-        'name' => 'search_name',
+        'name' => 'search_account_name',
         'label' => 'LBL_NAME',
         'type' => 'name',
       ),
@@ -34,70 +34,46 @@ array (
     ),
     'advanced_search' => 
     array (
-      'first_name' => 
+      'search_account_name' => 
       array (
-        'name' => 'first_name',
+        'name' => 'search_account_name',
+        'label' => 'LBL_SEARCH_ACCOUNT_NAME',
         'default' => true,
         'width' => '10%',
       ),
-      'email' => 
+      'search_contact_last_name' => 
       array (
-        'name' => 'email',
-        'label' => 'LBL_ANY_EMAIL',
-        'type' => 'name',
+        'name' => 'search_contact_last_name',
+        'label' => 'LBL_SEARCH_CONTACT_LAST_NAME',
         'default' => true,
         'width' => '10%',
       ),
-      'phone' => 
+      'search_contact_first_name' => 
       array (
-        'name' => 'phone',
-        'label' => 'LBL_ANY_PHONE',
-        'type' => 'name',
+        'name' => 'search_contact_first_name',
+        'label' => 'LBL_SEARCH_CONTACT_FIRST_NAME',
         'default' => true,
         'width' => '10%',
       ),
-      'last_name' => 
-      array (
-        'name' => 'last_name',
-        'default' => true,
-        'width' => '10%',
-      ),
-      'address_street' => 
-      array (
-        'name' => 'address_street',
-        'label' => 'LBL_ANY_ADDRESS',
-        'type' => 'name',
-        'default' => true,
-        'width' => '10%',
-      ),
-      'address_city' => 
-      array (
-        'name' => 'address_city',
-        'label' => 'LBL_CITY',
-        'type' => 'name',
-        'default' => true,
-        'width' => '10%',
-      ),
-      'account_name' => 
+      /*'account_name' => 
       array (
         'name' => 'account_name',
         'default' => true,
         'width' => '10%',
-      ),
-      'primary_address_country' => 
+      ),*/
+      'nlfse_services_leads_1_name' => 
       array (
-        'name' => 'primary_address_country',
-        'label' => 'LBL_COUNTRY',
-        'type' => 'name',
-        'options' => 'countries_dom',
-        'default' => true,
+        'type' => 'relate',
+        'link' => true,
+        'label' => 'LBL_NLFSE_SERVICES_LEADS_1_FROM_NLFSE_SERVICES_TITLE_SINGULAR',
+        'id' => 'NLFSE_SERVICES_LEADS_1NLFSE_SERVICES_IDA',
         'width' => '10%',
+        'default' => true,
+        'name' => 'nlfse_services_leads_1_name',
       ),
-      'address_state' => 
+      'lead_source' => 
       array (
-        'name' => 'address_state',
-        'label' => 'LBL_STATE',
-        'type' => 'name',
+        'name' => 'lead_source',
         'default' => true,
         'width' => '10%',
       ),
@@ -107,9 +83,11 @@ array (
         'default' => true,
         'width' => '10%',
       ),
-      'lead_source' => 
+      'phone' => 
       array (
-        'name' => 'lead_source',
+        'name' => 'phone',
+        'label' => 'LBL_SEARCH_PHONE',
+        'type' => 'name',
         'default' => true,
         'width' => '10%',
       ),

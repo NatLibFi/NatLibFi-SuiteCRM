@@ -36,15 +36,19 @@ array (
     'label' => 'LBL_MEMBER_COUNT',
     'width' => '10%',
   ),
-  'PALVELU_C' => 
+  'ALLIANCE_SERVICE_NAMES' => 
   array (
-    'type' => 'relate',
-    'default' => true,
-    'studio' => 'visible',
-    'label' => 'LBL_PALVELU',
-    'id' => 'NLFSE_SERVICES_ID_C',
-    'link' => true,
+    'type' => 'varchar',
+    'studio' => 
+    array (
+      'detailview' => false,
+      'editview' => false,
+      'listview' => true,
+      'searchview' => false,
+    ),
+    'label' => 'LBL_ALLIANCE_SERVICES_TITLE',
     'width' => '10%',
+    'default' => true,
   ),
   'DESCRIPTION' => 
   array (

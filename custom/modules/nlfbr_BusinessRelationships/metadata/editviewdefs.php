@@ -231,9 +231,9 @@ array (
         array (
           0 => 
           array (
-            'name' => 'haravointiformaatti_c',
+            'name' => 'harvesting_format_c',
             'studio' => 'visible',
-            'label' => 'LBL_HARAVOINTIFORMAATTI',
+            'label' => 'LBL_HARVESTING_FORMAT',
           ),
           1 => 
           array (

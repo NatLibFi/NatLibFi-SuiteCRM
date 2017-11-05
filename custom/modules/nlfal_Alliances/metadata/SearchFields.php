@@ -1,5 +1,5 @@
 <?php
-// created: 2017-09-08 20:23:10
+// created: 2017-10-17 16:45:40
 $searchFields['nlfal_Alliances'] = array (
   'name' => 
   array (
