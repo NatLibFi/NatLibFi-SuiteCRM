@@ -36,6 +36,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
      * The URL to submit SAML authentication requests to.
      */
     var $idp_sso_target_url = '';
+    var $idp_sso_logout_target_url = ''; // NV
 
     /**
      * The x509 certificate used to authenticate the request.

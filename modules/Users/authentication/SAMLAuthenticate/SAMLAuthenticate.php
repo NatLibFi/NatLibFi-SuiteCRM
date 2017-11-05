@@ -51,9 +51,13 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
 require_once('modules/Users/authentication/SugarAuthenticate/SugarAuthenticate.php');
 require_once('modules/Users/authentication/SAMLAuthenticate/lib/onelogin/saml.php');
+
 class SAMLAuthenticate extends SugarAuthenticate {
 	var $userAuthenticateClass = 'SAMLAuthenticateUser';
 	var $authenticationDir = 'SAMLAuthenticate';
+
+	var $nvVars = '';
+	var $session_index = '';
 	/**
 	 * Constructs SAMLAuthenticate
 	 * This will load the user authentication class
@@ -78,6 +82,78 @@ class SAMLAuthenticate extends SugarAuthenticate {
         self::__construct();
     }
 
+    /**                                                                                                                                                     
+     * Authenticates a user based on the username and password                                                                                              
+     * returns true if the user was authenticated false otherwise                                                                                           
+     * it also will load the user into current user if he was authenticated                                                                                 
+     *                                                                                                                                                      
+     * @param string $username                                                                                                                              
+     * @param string $password                                                                                                                              
+     * @return boolean                                                                                                                                      
+     */
+    function loginAuthenticate($username, $password, $fallback=false, $PARAMS = array ()){
+      global $mod_strings;
+      unset($_SESSION['login_error']);
+      $usr= new user();
+      $usr_id=$usr->retrieve_user_id($username);
+      $usr->retrieve($usr_id);
+      $_SESSION['login_error']='';
+      $_SESSION['waiting_error']='';
+      $_SESSION['hasExpiredPassword']='0';
+      if ($this->userAuthenticate->loadUserOnLogin($username, $password, $fallback, $PARAMS)) {
+	require_once('modules/Users/password_utils.php');
+	if(hasPasswordExpired($username)) {
+	  $_SESSION['hasExpiredPassword'] = '1';
+	}
+	// now that user is authenticated, reset loginfailed                                                                                    
+	if ($usr->getPreference('loginfailed') != '' && $usr->getPreference('loginfailed') != 0) {
+	  $usr->setPreference('loginfailed','0');
+	  $usr->savePreferencesToDB();
+	}
+
+	// NVOLK                                                                                                                                
+	if ( isset($this->userAuthenticate->session_index) ) {
+	  $this->session_index = $this->userAuthenticate->session_index;
+	  $session_index = $this->session_index;
+	  //echo "FOO2 <script>alert('$session_index');</script>\n"; exit();                                                                     
+	  setcookie("seid",$session_index,time()+3600);
+	  setcookie("uname",$username,time()+3600);
+	}
+
+	return $this->postLoginAuthenticate();
+
+      }
+               else
+		 {
+		   //if(!empty($usr_id) && $res['lockoutexpiration'] > 0){                                                                                 
+		   if(!empty($usr_id)){
+		     if (($logout=$usr->getPreference('loginfailed'))=='')
+		       $usr->setPreference('loginfailed','1');
+                        else
+			  $usr->setPreference('loginfailed',$logout+1);
+		     $usr->savePreferencesToDB();
+		   }
+		 }
+      if(strtolower(get_class($this)) != 'sugarauthenticate'){
+	$sa = new SugarAuthenticate();
+
+	if($sa->loginAuthenticate($username, $password, true, $PARAMS)){
+	  return true;
+	}
+	$_SESSION['login_error'] = $error;
+      }
+
+
+      $_SESSION['login_user_name'] = $username;
+      $_SESSION['login_password'] = $password;
+      if(empty($_SESSION['login_error'])){
+	$_SESSION['login_error'] = translate('ERR_INVALID_PASSWORD', 'Users');
+      }
+
+      return false;
+
+    }
+
 
     /**
      * pre_login
@@ -99,10 +175,39 @@ class SAMLAuthenticate extends SugarAuthenticate {
      * order to prevent automatic logging in.
      */
     public function logout() {
+    /*
         session_destroy();
         ob_clean();
-        header('Location: index.php?module=Users&action=LoggedOut');
+        header('Location: index.php?module=Users&action=LoggedOut&foo=nvtestphrase');
+
         sugar_cleanup(true);
+*/	
+
+        session_destroy();
+        ob_clean();
+
+
+        require(get_custom_file_if_exists('modules/Users/authentication/SAMLAuthenticate/settings.php'));
+
+        $loginVars = $this->nvVars;
+	$session_index = $this->session_index;
+	if ( !isset($session_index) || !$session_index ) {
+	  $session_index = $_COOKIE['seid'];
+	}
+	$user_name = $_COOKIE['uname'];
+	//echo "FOO ".$session_index. " BAR"; exit();
+        // $settings - variable from modules/Users/authentication/SAMLAuthenticate/settings.php
+        $settings->assertion_consumer_service_url .= htmlspecialchars($loginVars);
+
+        $authRequest = new SamlAuthRequest($settings);
+        $url = $authRequest->create_logout($session_index, $username);
+
+
+	//        header('Location: index.php?module=Users&action=LoggedOut&foo=nvtestphrase');
+      	header("Location: $url");
+
+        sugar_cleanup(true);
+
     }
 
     /**
@@ -115,6 +220,8 @@ class SAMLAuthenticate extends SugarAuthenticate {
         require(get_custom_file_if_exists('modules/Users/authentication/SAMLAuthenticate/settings.php'));
 
         $loginVars = $app->createLoginVars();
+
+	$this->nvVars = $loginVars;
 
         // $settings - variable from modules/Users/authentication/SAMLAuthenticate/settings.php
         $settings->assertion_consumer_service_url .= htmlspecialchars($loginVars);

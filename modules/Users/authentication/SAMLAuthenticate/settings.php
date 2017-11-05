@@ -30,14 +30,16 @@ $settings                           = new SamlSettings();
 // when using Service Provider Initiated SSO (starting at index.php), this URL asks the IdP to authenticate the user.
 $settings->idp_sso_target_url       = isset($GLOBALS['sugar_config']['SAML_loginurl']) ? $GLOBALS['sugar_config']['SAML_loginurl'] : '';
 
+$settings->idp_sso_logout_target_url       = isset($GLOBALS['sugar_config']['SAML_logouturl']) ? $GLOBALS['sugar_config']['SAML_logouturl'] : '';
+
 // the certificate for the users account in the IdP
 $settings->x509certificate          = isset($GLOBALS['sugar_config']['SAML_X509Cert']) ? $GLOBALS['sugar_config']['SAML_X509Cert'] : '';
 
 // The URL where to the SAML Response/SAML Assertion will be posted
 $settings->assertion_consumer_service_url = htmlspecialchars($GLOBALS['sugar_config']['site_url']. "/index.php?module=Users&action=Authenticate");
-
+$settings->logout_service_url = htmlspecialchars($GLOBALS['sugar_config']['site_url']. "/index.php?module=Users&action=LoggedOut&foo=nvtestphrase");
 // Name of this application
-$settings->issuer                         = "php-saml";
+$settings->issuer                         = "ASKI"; // "php-saml";
 
 // Tells the IdP to return the email address of the current user
 $settings->name_identifier_format         = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress";

@@ -46,6 +46,8 @@ class AuthenticationController
 	public $authenticated = false;
 	public $loginSuccess = false;// if a user has successfully logged in
 
+	public $saml_session_index = '';
+
 	protected static $authcontrollerinstance = null;
 
     /**
@@ -173,6 +175,9 @@ class AuthenticationController
 				header("Location: index.php?module=Users&action=Wizard");
 				sugar_cleanup(true);
 			}
+
+
+			  
 		}else{
 			//kbrill bug #13225
 			LogicHook::initialize();

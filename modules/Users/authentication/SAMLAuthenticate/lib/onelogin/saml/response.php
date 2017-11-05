@@ -62,7 +62,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
      */
     function __construct($settings, $assertion) {
       $this->settings = $settings;
+
       $this->assertion = base64_decode($assertion);
+
       $this->xml = new DOMDocument();
       $this->loadXML($this->xml, $this->assertion);
     }
@@ -88,6 +90,22 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			$xpath->registerNamespace("saml","urn:oasis:names:tc:SAML:2.0:assertion");
       $query = "/samlp:Response/saml:Assertion/saml:Subject/saml:NameID";
 
+      $query = "/samlp:Response/saml:Assertion/saml:Subject/saml:NameID";
+
+      $entries = $xpath->query($query);
+      return $entries->item(0)->nodeValue;
+    }
+
+    /**
+     * Get the sessionindex provided by the SAML response from the IdP.
+     */
+    function get_sessionindex() {
+
+      $xpath = new DOMXPath($this->xml);
+			$xpath->registerNamespace("samlp","urn:oasis:names:tc:SAML:2.0:protocol");
+			$xpath->registerNamespace("saml","urn:oasis:names:tc:SAML:2.0:assertion");
+      $query = "/samlp:Response/saml:Assertion/saml:AuthnStatement/@SessionIndex";
+      
       $entries = $xpath->query($query);
       return $entries->item(0)->nodeValue;
     }
@@ -108,12 +126,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         assert('$dom instanceof DOMDocument');
         assert('is_string($xml)');
 
+
+
         if (strpos($xml, '<!ENTITY') !== false) {
             throw new Exception('Detected use of ENTITY in XML, disabled to prevent XXE/XEE attacks');
         }
 
+	// echo "KATSO SORSAT " . $xml; exit(); // onnistui :-)
         $oldEntityLoader = libxml_disable_entity_loader(true);
         $res = $dom->loadXML($xml);
+
         libxml_disable_entity_loader($oldEntityLoader);
 
         if (!$res) {

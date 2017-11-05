@@ -107,6 +107,7 @@ class User extends Person {
 
 	var $emailAddress;
 
+	var $saml_session_index = ''; // NVolk
 
 	var $new_schema = true;
 

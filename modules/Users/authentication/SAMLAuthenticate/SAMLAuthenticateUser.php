@@ -50,6 +50,8 @@ require_once('modules/Users/authentication/SugarAuthenticate/SugarAuthenticateUs
 
 
 class SAMLAuthenticateUser extends SugarAuthenticateUser{
+  var $session_index;
+
 	/**
 	 * Does the actual authentication of the user and returns an id that will be used
 	 * to load the current user (loadUserOnSession)
@@ -89,6 +91,10 @@ class SAMLAuthenticateUser extends SugarAuthenticateUser{
 
             $id = $this->get_user_id($samlresponse, $settings);
             $user = $this->fetch_user($id, $settings->id);
+	    $session_index = $samlresponse->get_sessionindex(); // NVOLK
+	    $user->session_index = $session_index;
+	    $this->session_index = $session_index;
+	    //echo "FOO <script>alert('FOO $session_index');</script> BAR\n"; exit();
 
 			//user already exists use this one
 			if ($user->id){
