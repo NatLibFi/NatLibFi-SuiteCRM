@@ -50,6 +50,30 @@ array (
         'default' => true,
         'name' => 'alliance_roles',
       ),
+      'related_service' =>
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_RELATED_SERVICE',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'related_service',
+      ),
+      'production_status' =>
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_PRODUCTION_STATUS',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'production_status',
+      ),
+      'open_only_has_active_contract' =>
+      array (
+        'type' => 'bool',
+        'default' => true,
+        'label' => 'LBL_HAS_ACTIVE_CONTRACT',
+        'width' => '10%',
+        'name' => 'open_only_has_active_contract',
+      ),
     ),
   ),
   'templateMeta' => 
