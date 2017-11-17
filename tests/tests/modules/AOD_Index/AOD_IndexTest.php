@@ -190,6 +190,12 @@ class AOD_IndexTest extends PHPUnit_Framework_TestCase
                 'Spots' => 'Spots',
                 'Tasks' => 'Task',
                 'TemplateSectionLine' => 'TemplateSectionLine',
+                'nlfal_Alliances' => 'nlfal_Alliances',
+                'nlfbr_BusinessRelationships' => 'nlfbr_BusinessRelationships',
+                'nlfbs_BackendSystems' => 'nlfbs_BackendSystems',
+                'nlfro_Roles' => 'nlfro_Roles',
+                'nlfse_Services' => 'nlfse_Services',
+                'nlfwg_WorkingGroups' => 'nlfwg_WorkingGroups',
         );
 
         $aod_index = new AOD_Index();

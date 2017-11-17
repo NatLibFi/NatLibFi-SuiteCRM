@@ -330,6 +330,12 @@ class SecurityGroupTest extends PHPUnit_Framework_TestCase
             'jjwg_Maps',
             'AOS_Product_Categories',
             'Spots' => 'Spots',
+            'nlfal_Alliances',
+            'nlfbr_BusinessRelationships',
+            'nlfbs_BackendSystems',
+            'nlfro_Roles',
+            'nlfse_Services',
+            'nlfwg_WorkingGroups',
                 );
 
         $actual = $securityGroup->getSecurityModules();
