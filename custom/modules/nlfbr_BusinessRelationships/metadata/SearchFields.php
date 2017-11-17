@@ -1,5 +1,5 @@
 <?php
-// created: 2017-09-19 15:51:05
+// created: 2017-11-07 16:02:49
 $searchFields['nlfbr_BusinessRelationships'] = array (
   'name' => 
   array (
@@ -180,5 +180,17 @@ $searchFields['nlfbr_BusinessRelationships'] = array (
       0 => 'id',
     ),
     'vname' => 'LBL_HAS_ACTIVE_CONTRACT_TITLE',
+  ),
+  'nlfbr_businessrelationships_account_alliances' =>
+  array (
+    'query_type' => 'format',
+    'operator' => 'subquery',
+    'subquery' => 'SELECT br.id FROM nlfbr_businessrelationships br WHERE br.deleted=0 AND br.nlfbr_businessrelationships_account_alliances REGEXP {0}',
+    'subquery_with_multienum_regexp' => true,
+    'db_field' => 
+    array (
+      0 => 'id',
+    ),
+    'vname' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
   ),
 );

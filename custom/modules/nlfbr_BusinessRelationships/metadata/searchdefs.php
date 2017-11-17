@@ -96,13 +96,13 @@ array (
         'width' => '10%',
         'name' => 'open_only_has_active_contract',
       ),
-      'commercial' => 
+      'nlfbr_businessrelationships_account_alliances' => 
       array (
-        'type' => 'bool',
-        'default' => true,
-        'label' => 'LBL_COMMERCIAL',
+        'type' => 'enum',
+        'label' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
         'width' => '10%',
-        'name' => 'commercial',
+        'default' => true,
+        'name' => 'nlfbr_businessrelationships_account_alliances',
       ),
       'business_relationship_roles' => 
       array (
@@ -120,6 +120,14 @@ array (
         'label' => 'LBL_ASIAKASSUHDE',
         'width' => '10%',
         'name' => 'asiakassuhde_c',
+      ),
+      'commercial' => 
+      array (
+        'type' => 'bool',
+        'default' => true,
+        'label' => 'LBL_COMMERCIAL',
+        'width' => '10%',
+        'name' => 'commercial',
       ),
       'date_entered' => 
       array (
