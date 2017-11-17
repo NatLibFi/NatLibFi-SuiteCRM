@@ -2,6 +2,7 @@
 
 if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
+require_once 'modules/nlfal_Alliances/nlfal_Alliances.php';
 class BusinessRelationshipProcessRecordHook
 {
     const TABLE_BUSINESS_RELATIONSHIPS_CONTRACTS = 'nlfbr_businessrelationships_aos_contracts_1_c';
@@ -25,4 +26,44 @@ class BusinessRelationshipProcessRecordHook
         $bean->{self::FIELD_CONTRACT_COUNT} = $count;
     }
 
+    const FIELD_ALLIANCE_IDS = 'nlfbr_businessrelationships_account_alliances';
+    const FIELD_ALLIANCE_NAMES = 'alliance_names';
+    function setAllianceNames($bean, $event, $arguments)
+    {
+        $id = $bean->id;
+        if (!isset($id)) {
+            return;
+        }
+
+        $bean->retrieve();
+
+        $allianceIds = $bean->{self::FIELD_ALLIANCE_IDS};
+        if (!$allianceIds) {
+            return;
+        }
+
+        $allianceIds = unencodeMultienum($allianceIds);
+
+        $allianceNames = '';
+
+        foreach ($allianceIds as $allianceId) {
+            $alliance = new nlfal_Alliances();
+            $alliance->retrieve($allianceId);
+
+            if (!$alliance) {
+                continue;
+            }
+
+            if (!$alliance->name) {
+                continue;
+            }
+
+            if ($allianceNames !== '') {
+                $allianceNames .= ', '; // TODO: i18n this
+            }
+            $allianceNames .= $alliance->name;
+        }
+
+        $bean->{self::FIELD_ALLIANCE_NAMES} = $allianceNames;
+    }
 }

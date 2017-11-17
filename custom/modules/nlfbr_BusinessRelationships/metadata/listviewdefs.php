@@ -41,10 +41,10 @@ array (
     'width' => '10%',
     'default' => true,
   ),
-  'NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES' => 
+  'ALLIANCE_NAMES' => 
   array (
-    'type' => 'multienum',
-    'label' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
+    'type' => 'varchar',
+    'label' => 'LBL_ALLIANCE_NAMES',
     'width' => '10%',
     'default' => true,
   ),

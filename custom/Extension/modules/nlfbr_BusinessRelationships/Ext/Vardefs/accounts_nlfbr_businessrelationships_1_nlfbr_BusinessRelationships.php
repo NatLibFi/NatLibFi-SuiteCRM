@@ -46,4 +46,13 @@ $dictionary["Account"]["fields"]["nlfbr_businessrelationships_account_alliances"
   'bean_name' => 'Account',
   'vname' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
   'id_name' => 'nlfbr_businessrelationships_account_alliances',
+  'studio' => array('detailview' => false, 'editview' => false, 'listview' => false, 'searchview' => true),
+);
+
+$dictionary["nlfbr_BusinessRelationships"]["fields"]["alliance_names"] = array (
+  'name' => 'alliance_names',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'vname' => 'LBL_ALLIANCE_NAMES',
+  'studio' => array('detailview' => false, 'editview' => false, 'listview' => true, 'searchview' => false),
 );
