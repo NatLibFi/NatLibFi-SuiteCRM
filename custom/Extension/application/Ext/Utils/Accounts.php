@@ -2,6 +2,7 @@
 
 function getActiveAccountsHtml2($focus, $name, $value, $view) {
     $activeAccounts = array();
+    $selected = array();
 
     $displayParams = array();
     if (isset($focus->field_defs[$name])) {
@@ -16,15 +17,24 @@ function getActiveAccountsHtml2($focus, $name, $value, $view) {
         $activeAccounts = getAllActiveAccounts(); // TODO: move here from NLFRoles utils
     }
 
-    return makeHtmlOfEnumOptions($activeAccounts, array(), $view, $displayParams);
+    $contactId = getContactIdForAddAccountRoleForm($_REQUEST);
+    if ($contactId !== null) {
+        $relatedAccounts = getAccountsForContact($contactId);
+        if (!empty($relatedAccounts)) {
+            $selected = array($relatedAccounts[0] => 1);
+        }
+    }
+
+    return makeHtmlOfEnumOptions($activeAccounts, $selected, $view, $displayParams);
 }
 
 function getAccountRolesForContactHtml($focus, $name, $value, $view) {
     global $app_list_strings;
 
-    $selectedAccounts = array();
+    $selectedRoles = array();
 
     $accountId = null;
+    $contactId = null;
 
     if ($view !== 'DetailView') {
         $activeAccounts = getAllActiveAccounts(); // TODO: move here from NLFRoles utils
@@ -32,15 +42,18 @@ function getAccountRolesForContactHtml($focus, $name, $value, $view) {
             $accountId = reset(array_keys($activeAccounts));
         }
     }
-
-    if ($accountId !== null) { 
-        $contactId = getContactIdForAddAccountRoleForm($_REQUEST);
-        if ($contactId !== null) {
-            $selectedAccounts = getAccountRolesForContact($contactId, $accountId);
+    $contactId = getContactIdForAddAccountRoleForm($_REQUEST);
+    if ($contactId !== null) {
+        $relatedAccounts = getAccountsForContact($contactId);
+        if (!empty($relatedAccounts)) {
+            $accountId = $relatedAccounts[0];
         }
     }
+    if ($accountId !== null && $accountId !== null) {
+        $selectedRoles = getAccountRolesForContact($contactId, $accountId);
+    }
 
-    return makeHtmlOfEnumOptions($app_list_strings['contact_account_role_list'], $selectedAccounts, $view);
+    return makeHtmlOfEnumOptions($app_list_strings['contact_account_role_list'], $selectedRoles, $view);
 }
 
 function getAccountRolesForContact($contactId = null, $accountId = null) {
@@ -67,6 +80,26 @@ function getAccountRolesForContact($contactId = null, $accountId = null) {
     }
 
     return $roles;
+}
+
+function getAccountsForContact($contactId = null) {
+    if ($contactId === null) {
+        return array();
+    }
+
+    $accountIds = array();
+
+    $db = $GLOBALS['db'];
+    $query = 'SELECT rel.account_id FROM accounts_contacts rel ' .
+        'WHERE rel.deleted=0 AND ' .
+        'rel.contact_id="' . $db->quote($contactId) . '"';
+    $result = $db->query($query);
+
+    if ($row = $db->fetchByAssoc($result)) {
+        $accountIds[] = $row['account_id'];
+    }
+
+    return $accountIds;
 }
 
 function getContactIdForAddAccountRoleForm($requestData) {
