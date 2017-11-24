@@ -60,7 +60,7 @@ function getBRContractWidgetForEditView($id, $module, $view, $tabindex='0') {
     }
 
     $allContractData = 'new Object()';
-    $allContracts = $helper->getAllActiveContracts($serviceId);
+    $allContracts = $helper->getContractList($serviceId);
     if (!empty($allContracts)) {
         $json = new JSON(JSON_LOOSE_TYPE);
         $allContractData = $json->encode($allContracts);
