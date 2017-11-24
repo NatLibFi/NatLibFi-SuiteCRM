@@ -45,17 +45,24 @@ array (
     array (
       'default' => 
       array (
-        0 => 
+        0 =>
         array (
-          0 => 'name',
-          1 => 
+          0 => array(
+            'name' => 'name1',
+            'studio' => false,
+            'label' => 'LBL_NAME_TITLE',
+          ),
+        ),
+        1 => 
+        array (
+          0 => 
           array (
             'name' => 'status_c',
             'studio' => 'visible',
             'label' => 'LBL_STATUS',
           ),
         ),
-        1 => 
+        2 => 
         array (
           0 => 
           array (
@@ -65,7 +72,7 @@ array (
           ),
           1 => 'date_entered',
         ),
-        2 => 
+        3 => 
         array (
           0 => 
           array (
@@ -74,7 +81,7 @@ array (
           ),
           1 => 'date_modified',
         ),
-        3 => 
+        4 => 
         array (
           0 => 
           array (
@@ -87,7 +94,7 @@ array (
             'label' => 'LBL_MODIFIED_NAME',
           ),
         ),
-        4 => 
+        5 => 
         array (
           0 => 'description',
         ),

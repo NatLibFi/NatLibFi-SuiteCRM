@@ -3,7 +3,13 @@
 $searchFields['nlfal_Alliances'] = array (
   'name' => 
   array (
-    'query_type' => 'default',
+    'query_type' => 'format',
+    'operator' => 'subquery',
+    'subquery' => 'SELECT nlfal_alliances.id FROM nlfal_alliances JOIN nlfal_alliances_cstm ON nlfal_alliances.id=nlfal_alliances_cstm.id_c WHERE nlfal_alliances_cstm.name_fin_c LIKE "%{0}%" OR nlfal_alliances_cstm.name_swe_c LIKE "%{0}%" OR nlfal_alliances_cstm.name_eng_c LIKE "%{0}%" OR nlfal_alliances_cstm.name_other_c LIKE "%{0}%"',
+    'db_field' => 
+    array (
+      0 => 'id',
+    ),
   ),
   'current_user_only' => 
   array (

@@ -1,5 +1,5 @@
 <?php
-// created: 2017-09-08 20:23:10
+// created: 2017-11-24 16:03:13
 $mod_strings = array (
   'LBL_NLFAL_ALLIANCES_NLFSE_SERVICES_1_FROM_NLFSE_SERVICES_TITLE' => 'Palvelut',
   'LBL_NAME' => 'Nimi',
@@ -26,4 +26,7 @@ $mod_strings = array (
   'LBL_ALLIANCE_LEADER_TITLE' => ' Yhteenliittymän vetäjä',
   'LBL_DELETED' => 'Poistettu',
   'LBL_STATUS' => 'Status',
+  'LBL_NAME_OTHER' => 'Nimi (muu kieli)',
+  'LBL_NAME_OTHER_LANG' => 'Kieli',
+  'LBL_NAME_DEFAULT_LANG' => 'Oletusnimi',
 );
