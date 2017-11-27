@@ -1,5 +1,5 @@
 <?php
-// created: 2017-10-10 15:40:16
+// created: 2017-11-28 11:41:04
 $mod_strings = array (
   'LBL_NLFSE_SERVICES_ACCOUNTS_1_FROM_NLFSE_SERVICES_TITLE' => 'Palvelut',
   'LBL_ACCOUNTS_NLFBR_BUSINESSRELATIONSHIPS_1_FROM_NLFBR_BUSINESSRELATIONSHIPS_TITLE' => 'Asiakassuhteet',
@@ -49,4 +49,8 @@ $mod_strings = array (
   'AOS_Contracts' => 'Sopimukset',
   'LBL_ORGANISAATIO_STATUS' => 'Organisaation tila',
   'LBL_ORGANISAATIO_STATUS_INFO' => 'Organisaation tila - lisätiedot',
+  'LBL_NAME_FIN' => 'Nimi (suomi)',
+  'LBL_NAME_OTHER' => 'Nimi (muu kieli)',
+  'LBL_NAME_OTHER_LANG' => 'Kieli',
+  'LBL_NAME_DEFAULT_LANG' => 'Oletusnimi',
 );

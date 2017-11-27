@@ -1,123 +1,129 @@
 <?php
 // created: 2017-09-19 15:59:10
 $searchFields['Accounts'] = array (
-  'name' => 
+  'name' =>
   array (
-    'query_type' => 'default',
+    'query_type' => 'format',
+    'operator' => 'subquery',
+    'subquery' => 'SELECT accounts.id FROM accounts JOIN accounts_cstm ON accounts.id=accounts_cstm.id_c WHERE accounts_cstm.name_fin_c LIKE "%{0}%" OR accounts_cstm.name_swe_c LIKE "%{0}%" OR accounts_cstm.name_eng_c LIKE "%{0}%" OR accounts_cstm.name_other_c LIKE "%{0}%"',
+    'db_field' =>
+    array (
+      0 => 'id',
+    ),
   ),
-  'account_type' => 
+  'account_type' =>
   array (
     'query_type' => 'default',
     'options' => 'account_type_dom',
     'template_var' => 'ACCOUNT_TYPE_OPTIONS',
   ),
-  'industry' => 
+  'industry' =>
   array (
     'query_type' => 'default',
     'options' => 'industry_dom',
     'template_var' => 'INDUSTRY_OPTIONS',
   ),
-  'annual_revenue' => 
+  'annual_revenue' =>
   array (
     'query_type' => 'default',
   ),
-  'address_street' => 
+  'address_street' =>
   array (
     'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'billing_address_street',
       1 => 'shipping_address_street',
     ),
   ),
-  'address_city' => 
+  'address_city' =>
   array (
     'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'billing_address_city',
       1 => 'shipping_address_city',
     ),
     'vname' => 'LBL_CITY',
   ),
-  'address_state' => 
+  'address_state' =>
   array (
     'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'billing_address_state',
       1 => 'shipping_address_state',
     ),
     'vname' => 'LBL_STATE',
   ),
-  'address_postalcode' => 
+  'address_postalcode' =>
   array (
     'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'billing_address_postalcode',
       1 => 'shipping_address_postalcode',
     ),
     'vname' => 'LBL_POSTAL_CODE',
   ),
-  'address_country' => 
+  'address_country' =>
   array (
     'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'billing_address_country',
       1 => 'shipping_address_country',
     ),
     'vname' => 'LBL_COUNTRY',
   ),
-  'rating' => 
+  'rating' =>
   array (
     'query_type' => 'default',
   ),
-  'phone' => 
+  'phone' =>
   array (
     'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'phone_office',
     ),
     'vname' => 'LBL_ANY_PHONE',
   ),
-  'email' => 
+  'email' =>
   array (
     'query_type' => 'default',
     'operator' => 'subquery',
     'subquery' => 'SELECT eabr.bean_id FROM email_addr_bean_rel eabr JOIN email_addresses ea ON (ea.id = eabr.email_address_id) WHERE eabr.deleted=0 AND ea.email_address LIKE',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'id',
     ),
     'vname' => 'LBL_ANY_EMAIL',
   ),
-  'website' => 
+  'website' =>
   array (
     'query_type' => 'default',
   ),
-  'ownership' => 
+  'ownership' =>
   array (
     'query_type' => 'default',
   ),
-  'employees' => 
+  'employees' =>
   array (
     'query_type' => 'default',
   ),
-  'sic_code' => 
+  'sic_code' =>
   array (
     'query_type' => 'default',
   ),
-  'ticker_symbol' => 
+  'ticker_symbol' =>
   array (
     'query_type' => 'default',
   ),
-  'current_user_only' => 
+  'current_user_only' =>
   array (
     'query_type' => 'default',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'assigned_user_id',
     ),
@@ -125,47 +131,47 @@ $searchFields['Accounts'] = array (
     'vname' => 'LBL_CURRENT_USER_FILTER',
     'type' => 'bool',
   ),
-  'assigned_user_id' => 
+  'assigned_user_id' =>
   array (
     'query_type' => 'default',
   ),
-  'range_date_entered' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-    'is_date_field' => true,
-  ),
-  'start_range_date_entered' => 
+  'range_date_entered' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'end_range_date_entered' => 
+  'start_range_date_entered' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'range_date_modified' => 
+  'end_range_date_entered' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'start_range_date_modified' => 
+  'range_date_modified' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'end_range_date_modified' => 
+  'start_range_date_modified' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'favorites_only' => 
+  'end_range_date_modified' =>
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
+  ),
+  'favorites_only' =>
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
@@ -174,154 +180,154 @@ $searchFields['Accounts'] = array (
 			                    WHERE favorites.deleted = 0
 			                        and favorites.parent_type = \'Accounts\'
 			                        and favorites.assigned_user_id = \'{1}\'',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'id',
     ),
   ),
-  'nlfse_services_accounts_namedesc' => 
+  'nlfse_services_accounts_namedesc' =>
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
     'subquery' => 'SELECT services_accounts.nlfse_services_accounts_1accounts_idb FROM nlfse_services_accounts_1_c services_accounts JOIN nlfse_services services ON services_accounts.nlfse_services_accounts_1nlfse_services_ida=services.id WHERE services_accounts.deleted=0 AND (services.name LIKE \'%{0}%\' OR services.description LIKE \'%{0}%\')',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'id',
     ),
     'vname' => 'LBL_NLFSE_SERVICES_ACCOUNTS_NAMEDESC',
   ),
-  'nlfse_services_accounts_enum' => 
+  'nlfse_services_accounts_enum' =>
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
     'subquery' => 'SELECT services_accounts.nlfse_services_accounts_1accounts_idb FROM nlfse_services_accounts_1_c services_accounts WHERE services_accounts.deleted=0 AND services_accounts.nlfse_services_accounts_1nlfse_services_ida IN ({0})',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'id',
     ),
     'vname' => 'LBL_NLFSE_SERVICES_ACCOUNTS_ENUM',
   ),
-  'phone_office' => 
+  'phone_office' =>
   array (
     'query_type' => 'default',
   ),
-  'range_ilmoittanut_kiinnostuksen' => 
-  array (
-    'query_type' => 'default',
-    'enable_range_search' => true,
-    'is_date_field' => true,
-  ),
-  'start_range_ilmoittanut_kiinnostuksen' => 
+  'range_ilmoittanut_kiinnostuksen' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'end_range_ilmoittanut_kiinnostuksen' => 
+  'start_range_ilmoittanut_kiinnostuksen' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'range_hyvaksytty' => 
+  'end_range_ilmoittanut_kiinnostuksen' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'start_range_hyvaksytty' => 
+  'range_hyvaksytty' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'end_range_hyvaksytty' => 
+  'start_range_hyvaksytty' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'range_ilmoittanut_kiinnostuksen_c' => 
+  'end_range_hyvaksytty' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'start_range_ilmoittanut_kiinnostuksen_c' => 
+  'range_ilmoittanut_kiinnostuksen_c' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'end_range_ilmoittanut_kiinnostuksen_c' => 
+  'start_range_ilmoittanut_kiinnostuksen_c' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'shipping_address_country' => 
-  array (
-    'query_type' => 'default',
-  ),
-  'billing_address_country' => 
-  array (
-    'query_type' => 'default',
-  ),
-  'shipping_address_postalcode' => 
-  array (
-    'query_type' => 'default',
-  ),
-  'shipping_address_state' => 
-  array (
-    'query_type' => 'default',
-  ),
-  'shipping_address_city' => 
-  array (
-    'query_type' => 'default',
-  ),
-  'shipping_address_street' => 
-  array (
-    'query_type' => 'default',
-  ),
-  'range_hyvaksytty_c' => 
+  'end_range_ilmoittanut_kiinnostuksen_c' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'start_range_hyvaksytty_c' => 
+  'shipping_address_country' =>
+  array (
+    'query_type' => 'default',
+  ),
+  'billing_address_country' =>
+  array (
+    'query_type' => 'default',
+  ),
+  'shipping_address_postalcode' =>
+  array (
+    'query_type' => 'default',
+  ),
+  'shipping_address_state' =>
+  array (
+    'query_type' => 'default',
+  ),
+  'shipping_address_city' =>
+  array (
+    'query_type' => 'default',
+  ),
+  'shipping_address_street' =>
+  array (
+    'query_type' => 'default',
+  ),
+  'range_hyvaksytty_c' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'end_range_hyvaksytty_c' => 
+  'start_range_hyvaksytty_c' =>
   array (
     'query_type' => 'default',
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'billing_address_state' => 
+  'end_range_hyvaksytty_c' =>
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
+  ),
+  'billing_address_state' =>
   array (
     'query_type' => 'default',
   ),
-  'date_modified' => 
+  'date_modified' =>
   array (
     'query_type' => 'default',
   ),
-  'account_roles' => 
+  'account_roles' =>
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
     'subquery' => 'SELECT accounts.id FROM accounts JOIN accounts_contacts acc_rel ON accounts.id=acc_rel.account_id WHERE accounts.deleted=0 AND acc_rel.deleted=0 AND acc_rel.role REGEXP {0}',
     'subquery_with_multienum_regexp' => true,
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'id',
     ),
     'vname' => 'LBL_ACCOUNT_ROLES',
   ),
-  'open_only_has_active_contract' => 
+  'open_only_has_active_contract' =>
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
@@ -333,24 +339,24 @@ $searchFields['Accounts'] = array (
         'service_where' => 'AND s_rel.deleted=0 AND s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida IN ({0})',
       ),
     ),
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'id',
     ),
     'vname' => 'LBL_HAS_ACTIVE_CONTRACT_TITLE',
   ),
-  'related_service' => 
+  'related_service' =>
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
     'subquery' => 'SELECT accounts.id FROM accounts JOIN accounts_nlfbr_businessrelationships_1_c a_rel ON accounts.id=a_rel.accounts_nlfbr_businessrelationships_1accounts_ida JOIN nlfse_services_nlfbr_businessrelationships_1_c s_rel ON a_rel.accounts_n824donships_idb=s_rel.nlfse_serva51aonships_idb WHERE accounts.deleted=0 AND a_rel.deleted=0 AND s_rel.deleted=0 AND s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida IN ({0})',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'id',
     ),
     'vname' => 'RELATED_SERVICE_TITLE',
   ),
-  'production_status' => 
+  'production_status' =>
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
@@ -362,18 +368,18 @@ $searchFields['Accounts'] = array (
         'service_where' => 'AND s_rel.deleted=0 AND s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida IN ({0})',
       ),
     ),
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'id',
     ),
     'vname' => 'LBL_PRODUCTION_STATUS_TITLE',
   ),
-  'service_production_usage_year' => 
+  'service_production_usage_year' =>
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
     'subquery' => 'SELECT accounts.id FROM accounts JOIN accounts_nlfbr_businessrelationships_1_c br_rel ON accounts.id=br_rel.accounts_nlfbr_businessrelationships_1accounts_ida JOIN nlfbr_businessrelationships_cstm br_cstm ON br_cstm.id_c=br_rel.accounts_n824donships_idb WHERE accounts.deleted=0 AND br_rel.deleted=0 AND br_cstm.finna_production_year_c LIKE "%{0}%"',
-    'db_field' => 
+    'db_field' =>
     array (
       0 => 'id',
     ),

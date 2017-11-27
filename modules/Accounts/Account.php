@@ -366,4 +366,35 @@ class Account extends Company {
 		return $query;
 	}
 
+    /**
+     * Note: this is custom addition to the Account class. It is done that way,
+     * as it is not possible to adjust all the code referring to Account class in
+     * a update-safe way.
+     * This custom method must be carried over whenever SuiteCRM is updated,
+     * and the Account bean class changes.
+     */
+	/**
+	 * need to override to have a name field created for this class
+	 *
+ 	 * @see parent::retrieve()
+ 	 */
+    public function retrieve($id = -1, $encode=true, $deleted=true) {
+		$ret_val = parent::retrieve($id, $encode, $deleted);
+		$this->_create_proper_name_field();
+		return $ret_val;
+	}
+
+    private function _create_proper_name_field()
+    {
+        $this->name = $this->name_fin_c;
+
+        if ($this->name_default_lang_c === 'swe') {
+            $this->name = $this->name_swe_c;
+        } elseif ($this->name_default_lang_c === 'eng') {
+            $this->name = $this->name_eng_c;
+        } elseif ($this->name_default_lang_c === 'other') {
+            $this->name = $this->name_other_c;
+        }
+    }
+
 }
