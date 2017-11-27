@@ -2,7 +2,7 @@
 
 function getTasksForWorkingGroupActivitySubpanelQueryParts($params) {
     $groupId = $params['group_id'];
-    
+
     $query = array(
         'select' => 'SELECT tasks.*',
         'from' => 'FROM tasks',
@@ -10,13 +10,13 @@ function getTasksForWorkingGroupActivitySubpanelQueryParts($params) {
         'join' => '',
         'join_tables' => '',
     );
-    
+
     return $query;
 }
 
 function getMeetingsForWorkingGroupActivitySubpanelQueryParts($params) {
     $groupId = $params['group_id'];
-    
+
     $query = array(
         'select' => 'SELECT meetings.*',
         'from' => 'FROM meetings',
@@ -24,13 +24,13 @@ function getMeetingsForWorkingGroupActivitySubpanelQueryParts($params) {
         'join' => '',
         'join_tables' => '',
     );
-    
+
     return $query;
 }
 
 function getCallsForWorkingGroupActivitySubpanelQueryParts($params) {
     $groupId = $params['group_id'];
-    
+
     $query = array(
         'select' => 'SELECT calls.*',
         'from' => 'FROM calls',
@@ -38,13 +38,13 @@ function getCallsForWorkingGroupActivitySubpanelQueryParts($params) {
         'join' => '',
         'join_tables' => '',
     );
-    
+
     return $query;
 }
 
 function getNotesForWorkingGroupSubpanelQueryParts($params) {
     $groupId = $params['group_id'];
-    
+
     $query = array(
         'select' => 'SELECT notes.*',
         'from' => 'FROM notes',
@@ -52,13 +52,13 @@ function getNotesForWorkingGroupSubpanelQueryParts($params) {
         'join' => '',
         'join_tables' => '',
     );
-    
+
     return $query;
 }
 
 function getEmailsForWorkingGroupHistorySubpanelQueryParts($params) {
     $groupId = $params['group_id'];
-    
+
     $query = array(
         'select' => 'SELECT emails.*',
         'from' => 'FROM emails',
@@ -66,26 +66,36 @@ function getEmailsForWorkingGroupHistorySubpanelQueryParts($params) {
         'join' => '',
         'join_tables' => '',
     );
-    
+
     return $query;
 }
 
 function getActiveWorkingGroupsHtml2($focus, $name, $value, $view) {
     $activeGroups = array();
+    $selected = array();
 
     if ($view !== 'DetailView') {
         $activeGroups = getAllActiveWorkingGroups(); // TODO: move here from NLFRoles utils
     }
 
-    return makeHtmlOfEnumOptions($activeGroups, array(), $view);
+    $contactId = getContactIdForAddWGRoleForm($_REQUEST);
+    if ($contactId !== null) {
+        $relatedGroups = getWorkingGroupsForContact($contactId);
+        if (!empty($relatedGroups)) {
+            $selected = array($relatedGroups[0] => 1);
+        }
+    }
+
+    return makeHtmlOfEnumOptions($activeGroups, $selected, $view);
 }
 
 function getWorkingGroupRolesForContactHtml($focus, $name, $value, $view) {
     global $app_list_strings;
 
-    $selectedGroups = array();
+    $selectedRoles = array();
 
     $groupId = null;
+    $contactId = null;
 
     if ($view !== 'DetailView') {
         $activeGroups = getAllActiveWorkingGroups(); // TODO: move here from NLFRoles utils
@@ -94,14 +104,18 @@ function getWorkingGroupRolesForContactHtml($focus, $name, $value, $view) {
         }
     }
 
-    if ($groupId !== null) { 
-        $contactId = getContactIdForAddWGRoleForm($_REQUEST);
-        if ($contactId !== null) {
-            $selectedGroups = getWorkingGroupRolesForContact($contactId, $groupId);
+    $contactId = getContactIdForAddWGRoleForm($_REQUEST);
+    if ($contactId !== null) {
+        $relatedGroups = getWorkingGroupsForContact($contactId);
+        if (!empty($relatedGroups)) {
+            $groupId = $relatedGroups[0];
         }
     }
+    if ($groupId !== null && $groupId !== null) {
+        $selectedRoles = getWorkingGroupRolesForContact($contactId, $groupId);
+    }
 
-    return makeHtmlOfEnumOptions($app_list_strings['contact_working_group_role_list'], $selectedGroups, $view);
+    return makeHtmlOfEnumOptions($app_list_strings['contact_working_group_role_list'], $selectedRoles, $view);
 }
 
 function getWorkingGroupRolesForContact($contactId = null, $groupId = null) {
@@ -128,6 +142,26 @@ function getWorkingGroupRolesForContact($contactId = null, $groupId = null) {
     }
 
     return $roles;
+}
+
+function getWorkingGroupsForContact($contactId = null) {
+    if ($contactId === null) {
+        return array();
+    }
+
+    $groupIds = array();
+
+    $db = $GLOBALS['db'];
+    $query = 'SELECT rel.nlfwg_workinggroups_contacts_1nlfwg_workinggroups_ida AS group_id FROM nlfwg_workinggroups_contacts_1_c rel ' .
+        'WHERE rel.deleted=0 AND ' .
+        'rel.nlfwg_workinggroups_contacts_1contacts_idb="' . $db->quote($contactId) . '"';
+    $result = $db->query($query);
+
+    if ($row = $db->fetchByAssoc($result)) {
+        $groupIds[] = $row['group_id'];
+    }
+
+    return $groupIds;
 }
 
 function getContactIdForAddWGRoleForm($requestData) {
