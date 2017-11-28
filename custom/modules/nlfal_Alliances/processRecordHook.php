@@ -19,7 +19,10 @@ class AllianceProcessRecordHook
             return;
         }
 
-        $bean->retrieve(); // Load data from DB, including custom table
+        // Only load data from DB if in Alliance's own view (i.e. not in other module's subpanel)
+        if (isset($_REQUEST['module']) && $_REQUEST['module'] === 'nlfal_Alliances') {
+            $bean->retrieve(); // Load data from DB, including custom table
+        }
 
         $accountId = $bean->{self::LEADER_ID_FIELD};
         if (!$accountId) {

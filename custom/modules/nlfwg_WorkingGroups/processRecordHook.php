@@ -15,7 +15,10 @@ class WorkingGroupProcessRecordHook
             return;
         }
 
-        $bean->retrieve(); // Load data from DB, including custom table
+        // Only load data from DB if in Working Group's own view (i.e. not in other module's subpanel)
+        if (isset($_REQUEST['module']) && $_REQUEST['module'] === 'nlfwg_WorkingGroups') {
+            $bean->retrieve(); // Load data from DB, including custom table
+        }
 
         if (!$bean->load_relationship(self::SERVICE_REL_FIELD)) {
             return;

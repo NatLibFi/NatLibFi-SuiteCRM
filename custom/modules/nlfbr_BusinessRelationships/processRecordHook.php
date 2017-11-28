@@ -35,7 +35,11 @@ class BusinessRelationshipProcessRecordHook
             return;
         }
 
-        $bean->retrieve();
+
+        // Only load data from DB if in Business Relationship's own view (i.e. not in other module's subpanel)
+        if (isset($_REQUEST['module']) && $_REQUEST['module'] === 'nlfbr_BusinessRelationships') {
+            $bean->retrieve();
+        }
 
         $allianceIds = $bean->{self::FIELD_ALLIANCE_IDS};
         if (!$allianceIds) {
