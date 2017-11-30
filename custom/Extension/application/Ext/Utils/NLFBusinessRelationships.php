@@ -248,3 +248,26 @@ function getContactIdForAddRoleForm($requestData) {
 
     return $requestData['contact_id'];
 }
+
+function getBackendSystemsRelatedToBusinessRelationship($id) {
+    if ($id === null) {
+        return array();
+    }
+
+    $systems = array();
+
+    $db = $GLOBALS['db'];
+    $query = 'SELECT source.backend_system AS systems FROM nlfbr_businessrelationships_finna_sources source ' .
+        'JOIN nlfbr_businessrelationships br ON br.id=source.businessrelationship_id ' .
+        'WHERE source.deleted=0 AND br.deleted=0 AND ' .
+        'br.id="' . $db->quote($id) . '"';
+    $result = $db->query($query);
+
+    while ($row = $db->fetchByAssoc($result)) {
+        $systemIds = unencodeMultienum($row['systems']);
+        $systems = array_merge($systems, $systemIds);
+    }
+
+    return $systems;
+
+}

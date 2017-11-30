@@ -5,6 +5,7 @@ if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 require_once 'modules/Accounts/Account.php';
 require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipContractHelper.php';
 require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipFinnaViewHelper.php';
+require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipFinnaDataSourceHelper.php';
 
 class BusinessRelationshipBeforeSaveHook
 {
@@ -223,6 +224,11 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             return;
         }
 
+        $this->setFinnaViewData($bean);
+        $this->setFinnaDataSourceData($bean);
+    }
+
+    private function setFinnaViewData($bean) {
         $helper = new BusinessRelationshipFinnaViewHelper();
         $existingViews = $helper->getViewData($bean->id);
 
@@ -332,4 +338,181 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
         }
 
     }
+
+    private function setFinnaDataSourceData($bean) {
+        $helper = new BusinessRelationshipFinnaDataSourceHelper();
+        $existingSources = $helper->getSourceData($bean->id);
+
+        $newSources = array();
+        $updatedSources = array();
+        foreach (array_keys($_REQUEST) as $field) {
+            $index = '';
+            if (substr($field, 0, strlen('finna_data_source_id')) === 'finna_data_source_id') {
+                $index = substr($field, strlen('finna_data_source_id'));
+
+            }
+            if ($index === '') {
+                continue;
+            }
+
+            if (!isset($_REQUEST['finna_data_source_id' . $index]) || !array_key_exists('finna_data_source_name' . $index, $_REQUEST)) {
+                continue;
+            }
+
+            $id = $_REQUEST['finna_data_source_id' . $index];
+            $hasRestrictedMetadata = false;
+            $name = '';
+            $email = '';
+            $description = '';
+            $systems = array();
+            $formats = array();
+            if (isset($_REQUEST['finna_data_source_restricted_metadata' . $index])) {
+                $hasRestrictedMetadata = true;
+            }
+            if (isset($_REQUEST['finna_data_source_name' . $index])) {
+                $name = $_REQUEST['finna_data_source_name' . $index];
+            }
+            if (isset($_REQUEST['finna_data_source_backend_system' . $index])) {
+                $systems = $_REQUEST['finna_data_source_backend_system' . $index];
+            }
+            if (isset($_REQUEST['finna_data_source_harvesting_format' . $index])) {
+                $formats = $_REQUEST['finna_data_source_harvesting_format' . $index];
+            }
+            if (isset($_REQUEST['finna_data_source_contact_email' . $index])) {
+                $email = $_REQUEST['finna_data_source_contact_email' . $index];
+            }
+            if (isset($_REQUEST['finna_data_source_description' . $index])) {
+                $description = $_REQUEST['finna_data_source_description' . $index];
+            }
+            if (!$name) {
+                continue;
+            }
+
+            if ($id) {
+                $updatedSources[$id] = array(
+                    'record_id' => $id,
+                    'name' => $name,
+                    'backend_system' => encodeMultienumValue($systems),
+                    'harvesting_format' => encodeMultienumValue($formats),
+                    'contact_email' => $email,
+                    'restricted_metadata' => $hasRestrictedMetadata,
+                    'description' => $description,
+                );
+            } else {
+                $newSources[] = array(
+                    'name' => $name,
+                    'backend_system' => encodeMultienumValue($systems),
+                    'harvesting_format' => encodeMultienumValue($formats),
+                    'contact_email' => $email,
+                    'restricted_metadata' => $hasRestrictedMetadata,
+                    'description' => $description,
+                );
+            }
+        }
+
+        $toUpdate = array();
+        $toDelete = array();
+        foreach ($existingSources as $oldData) {
+            $key = $oldData['record_id'];
+            if (!array_key_exists($key, $updatedSources)) {
+                $toDelete[] = $oldData['record_id'];
+                continue;
+            }
+            $newData = $updatedSources[$key];
+            if (
+                $oldData['name'] !== $newData['name'] ||
+                $oldData['backend_system'] !== $newData['backend_system'] ||
+                $oldData['harvesting_format'] !== $newData['harvesting_format'] ||
+                $oldData['contact_email'] !== $newData['contact_email'] ||
+                $oldData['restricted_metadata'] !== $newData['restricted_metadata'] ||
+                $oldData['description'] !== $newData['description']
+            ) {
+                $toUpdate[] = $newData;
+            }
+        }
+
+        $db = $GLOBALS['db'];
+
+        foreach ($toDelete as $id) {
+            $query = 'DELETE FROM nlfbr_businessrelationships_finna_sources WHERE id="' . $db->quote($id) . '"';
+
+            $result = $db->query($query);
+        }
+
+        foreach ($toUpdate as $data) {
+            $query = 'UPDATE nlfbr_businessrelationships_finna_sources ' .
+                'SET source_name="' . $db->quote($data['name']) . '", ' .
+                'backend_system="' . $db->quote($data['backend_system']) . '", ' .
+                'harvesting_format="' . $db->quote($data['harvesting_format']) . '", ' .
+                'contact_email="' . $db->quote($data['contact_email']) . '", ' .
+                'restricted_metadata=' . ($data['restricted_metadata'] ? '1' : '0') . ', ' .
+                'description="' . $db->quote($data['description']) . '", ' .
+                'date_modified=NOW() ' .
+                'WHERE id="' . $db->quote($data['record_id']) . '"';
+
+            $result = $db->query($query);
+        }
+
+       foreach ($newSources as $data) {
+            $query = 'INSERT INTO nlfbr_businessrelationships_finna_sources ' .
+                '(id, businessrelationship_id, source_name, backend_system, harvesting_format, contact_email, restricted_metadata, description, date_modified) ' .
+                'VALUES(' .
+                '"' . $db->quote(create_guid()) . '", ' .
+                '"' . $db->quote($bean->id) . '", ' .
+                '"' . $db->quote($data['name']) . '", ' .
+                '"' . $db->quote($data['backend_system']) . '", ' .
+                '"' . $db->quote($data['harvesting_format']) . '", ' .
+                '"' . $db->quote($data['contact_email']) . '", ' .
+                ($data['restricted_metadata'] ? '1' : '0') . ', ' .
+                '"' . $db->quote($data['description']) . '", ' .
+                'NOW() )';
+
+            $result = $db->query($query);
+        }
+
+        $this->updateAccountBackendSystemData($bean);
+    }
+
+    const FIELD_ACCOUNT_ID = 'accounts_nlfbr_businessrelationships_1accounts_ida';
+    const FIELD_ACCOUNT_BACKEND_SYSTEM_REL = 'accounts_nlfbs_backendsystems_1';
+
+    private function updateAccountBackendSystemData($bean)
+    {
+       /*if (!$bean->load_relationship(self::FIELD_BUSINESS_RELATIONSHIP_BACKEND_SYSTEM_REL)) {
+           return;
+       }
+
+       $brSystems = $bean->{self::FIELD_BUSINESS_RELATIONSHIP_BACKEND_SYSTEM_REL}->get(true);
+       */
+       $brSystems = getBackendSystemsRelatedToBusinessRelationship($bean->id);
+
+       if (empty($brSystems)) {
+           return;
+       }
+
+       $accountId = $bean->{self::FIELD_ACCOUNT_ID};
+       $account = new Account();
+       $account->retrieve($accountId);
+       if ($account === null) {
+           if (isset($GLOBALS['log'])) {
+               $GLOBALS['log']->debug('No account related to business relationship: ' . $bean->id);
+           }
+           return;
+       }
+
+       if (!$account->load_relationship(self::FIELD_ACCOUNT_BACKEND_SYSTEM_REL)) {
+           return;
+       }
+
+       $accountSystems = $account->{self::FIELD_ACCOUNT_BACKEND_SYSTEM_REL}->get(true);
+
+       foreach ($brSystems as $systemId) {
+           if (!in_array($systemId, $accountSystems)) {
+               $account->{self::FIELD_ACCOUNT_BACKEND_SYSTEM_REL}->add($systemId, array());
+           }
+       }
+
+    }
+
+
 }

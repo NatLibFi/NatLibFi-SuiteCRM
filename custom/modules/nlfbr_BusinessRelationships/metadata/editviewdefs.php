@@ -194,13 +194,17 @@ array (
             'name' => 'finna_fimu_url_c',
             'label' => 'LBL_FINNA_FIMU_URL',
           ),
-          1 => 
-          array (
-            'name' => 'aineisto_palaute_c',
-            'label' => 'LBL_AINEISTO_PALAUTE',
-          ),
         ),
         1 =>
+        array (
+          0 => 
+          array (
+            'name' => 'finna_data_source1',
+            'studio' => false,
+            'label' => 'LBL_FINNA_DATA_SOURCE_TITLE',
+          ),
+        ),
+        2 =>
         array (
           0 => 
           array (
@@ -209,34 +213,7 @@ array (
             'label' => 'LBL_FINNA_VIEW_TITLE',
           ),
         ),
-        2 => 
-        array (
-          0 => 
-          array (
-            'name' => 'nlfbr_businessrelationships_nlfbs_backendsystems_enum',
-            'studio' => 'visible',
-            'label' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_NLFBS_BACKENDSYSTEMS_1_FROM_NLFBS_BACKENDSYSTEMS_TITLE',
-            'displayParams' => 
-            array (
-              'idName' => 'nlfbr_busi06f0systems_idb',
-            ),
-          ),
-        ),
-        3 => 
-        array (
-          0 => 
-          array (
-            'name' => 'harvesting_format_c',
-            'studio' => 'visible',
-            'label' => 'LBL_HARVESTING_FORMAT',
-          ),
-          1 => 
-          array (
-            'name' => 'kayttorajoitettu_metatieto_c',
-            'label' => 'LBL_KAYTTORAJOITETTU_METATIETO',
-          ),
-        ),
-      ),
+     ),
       'lbl_editview_panel5' => 
       array (
         0 => 

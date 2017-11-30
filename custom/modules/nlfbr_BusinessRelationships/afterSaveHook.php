@@ -54,44 +54,6 @@ class BusinessRelationshipAfterSaveHook
 
     }
 
-    function updateAccountBackendSystemData($bean, $event, $arguments)
-    {
-       $id = $bean->{self::FIELD_ID};
-
-       if (!$bean->load_relationship(self::FIELD_BUSINESS_RELATIONSHIP_BACKEND_SYSTEM_REL)) {
-           return;
-       }
-
-       $brSystems = $bean->{self::FIELD_BUSINESS_RELATIONSHIP_BACKEND_SYSTEM_REL}->get(true);
-
-       if (empty($brSystems)) {
-           return;
-       }
-
-       $accountId = $bean->{self::FIELD_ACCOUNT_ID};
-       $account = new Account();
-       $account->retrieve($accountId);
-       if ($account === null) {
-           if (isset($GLOBALS['log'])) {
-               $GLOBALS['log']->debug('No account related to business relationship: ' . $bean->id);
-           }
-           return;
-       }
-
-       if (!$account->load_relationship(self::FIELD_ACCOUNT_BACKEND_SYSTEM_REL)) {
-           return;
-       }
-
-       $accountSystems = $account->{self::FIELD_ACCOUNT_BACKEND_SYSTEM_REL}->get(true);
-
-       foreach ($brSystems as $systemId) {
-           if (!in_array($systemId, $accountSystems)) {
-               $account->{self::FIELD_ACCOUNT_BACKEND_SYSTEM_REL}->add($systemId, array());
-           }
-       }
-
-    }
-
     const FIELD_ACCOUNT_ALLIANCE = 'nlfbr_businessrelationships_account_alliances';
 
     function updateAccountAllianceData($bean, $event, $arguments)

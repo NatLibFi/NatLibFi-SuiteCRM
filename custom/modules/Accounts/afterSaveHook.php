@@ -30,6 +30,7 @@ class AccountAfterSaveHook
 
        $brIds = $bean->{self::FIELD_ACCOUNT_BUSINESS_RELATIONSHIP_REL}->get(true);
 
+       $db = $GLOBALS['db'];
        foreach($brIds as $brId) {
           $br = new nlfbr_BusinessRelationships();
           $br->retrieve($brId);
@@ -37,15 +38,14 @@ class AccountAfterSaveHook
              return;
           }
 
-          if (!$br->load_relationship(self::FIELD_BUSINESS_RELATIONSHIP_BACKEND_SYSTEM_REL)) {
-              return;
-          }
-
-          $brSystems = $br->{self::FIELD_BUSINESS_RELATIONSHIP_BACKEND_SYSTEM_REL}->get(true);
+          $brSystems = getBackendSystemsRelatedToBusinessRelationship($brId);
 
           foreach ($brSystems as $systemId) {
               if (!in_array($systemId, $accSystems)) {
-                  $br->{self::FIELD_BUSINESS_RELATIONSHIP_BACKEND_SYSTEM_REL}->delete($br, $systemId);
+                  $query = 'DELETE FROM nlfbr_businessrelationships_finna_sources ' .
+                    'WHERE businessrelationship_id="' . $db->quote($brId) .'" AND ' .
+                    'backend_system REGEXP "\\\\^' . $db->quote($systemId) . '\\\\^"';
+                  $db->query($query);
               }
           }
        }
