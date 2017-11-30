@@ -187,15 +187,7 @@ array (
       ),
       'lbl_editview_panel2' => 
       array (
-        0 => 
-        array (
-          0 => 
-          array (
-            'name' => 'finna_fimu_url_c',
-            'label' => 'LBL_FINNA_FIMU_URL',
-          ),
-        ),
-        1 =>
+        0 =>
         array (
           0 => 
           array (
@@ -204,13 +196,22 @@ array (
             'label' => 'LBL_FINNA_DATA_SOURCE_TITLE',
           ),
         ),
-        2 =>
+        1 =>
         array (
           0 => 
           array (
             'name' => 'finna_view1',
             'studio' => false,
             'label' => 'LBL_FINNA_VIEW_TITLE',
+          ),
+        ),
+        2 =>
+        array (
+          0 => 
+          array (
+            'name' => 'finna_link1',
+            'studio' => false,
+            'label' => 'LBL_FINNA_LINK_TITLE',
           ),
         ),
      ),

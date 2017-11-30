@@ -6,6 +6,7 @@ require_once 'modules/Accounts/Account.php';
 require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipContractHelper.php';
 require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipFinnaViewHelper.php';
 require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipFinnaDataSourceHelper.php';
+require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipFinnaLinkHelper.php';
 
 class BusinessRelationshipBeforeSaveHook
 {
@@ -226,6 +227,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
 
         $this->setFinnaViewData($bean);
         $this->setFinnaDataSourceData($bean);
+        $this->setFinnaLinkData($bean);
     }
 
     private function setFinnaViewData($bean) {
@@ -514,5 +516,97 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
 
     }
 
+    private function setFinnaLinkData($bean) {
+        $helper = new BusinessRelationshipFinnaLinkHelper();
+        $existingLinks = $helper->getLinkData($bean->id);
+
+        $newLinks = array();
+        $updatedLinks = array();
+        foreach (array_keys($_REQUEST) as $field) {
+            $index = '';
+            if (substr($field, 0, strlen('finna_link_id')) === 'finna_link_id') {
+                $index = substr($field, strlen('finna_link_id'));
+
+            }
+            if ($index === '') {
+                continue;
+            }
+
+            if (!isset($_REQUEST['finna_link_id' . $index]) || !array_key_exists('finna_link_url' . $index, $_REQUEST)) {
+                continue;
+            }
+
+            $id = $_REQUEST['finna_link_id' . $index];
+            $linkUrl = '';
+            $description = '';
+            if (isset($_REQUEST['finna_link_url' . $index])) {
+                $linkUrl = $_REQUEST['finna_link_url' . $index];
+            }
+            if (isset($_REQUEST['finna_link_description' . $index])) {
+                $description = $_REQUEST['finna_link_description' . $index];
+            }
+            if ($id) {
+                $updatedLinks[$id] = array(
+                    'record_id' => $id,
+                    'link_url' => $linkUrl,
+                    'description' => $description,
+                );
+            } else {
+                $newLinks[] = array(
+                    'link_url' => $linkUrl,
+                    'description' => $description,
+                );
+            }
+        }
+
+        $toUpdate = array();
+        $toDelete = array();
+        foreach ($existingLinks as $oldData) {
+            $key = $oldData['record_id'];
+            if (!array_key_exists($key, $updatedLinks)) {
+                $toDelete[] = $oldData['record_id'];
+                continue;
+            }
+            $newData = $updatedLinks[$key];
+            if (
+                $oldData['link_url'] !== $newData['link_url'] ||
+                $oldData['description'] !== $newData['description']
+            ) {
+                $toUpdate[] = $newData;
+            }
+        }
+
+        $db = $GLOBALS['db'];
+
+        foreach ($toDelete as $id) {
+            $query = 'DELETE FROM nlfbr_businessrelationships_finna_links WHERE id="' . $db->quote($id) . '"';
+
+            $result = $db->query($query);
+        }
+
+        foreach ($toUpdate as $data) {
+            $query = 'UPDATE nlfbr_businessrelationships_finna_links ' .
+                'SET link_url="' . $db->quote($data['link_url']) . '", ' .
+                'description="' . $db->quote($data['description']) . '", ' .
+                'date_modified=NOW() ' .
+                'WHERE id="' . $db->quote($data['record_id']) . '"';
+
+            $result = $db->query($query);
+        }
+
+       foreach ($newLinks as $data) {
+            $query = 'INSERT INTO nlfbr_businessrelationships_finna_links ' .
+                '(id, businessrelationship_id, link_url, description, date_modified) ' .
+                'VALUES(' .
+                '"' . $db->quote(create_guid()) . '", ' .
+                '"' . $db->quote($bean->id) . '", ' .
+                '"' . $db->quote($data['link_url']) . '", ' .
+                '"' . $db->quote($data['description']) . '", ' .
+                'NOW() )';
+
+            $result = $db->query($query);
+        }
+
+    }
 
 }
