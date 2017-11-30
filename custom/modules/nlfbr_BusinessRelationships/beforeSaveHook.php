@@ -4,6 +4,7 @@ if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
 require_once 'modules/Accounts/Account.php';
 require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipContractHelper.php';
+require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipFinnaViewHelper.php';
 
 class BusinessRelationshipBeforeSaveHook
 {
@@ -213,4 +214,122 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
         }
     }
 
+    function setFinnaData($bean, $event, $arguments) {
+        if (!isset($_REQUEST['module']) || $_REQUEST['module'] !== 'nlfbr_BusinessRelationships') {
+            return;
+        }
+
+        if (!isset($_REQUEST['action']) || $_REQUEST['action'] !== 'Save') {
+            return;
+        }
+
+        $helper = new BusinessRelationshipFinnaViewHelper();
+        $existingViews = $helper->getViewData($bean->id);
+
+        $newViews = array();
+        $updatedViews = array();
+        foreach (array_keys($_REQUEST) as $field) {
+            $index = '';
+            if (substr($field, 0, strlen('finna_view_id')) === 'finna_view_id') {
+                $index = substr($field, strlen('finna_view_id'));
+
+            }
+            if ($index === '') {
+                continue;
+            }
+
+            if (!isset($_REQUEST['finna_view_id' . $index]) || !array_key_exists('finna_view_status' . $index, $_REQUEST)) {
+                continue;
+            }
+
+            $id = $_REQUEST['finna_view_id' . $index];
+            $hasAdminAccess = false;
+            $viewStatus = '';
+            $viewUrl = '';
+            $description = '';
+            if (isset($_REQUEST['finna_view_admin_access' . $index])) {
+                $hasAdminAccess = true;
+            }
+            if (isset($_REQUEST['finna_view_status' . $index])) {
+                $viewStatus = $_REQUEST['finna_view_status' . $index];
+            }
+            if (isset($_REQUEST['finna_view_url' . $index])) {
+                $viewUrl = $_REQUEST['finna_view_url' . $index];
+            }
+            if (isset($_REQUEST['finna_view_description' . $index])) {
+                $description = $_REQUEST['finna_view_description' . $index];
+            }
+            if ($id) {
+                $updatedViews[$id] = array(
+                    'record_id' => $id,
+                    'admin_access' => $hasAdminAccess,
+                    'view_status' => $viewStatus,
+                    'view_url' => $viewUrl,
+                    'description' => $description,
+                );
+            } else {
+                $newViews[] = array(
+                    'admin_access' => $hasAdminAccess,
+                    'view_status' => $viewStatus,
+                    'view_url' => $viewUrl,
+                    'description' => $description,
+                );
+            }
+        }
+
+        $toUpdate = array();
+        $toDelete = array();
+        foreach ($existingViews as $oldData) {
+            $key = $oldData['record_id'];
+            if (!array_key_exists($key, $updatedViews)) {
+                $toDelete[] = $oldData['record_id'];
+                continue;
+            }
+            $newData = $updatedViews[$key];
+            if (
+                $oldData['admin_access'] !== $newData['admin_access'] ||
+                $oldData['view_status'] !== $newData['view_status'] ||
+                $oldData['view_url'] !== $newData['view_url'] ||
+                $oldData['description'] !== $newData['description']
+            ) {
+                $toUpdate[] = $newData;
+            }
+        }
+
+        $db = $GLOBALS['db'];
+
+        foreach ($toDelete as $id) {
+            $query = 'DELETE FROM nlfbr_businessrelationships_finna_views WHERE id="' . $db->quote($id) . '"';
+
+            $result = $db->query($query);
+        }
+
+        foreach ($toUpdate as $data) {
+            $query = 'UPDATE nlfbr_businessrelationships_finna_views ' .
+                'SET admin_access=' . ($data['admin_access'] ? '1' : '0') . ', ' .
+                'view_status="' . $db->quote($data['view_status']) . '", ' .
+                'view_url="' . $db->quote($data['view_url']) . '", ' .
+                'description="' . $db->quote($data['description']) . '", ' .
+                'date_modified=NOW() ' .
+                'WHERE id="' . $db->quote($data['record_id']) . '"';
+
+            $result = $db->query($query);
+        }
+
+       foreach ($newViews as $data) {
+            $query = 'INSERT INTO nlfbr_businessrelationships_finna_views ' .
+                '(id, businessrelationship_id, admin_access, view_status, view_url, description, date_modified) ' .
+                'VALUES(' .
+                '"' . $db->quote(create_guid()) . '", ' .
+                '"' . $db->quote($bean->id) . '", ' .
+                ($data['admin_access'] ? '1' : '0') . ', ' .
+                '"' . $db->quote($data['view_status']) . '", ' .
+                '"' . $db->quote($data['view_url']) . '", ' .
+                '"' . $db->quote($data['description']) . '", ' .
+                'NOW() )';
+
+            $result = $db->query($query);
+        }
+
+    }
 }

@@ -200,18 +200,13 @@ array (
             'label' => 'LBL_AINEISTO_PALAUTE',
           ),
         ),
-        1 => 
+        1 =>
         array (
           0 => 
           array (
-            'name' => 'finnanakyma_c',
-            'studio' => 'visible',
-            'label' => 'LBL_FINNANAKYMA',
-          ),
-          1 => 
-          array (
-            'name' => 'finnanakyma_url_c',
-            'label' => 'LBL_FINNANAKYMA_URL',
+            'name' => 'finna_view1',
+            'studio' => false,
+            'label' => 'LBL_FINNA_VIEW_TITLE',
           ),
         ),
         2 => 
@@ -239,14 +234,6 @@ array (
           array (
             'name' => 'kayttorajoitettu_metatieto_c',
             'label' => 'LBL_KAYTTORAJOITETTU_METATIETO',
-          ),
-        ),
-        4 => 
-        array (
-          0 => 
-          array (
-            'name' => 'paasy_hallintaliittymaan_c',
-            'label' => 'LBL_PAASY_HALLINTALIITTYMAAN',
           ),
         ),
       ),

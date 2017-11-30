@@ -193,4 +193,15 @@ $searchFields['nlfbr_BusinessRelationships'] = array (
     ),
     'vname' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
   ),
+  'finnanakyma_c' =>
+  array(
+    'query_type' => 'format',
+    'operator' => 'subquery',
+    'subquery' => 'SELECT br.id FROM nlfbr_businessrelationships br JOIN nlfbr_businessrelationships_finna_views brv ON br.id=brv.businessrelationship_id WHERE br.deleted=0 AND brv.view_status IN ({0})',
+    'db_field' => 
+    array (
+      0 => 'nlfbr_businessrelationships.id',
+    ),
+    'vname' => 'LBL_FINNANAKYMA',
+  ),
 );
