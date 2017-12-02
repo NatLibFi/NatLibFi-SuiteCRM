@@ -5,7 +5,7 @@
         <tr>
             <td>
                 {$mod_strings.LBL_FINNA_LINK_URL_TITLE}
-                {$link.link_url}
+                <a href="{$link.link_url|to_url}">{$link.link_url}</a>
             </td>
         </tr>
         <tr>
