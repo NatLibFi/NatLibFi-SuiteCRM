@@ -12,7 +12,6 @@
         <tr>
             <td>
                 {$mod_strings.LBL_FINNA_SOURCE_BACKEND_SYSTEM_TITLE}
-                {$source.backend_system}
                 {foreach from=$source.backend_system item=system}
                     <li>{$systems.$system}</li>
                 {/foreach}
