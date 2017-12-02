@@ -24,8 +24,8 @@ class BusinessRelationshipFinnaLinkHelper {
         while ($row = $db->fetchByAssoc($result)) {
             $data[] = array(
                 'record_id' => $row['link_id'],
-                'link_url' => $row['link_url'],
-                'description' => $row['description'],
+                'link_url' => (string)$row['link_url'],
+                'description' => (string)$row['description'],
             );
         }
 

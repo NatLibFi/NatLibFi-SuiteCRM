@@ -25,9 +25,9 @@ class BusinessRelationshipFinnaViewHelper {
             $data[] = array(
                 'record_id' => $row['view_id'],
                 'view_status' => $row['view_status'],
-                'view_url' => $row['view_url'],
+                'view_url' => (string)$row['view_url'],
                 'admin_access' => (string)($row['admin_access']) === '1',
-                'description' => $row['description'],
+                'description' => (string)$row['description'],
             );
         }
 

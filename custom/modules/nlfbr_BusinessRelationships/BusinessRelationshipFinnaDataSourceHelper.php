@@ -28,9 +28,9 @@ class BusinessRelationshipFinnaDataSourceHelper {
                 'source_name' => $row['source_name'],
                 'backend_system' => unencodeMultienum($row['backend_system']),
                 'harvesting_format' => unencodeMultienum($row['harvesting_format']),
-                'contact_email' => $row['contact_email'],
+                'contact_email' => (string)$row['contact_email'],
                 'restricted_metadata' => (string)($row['restricted_metadata']) === '1',
-                'description' => $row['description'],
+                'description' => (string)$row['description'],
             );
         }
 
