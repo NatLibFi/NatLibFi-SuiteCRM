@@ -26,6 +26,28 @@ class BusinessRelationshipProcessRecordHook
         $bean->{self::FIELD_CONTRACT_COUNT} = $count;
     }
 
+    function setHasActiveContract($bean, $event, $arguments)
+    {
+        $id = $bean->id;
+        if (!isset($id)) {
+            return;
+        }
+
+        $db = $GLOBALS['db'];
+        $query = 'select id from ' . self::TABLE_BUSINESS_RELATIONSHIPS_CONTRACTS .
+            ' WHERE ' . self::FIELD_BUSINESS_RELATIONSHIP_ID . '="' . $db->quote($id) . '" ' .
+            ' AND active=1 ' .
+            ' AND deleted=0 '.
+            ' LIMIT 1';
+
+        $result = $db->query($query);
+
+        if ($db->fetchByAssoc($result)) {
+            $bean->{'open_only_has_active_contract'} = true;
+        }
+
+    }
+
     const FIELD_ALLIANCE_IDS = 'nlfbr_businessrelationships_account_alliances';
     const FIELD_ALLIANCE_NAMES = 'alliance_names';
     function setAllianceNames($bean, $event, $arguments)
