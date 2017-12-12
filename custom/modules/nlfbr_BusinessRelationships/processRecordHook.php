@@ -35,10 +35,16 @@ class BusinessRelationshipProcessRecordHook
             return;
         }
 
+        $contactRoles = null;
+        // When in Contact's view, keep contact role (needed for Contact subpanel)
+        if (isset($_REQUEST['module']) && $_REQUEST['module'] === 'Contacts') {
+            $contactRoles = $bean->{'nlfbr_businessrelationships_contacts_1_role'};
+        }
 
-        // Only load data from DB if in Business Relationship's own view (i.e. not in other module's subpanel)
-        if (isset($_REQUEST['module']) && $_REQUEST['module'] === 'nlfbr_BusinessRelationships') {
-            $bean->retrieve();
+        $bean->retrieve();
+
+        if ($contactRoles) {
+            $bean->{'nlfbr_businessrelationships_contacts_1_role'} = $contactRoles;
         }
 
         $allianceIds = $bean->{self::FIELD_ALLIANCE_IDS};

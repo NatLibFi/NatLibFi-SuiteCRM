@@ -20,10 +20,10 @@ $subpanel_layout['list_fields'] = array (
     'target_module' => 'nlfse_Services',
     'target_record_key' => 'nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida',
   ),
-  'nlfbr_businessrelationships_account_alliances' => 
+  'alliance_names' => 
   array (
-    'type' => 'multienum',
-    'vname' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
+    'type' => 'varchar',
+    'vname' => 'LBL_ALLIANCE_NAMES',
     'width' => '10%',
     'default' => true,
   ),

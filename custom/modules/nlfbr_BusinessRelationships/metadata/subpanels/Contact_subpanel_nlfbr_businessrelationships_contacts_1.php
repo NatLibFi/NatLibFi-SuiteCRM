@@ -24,10 +24,10 @@ $subpanel_layout['list_fields'] = array (
     'vname' => 'LBL_ASIAKASSUHDE',
     'width' => '10%',
   ),
-  'nlfbr_businessrelationships_account_alliances' => 
+  'alliance_names' => 
   array (
-    'type' => 'multienum',
-    'vname' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
+    'type' => 'varchar',
+    'vname' => 'LBL_ALLIANCE_NAMES',
     'width' => '20%',
     'default' => true,
   ),
