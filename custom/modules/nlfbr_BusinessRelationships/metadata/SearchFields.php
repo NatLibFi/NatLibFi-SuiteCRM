@@ -174,7 +174,7 @@ $searchFields['nlfbr_BusinessRelationships'] = array (
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
-    'subquery' => 'SELECT br.id FROM nlfbr_businessrelationships br JOIN nlfbr_businessrelationships_aos_contracts_1_c br_rel ON br.id=br_rel.nlfbr_busi9351onships_ida WHERE br.deleted=0 AND br_rel.deleted=0 AND (br_rel.active=1 OR NOT {0})',
+    'subquery' => 'SELECT br.id FROM nlfbr_businessrelationships br LEFT JOIN nlfbr_businessrelationships_aos_contracts_1_c br_rel ON br.id=br_rel.nlfbr_busi9351onships_ida WHERE br.deleted=0 AND ((br_rel.deleted=0 AND br_rel.active=1) OR NOT {0})',
     'db_field' => 
     array (
       0 => 'id',
