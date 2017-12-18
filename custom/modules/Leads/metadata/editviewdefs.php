@@ -126,6 +126,14 @@ array (
         array (
           0 => 'description',
         ),
+        7 =>
+        array (
+          0 =>
+          array (
+            'name' => 'alliances_c',
+            'label' => 'LBL_ALLIANCES',
+          ),
+        ),
       ),
       'LBL_PANEL_ADVANCED' => 
       array (

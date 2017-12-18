@@ -44,6 +44,12 @@ $viewdefs['Accounts']['ConvertLead'] = array(
             array(
                 'description'
             ),
+            array (
+                array (
+                    'name' => 'alliances_c',
+                    'label' => 'LBL_LEAD_ALLIANCES',
+                ),
+            ),
         )
     ),
 );

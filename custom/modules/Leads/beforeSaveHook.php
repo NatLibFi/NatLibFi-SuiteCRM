@@ -80,6 +80,13 @@ class LeadBeforeSaveHook
         $brBean->{'nlfbr_businessrelationships_contacts_1'}->get(true);
 
         $brBean->{'nlfbr_businessrelationships_contacts_1'}->add($contactId, array('role' => encodeMultienumValue(array('br_yhteyshenkilo'))));
+
+        $brAlliances = '';
+        if (isset($_REQUEST['Accountsalliances_c']) && $_REQUEST['Accountsalliances_c']) {
+            $brAlliances = encodeMultienumValue($_REQUEST['Accountsalliances_c']);
+        }
+        $brBean->{'nlfbr_businessrelationships_account_alliances'} = $brAlliances;
+
         $brBean->save();
 
         $accountRole = 'account_ei_tiedossa';
