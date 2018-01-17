@@ -180,3 +180,24 @@ function geMemberCountForAlliance($id) {
 
     return $count;
 }
+
+
+
+function getBusinessRelationshipForAllianceSubpanelQueryParts($params) {
+    $allianceId = $params['alliance_id'];
+
+    $query = array(
+        'select' => 'SELECT nlfbr_businessrelationships.*',
+        'from' => 'FROM nlfbr_businessrelationships',
+        'where' => 'WHERE nlfbr_businessrelationships.deleted=0 AND br_rel.deleted=0 AND acc_rel.deleted=0 AND acc_rel.nlfal_alliances_accounts_1nlfal_alliances_ida="' . $GLOBALS['db']->quote($allianceId) . '"',
+        'join' => ' JOIN accounts_nlfbr_businessrelationships_1_c br_rel ' .
+            'ON br_rel.accounts_n824donships_idb=nlfbr_businessrelationships.id ' .
+            'JOIN nlfal_alliances_accounts_1_c acc_rel ' .
+            'ON acc_rel.nlfal_alliances_accounts_1accounts_idb=br_rel.accounts_nlfbr_businessrelationships_1accounts_ida',
+        'join_tables' => '',
+        );
+
+    return $query;
+}
+
+
