@@ -98,4 +98,15 @@ class BusinessRelationshipProcessRecordHook
 
         $bean->{self::FIELD_ALLIANCE_NAMES} = $allianceNames;
     }
+
+    const FIELD_ACCOUNT_NAME = 'accounts_nlfbr_businessrelationships_1_name';
+    const FIELD_SERVICE_NAME = 'nlfse_services_nlfbr_businessrelationships_1_name';
+    const NAME_PART_SEPARATOR = '-';
+
+    function setNameWithAccountNameFirst($bean, $event, $arguments)
+    {
+        $name = $bean->{self::FIELD_ACCOUNT_NAME} . self::NAME_PART_SEPARATOR . $bean->{self::FIELD_SERVICE_NAME};
+        $bean->{'name_account_name_first'} = $name;
+    }
+
 }

@@ -6,8 +6,9 @@ $subpanel_layout = array(
 	'where' => '',
 
     'list_fields' => array (
-        'name' => 
+        'name_account_name_first' => 
         array (
+            'sortable' => false,
             'vname' => 'LBL_NAME',
             'widget_class' => 'SubPanelDetailViewLink',
             'width' => '10%',

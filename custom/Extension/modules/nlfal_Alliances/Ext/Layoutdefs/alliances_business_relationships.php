@@ -4,8 +4,8 @@ $layout_defs["nlfal_Alliances"]["subpanel_setup"]['nlfbr_businessrelationships']
     'order' => 110,
     'module' => 'nlfbr_BusinessRelationships',
     'subpanel_name' => 'ForAlliances',
-    'sort_order' => 'name',
-    'sort_by' => 'id',
+    'sort_order' => 'asc',
+    'sort_by' => 'accounts_nlfbr_businessrelationships_1_name',
     'title_key' => 'LBL_ALLIANCES_BUSINESS_RELATIONSHIPS_SUBPANEL_TITLE',
     'get_subpanel_data' => 'function:getBusinessRelationshipForAllianceSubpanelQueryParts',
     'function_parameters' => array(
