@@ -108,3 +108,20 @@ function getBackEndSystemsForAccountSubpanelQueryParts($params) {
 
     return $query;
 }
+
+
+function getBusinessRelationshipForBackendSystemSubpanelQueryParts($params) {
+    $systemId = $params['system_id'];
+
+    $query = array(
+        'select' => 'SELECT nlfbr_businessrelationships.*',
+        'from' => 'FROM nlfbr_businessrelationships',
+        'where' => 'WHERE nlfbr_businessrelationships.deleted=0 AND bs_rel.deleted=0 AND bs_rel.backend_system REGEXP "\\\\^' . $GLOBALS['db']->quote($systemId) . '\\\\^"',
+        'join' => ' JOIN nlfbr_businessrelationships_finna_sources bs_rel ' .
+            'ON bs_rel.businessrelationship_id=nlfbr_businessrelationships.id',
+        'join_tables' => '',
+        );
+
+    return $query;
+}
+
