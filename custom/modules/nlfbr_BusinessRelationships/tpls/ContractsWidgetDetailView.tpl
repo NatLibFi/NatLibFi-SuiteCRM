@@ -15,9 +15,7 @@
                 {$mod_strings.LBL_KRONODOC_ID_TITLE}
                 {$contract.kronodoc_id}
             </td>
-            <td>
-                {$mod_strings.LBL_AUTHORIZATIONS_TITLE}
-                {$contract.authorizations}
+            <td></td>
         </tr>
         <tr>
             <td>

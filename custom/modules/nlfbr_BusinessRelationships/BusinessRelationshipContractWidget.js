@@ -58,7 +58,6 @@
                     o[i].contract_id,
                     o[i].active,
                     o[i].kronodoc_id,
-                    o[i].authorizations,
                     o[i].bind_year,
                     o[i].end_date,
                     o[i].description
@@ -193,7 +192,7 @@
 		    return false;
 		},//freezeEvent
 		
-		addContract : function (tableId, recordId, contractId, contractIsActive, contractKronodocId, contractAuthorizations, contractBindYear, contractEndDate, contractDescription) {
+		addContract : function (tableId, recordId, contractId, contractIsActive, contractKronodocId, contractBindYear, contractEndDate, contractDescription) {
 			if (this.addInProgress)
 			    return;
 			this.addInProgress = true;
@@ -210,7 +209,6 @@
 
 		    var newContentRecordId = document.createElement("input");
 		    var newContentKronodoc = document.createElement("input");
-		    var newContentAuthorizations = document.createElement("input");
 		    var newContentBindYear = document.createElement("input");
 		    var newContentEndDate = document.createElement("input");
 		    var newContentDescription = document.createElement("input");
@@ -301,14 +299,6 @@
 		    newContentKronodoc.setAttribute("size", "30");
 		    newContentKronodoc.setAttribute("enabled", "true");
             newContentKronodoc.setAttribute("tabindex", tabIndexCount);
-
-		    newContentAuthorizations.setAttribute("type", "text");
-		    newContentAuthorizations.setAttribute("name", "contract_authorizations" + this.numberContracts);
-		    newContentAuthorizations.setAttribute("id", "contract_authorizations" + this.numberContracts);
-		    newContentAuthorizations.setAttribute("value", contractAuthorizations);
-		    newContentAuthorizations.setAttribute("size", "30");
-		    newContentAuthorizations.setAttribute("enabled", "true");
-            newContentAuthorizations.setAttribute("tabindex", tabIndexCount);
 
 		    newContentBindYear.setAttribute("type", "text");
 		    newContentBindYear.setAttribute("name", "contract_bind_year" + this.numberContracts);
@@ -489,10 +479,9 @@
             td5.appendChild(newContactKronodocLabel);
             td5.appendChild(newContentKronodoc);
 
-            newContactAuthorizationsLabel = document.createElement('span');
-            newContactAuthorizationsLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_AUTHORIZATIONS_TITLE')
-            td6.appendChild(newContactAuthorizationsLabel);
-            td6.appendChild(newContentAuthorizations);
+		    spanNodeRow23 = document.createElement('span');
+		    spanNodeRow23.innerHTML = '&nbsp;';
+            td6.appendChild(spanNodeRow23);
 
 		    spanNodeRow3 = document.createElement('span');
 		    spanNodeRow3.innerHTML = '&nbsp;';

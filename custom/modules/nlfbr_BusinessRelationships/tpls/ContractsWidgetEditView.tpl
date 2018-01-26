@@ -21,7 +21,7 @@ var brContractWidgetLoaded = false;
                         <td scope="row" NOWRAP>
                             <input type=hidden id="{$module}_contract_widget_id" name="{$module}_contract_widget_id" value="">
                             <input type=hidden id='brContractWidget' name='brContractWidget' value='1'>
-                            {capture assign="other_attributes"}id="{$module}_contract_widget_add" onclick="javascript:SUGAR.BusinessRelationshipContractWidget.instances.{$module}.addContract('{$module}ContractsTable', '', '', true, '', '', '', '', '');"{/capture}
+                            {capture assign="other_attributes"}id="{$module}_contract_widget_add" onclick="javascript:SUGAR.BusinessRelationshipContractWidget.instances.{$module}.addContract('{$module}ContractsTable', '', '', true, '', '', '', '');"{/capture}
                             <button type="button" {$other_attributes}>{sugar_getimage name="id-ff-add" alt="$app_strings.LBL_ID_FF_ADD" ext=".png"}</button>
                         </td>
                     </tr>
@@ -50,7 +50,7 @@ function init{$module}Contract(){ldelim}
 	    if(prefillContractData == 'true') {ldelim}
 	        brcw.prefillContractData('{$module}ContractsTable', contractData);
 		{rdelim} else if(addDefaultContract == 'true') {ldelim}
-	        brcw.addContract('{$module}ContractsTable', '', '', true, '', '', '', '', '');
+	        brcw.addContract('{$module}ContractsTable', '', '', true, '', '', '', '');
 		{rdelim}
 		if('{$module}_contract_widget_id') {ldelim}
 		   document.getElementById('{$module}_contract_widget_id').value = brcw.count;

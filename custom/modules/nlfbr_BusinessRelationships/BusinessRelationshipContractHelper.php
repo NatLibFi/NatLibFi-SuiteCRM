@@ -25,7 +25,7 @@ class BusinessRelationshipContractHelper {
                 'AND rel_services.deleted=0 ';
         }
         $query = 'SELECT rel.id AS rel_id, contract.id AS contract_id, contract.name AS contract_name, ' .
-            'rel.active AS active, rel.kronodoc_id AS kronodoc_id, rel.authorizations AS authorizations, ' .
+            'rel.active AS active, rel.kronodoc_id AS kronodoc_id, ' .
             'rel.year AS bind_year, rel.end_date AS end_date, rel.description AS description ' .
             'FROM aos_contracts contract ' .
             'JOIN nlfbr_businessrelationships_aos_contracts_1_c rel ' .
@@ -52,7 +52,6 @@ class BusinessRelationshipContractHelper {
                 'contract_name' => $row['contract_name'],
                 'kronodoc_id' => $row['kronodoc_id'],
                 'active' => (string)($row['active']) === '1',
-                'authorizations' => $row['authorizations'],
                 'bind_year' => $row['bind_year'],
                 'end_date' => $endDate,
                 'description' => $row['description'],
@@ -78,7 +77,7 @@ class BusinessRelationshipContractHelper {
                 'AND rel_services.deleted=0 ';
         }
         $query = 'SELECT rel.id AS rel_id, contract.id AS contract_id, contract.name AS contract_name, ' .
-            'rel.active AS active, rel.kronodoc_id AS kronodoc_id, rel.authorizations AS authorizations, ' .
+            'rel.active AS active, rel.kronodoc_id AS kronodoc_id, ' .
             'rel.year AS bind_year, rel.end_date AS end_date, rel.description AS description ' .
             'FROM aos_contracts contract ' .
             'JOIN nlfbr_businessrelationships_aos_contracts_1_c rel ' .
@@ -105,7 +104,6 @@ class BusinessRelationshipContractHelper {
                 'contract_name' => $row['contract_name'],
                 'kronodoc_id' => $row['kronodoc_id'],
                 'active' => (string)($row['active']) === '1',
-                'authorizations' => $row['authorizations'],
                 'bind_year' => $row['bind_year'],
                 'end_date' => $endDate,
                 'description' => $row['description'],

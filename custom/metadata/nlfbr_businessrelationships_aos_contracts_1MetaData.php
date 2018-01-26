@@ -74,22 +74,16 @@ $dictionary["nlfbr_businessrelationships_aos_contracts_1"] = array (
     ),
     7 =>
     array (
-      'name' => 'authorizations',
-      'type' => 'varchar',
-      'len' => 256,
-    ),
-    8 =>
-    array (
       'name' => 'year',
       'type' => 'varchar',
       'len' => 50,
     ),
-    9 =>
+    8 =>
     array(
       'name' => 'end_date',
       'type' => 'datetime',
     ),
-    10 =>
+    9 =>
     array (
       'name' => 'description',
       'type' => 'text',
