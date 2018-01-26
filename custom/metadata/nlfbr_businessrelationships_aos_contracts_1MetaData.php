@@ -92,8 +92,7 @@ $dictionary["nlfbr_businessrelationships_aos_contracts_1"] = array (
     10 =>
     array (
       'name' => 'description',
-      'type' => 'varchar',
-      'len' => 256,
+      'type' => 'text',
     ),
   ),
   'indices' => 
