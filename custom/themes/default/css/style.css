@@ -13,3 +13,8 @@
     padding-left:0 !important;
     padding-top:0 !important;
 }
+
+tr.multirow-last td
+{
+    padding-bottom: 2em !important;
+}

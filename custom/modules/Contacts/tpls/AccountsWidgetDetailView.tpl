@@ -19,7 +19,7 @@
                 {$account.account_address}
             </td>
         </tr>
-        <tr>
+        <tr class="multirow-last">
             <td>
                 {$mod_strings.LBL_CONTACT_ACCOUNT_DESC_TITLE}
                 {$account.account_description}

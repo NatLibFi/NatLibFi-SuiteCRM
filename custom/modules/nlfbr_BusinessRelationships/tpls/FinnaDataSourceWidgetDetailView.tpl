@@ -33,7 +33,7 @@
                 <input type="checkbox" disabled="disabled" {if $source.restricted_metadata} checked="checked"{/if}/>
             </td>
         </tr>
-        <tr>
+        <tr class="multirow-last">
             <td>
                 {$mod_strings.LBL_FINNA_SOURCE_DESCRIPTION_TITLE}
                 {$source.description}

@@ -19,7 +19,7 @@
             </td>
             <td></td>
         </tr>
-        <tr>
+        <tr class="multirow-last">
             <td>
                 {$mod_strings.LBL_FINNA_VIEW_DESCRIPTION_TITLE}
                 {$view.description}

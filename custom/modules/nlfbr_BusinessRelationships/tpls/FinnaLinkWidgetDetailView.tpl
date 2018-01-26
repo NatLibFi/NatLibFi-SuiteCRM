@@ -8,7 +8,7 @@
                 <a href="{$link.link_url|to_url}">{$link.link_url}</a>
             </td>
         </tr>
-        <tr>
+        <tr class="multirow-last">
             <td>
                 {$mod_strings.LBL_FINNA_LINK_DESCRIPTION_TITLE}
                 {$link.description}

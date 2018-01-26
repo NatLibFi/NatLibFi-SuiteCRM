@@ -29,7 +29,7 @@
                 {$contract.end_date}
             </td>
         </tr>
-        <tr>
+        <tr class="multirow-last">
             <td>
                 {$mod_strings.LBL_DESCRIPTION_TITLE}
                 {$contract.description}
