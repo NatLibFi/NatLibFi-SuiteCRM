@@ -189,6 +189,34 @@ function getBusinessRelationshipForAllianceSubpanelQueryParts($params) {
     $query = array(
         'select' => 'SELECT nlfbr_businessrelationships.*',
         'from' => 'FROM nlfbr_businessrelationships',
+        'where' => 'WHERE nlfbr_businessrelationships.deleted=0 AND acc_br_rel.deleted=0 AND acc_rel.deleted=0 AND ser_br_rel.deleted=0 AND ser_rel.deleted=0 ' .
+            'AND acc_rel.nlfal_alliances_accounts_1nlfal_alliances_ida="' . $GLOBALS['db']->quote($allianceId) . '" ' .
+            'AND ser_rel.nlfal_alliances_nlfse_services_1nlfal_alliances_ida="' . $GLOBALS['db']->quote($allianceId) . '" ' .
+            'AND (' .
+            'nlfbr_businessrelationships.nlfbr_businessrelationships_account_alliances IS NULL ' .
+            'OR nlfbr_businessrelationships.nlfbr_businessrelationships_account_alliances="0" ' .
+            'OR nlfbr_businessrelationships.nlfbr_businessrelationships_account_alliances LIKE "%\\\\^' . $GLOBALS['db']->quote($allianceId) . '\\\\^%" ' .
+            ')',
+        'join' => ' JOIN accounts_nlfbr_businessrelationships_1_c acc_br_rel ' .
+            'ON acc_br_rel.accounts_n824donships_idb=nlfbr_businessrelationships.id ' .
+            'JOIN nlfal_alliances_accounts_1_c acc_rel ' .
+            'ON acc_rel.nlfal_alliances_accounts_1accounts_idb=acc_br_rel.accounts_nlfbr_businessrelationships_1accounts_ida ' .
+            'JOIN nlfse_services_nlfbr_businessrelationships_1_c ser_br_rel ' .
+            'ON ser_br_rel.nlfse_serva51aonships_idb=nlfbr_businessrelationships.id ' .
+            'JOIN nlfal_alliances_nlfse_services_1_c ser_rel ' .
+            'ON ser_rel.nlfal_alliances_nlfse_services_1nlfse_services_idb=ser_br_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida',
+        'join_tables' => '',
+        );
+
+    return $query;
+}
+
+function getBusinessRelationshipForAllianceMembersSubpanelQueryParts($params) {
+    $allianceId = $params['alliance_id'];
+
+    $query = array(
+        'select' => 'SELECT nlfbr_businessrelationships.*',
+        'from' => 'FROM nlfbr_businessrelationships',
         'where' => 'WHERE nlfbr_businessrelationships.deleted=0 AND br_rel.deleted=0 AND acc_rel.deleted=0 AND acc_rel.nlfal_alliances_accounts_1nlfal_alliances_ida="' . $GLOBALS['db']->quote($allianceId) . '"',
         'join' => ' JOIN accounts_nlfbr_businessrelationships_1_c br_rel ' .
             'ON br_rel.accounts_n824donships_idb=nlfbr_businessrelationships.id ' .
