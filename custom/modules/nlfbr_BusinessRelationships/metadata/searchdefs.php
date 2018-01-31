@@ -171,6 +171,15 @@ array (
         'width' => '10%',
         'name' => 'nfl_business_relation_begins_c',
       ),
+      'account_industry' => 
+      array (
+        'type' => 'multienum',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_ACCOUNT_INDUSTRY',
+        'width' => '10%',
+        'name' => 'account_industry',
+      ),
     ),
   ),
   'templateMeta' => 

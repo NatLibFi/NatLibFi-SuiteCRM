@@ -204,4 +204,15 @@ $searchFields['nlfbr_BusinessRelationships'] = array (
     ),
     'vname' => 'LBL_FINNANAKYMA',
   ),
+  'account_industry' =>
+  array(
+    'query_type' => 'format',
+    'operator' => 'subquery',
+    'subquery' => 'SELECT br.id FROM nlfbr_businessrelationships br JOIN accounts_nlfbr_businessrelationships_1_c br_acc ON br.id=br_acc.accounts_n824donships_idb JOIN accounts acc ON br_acc.accounts_nlfbr_businessrelationships_1accounts_ida=acc.id WHERE br.deleted=0 AND br_acc.deleted=0 AND acc.deleted=0 AND acc.industry IN ({0})',
+    'db_field' => 
+    array (
+      0 => 'nlfbr_businessrelationships.id',
+    ),
+    'vname' => 'LBL_ACCOUNT_INDUSTRY',
+  ),
 );
