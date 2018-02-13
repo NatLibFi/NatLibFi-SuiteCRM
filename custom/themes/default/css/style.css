@@ -18,3 +18,5 @@ tr.multirow-last td
 {
     padding-bottom: 2em !important;
 }
+
+@media print { a[href]:after { content: none !important; } }
