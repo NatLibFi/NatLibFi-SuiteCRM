@@ -851,7 +851,7 @@ massupdate:::1
 duplicate_merge:::0
 reportable:::1
 importable:::true
-ext1:::sektori_list
+ext1:::industry_dom
 ext2:::
 ext3:::
 ext4:::
@@ -1115,7 +1115,7 @@ massupdate:::1
 duplicate_merge:::0
 reportable:::1
 importable:::true
-ext1:::sektori_list
+ext1:::industry_dom
 ext2:::
 ext3:::
 ext4:::
@@ -1533,10 +1533,10 @@ massupdate:::1
 duplicate_merge:::0
 reportable:::1
 importable:::true
-ext1:::sektori_list
+ext1:::industry_dom
 ext2:::
 ext3:::
-ext4:::^ei_valintaa^
+ext4:::
 DONE
 id:::nlfal_Alliancessektori_c
 name:::sektori_c
@@ -1555,7 +1555,7 @@ massupdate:::1
 duplicate_merge:::0
 reportable:::1
 importable:::true
-ext1:::sektori_list
+ext1:::industry_dom
 ext2:::
 ext3:::
 ext4:::
