@@ -1,15 +1,4 @@
 <?php
-$GLOBALS['app_list_strings']['sektori_list']=array (
-  'arkisto' => 'Arkisto',
-  'museo' => 'Museo',
-  'kirjasto_amk' => 'AMK kirjasto',
-  'kirjasto_yleinen' => 'Yleinen kirjasto',
-  'kirjasto_yo' => 'Yliopistokirjasto',
-  'kirjasto_erikois' => 'Erikoiskirjasto',
-  'kirjasto_yhteis' => 'Yhteiskirjasto',
-  'ei_valintaa' => 'ei valintaa',
-  'muu' => 'Muu',
-);
 $GLOBALS['app_list_strings']['hallinnonala_list']=array (
   'unknown' => 'Ei tiedossa',
   'okm' => 'Opetus- ja kulttuuriministeriö',

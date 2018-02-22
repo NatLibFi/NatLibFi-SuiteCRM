@@ -2,17 +2,6 @@
 $app_list_strings['moduleList']['nlfse_Services']='Palvelut';
 $app_list_strings['moduleListSingular']['nlfse_Services']='Palvelu';
 
-$GLOBALS['app_list_strings']['sektori_list']=array (
-  'ei_valintaa' => 'ei valintaa',
-  'kirjasto_amk' => 'AMK kirjasto',
-  'arkisto' => 'Arkisto',
-  'kirjasto_erikois' => 'Erikoiskirjasto',
-  'museo' => 'Museo',
-  'kirjasto_yhteis' => 'Yhteiskirjasto',
-  'kirjasto_yleinen' => 'Yleinen kirjasto',
-  'kirjasto_yo' => 'Yliopistokirjasto',
-  'muu' => 'Muu',
-);
 $GLOBALS['app_list_strings']['hallinnonala_list']=array (
   'unknown' => 'Ei tiedossa',
   'okm' => 'Opetus- ja kulttuuriministeriö',
