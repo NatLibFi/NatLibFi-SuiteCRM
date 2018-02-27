@@ -28,31 +28,6 @@ $GLOBALS['app_list_strings']['nlfal_alliances_services_list']=array (
 $GLOBALS['app_list_strings']['alliance_coordinator_contact_list']=array (
   'contact1' => 'Yhteyshenkilö1',
 );
-$GLOBALS['app_list_strings']['taustajajestelma_list']=array (
-  'unknown' => 'ei tiedossa',
-  'abilita' => 'Abilita Kirjasto',
-  'aurora' => 'Aurora',
-  'collecte' => 'Collecte',
-  'DSpace' => 'DSpace',
-  'ekuva' => 'E-kuva',
-  'mediaksi' => 'Mediaksi-mediapankkipalvelu',
-  'memoron' => 'Memoron',
-  'metalib' => 'MetaLib',
-  'mikromarc' => 'Mikromarc',
-  'museumplusria' => 'MuseumPlus Ria',
-  'musketti' => 'Musketti',
-  'muu' => 'Muu',
-  'muusa' => 'Muusa',
-  'neo' => 'NEO',
-  'origo' => 'Origo',
-  'pallaspro' => 'Pallas Pro',
-  'prettylib' => 'PrettyLib',
-  'profium' => 'Profiumin sähköinen arkisto',
-  'sfx' => 'SFX',
-  'sierra' => 'Sierra',
-  'trip' => 'Trip-tietokanta (Historian, kulttuurin ja taiteiden tutkimuksen arkiston)',
-  'voyager' => 'Voyager',
-);
 $GLOBALS['app_list_strings']['contact_list']=array (
   'hlo1' => 'kontakti1',
 );
