@@ -53,15 +53,6 @@ $GLOBALS['app_list_strings']['taustajajestelma_list']=array (
 $GLOBALS['app_list_strings']['contact_list']=array (
   'hlo1' => 'kontakti1',
 );
-
-$GLOBALS['app_list_strings']['haravointiformaatti_list']=array (
-  'mark21' => 'MARK21',
-  'ead' => 'EAD',
-  'lido' => 'LIDO',
-  'dublincore' => 'Dublin Core',
-  'finmarc' => 'FINMARC',
-  'muu' => 'Muu',
-);
 $GLOBALS['app_list_strings']['finnanakyma_status_list']=array (
   'aikomus' => 'Aikoo tehdä',
   'tyonalla' => 'Työn alla',
@@ -553,6 +544,15 @@ $GLOBALS['app_list_strings']['account_type_dom']=array (
   'Press' => 'Press',
   'Other' => 'Other',
   'User' => 'Käyttäjä',
+);
+$GLOBALS['app_list_strings']['haravointiformaatti_list']=array (
+  'mark21' => 'MARK21',
+  'ead' => 'EAD',
+  'lido' => 'LIDO',
+  'dublincore' => 'Dublin Core',
+  'finmarc' => 'FINMARC',
+  'muu' => 'Muu',
+  'unknown' => 'Ei tiedossa',
 );
 $GLOBALS['app_list_strings']['name_default_lang_list']=array (
   'fin' => 'suomi',
