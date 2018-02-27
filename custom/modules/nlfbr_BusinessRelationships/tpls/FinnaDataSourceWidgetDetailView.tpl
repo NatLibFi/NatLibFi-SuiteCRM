@@ -3,7 +3,7 @@
 
     {foreach from=$sources item=source}
         <tr>
-            <td>
+            <td class="data-source-name">
                 {$mod_strings.LBL_FINNA_SOURCE_NAME_TITLE}
                 {$source.source_name}
             </td>

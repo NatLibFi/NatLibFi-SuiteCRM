@@ -14,6 +14,10 @@
     padding-top:0 !important;
 }
 
+.data-source-name {
+    font-weight: bold;
+}
+
 tr.multirow-last td
 {
     padding-bottom: 2em !important;
