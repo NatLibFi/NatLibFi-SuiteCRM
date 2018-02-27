@@ -545,6 +545,13 @@ $GLOBALS['app_list_strings']['account_type_dom']=array (
   'Other' => 'Other',
   'User' => 'Käyttäjä',
 );
+$GLOBALS['app_list_strings']['contact_account_role_list']=array (
+  'account_johtaja' => 'Johtaja (acc)',
+  'account_asiantuntija' => 'Asiantuntija (acc)',
+  'account_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) acc',
+  'account_ei_tiedossa' => 'Ei tiedossa',
+  'account_johtaja_osaston' => 'Osastonjohtaja/ Päällikkö',
+);
 $GLOBALS['app_list_strings']['haravointiformaatti_list']=array (
   'mark21' => 'MARK21',
   'ead' => 'EAD',
@@ -553,6 +560,13 @@ $GLOBALS['app_list_strings']['haravointiformaatti_list']=array (
   'finmarc' => 'FINMARC',
   'muu' => 'Muu',
   'unknown' => 'Ei tiedossa',
+);
+$GLOBALS['app_list_strings']['contact_account_role_list']=array (
+  'account_johtaja' => 'Johtaja (acc)',
+  'account_asiantuntija' => 'Asiantuntija (acc)',
+  'account_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) acc',
+  'account_ei_tiedossa' => 'Ei tiedossa',
+  'account_johtaja_osaston' => 'Osastonjohtaja/ Päällikkö',
 );
 $GLOBALS['app_list_strings']['name_default_lang_list']=array (
   'fin' => 'suomi',

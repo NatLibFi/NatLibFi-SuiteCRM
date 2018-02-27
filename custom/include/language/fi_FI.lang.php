@@ -560,6 +560,13 @@ $GLOBALS['app_list_strings']['account_type_dom']=array (
   'Press' => 'Lehdistö',
   'Other' => 'Muu',
 );
+$GLOBALS['app_list_strings']['contact_account_role_list']=array (
+  'account_ei_tiedossa' => 'Ei tiedossa',
+  'account_johtaja' => 'Johtaja, organisaation',
+  'account_johtaja_osaston' => 'Osastonjohtaja/ Päällikkö',
+  'account_asiantuntija' => 'Asiantuntija',
+  'account_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
+);
 $GLOBALS['app_list_strings']['haravointiformaatti_list']=array (
   'unknown' => 'Ei tiedossa',
   'dublincore' => 'Dublin Core',
@@ -568,6 +575,13 @@ $GLOBALS['app_list_strings']['haravointiformaatti_list']=array (
   'lido' => 'LIDO',
   'mark21' => 'MARK21',
   'muu' => 'Muu',
+);
+$GLOBALS['app_list_strings']['contact_account_role_list']=array (
+  'account_ei_tiedossa' => 'Ei tiedossa',
+  'account_johtaja' => 'Johtaja',
+  'account_johtaja_osaston' => 'Osastonjohtaja/ Päällikkö',
+  'account_asiantuntija' => 'Asiantuntija',
+  'account_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
 );
 $GLOBALS['app_list_strings']['name_default_lang_list']=array (
   'fin' => 'suomi',
