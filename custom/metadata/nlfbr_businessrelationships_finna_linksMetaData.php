@@ -6,7 +6,7 @@ $dictionary["nlfbr_businessrelationships_finna_links"] = array (
         array('name' =>'id', 'type' =>'varchar', 'len'=>'36'),
         array('name' =>'businessrelationship_id', 'type' =>'varchar', 'len'=>'36'),
         array('name' =>'link_url', 'type' =>'varchar', 'len'=>'255'),
-        array('name' =>'description', 'type' =>'varchar', 'len'=>'255'),
+        array('name' =>'description', 'type' =>'text'),
         array('name' =>'date_modified','type' => 'datetime'),
         array('name' =>'deleted', 'type' =>'bool', 'len'=>'1', 'default'=>'0', 'required'=>false),
     ),

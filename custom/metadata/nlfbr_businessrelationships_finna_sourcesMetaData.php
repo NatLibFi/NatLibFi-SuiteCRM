@@ -10,7 +10,7 @@ $dictionary["nlfbr_businessrelationships_finna_sources"] = array (
         array('name' =>'harvesting_format', 'type' =>'text'),
         array('name' =>'contact_email', 'type' =>'varchar', 'len'=>'255'),
         array('name' =>'restricted_metadata', 'type' =>'bool', 'len'=>'1', 'default'=>'0'),
-        array('name' =>'description', 'type' =>'varchar', 'len'=>'255'),
+        array('name' =>'description', 'type' =>'text'),
         array('name' =>'date_modified','type' => 'datetime'),
         array('name' =>'deleted', 'type' =>'bool', 'len'=>'1', 'default'=>'0', 'required'=>false),
     ),
