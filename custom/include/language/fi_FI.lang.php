@@ -104,11 +104,6 @@ $app_list_strings['record_type_display_notes']['Contacts']='Henkilö';
 $GLOBALS['app_list_strings']['contact_businessrelationship_role_default_list']=array (
 );
 
-$GLOBALS['app_list_strings']['contact_account_role_list']=array (
-  'johtaja' => 'Johtaja',
-  'asiantuntija' => 'Asiantuntija',
-  'poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
-);
 $GLOBALS['app_list_strings']['contact_role_list']=array (
   'puheenjohtaja' => 'Puheenjohtaja',
   'varapuheenjohtaja' => 'Varapuheenjohtaja',
@@ -187,14 +182,6 @@ $GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
   'poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
 );
 
-$GLOBALS['app_list_strings']['contact_account_role_list']=array (
-  'johtaja' => 'Johtaja',
-  'asiantuntija' => 'Asiantuntija',
-  'poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
-  'account_johtaja' => 'Johtaja (acc)',
-  'account_asiantuntija' => 'Asiantuntija (acc)',
-  'account_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) acc',
-);
 $GLOBALS['app_list_strings']['contact_alliance_role_list']=array (
   'projektinvetaja' => 'Projektinvetäjä',
   'sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
@@ -233,11 +220,6 @@ $GLOBALS['app_list_strings']['contact_working_group_role_list']=array (
   'wg_varajasen' => 'Varajäsen (wg)',
   'wg_sihteeri' => 'Sihteeri (wg)',
 );
-$GLOBALS['app_list_strings']['contact_account_role_list']=array (
-  'account_johtaja' => 'Johtaja (acc)',
-  'account_asiantuntija' => 'Asiantuntija (acc)',
-  'account_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) acc',
-);
 $GLOBALS['app_list_strings']['contact_alliance_role_list']=array (
   'alliance_projektinvetaja' => 'Projektinvetäjä (all)',
   'alliance_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö (all)',
@@ -260,11 +242,6 @@ $GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
   'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä (br)',
   'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) br',
 );
-$GLOBALS['app_list_strings']['contact_account_role_list']=array (
-  'account_johtaja' => 'Johtaja',
-  'account_asiantuntija' => 'Asiantuntija',
-  'account_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
-);
 $GLOBALS['app_list_strings']['contact_alliance_role_list']=array (
   'alliance_projektinvetaja' => 'Projektinvetäjä',
   'alliance_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
@@ -382,12 +359,6 @@ $GLOBALS['app_list_strings']['contact_role_list']=array (
   'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
   'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä',
   'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
-);
-$GLOBALS['app_list_strings']['contact_account_role_list']=array (
-  'account_johtaja' => 'Johtaja',
-  'account_asiantuntija' => 'Asiantuntija',
-  'account_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
-  'account_ei_tiedossa' => 'Ei tiedossa',
 );
 $GLOBALS['app_list_strings']['contact_role_list']=array (
   'wg_puheenjohtaja' => 'Puheenjohtaja',
@@ -534,13 +505,6 @@ $GLOBALS['app_list_strings']['account_type_dom']=array (
   'User' => 'Käyttäjä',
   'Press' => 'Lehdistö',
   'Other' => 'Muu',
-);
-$GLOBALS['app_list_strings']['contact_account_role_list']=array (
-  'account_ei_tiedossa' => 'Ei tiedossa',
-  'account_johtaja' => 'Johtaja, organisaation',
-  'account_johtaja_osaston' => 'Osastonjohtaja/ Päällikkö',
-  'account_asiantuntija' => 'Asiantuntija',
-  'account_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
 );
 $GLOBALS['app_list_strings']['haravointiformaatti_list']=array (
   'unknown' => 'Ei tiedossa',
