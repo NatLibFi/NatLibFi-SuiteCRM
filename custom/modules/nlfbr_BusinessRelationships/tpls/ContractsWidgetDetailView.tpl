@@ -3,7 +3,7 @@
 
     {foreach from=$contracts item=contract}
         <tr>
-            <td>
+            <td class="contract-name">
                 {$contract.contract_name}
             </td>
             <td>
