@@ -554,3 +554,9 @@ $GLOBALS['app_list_strings']['account_type_dom']=array (
   'Other' => 'Other',
   'User' => 'Käyttäjä',
 );
+$GLOBALS['app_list_strings']['name_default_lang_list']=array (
+  'fin' => 'suomi',
+  'swe' => 'ruotsi',
+  'eng' => 'englanti',
+  'other' => 'muu',
+);
