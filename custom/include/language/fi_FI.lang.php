@@ -457,20 +457,6 @@ $GLOBALS['app_list_strings']['jarjestelmantyyppi_list']=array (
   'julkaisuarkisto' => 'Julkaisuarkisto',
   'muu' => 'Muu',
 );
-$GLOBALS['app_list_strings']['industry_dom']=array (
-  '' => '',
-  'Archive' => 'Arkisto',
-  'Museum' => 'Museo',
-  'Polytechnic' => 'AMK kirjasto',
-  'special_library' => 'Erikoiskirjasto',
-  'yhteiskirjasto' => 'Yhteiskirjasto',
-  'PublicLibrary' => 'Yleinen kirjasto',
-  'University' => 'Yliopistokirjasto',
-  'julkishallinto' => 'Julkishallinto',
-  'media' => 'Media',
-  'Other' => 'muu',
-);
-
 $GLOBALS['app_list_strings']['alliance_status_list']=array (
   'unknown' => 'Ei tietoa',
   'toiminnassa' => 'Toiminnassa',
@@ -553,4 +539,19 @@ $GLOBALS['app_list_strings']['name_default_lang_list']=array (
   'swe' => 'ruotsi',
   'eng' => 'englanti',
   'other' => 'muu',
+);
+$GLOBALS['app_list_strings']['industry_dom']=array (
+  '' => '',
+  'University' => 'Yliopisto',
+  'university_library' => 'Yliopistokirjasto',
+  'PublicLibrary' => 'Yleinen kirjasto',
+  'yhteiskirjasto' => 'Yhteiskirjasto',
+  'special_library' => 'Erikoiskirjasto',
+  'Polytechnic' => 'Ammattikorkeakoulu',
+  'polytechnic_library' => 'AMK-kirjasto',
+  'Archive' => 'Arkisto',
+  'Museum' => 'Museo',
+  'julkishallinto' => 'Julkishallinto',
+  'media' => 'Media',
+  'Other' => 'muu',
 );
