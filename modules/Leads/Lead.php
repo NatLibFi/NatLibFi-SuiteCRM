@@ -615,5 +615,33 @@ class Lead extends Person {
         return $return_array;
     }
 
-}
+    /**
+     * Note: this is custom addition to the core Lead class. It is done that way,
+     * as it is not possible to adjust all the code referring to Lead class in
+     * a update-safe way.
+     * This custom method must be carried over whenever SuiteCRM is updated,
+     * and the Lead bean class changes.
+     */
+    public function _create_proper_name_field()
+    {
+        parent::_create_proper_name_field();
 
+ //       $this->get_account();
+
+        if (!$this->load_relationship('accounts_leads_1')) {
+            $GLOBALS['log']->fatal('no rel');
+        }
+//$GLOBALS['log']->fatal($this->name . ': ' . $this->accounts_leads_1_name);
+//$GLOBALS['log']->fatal($this->name . ' (' . $this->id . ')');
+//$GLOBALS['log']->fatal('acc id: ' . $this->account_id);
+        if ($this->account_name) {
+            $this->name = $this->account_name;
+            $this->full_name = $this->account_name;
+ //           $GLOBALS['log']->fatal('changed to: ' . $this->name);
+        } elseif (isset($this->accounts_leads_1_name) && $this->accounts_leads_1_name) {
+            $this->name = $this->accounts_leads_1_name;
+            $this->full_name = $this->accounts_leads_1_name;
+        }
+    }
+
+}

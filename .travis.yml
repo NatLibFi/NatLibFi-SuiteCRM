@@ -4,10 +4,6 @@ php:
   - 5.6
   - 7.0
   - 7.1
-  - 5.4
-matrix:
-  allow_failures:
-    - php: 5.4
 before_script:
   - mysql -e "CREATE DATABASE automated_tests;"
   - mysql -u root -e "CREATE USER 'automated_tests'@'localhost' IDENTIFIED BY 'automated_tests';"
@@ -22,10 +18,3 @@ script:
   - cat ../suitecrm.log
 services:
   - mysql
-branches:
-  only:
-    - master
-    - develop
-    - /hotfix.*/
-    - /feature.*/
-    - /fix.*/

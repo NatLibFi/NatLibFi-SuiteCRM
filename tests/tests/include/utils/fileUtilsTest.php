@@ -179,6 +179,12 @@ class file_utilsTest extends PHPUnit_Framework_TestCase
                 'UserPreferences' => 'UserPreferences',
                 'Users' => 'Users',
                 'vCals' => 'vCals',
+		'nlfal_Alliances' => 'nlfal_Alliances',
+		'nlfbr_BusinessRelationships' => 'nlfbr_BusinessRelationships',
+		'nlfbs_BackendSystems' => 'nlfbs_BackendSystems',
+		'nlfro_Roles' => 'nlfro_Roles',
+		'nlfse_Services' => 'nlfse_Services',
+		'nlfwg_WorkingGroups' => 'nlfwg_WorkingGroups',
                 );
 
         $actual = get_module_dir_list();

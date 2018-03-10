@@ -1,0 +1,7 @@
+<?php
+// created: 2016-09-29 13:32:36
+$mod_strings = array (
+  'LBL_ADDITIONAL_INFORMATION_URL' => 'Additional Information',
+  'LBL_NLFSE_SERVICES_ACCOUNTS_1_FROM_ACCOUNTS_TITLE' => 'Accounts',
+  'LBL_NLFWG_WORKINGGROUPS_NLFSE_SERVICES_1_FROM_NLFWG_WORKINGGROUPS_TITLE' => 'Working Groups',
+);

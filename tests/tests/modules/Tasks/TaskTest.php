@@ -142,7 +142,7 @@ class TaskTest extends PHPUnit_Framework_TestCase
                     .'[\w-]+'
                     .preg_quote("\"    title=Close border='0' alt=\"Close\" /></a>")
                     .'~',
-                'TITLE' => ": test\nAccount: test",
+                'TITLE' => ": test\nOrganisaatio: test",
         );
 
         $actual = $task->get_list_view_data();

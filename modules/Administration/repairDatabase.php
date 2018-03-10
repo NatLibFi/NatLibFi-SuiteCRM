@@ -40,7 +40,7 @@ if (!defined('sugarEntry') || !sugarEntry)
  ********************************************************************************/
 
 
-global $current_user, $beanFiles;
+global $current_user, $beanFiles, $from_sync_client;
 set_time_limit(3600);
 
 

@@ -142,13 +142,18 @@ class LogicHookTest extends PHPUnit_Framework_TestCase {
                         array(78, 'updateRelatedProjectGeocodeInfo', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'updateRelatedProjectGeocodeInfo'),
                         array(79, 'updateRelatedOpportunitiesGeocodeInfo', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'updateRelatedOpportunitiesGeocodeInfo'),
                         array(80, 'updateRelatedCasesGeocodeInfo', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'updateRelatedCasesGeocodeInfo'),
+			array(1, 'Update Back End System data of the Business Relationships, to keep it in sync with the Account', 'custom/modules/Accounts/afterSaveHook.php', 'AccountAfterSaveHook', 'updateBRBackendSystemData'),
                 ),
                 'after_relationship_add' => array(
                         array(77, 'addRelationship', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'addRelationship'),
+			array(1, 'Always set valid contact role', 'custom/modules/Accounts/afterRelationshipAddHook.php', 'AccountAfterRelationshipAddHook', 'setContactRole'),
                 ),
                 'after_relationship_delete' => array(
                         array(77, 'deleteRelationship', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'deleteRelationship'),
                 ),
+		'process_record' => array(
+			array(2, 'List names of Services related to the Account', 'custom/modules/Accounts/processRecordHook.php', 'AccountProcessRecordHook', 'setAccountServiceNames')
+		),
         );
 
         $expected_default = array(
@@ -267,14 +272,19 @@ class LogicHookTest extends PHPUnit_Framework_TestCase {
 						array (78, 'updateRelatedProjectGeocodeInfo', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'updateRelatedProjectGeocodeInfo', ),
 						array (79, 'updateRelatedOpportunitiesGeocodeInfo', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'updateRelatedOpportunitiesGeocodeInfo',),
 						array (80, 'updateRelatedCasesGeocodeInfo', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'updateRelatedCasesGeocodeInfo',),
+						array(1, 'Update Back End System data of the Business Relationships, to keep it in sync with the Account', 'custom/modules/Accounts/afterSaveHook.php', 'AccountAfterSaveHook', 'updateBRBackendSystemData'),
 				),
 				'after_relationship_add' =>
 				array (
 						array ( 77, 'addRelationship', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'addRelationship',),
+						array(1, 'Always set valid contact role', 'custom/modules/Accounts/afterRelationshipAddHook.php', 'AccountAfterRelationshipAddHook', 'setContactRole'),
 				),
 				'after_relationship_delete' =>
 				array (
 						array ( 77, 'deleteRelationship', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'deleteRelationship',),
+				),
+				'process_record' => array(
+						array(2, 'List names of Services related to the Account', 'custom/modules/Accounts/processRecordHook.php', 'AccountProcessRecordHook', 'setAccountServiceNames')
 				),
 		);
 

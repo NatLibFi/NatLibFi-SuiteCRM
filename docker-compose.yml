@@ -1,0 +1,34 @@
+version: '3'
+services:
+  suitecrm:
+    build: .
+    #working_dir: /var/www/html
+    restart: always
+    ports:
+    - "5000:80"
+    depends_on:
+    - mysql
+    volumes:
+    - /home/lema/kvp/NatLibFi-SuiteCRM:/var/www/html/suitecrm
+#    networks:
+#    - crm
+    
+  mysql:
+    image: mariadb
+    restart: always
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: 'suitecrm'
+      MYSQL_USER: 'crmuser'
+      MYSQL_PASSWORD: 'sqlpass'
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+#    networks:
+#      default:
+#        aliases:
+#        - mysql.svc
+
+volumes:
+  mysql-data:
+#networks:
+#  crm:
