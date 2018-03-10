@@ -5,31 +5,46 @@ array (
   array (
     'basic_search' => 
     array (
-      0 => 
+      'search_account_name' => 
       array (
         'name' => 'search_account_name',
         'label' => 'LBL_NAME',
         'type' => 'name',
+        'default' => true,
+        'width' => '10%',
       ),
-      1 => 
+      'sektori_c' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_SEKTORI',
+        'width' => '10%',
+        'name' => 'sektori_c',
+      ),
+      'current_user_only' => 
       array (
         'name' => 'current_user_only',
         'label' => 'LBL_CURRENT_USER_FILTER',
         'type' => 'bool',
+        'default' => true,
+        'width' => '10%',
       ),
-      2 => 
+      'open_only' => 
       array (
         'name' => 'open_only',
         'label' => 'LBL_OPEN_ITEMS',
         'type' => 'bool',
-        'default' => false,
+        'default' => true,
         'width' => '10%',
       ),
-      3 => 
+      'favorites_only' => 
       array (
         'name' => 'favorites_only',
         'label' => 'LBL_FAVORITES_FILTER',
         'type' => 'bool',
+        'default' => true,
+        'width' => '10%',
       ),
     ),
     'advanced_search' => 
@@ -55,12 +70,6 @@ array (
         'default' => true,
         'width' => '10%',
       ),
-      /*'account_name' => 
-      array (
-        'name' => 'account_name',
-        'default' => true,
-        'width' => '10%',
-      ),*/
       'nlfse_services_leads_1_name' => 
       array (
         'type' => 'relate',
