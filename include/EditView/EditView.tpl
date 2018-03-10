@@ -53,9 +53,9 @@ class="yui-navset"
     {{counter name="tabCount" start=-1 print=false assign="tabCount"}}
     <ul class="yui-nav">
     {{foreach name=section from=$sectionPanels key=label item=panel}}
-        {{counter name="tabCount" print=false}}
         {{capture name=label_upper assign=label_upper}}{{$label|upper}}{{/capture}}
         {{if (isset($tabDefs[$label_upper].newTab) && $tabDefs[$label_upper].newTab == true)}}
+        {{counter name="tabCount" print=false}}
         <li class="selected"><a id="tab{{$tabCount}}" href="javascript:void({{$tabCount}})"><em>{sugar_translate label='{{$label}}' module='{{$module}}'}</em></a></li>
         {{/if}}
     {{/foreach}}
@@ -145,7 +145,7 @@ class="yui-navset"
     {{/if}}
 
 		{{if empty($def.templateMeta.labelsOnTop) && empty($colData.field.hideLabel)}}
-		<td valign="top" id='{{$colData.field.name}}_label' width='{{$def.templateMeta.widths[$smarty.foreach.colIteration.index].label}}%' scope="col">
+		<td valign="top" id='{{$colData.field.name}}_label' width='{{$def.templateMeta.widths[$smarty.foreach.colIteration.index].label}}%' data-total-columns="{{$columnsInRow}}" scope="col">
 			{{if isset($colData.field.customLabel)}}
 			   <label for="{{$fields[$colData.field.name].name}}">{{$colData.field.customLabel}}</label>
 			{{elseif isset($colData.field.label)}}
@@ -187,7 +187,7 @@ class="yui-navset"
 		    {** if not explicitly assigned, we will default to 0 for 508 compliance reasons, instead of the calculated tabIndexVal value **}
 		    {{assign var='tabindex' value=0}}
 		{{/if}}
-		<td valign="top" width='{{$def.templateMeta.widths[$smarty.foreach.colIteration.index].field}}%' {{if $colData.colspan}}colspan='{{$colData.colspan}}'{{/if}}>
+		<td valign="top" width='{{$def.templateMeta.widths[$smarty.foreach.colIteration.index].field}}%' data-total-columns="{{$columnsInRow}}" {{if $colData.colspan}}colspan='{{$colData.colspan}}'{{/if}}>
 			{{if !empty($def.templateMeta.labelsOnTop)}}
 				{{if isset($colData.field.label)}}
 				    {{if !empty($colData.field.label)}}

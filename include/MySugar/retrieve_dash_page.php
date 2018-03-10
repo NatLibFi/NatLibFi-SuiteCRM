@@ -1,8 +1,11 @@
 <?php
-if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
-/*********************************************************************************
+/**
+ *
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
+ *
+ * SuiteCRM is an extension to SugarCRM Community Edition developed by SalesAgility Ltd.
+ * Copyright (C) 2011 - 2018 SalesAgility Ltd.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -13,7 +16,7 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more
+ * FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
  * details.
  *
  * You should have received a copy of the GNU Affero General Public License along with
@@ -30,11 +33,14 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
  *
  * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
  * these Appropriate Legal Notices must retain the display of the "Powered by
- * SugarCRM" logo. If the display of the logo is not reasonably feasible for
- * technical reasons, the Appropriate Legal Notices must display the words
- * "Powered by SugarCRM".
- ********************************************************************************/
+ * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
+ * reasonably feasible for technical reasons, the Appropriate Legal Notices must
+ * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
+ */
 
+if (!defined('sugarEntry') || !sugarEntry) {
+    die('Not A Valid Entry Point');
+}
 
 global $current_user, $sugar_version, $sugar_config, $beanFiles;
 
@@ -102,7 +108,7 @@ if(!$hasUserPreferences){
             'forceColumn' => 0,
             'fileLocation' => $dashletsFiles['iFrameDashlet']['file'],
             'options' => array('titleLabel' => 'LBL_DASHLET_DISCOVER_SUGAR_PRO',
-                'url' => 'https://www.sugarcrm.com/crm/product/gopro',
+                'url' => 'https://suitecrm.com/',
                 'height' => 315,
             ));
 
@@ -117,7 +123,7 @@ if(!$hasUserPreferences){
             'forceColumn' => 1,
             'fileLocation' => $dashletsFiles['iFrameDashlet']['file'],
             'options' => array('titleLabel' => 'LBL_DASHLET_SUGAR_NEWS',
-                'url' => 'https://www.sugarcrm.com/crm/product/news',
+                'url' => 'https://suitecrm.com/about/newsroom/news/',
                 'height' => 315,
             ));
 
@@ -241,12 +247,30 @@ foreach($pages[$activePage]['columns'] as $colNum => $column) {
                 array_push($dashletIds, $id);
 
                 $dashlets = $current_user->getPreference('dashlets', 'Home'); // Using hardcoded 'Home' because DynamicAction.php $_REQUEST['module'] value is always Home
+
+                if(!empty($_REQUEST['id']) && $_REQUEST['id'] == $id) {
+                    $sortOrder = '';
+                    $orderBy = '';
+                    foreach($_REQUEST as $k => $v){
+                        if($k == 'lvso'){
+                            $sortOrder = $v;
+                        }
+                        else if(preg_match('/Home2_.+_ORDER_BY/', $k)){
+                            $orderBy = $v;
+                        }
+                    }
+                    if(!empty($sortOrder) && !empty($orderBy)){
+                        $dashlets[$id]['sort_options'] = array('sortOrder' => $sortOrder, 'orderBy' => $orderBy);
+                        $current_user->setPreference('dashlets', $dashlets, 0, 'Home');
+                    }
+                }
+
                 $lvsParams = array();
                 if(!empty($dashlets[$id]['sort_options'])){
                     $lvsParams = $dashlets[$id]['sort_options'];
                 }
 
-                $dashlet->process($lvsParams);
+                $dashlet->process($lvsParams, $id);
                 try {
                     $display[$colNum]['dashlets'][$id]['display'] = $dashlet->display();
                     $display[$colNum]['dashlets'][$id]['displayHeader'] = $dashlet->getHeader();
@@ -270,6 +294,7 @@ $_SESSION['current_tab'] = $activePage;
 if(!empty($sugar_config['lock_homepage']) && $sugar_config['lock_homepage'] == true) $sugar_smarty->assign('lock_homepage', true);
 
 
+$sugar_smarty->assign('colNum', $numCols);
 $sugar_smarty->assign('sugarVersion', $sugar_version);
 $sugar_smarty->assign('currentLanguage', $GLOBALS['current_language']);
 $sugar_smarty->assign('serverUniqueKey', $GLOBALS['server_unique_key']);

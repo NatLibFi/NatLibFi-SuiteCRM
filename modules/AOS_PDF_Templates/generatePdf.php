@@ -140,7 +140,8 @@ if ($task == 'pdf' || $task == 'emailpdf') {
 
     ob_clean();
     try {
-        $pdf = new mPDF('en', 'A4', '', 'DejaVuSansCondensed', $template->margin_left, $template->margin_right, $template->margin_top, $template->margin_bottom, $template->margin_header, $template->margin_footer);
+        $orientation = ($template->orientation == "Landscape") ? "-L" : "";
+        $pdf = new mPDF('en', $template->page_size . $orientation, '', 'DejaVuSansCondensed', $template->margin_left, $template->margin_right, $template->margin_top, $template->margin_bottom, $template->margin_header, $template->margin_footer);
         $pdf->SetAutoFont();
         $pdf->SetHTMLHeader($header);
         $pdf->SetHTMLFooter($footer);
@@ -347,7 +348,9 @@ function populate_product_lines($text, $lineItems, $element = 'tr')
             }
         }
 
-        $text .= $parts[1];
+        for ($i = 1; $i < count($parts); $i++) {
+            $text .= $parts[$i];
+        }
     }
     return $text;
 }
@@ -423,7 +426,9 @@ function populate_service_lines($text, $lineItems, $element = 'tr')
             }
         }
 
-        $text .= $parts[1];
+        for ($i = 1; $i < count($parts); $i++) {
+            $text .= $parts[$i];
+        }
     }
     return $text;
 }

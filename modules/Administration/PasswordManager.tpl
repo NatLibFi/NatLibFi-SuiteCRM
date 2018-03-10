@@ -432,7 +432,9 @@
 							</table>
 
 						             <!-- start SAML -->
-						   {if !empty($config.authenticationClass) && $config.authenticationClass == 'SAMLAuthenticate'}
+                            {if !empty($config.authenticationClass)
+                                && ($config.authenticationClass == 'SAMLAuthenticate'
+                                || $config.authenticationClass == 'SAML2Authenticate')}
                            {assign var='saml_enabled_checked' value='CHECKED'}
                            {assign var='saml_display' value='inline'}
                         {else}
@@ -453,7 +455,7 @@
                                     </td><td valign='middle'>
 
                                     <input name="authenticationClass" id="system_saml_enabled" class="checkbox"
-                                       value="SAMLAuthenticate" type="checkbox"
+                                       value="SAML2Authenticate" type="checkbox"
                                        {if $saml_enabled_checked}checked="1"{/if}
                                        onclick='toggleDisplay("saml_display");enableDisablePasswordTable("system_saml_enabled");'>
                                     </td><td>&nbsp;</td><td>&nbsp;</td></tr>
@@ -465,6 +467,11 @@
                                              <td align="left"  valign='middle'><input name="SAML_loginurl" size='35' type="text" value="{$config.SAML_loginurl}"></td>
 
                                           </tr>
+										   <tr>
+											   <td scope="row" valign='middle' nowrap>{$MOD.LBL_SAML_LOGOUT_URL} {sugar_help text=$MOD.LBL_SAML_LOGOUT_URL_DESC}</td>
+											   <td align="left"  valign='middle'><input name="SAML_logouturl" size='35' type="text" value="{$config.SAML_logouturl}"></td>
+
+										   </tr>
                                           <tr>
                                              <td width='25%' scope="row" valign='top' nowrap>{$MOD.LBL_SAML_CERT} {sugar_help text=$MOD.LBL_SAML_CERT_DESC}</td>{$settings.proxy_host}
                                              <td width='25%' align="left"  valign='top'><textarea style='height:200px;width:600px' name="SAML_X509Cert" >{$config.SAML_X509Cert}</textarea></td>

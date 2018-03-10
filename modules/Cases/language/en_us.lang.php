@@ -5,7 +5,7 @@ if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
  *
  * SuiteCRM is an extension to SugarCRM Community Edition developed by Salesagility Ltd.
- * Copyright (C) 2011 - 2016 Salesagility Ltd.
+ * Copyright (C) 2011 - 2018 SalesAgility Ltd.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -115,7 +115,7 @@ $mod_strings = array(
     'LBL_CREATED_USER' => 'Created User',
     'LBL_MODIFIED_USER' => 'Modified User',
     'LBL_PROJECT_SUBPANEL_TITLE' => 'Projects',
-    'LBL_CASE_INFORMATION' => 'Overview',
+    'LBL_CASE_INFORMATION' => 'OVERVIEW',
 
     //For export labels
     'LBL_MODIFIED_BY_NAME_OWNER' => 'Modified By Name Owner',
@@ -162,6 +162,7 @@ $mod_strings = array(
     'LBL_SELECT_INTERNAL_CASE_DOCUMENT' => 'Internal CRM document',
     'LBL_SELECT_EXTERNAL_CASE_DOCUMENT' => 'External file',
     'LBL_CONTACT_CREATED_BY_NAME' => 'Created by contact',
+    'LBL_CONTACT_CREATED_BY' => 'Created by',
     'LBL_CASE_UPDATE_FORM' => 'Update attachment form',
 );
 

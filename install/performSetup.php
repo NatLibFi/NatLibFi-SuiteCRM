@@ -494,34 +494,31 @@ if(!file_exists('custom/include')){
 
 require_once('modules/Home/dashlets.php');
 
-foreach($_SESSION['installation_scenarios'] as $scenario)
-{
-    //If the item is not in $_SESSION['scenarios'], then unset them as they are not required
-    if(!in_array($scenario['key'],$_SESSION['scenarios']))
-    {
-        foreach($scenario['modules'] as $module)
-        {
-            if (($removeKey = array_search($module, $enabled_tabs)) !== false) {
-                unset($enabled_tabs[$removeKey]);
+if(isset($_SESSION['installation_scenarios'])) {
+    foreach ($_SESSION['installation_scenarios'] as $scenario) {
+        //If the item is not in $_SESSION['scenarios'], then unset them as they are not required
+        if (!in_array($scenario['key'], $_SESSION['scenarios'])) {
+            foreach ($scenario['modules'] as $module) {
+                if (($removeKey = array_search($module, $enabled_tabs)) !== false) {
+                    unset($enabled_tabs[$removeKey]);
+                }
             }
-        }
 
-        //Loop through the dashlets to remove from the default home page based on this scenario
-        foreach($scenario['dashlets'] as $dashlet)
-        {
-            //if (($removeKey = array_search($dashlet, $defaultDashlets)) !== false) {
-            //    unset($defaultDashlets[$removeKey]);
-            // }
-            if(isset($defaultDashlets[$dashlet]))
-                unset($defaultDashlets[$dashlet]);
-        }
+            //Loop through the dashlets to remove from the default home page based on this scenario
+            foreach ($scenario['dashlets'] as $dashlet) {
+                //if (($removeKey = array_search($dashlet, $defaultDashlets)) !== false) {
+                //    unset($defaultDashlets[$removeKey]);
+                // }
+                if (isset($defaultDashlets[$dashlet]))
+                    unset($defaultDashlets[$dashlet]);
+            }
 
-        //If the scenario has an associated group tab, remove accordingly (by not adding to the custom tabconfig.php
-        if(isset($scenario['groupedTabs']))
-        {
-            unset($GLOBALS['tabStructure'][$scenario['groupedTabs']]);
-        }
+            //If the scenario has an associated group tab, remove accordingly (by not adding to the custom tabconfig.php
+            if (isset($scenario['groupedTabs'])) {
+                unset($GLOBALS['tabStructure'][$scenario['groupedTabs']]);
+            }
 
+        }
     }
 }
 
@@ -640,6 +637,13 @@ if(!empty($_SESSION['default_locale_name_format'])) $sugar_config['default_local
 //$configurator->handleOverride();
 
 
+
+// save current web-server user for the cron user check mechanism:
+installLog('addCronAllowedUser');
+addCronAllowedUser(getRunningUser());
+
+
+
 installLog('saveConfig');
 $configurator->saveConfig();
 
@@ -742,7 +746,7 @@ $out =<<<EOQ
 <p><b>{$fpResult}</b></p>
 </div>
 <footer id="install_footer">
-    <p id="footer_links"><a href="https://suitecrm.com" target="_blank">Visit suitecrm.com</a> | <a href="https://suitecrm.com/index.php?option=com_kunena&view=category&Itemid=1137&layout=list" target="_blank">Support Forums</a> | <a href="https://suitecrm.com/wiki/index.php/Installation" target="_blank">Installation Guide</a> | <a href="LICENSE.txt" target="_blank">License</a>
+    <p id="footer_links"><a href="https://suitecrm.com" target="_blank">Visit suitecrm.com</a> | <a href="https://suitecrm.com/index.php?option=com_kunena&view=category&Itemid=1137&layout=list" target="_blank">Support Forums</a> | <a href="https://docs.suitecrm.com/admin/installation-guide/" target="_blank">Installation Guide</a> | <a href="LICENSE.txt" target="_blank">License</a>
 </footer>
 </div>
 </body>
@@ -756,5 +760,3 @@ echo $out;
 
 $loginURL = str_replace('install.php', 'index.php', "//$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
 installStatus(sprintf($mod_strings['STAT_INSTALL_FINISH_LOGIN'], $loginURL ) , array('function' => 'redirect', 'arguments' => $loginURL) );
-
-?>

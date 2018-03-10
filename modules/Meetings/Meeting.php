@@ -277,13 +277,14 @@ class Meeting extends SugarBean {
 			vCal::cache_sugar_vcal($current_user);
 		}
 
-		if(isset($_REQUEST['reminders_data'])) {
+		if (isset($_REQUEST['reminders_data']) && empty($this->saving_reminders_data)) {
+                    $this->saving_reminders_data = true;
 			$reminderData = json_encode(
 				$this->removeUnInvitedFromReminders(json_decode(html_entity_decode($_REQUEST['reminders_data']), true))
 			);
 			Reminder::saveRemindersDataJson('Meetings', $return_id, $reminderData);
+                    $this->saving_reminders_data = false;
 		}
-
 
 		return $return_id;
 	}
@@ -558,7 +559,14 @@ class Meeting extends SugarBean {
 		$mergeTime = $meeting_fields['DATE_START']; //$timedate->merge_date_time($meeting_fields['DATE_START'], $meeting_fields['TIME_START']);
 		$date_db = $timedate->to_db($mergeTime);
 		if($date_db	< $today	) {
-			$meeting_fields['DATE_START']= "<font class='overdueTask'>".$meeting_fields['DATE_START']."</font>";
+			if($meeting_fields['STATUS']=='Held' || $meeting_fields['STATUS']=='Not Held')
+			{
+				$meeting_fields['DATE_START']= "<font>".$meeting_fields['DATE_START']."</font>";
+			}
+			else
+			{
+				$meeting_fields['DATE_START']= "<font class='overdueTask'>".$meeting_fields['DATE_START']."</font>";
+			}
 		}else if($date_db	< $nextday) {
 			$meeting_fields['DATE_START'] = "<font class='todaysTask'>".$meeting_fields['DATE_START']."</font>";
 		} else {
@@ -627,6 +635,7 @@ class Meeting extends SugarBean {
 		$xtpl->assign("MEETING_HOURS", $meeting->duration_hours);
 		$xtpl->assign("MEETING_MINUTES", $meeting->duration_minutes);
 		$xtpl->assign("MEETING_DESCRIPTION", $meeting->description);
+        $xtpl->assign("MEETING_LOCATION", $meeting->location);
         if ( !empty($meeting->join_url) ) {
             $xtpl->assign('MEETING_URL', $meeting->join_url);
             $xtpl->parse('Meeting.Meeting_External_API');
@@ -894,21 +903,18 @@ class Meeting extends SugarBean {
 	/**
 	 * @see SugarBean::afterImportSave()
 	 */
-	public function afterImportSave()
-	{
-	    if ( $this->parent_type == 'Contacts' ) {
-	        $this->load_relationship('contacts');
-	        if ( !$this->contacts->relationship_exists('contacts',array('id'=>$this->parent_id)) )
-	            $this->contacts->add($this->parent_id);
-	    }
-	    elseif ( $this->parent_type == 'Leads' ) {
-	        $this->load_relationship('leads');
-	        if ( !$this->leads->relationship_exists('leads',array('id'=>$this->parent_id)) )
-	            $this->leads->add($this->parent_id);
-	    }
+    public function afterImportSave()
+    {
+        if ($this->parent_type === 'Contacts') {
+            $this->load_relationship('contacts');
+            $this->contacts->add($this->parent_id);
+        } elseif ($this->parent_type === 'Leads') {
+            $this->load_relationship('leads');
+            $this->leads->add($this->parent_id);
+        }
 
-	    parent::afterImportSave();
-	}
+        parent::afterImportSave();
+    }
 
     public function getDefaultStatus()
     {

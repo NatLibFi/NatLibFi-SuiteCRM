@@ -233,6 +233,10 @@ $IEStoredOptions = get_campaign_mailboxes_with_stored_options();
 $IEStoredOptionsJSON = (!empty($IEStoredOptions)) ? $json->encode($IEStoredOptions, false) : 'new Object()';
 $ss->assign("IEStoredOptions", $IEStoredOptionsJSON);
 
+$OEStoredOptions = get_campaign_mailboxes_with_stored_options_outbound();
+$OEStoredOptionsJSON = (!empty($OEStoredOptions)) ? $json->encode($OEStoredOptions, false) : 'new Object()';
+$ss->assign("OEStoredOptions", $OEStoredOptionsJSON);
+
 //add empty options.
 $emails['']='nobody@example.com';
 $mailboxes['']='';
@@ -521,7 +525,7 @@ else {
     $steps[$mod_strings['LBL_NAVIGATION_MENU_SUMMARY']] = $summaryURLForProgressBar;
 }
 
-include_once('DotListWizardMenu.php');
+include_once('modules/Campaigns/DotListWizardMenu.php');
 $dotListWizardMenu = new DotListWizardMenu($mod_strings, $steps, true);
 //    array(
 //        $mod_strings['LBL_NAVIGATION_MENU_GEN1'] => $camp_url.'1',

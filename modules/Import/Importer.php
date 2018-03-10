@@ -140,7 +140,7 @@ class Importer
         $focus->unPopulateDefaultValues();
         $focus->save_from_post = false;
         $focus->team_id = null;
-        $this->ifs->createdBeans = array();
+        ImportFieldSanitize::$createdBeans = array();
         $this->importSource->resetRowErrorCounter();
         $do_save = true;
 
@@ -352,7 +352,7 @@ class Importer
             if ( $idc->isADuplicateRecord($enabled_dupes) )
             {
                 $this->importSource->markRowAsDuplicate($idc->_dupedFields);
-                $this->_undoCreatedBeans($this->ifs->createdBeans);
+                $this->_undoCreatedBeans(ImportFieldSanitize::$createdBeans);
                 return;
             }
         }
@@ -365,7 +365,7 @@ class Importer
             if ( $idc->isADuplicateRecordByFields($enabled_dup_fields) )
             {
                 $this->importSource->markRowAsDuplicate($idc->_dupedFields);
-                $this->_undoCreatedBeans($this->ifs->createdBeans);
+                $this->_undoCreatedBeans(ImportFieldSanitize::$createdBeans);
                 return;
             }
         }
@@ -396,7 +396,7 @@ class Importer
                     if( ! $this->isUpdateOnly )
                     {
                         $this->importSource->writeError($mod_strings['LBL_ID_EXISTS_ALREADY'],'ID',$focus->id);
-                        $this->_undoCreatedBeans($this->ifs->createdBeans);
+                        $this->_undoCreatedBeans(ImportFieldSanitize::$createdBeans);
                         return;
                     }
 
@@ -404,7 +404,7 @@ class Importer
                     if($clonedBean === FALSE)
                     {
                         $this->importSource->writeError($mod_strings['LBL_RECORD_CANNOT_BE_UPDATED'],'ID',$focus->id);
-                        $this->_undoCreatedBeans($this->ifs->createdBeans);
+                        $this->_undoCreatedBeans(ImportFieldSanitize::$createdBeans);
                         return;
                     }
                     else
@@ -427,7 +427,7 @@ class Importer
             $this->importSource->markRowAsImported($newRecord);
         }
         else
-            $this->_undoCreatedBeans($this->ifs->createdBeans);
+            $this->_undoCreatedBeans(ImportFieldSanitize::$createdBeans);
 
         unset($defaultRowValue);
 
@@ -436,32 +436,30 @@ class Importer
 
     protected function sanitizeFieldValueByType($rowValue, $fieldDef, $defaultRowValue, $focus, $fieldTranslated)
     {
+        $fieldtype = $fieldDef['type'];
         global $mod_strings, $app_list_strings;
-        switch ($fieldDef['type'])
+        switch ($fieldtype)
         {
             case 'enum':
+            case 'dynamicenum':
             case 'multienum':
-                if ( isset($fieldDef['type']) && $fieldDef['type'] == "multienum" )
-                    $returnValue = $this->ifs->multienum($rowValue,$fieldDef);
-                else
-                    $returnValue = $this->ifs->enum($rowValue,$fieldDef);
-                // try the default value on fail
-                if ( !$returnValue && !empty($defaultRowValue) )
-                {
-                    if ( isset($fieldDef['type']) && $fieldDef['type'] == "multienum" )
-                        $returnValue = $this->ifs->multienum($defaultRowValue,$fieldDef);
-                    else
-                        $returnValue = $this->ifs->enum($defaultRowValue,$fieldDef);
-                }
-                if ( $returnValue === FALSE )
-                {
-                    $this->importSource->writeError($mod_strings['LBL_ERROR_NOT_IN_ENUM'] . implode(",",$app_list_strings[$fieldDef['options']]), $fieldTranslated,$rowValue);
-                    return FALSE;
-                }
-                else
-                    return $returnValue;
+                $returnValue = $this->ifs->$fieldtype($rowValue, $fieldDef);
 
-                break;
+                // try the default value on fail
+                if (!$returnValue && !empty($defaultRowValue)) {
+                    $returnValue = $this->ifs->$fieldtype($defaultRowValue, $fieldDef);
+                }
+
+                if ($returnValue === false) {
+                    $this->importSource->writeError(
+                        $mod_strings['LBL_ERROR_NOT_IN_ENUM'] . implode(",", $app_list_strings[$fieldDef['options']]),
+                        $fieldTranslated,
+                        $rowValue
+                    );
+                    return false;
+                }
+                return $returnValue;
+
             case 'relate':
             case 'parent':
                 $returnValue = $this->ifs->relate($rowValue, $fieldDef, $focus, empty($defaultRowValue));
@@ -482,14 +480,13 @@ class Importer
                 return $rowValue;
                 break;
             default:
-                $fieldtype = $fieldDef['type'];
                 $returnValue = $this->ifs->$fieldtype($rowValue, $fieldDef, $focus);
                 // try the default value on fail
                 if ( !$returnValue && !empty($defaultRowValue) )
                     $returnValue = $this->ifs->$fieldtype($defaultRowValue,$fieldDef, $focus);
                 if ( !$returnValue )
                 {
-                    $this->importSource->writeError($mod_strings['LBL_ERROR_INVALID_'.strtoupper($fieldDef['type'])],$fieldTranslated,$rowValue,$focus);
+                    $this->importSource->writeError($mod_strings['LBL_ERROR_INVALID_'.strtoupper($fieldtype)],$fieldTranslated,$rowValue,$focus);
                     return FALSE;
                 }
                 return $returnValue;

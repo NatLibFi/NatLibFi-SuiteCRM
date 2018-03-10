@@ -214,7 +214,25 @@ class iCal extends vCal {
             $taskAsVTODO = false;
         }
 
-        $acts_arr = CalendarActivity::get_activities($user_bean->id,
+        $activityList = array(
+            "Meetings" => array(
+                "showCompleted" => true,
+                "start" =>  "date_start",
+                "end" => "date_end"
+            ),
+            "Calls" => array(
+                "showCompleted" => true,
+                "start" =>  "date_start",
+                "end" => "date_end"
+            ),
+            "Tasks" => array(
+                "showCompleted" => true,
+                "start" =>  "date_due",
+                "end" => "date_due"
+            )
+        );
+
+        $acts_arr = CalendarActivity::get_activities($activityList,$user_bean->id,
             !$taskAsVTODO,
             $start_date_time,
             $end_date_time,
@@ -554,7 +572,7 @@ class iCal extends vCal {
 
         $str .= vCal::create_ical_string_from_array($ical_array,true);
 
-        return $str;
+        return htmlspecialchars_decode(preg_replace("/&#([0-9]+)\\\\;/",'&#$1;',utf8_decode($str)));
     }
 
 }

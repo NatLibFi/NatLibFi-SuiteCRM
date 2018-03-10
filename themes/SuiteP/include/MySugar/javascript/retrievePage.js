@@ -5,11 +5,14 @@
 
 
 function retrievePage(page_id, callback){
-     retrieveData(page_id, callback);
+    setTimeout(function(){
+        retrieveData(page_id, callback);
+    }, 300);
 }
 
 function retrieveData(page_id, callback){
     var _cb = typeof callback != 'undefined' ? callback : false;
+    $("#pageContainer").html('<img src="themes/SuiteP/images/loading.gif" width="48" height="48" align="baseline" border="0" alt="">');
     $.ajax({
 
         url : "index.php?entryPoint=retrieve_dash_page",
@@ -43,19 +46,24 @@ var dashletsPageInit = function() {
         SUGAR.mySugar.showDashletsDialog();
     })
 
-    $('.modal-add-dashboard').on('show.bs.modal', function (e) {
-        addDashboardForm($('ul.nav-dashboard > li').length -1);
-        $('.btn-add-dashboard').click(function() {
-            //validate
-            if($('#dashName').val() == '') {
-                return;
-            }
+  $('.modal-add-dashboard').on('show.bs.modal', function (e) {
 
-            $.post($('#addpageform').attr('action'), { dashName: $('#dashName').val(), numColumns: $('[name=numColumns] option:selected').val() } );
-            location.reload();
+    addDashboardForm($('ul.nav-dashboard > li').length -1);
 
-        })
+    $('.btn-add-dashboard').unbind('click');
+    $('.btn-add-dashboard').click(function() {
+      if($('#dashName').val() == '') {
+        return;
+      }
+
+      $.post($('#addpageform').attr('action'), {
+        dashName: $('#dashName').val(),
+        numColumns: $('[name=numColumns] option:selected').val()
+      }).then(function() {
+        location.reload();
+      });
     })
+  })
 
     $('.modal-edit-dashboard').on('show.bs.modal', function (e) {
         var tabs = $('ul.nav-dashboard > li');
@@ -73,6 +81,7 @@ var dashletsPageInit = function() {
                 // add buttons
                 var removeButton = $('<button class="btn btn-xs btn-danger"><img src="themes/SuiteP/images/id-ff-remove-nobg.svg"></button>');
                 removeButton.click(function(a) {
+                    const _this = $(this);
                     var id = $(this).parents('.panel').index();
 
                     $.ajax({
@@ -96,7 +105,15 @@ var dashletsPageInit = function() {
                                 },
 
                                 success: function (data) {
+                                    var modelTabItem = $(_this).closest('.panel');
+                                    var tabItem = tabs.eq(modelTabItem.index());
 
+                                    if (tabItem.hasClass('active')) {
+                                        $('> a', tabs.eq(0)).trigger('click');
+                                    }
+
+                                    modelTabItem.remove();
+                                    tabItem.remove();
                                 },
                                 error: function (request, error) {
 
@@ -109,9 +126,6 @@ var dashletsPageInit = function() {
                         }
                     })
 
-
-                    $($('ul.nav-dashboard > li')[$(this).parents('.panel').index()]).remove();
-                    $(this).parents('.panel').remove()
                 });
                 removeButton.appendTo(panelTemplate.find('.panel-title'));
             }
@@ -127,9 +141,6 @@ var dashletsPageInit = function() {
 $(document).ready(function () {
     retrievePage(0, function(){
         dashletsPageInit();
-        setTimeout(function(){
-            retrievePage(0);
-        }, 500);
     });
 
 });

@@ -4,7 +4,7 @@
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
 
  * SuiteCRM is an extension to SugarCRM Community Edition developed by Salesagility Ltd.
- * Copyright (C) 2011 - 2014 Salesagility Ltd.
+ * Copyright (C) 2011 - 2018 SalesAgility Ltd.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -79,12 +79,11 @@ $mod_strings = array (
   'LBL_OUTBOUNDEMAILACCOUNTS_SUBPANEL_TITLE' => 'Outbound Email Accounts',
   'LBL_OUTBOUNDEMAILACCOUNT_CAMPA' => 'outboundemailaccount_campaigns_name',
     'LBL_CHANGE_PASSWORD' => 'Change password',
-    'LBL_CHOOSE_EMAIL_PROVIDER' => 'Choose your Email provider',
     'LBL_SEND_TEST_EMAIL' => 'Send Test Email',
 
     // for outbound email dialog
     'LBL_SMTP_SERVER_HELP' => 'This SMTP Mail Server can be used for outgoing mail. Provide a username and password for your email account in order to use the mail server.',
-    'LBL_MISSING_DEFAULT_OUTBOUND_SMTP_SETTINGS' => 'The administator has not yet configured the default outbound account.  Unable to send test email.',
+    'LBL_MISSING_DEFAULT_OUTBOUND_SMTP_SETTINGS' => 'The administator has not yet configured the default outbound account. Unable to send test email.',
     'LBL_MAIL_SMTPAUTH_REQ'				=> 'Use SMTP Authentication?',
     'LBL_MAIL_SMTPPASS'					=> 'SMTP Password:',
     'LBL_MAIL_SMTPPORT'					=> 'SMTP Port:',
@@ -101,4 +100,10 @@ $mod_strings = array (
     'LBL_EXCHANGE_SMTPUSER'					=> 'Exchange Username:',
     'LBL_EXCHANGE_SMTPPORT'					=> 'Exchange Server Port:',
     'LBL_EXCHANGE_SMTPSERVER'				=> 'Exchange Server:',
+
+    'LBL_TYPE' => 'Type',
+    'LBL_MAIL_SENDTYPE' => 'Mail Send Type',
+    'LBL_MAIL_SMTPSSL' => 'Mail SMTP/SSL',
+    'LBL_SMTP_FROM_NAME' => '"From" name',
+    'LBL_SMTP_FROM_ADDR' => '"From" address',
 );

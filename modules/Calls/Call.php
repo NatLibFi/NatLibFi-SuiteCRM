@@ -123,7 +123,7 @@ class Call extends SugarBean {
 								);
 
 	public function __construct() {
-		parent::__construct();
+	    parent::__construct();
 		global $app_list_strings;
 
        	$this->setupCustomFields('Calls');
@@ -174,18 +174,24 @@ class Call extends SugarBean {
 		}
 		return parent::ACLAccess($view,$is_owner,$in_group);
 	}
+	
     // save date_end by calculating user input
     // this is for calendar
-	function save($check_notify = FALSE) {
-		global $timedate,$current_user;
+    function save($check_notify = false)
+    {
+        global $timedate;
 
-	    if(isset($this->date_start) && isset($this->duration_hours) && isset($this->duration_minutes))
-        {
-    	    $td = $timedate->fromDb($this->date_start);
-    	    if($td)
-    	    {
-	        	$this->date_end = $td->modify("+{$this->duration_hours} hours {$this->duration_minutes} mins")->asDb();
-    	    }
+        if (!empty($this->date_start)) {
+            if (!empty($this->duration_hours) && !empty($this->duration_minutes)) {
+                $td = $timedate->fromDb($this->date_start);
+                if ($td) {
+                    $this->date_end = $td->modify(
+                        "+{$this->duration_hours} hours {$this->duration_minutes} mins"
+                    )->asDb();
+                }
+            } else {
+                $this->date_end = $this->date_start;
+            }
         }
 
 		if(!empty($_REQUEST['send_invites']) && $_REQUEST['send_invites'] == '1') {
@@ -474,8 +480,8 @@ class Call extends SugarBean {
 		}
 		$this->email_reminder_checked = $this->email_reminder_time == -1 ? false : true;
 
-		if (isset ($_REQUEST['parent_type']) && (!isset($_REQUEST['action']) || $_REQUEST['action'] != 'SubpanelEdits')) {
-			$this->parent_type = $_REQUEST['parent_type'];
+        if (isset ($_REQUEST['parent_type']) && empty($this->parent_type)) {
+                $this->parent_type = $_REQUEST['parent_type'];
 		} elseif (is_null($this->parent_type)) {
 			$this->parent_type = $app_list_strings['record_type_default_key'];
 		}
@@ -509,7 +515,14 @@ class Call extends SugarBean {
 		$mergeTime = $call_fields['DATE_START']; //$timedate->merge_date_time($call_fields['DATE_START'], $call_fields['TIME_START']);
 		$date_db = $timedate->to_db($mergeTime);
 		if( $date_db	< $today){
-			$call_fields['DATE_START']= "<font class='overdueTask'>".$call_fields['DATE_START']."</font>";
+			if($call_fields['STATUS']=='Held' || $call_fields['STATUS']=='Not Held')   
+			{    
+				$call_fields['DATE_START']= "<font>".$call_fields['DATE_START']."</font>";   
+			}   
+			else   
+			{    
+				$call_fields['DATE_START']= "<font class='overdueTask'>".$call_fields['DATE_START']."</font>";   
+			}
 		}else if($date_db < $nextday){
 			$call_fields['DATE_START'] = "<font class='todaysTask'>".$call_fields['DATE_START']."</font>";
 		}else{

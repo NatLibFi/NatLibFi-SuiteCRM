@@ -63,7 +63,6 @@ $(function() {
 				<h4 class="modal-title">{$MOD.LBL_SETTINGS_TITLE}</h4>
 			</div>
 			<div class="modal-body">
-				<!--->
 				<div class="container-fluid">
 					<form name="settings" id="form_settings" method="POST" action="index.php?module=Calendar&action=SaveSettings">
 
@@ -191,7 +190,7 @@ $(function() {
 							<div id="subpanel_settings_color" class="panel-body panel-collapse collapse in">
 								<table class="table-responsive">
 									<tr>
-										<th>Module</th><th>Body</th><th>Border</th><th>Text</th>
+										<th>{$MOD.LBL_MODULE}</th><th>{$MOD.LBL_BODY}</th><th>{$MOD.LBL_BORDER}</th><th>{$MOD.LBL_TEXT}</th>
 									</tr>
 									{foreach from=$activity key=name item=def}
 										<tr>
@@ -212,7 +211,6 @@ $(function() {
 						</div>
 					</div>
 				</form>
-				<!--->
 			</div>
 			<div class="modal-footer">
 				<button data-dismiss="modal" class="btn btn-default" type="button">{$MOD.LBL_CANCEL_BUTTON}</button>

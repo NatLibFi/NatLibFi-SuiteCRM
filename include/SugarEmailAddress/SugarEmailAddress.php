@@ -92,25 +92,28 @@ class SugarEmailAddress extends SugarBean {
         self::__construct();
     }
 
-
     /**
      * Legacy email address handling.  This is to allow support for SOAP or customizations
-     * @param string $id
-     * @param string $module
+     * @param SugarBean $bean
      */
-    function handleLegacySave($bean, $prefix = "") {
-        if(!isset($_REQUEST) || !isset($_REQUEST['useEmailWidget'])) {
-            if (empty($this->addresses) || !isset($_REQUEST['massupdate'])) {
+    public function handleLegacySave($bean)
+    {
+        if (
+            !isset($_REQUEST)
+            || !isset($_REQUEST[$bean->module_dir . '_email_widget_id'])
+            || !isset($_REQUEST['massupdate'])
+        ) {
+            if (empty($this->addresses) || (!empty($bean->email1))) {
                 $this->addresses = array();
-                $optOut = (isset($bean->email_opt_out) && $bean->email_opt_out == "1") ? true : false;
-                $invalid = (isset($bean->invalid_email) && $bean->invalid_email == "1") ? true : false;
+                $optOut = (isset($bean->email_opt_out) && $bean->email_opt_out == '1');
+                $invalid = (isset($bean->invalid_email) && $bean->invalid_email == '1');
 
                 $isPrimary = true;
-                for($i = 1; $i <= 10; $i++){
-                    $email = 'email'.$i;
-                    if(isset($bean->$email) && !empty($bean->$email)){
-                        $opt_out_field = $email.'_opt_out';
-                        $invalid_field = $email.'_invalid';
+                for ($i = 1; $i <= 10; $i++) {
+                    $email = 'email' . $i;
+                    if (isset($bean->$email) && !empty($bean->$email)) {
+                        $opt_out_field = $email . '_opt_out';
+                        $invalid_field = $email . '_invalid';
                         $field_optOut = (isset($bean->$opt_out_field)) ? $bean->$opt_out_field : $optOut;
                         $field_invalid = (isset($bean->$invalid_field)) ? $bean->$invalid_field : $invalid;
                         $this->addAddress($bean->$email, $isPrimary, false, $field_invalid, $field_optOut);
@@ -119,8 +122,8 @@ class SugarEmailAddress extends SugarBean {
                 }
             }
         }
-        $this->populateAddresses($bean->id, $bean->module_dir, array(),'');
-        if(isset($_REQUEST) && isset($_REQUEST['useEmailWidget'])) {
+        $this->populateAddresses($bean->id, $bean->module_dir, array(), '');
+        if (isset($_REQUEST[$bean->module_dir . '_email_widget_id'])) {
             $this->populateLegacyFields($bean);
         }
     }
@@ -180,27 +183,51 @@ class SugarEmailAddress extends SugarBean {
     }
 
     /**
-     * Saves email addresses for a parent bean
+     * @deprecated
+     * @param bool $check_notify
+     * @return null
+     */
+    public function save($check_notify = false) {
+        $deprecatedMessage = 'SugarEmailAddress::save() function calls are deprecated use SugarEmailAddress::saveEmail() function instead';
+        if (isset($GLOBALS['log'])) {
+            $GLOBALS['log']->deprecated($deprecatedMessage);
+        } else {
+            trigger_error($deprecatedMessage, E_USER_DEPRECATED);
+        }
+
+        list($id, $module, $new_addrs, $primary, $replyTo, $invalid, $optOut, $in_workflow) = func_get_args();
+        return $this->saveEmail($id, $module, $new_addrs, $primary, $replyTo, $invalid, $optOut, $in_workflow);
+    }
+
+    /**
+     * Saves email addresses for a parent bean.
+     * The base class SugarBean::save($check_notify) method is never called from SugarEmailAddresses::saveEmail(...)
+     * The method's signature has been changed to correctly represent the save method call for SugarEmailAddress.
      * @param string $id Parent bean ID
      * @param string $module Parent bean's module
-     * @param array $addresses Override of $_REQUEST vars, used to handle non-standard bean saves
+     * @param array $new_addrs Override of $_REQUEST vars, used to handle non-standard bean saves
      * @param string $primary GUID of primary address
      * @param string $replyTo GUID of reply-to address
      * @param string $invalid GUID of invalid address
+     * @param string $optOut
+     * @param bool $in_workflow
+     * @return null
      */
-    public function save($check_notify = FALSE) {
-        $args = func_get_args();
-        return call_user_func_array(array($this, '_save'), $args);
-    }
-    private function _save($id, $module, $new_addrs=array(), $primary='', $replyTo='', $invalid='', $optOut='', $in_workflow=false) {
-        if(empty($this->addresses) || $in_workflow){
-            $this->populateAddresses($id, $module, $new_addrs,$primary);
+    public function saveEmail($id, $module, $new_addrs = array(), $primary='', $replyTo='', $invalid='', $optOut='', $in_workflow = false) {
+        if(gettype($id) == "boolean") {
+            $GLOBALS['log']->fatal('SugarEmailAddress::saveEmail() Invalid arguments - Parent method SugarBean::save
+            ($checknotify) is not implemented. Please pass the correct arguments into SugarEmailAddress::saveEmail()');
         }
 
-        //find all email addresses..
-        $current_links=array();
-        // Need to correct this to handle the Employee/User split
+        if(empty($this->addresses) || $in_workflow) {
+            $this->populateAddresses($id, $module, $new_addrs, $primary);
+        }
+
+        // handle the Employee/User split
         $module = $this->getCorrectedModule($module);
+
+        // find all email addresses
+        $current_links = array();
         $q2="select *  from email_addr_bean_rel eabr WHERE eabr.bean_id = '".$this->db->quote($id)."' AND eabr.bean_module = '".$this->db->quote($module)."' and eabr.deleted=0";
         $r2 = $this->db->query($q2);
         while(($row2=$this->db->fetchByAssoc($r2)) != null ) {
@@ -268,7 +295,6 @@ class SugarEmailAddress extends SugarBean {
             $this->db->query($eabr_unlink);
         }
         $this->stateBeforeWorkflow = null;
-        return;
     }
 
     /**
@@ -383,24 +409,23 @@ class SugarEmailAddress extends SugarBean {
     /**
      * Saves email addresses for a parent bean
      * @param string $id Parent bean ID
-     * @param string $module Parent bean's module
-     * @param array $addresses Override of $_REQUEST vars, used to handle non-standard bean saves
+     * @param string $module  Parent bean's module
+     * @param array $new_addrs Override of $_REQUEST vars, used to handle non-standard bean saves
      * @param string $primary GUID of primary address
      * @param string $replyTo GUID of reply-to address
-     * @param string $invalid GUID of invalid address
      */
-    function populateAddresses($id, $module, $new_addrs=array(), $primary='', $replyTo='', $invalid='', $optOut='') {
+    public function populateAddresses($id, $module, $new_addrs=array(), $primary='', $replyTo='') {
         $module = $this->getCorrectedModule($module);
         //One last check for the ConvertLead action in which case we need to change $module to 'Leads'
-        $module = (isset($_REQUEST) && isset($_REQUEST['action']) && $_REQUEST['action'] == 'ConvertLead') ? 'Leads' : $module;
+        $module = (isset($_REQUEST) && isset($_REQUEST['action']) && $_REQUEST['action'] === 'ConvertLead') ? 'Leads' : $module;
 
-        $post_from_email_address_widget = (isset($_REQUEST) && isset($_REQUEST['emailAddressWidget'])) ? true : false;
+        $post_from_email_address_widget = (isset($_REQUEST[$module . '_email_widget_id']));
         $primaryValue = $primary;
         $widgetCount = 0;
         $hasEmailValue = false;
         $email_ids = array();
 
-        if (isset($_REQUEST) && isset($_REQUEST[$module .'_email_widget_id'])) {
+        if (isset($_REQUEST[$module . '_email_widget_id'])) {
 
             $fromRequest = false;
             // determine which array to process
@@ -409,8 +434,8 @@ class SugarEmailAddress extends SugarBean {
                    $fromRequest = true;
                    break;
                 }
-            $widget_id = $_REQUEST[$module .'_email_widget_id'];
-    }
+                $widget_id = $_REQUEST[$module .'_email_widget_id'];
+            }
 
             //Iterate over the widgets for this module, in case there are multiple email widgets for this module
             while(isset($_REQUEST[$module . $widget_id . "emailAddress" . $widgetCount]))
@@ -451,13 +476,7 @@ class SugarEmailAddress extends SugarBean {
                 }
 
                 // prep from form save
-                $primaryField = $primary;
                 $replyToField = '';
-                $invalidField = '';
-                $optOutField = '';
-                if($fromRequest && empty($primary) && isset($primaryValue)) {
-                    $primaryField = $primaryValue;
-                }
 
                 if($fromRequest && empty($replyTo)) {
                     if(isset($_REQUEST[$eId .'emailAddressReplyToFlag'])) {
@@ -564,7 +583,7 @@ class SugarEmailAddress extends SugarBean {
                 } elseif ($primary && $address['primary_address'] == '1') {
                     // We should only have one primary. If we are adding a primary but
                     // we find an existing primary, reset this one's primary flag.
-                    $address['primary_address'] = '0';
+                    $this->addresses[$k]['primary_address'] = '0';
                 }
             }
 
@@ -888,7 +907,7 @@ class SugarEmailAddress extends SugarBean {
         }
 
         if(!empty($prefillDataArr)) {
-            $json = new JSON(JSON_LOOSE_TYPE);
+            $json = new JSON();
             $prefillData = $json->encode($prefillDataArr);
             $prefill = !empty($prefillDataArr) ? 'true' : 'false';
         }

@@ -1,10 +1,11 @@
 {*
-/*********************************************************************************
+/**
+ *
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
-
- * SuiteCRM is an extension to SugarCRM Community Edition developed by Salesagility Ltd.
- * Copyright (C) 2011 - 2014 Salesagility Ltd.
+ *
+ * SuiteCRM is an extension to SugarCRM Community Edition developed by SalesAgility Ltd.
+ * Copyright (C) 2011 - 2017 SalesAgility Ltd.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -15,7 +16,7 @@
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more
+ * FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
  * details.
  *
  * You should have received a copy of the GNU Affero General Public License along with
@@ -33,10 +34,9 @@
  * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
  * these Appropriate Legal Notices must retain the display of the "Powered by
  * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
- * reasonably feasible for  technical reasons, the Appropriate Legal Notices must
- * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
- ********************************************************************************/
-
+ * reasonably feasible for technical reasons, the Appropriate Legal Notices must
+ * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
+ */
 *}
 <!-- END METADATA GENERATED CONTENT -->
 
@@ -55,7 +55,7 @@
                                 <td scope="row" width="17%">
                                 {$MOD.LBL_EMAIL}:  {if $REQUIRED_EMAIL_ADDRESS}<span class="required" id="mandatory_email">{$APP.LBL_REQUIRED_SYMBOL}</span> {/if}
                                 </td>
-                                <td>
+                                <td width="83%">
                                     {$NEW_EMAIL}
                                 </td>
                             </tr>
@@ -80,14 +80,14 @@
 
                             <tr id="mail_smtpuser_tr">
                                 <td width="20%" scope="row" nowrap="nowrap"><span id="mail_smtpuser_label">{$MOD.LBL_MAIL_SMTPUSER}</span></td>
-                                <td width="30%" ><slot><input type="text" id="mail_smtpuser" name="mail_smtpuser" size="25" maxlength="64" value="{$mail_smtpuser}" tabindex='1' ></slot></td>
+                                <td width="30%" ><slot><input type="text" id="mail_smtpuser" name="mail_smtpuser" size="25" maxlength="255" value="{$mail_smtpuser}" tabindex='1' ></slot></td>
                                 <td>&nbsp;</td>
                                 <td >&nbsp;</td>
                             </tr>
                             <tr id="mail_smtppass_tr">
                                 <td width="20%" scope="row" nowrap="nowrap"><span id="mail_smtppass_label">{$MOD.LBL_MAIL_SMTPPASS}</span></td>
                                 <td width="30%" ><slot>
-                                <input type="password" id="mail_smtppass" name="mail_smtppass" size="25" maxlength="64" value="{$mail_smtppass}" tabindex='1'>
+                                <input type="password" id="mail_smtppass" name="mail_smtppass" size="25" maxlength="255" value="{$mail_smtppass}" tabindex='1'>
                                 <a href="javascript:void(0)" id='mail_smtppass_link' onClick="SUGAR.util.setEmailPasswordEdit('mail_smtppass')" style="display: none">{$APP.LBL_CHANGE_PASSWORD}</a>
                                 </slot></td>
                                 <td>&nbsp;</td>
@@ -105,7 +105,7 @@
                         </table>
             </div>
 </div>
-<div>
+<div class="user-tab-content">
             {if ($CHANGE_PWD) == '1'}
             <div id="generate_password">
             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="edit view">
@@ -195,7 +195,7 @@
             {/if}
     </div>
     {if $SHOW_THEMES}
-    <div>
+    <div class="user-tab-content">
         <div id="themepicker" style="display:{$HIDE_FOR_GROUP_AND_PORTAL}">
         <table class="edit view" border="0" cellpadding="0" cellspacing="0" width="100%">
             <tbody>
@@ -219,7 +219,7 @@
         </div>
     </div>
     {/if}
-    <div>
+    <div class="user-tab-content">
         <div id="settings" style="display:{$HIDE_FOR_GROUP_AND_PORTAL}">
         <table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
 
@@ -374,7 +374,6 @@
                         </tr>
                     </table>
         </div>
-
         <div id="calendar_options" style="display:{$HIDE_FOR_GROUP_AND_PORTAL}">
         <table width="100%" border="0" cellspacing="1" cellpadding="0" class="edit view">
             <tr>
@@ -407,7 +406,7 @@
         </div>
     </div>
     {if $ID}
-    <div id="eapm_area" style='display:{$HIDE_FOR_GROUP_AND_PORTAL};'>
+    <div id="eapm_area" style='display:{$HIDE_FOR_GROUP_AND_PORTAL};' class="user-tab-content">
         <div style="text-align:center; width: 100%">{sugar_image name="loading"}</div>
     </div>
     {/if}

@@ -5,7 +5,7 @@ if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
  *
  * SuiteCRM is an extension to SugarCRM Community Edition developed by Salesagility Ltd.
- * Copyright (C) 2011 - 2016 Salesagility Ltd.
+ * Copyright (C) 2011 - 2018 SalesAgility Ltd.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -61,7 +61,6 @@ $mod_strings = array(
     'LBL_DATE_START' => 'Start Date:',
     'LBL_DATE_END' => 'End Date:',
     'LBL_PRIORITY' => 'Priority:',
-    'LBL_STATUS' => 'Status:',
     'LBL_MY_PROJECTS' => 'My Projects',
     'LBL_MY_PROJECT_TASKS' => 'My Project Tasks',
     'LBL_TOTAL_ESTIMATED_EFFORT' => 'Total Estimated Effort (hrs):',
@@ -81,6 +80,10 @@ $mod_strings = array(
     'LBL_ACCOUNT_SUBPANEL_TITLE' => 'Accounts',
     'LBL_OPPORTUNITY_SUBPANEL_TITLE' => 'Opportunities',
     'LBL_QUOTE_SUBPANEL_TITLE' => 'Quotes',
+	'LBL_PROJECT_PREDECESSOR_NONE' => 'None',
+	'LBL_ALL_PROJECTS' => 'All Projects',
+	'LBL_ALL_USERS' => 'All Users',
+	'LBL_ALL_CONTACTS' => 'All Contacts',
 
     // quick create label
     'LBL_NEW_FORM_TITLE' => 'New Project',
@@ -94,7 +97,6 @@ $mod_strings = array(
     'LBL_ACTIVITIES_SUBPANEL_TITLE' => 'Activities',
     'LBL_HISTORY_SUBPANEL_TITLE' => 'History',
     'LBL_QUICK_NEW_PROJECT' => 'New Project',
-    'LBL_PROJECT_TASKS_SUBPANEL_TITLE' => 'Project Tasks',
     'LBL_CONTACTS_SUBPANEL_TITLE' => 'Contacts',
     'LBL_ACCOUNTS_SUBPANEL_TITLE' => 'Accounts',
     'LBL_OPPORTUNITIES_SUBPANEL_TITLE' => 'Opportunities',
@@ -138,7 +140,6 @@ $mod_strings = array(
     'LBL_DURATION_TITLE' => 'Edit Duration',
     'LBL_PERCENTAGE_COMPLETE_TITLE' => 'Edit % Complete',
     'LBL_ACTUAL_DURATION_TITLE' => 'Edit Actual Duration',
-    'LBL_DESCRIPTION' => 'Notes',
     'LBL_LAG' => 'Lag',
     'LBL_DAYS' => 'Days',
     'LBL_HOURS' => 'Hours',
@@ -185,7 +186,7 @@ $mod_strings = array(
 	'LBL_LAST_NAME' => 'Last Name',
 	'LBL_SEARCH_BUTTON'=> 'Search',
 	'LBL_EMPTY_SEARCH_RESULT' => 'Sorry, no results were found. Please create an invitee below.',
-	'LBL_CREATE_INVITEE' => 'Create an Resource',
+	'LBL_CREATE_INVITEE' => 'Create a Resource',
 	'LBL_CREATE_CONTACT' => 'As Contact',
 	'LBL_CREATE_AND_ADD' => 'Create & Add',
 	'LBL_CANCEL_CREATE_INVITEE' => 'Cancel',
@@ -208,6 +209,10 @@ $mod_strings = array(
 	'LBL_RESOURCE_CHART_MONTH' => 'Month',
 	'LBL_RESOURCE_CHART_QUARTER' => 'Quarter',
  	'LBL_ALL_RESOURCES' => 'All Resources',
+
+ 	'LBL_PROJECT_CONTACTS_1_FROM_CONTACTS_TITLE' => 'Project Contacts from Contacts Title',
+ 	'LBL_AM_PROJECTTEMPLATES_PROJECT_1_FROM_PROJECT_TITLE' => 'Project Templates: Project from Project Title',
+ 	'LBL_AOS_QUOTES_PROJECT' => 'Quotes: Project',
 
 );
 ?>
