@@ -81,6 +81,12 @@ array (
         array (
           0 => 
           array (
+            'name' => 'title',
+            'comment' => 'The title of the contact',
+            'label' => 'LBL_TITLE',
+          ),
+          1 => 
+          array (
             'name' => 'no_mailing_c',
             'label' => 'LBL_NO_MAILING',
           ),

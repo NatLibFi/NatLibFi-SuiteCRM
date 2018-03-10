@@ -157,6 +157,21 @@ array (
         array (
           0 => 'campaign_name',
         ),
+        3 => 
+        array (
+          0 => 
+          array (
+            'name' => 'date_entered',
+            'comment' => 'Date record created',
+            'label' => 'LBL_DATE_ENTERED',
+          ),
+          1 => 
+          array (
+            'name' => 'date_modified',
+            'comment' => 'Date record last modified',
+            'label' => 'LBL_DATE_MODIFIED',
+          ),
+        ),
       ),
       'lbl_editview_panel1' => 
       array (
@@ -192,7 +207,8 @@ array (
         ),
         4 => 
         array (
-          0 => 
+          0 => 'title',
+          1 => 
           array (
             'name' => 'contact_account_role_c',
             'studio' => 'visible',

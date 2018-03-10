@@ -194,6 +194,20 @@ array (
             'label' => 'LBL_CAMPAIGN',
           ),
         ),
+        3 => 
+        array (
+          0 => 
+          array (
+            'name' => 'date_entered',
+            'customCode' => '{$fields.date_entered.value} {$APP.LBL_BY} {$fields.created_by_name.value}',
+          ),
+          1 => 
+          array (
+            'name' => 'date_modified',
+            'label' => 'LBL_DATE_MODIFIED',
+            'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
+          ),
+        ),
       ),
       'lbl_editview_panel1' => 
       array (
@@ -235,7 +249,8 @@ array (
         ),
         4 => 
         array (
-          0 => 
+          0 => 'title',
+          1 => 
           array (
             'name' => 'contact_account_role_c',
             'studio' => 'visible',
