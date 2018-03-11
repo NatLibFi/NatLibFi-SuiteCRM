@@ -1,0 +1,2 @@
+<?php
+$mod_strings['LBL_ACCOUNTS_NLFRO_ROLES_1_CONTACTS_WITH_ROLES_TITLE'] = 'Henkilöt';

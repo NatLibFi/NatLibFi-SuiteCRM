@@ -3336,6 +3336,48 @@ function sugar_cleanup($exit = false)
             exit;
         }
     }
+
+    if ( isset($_REQUEST['module']) &&
+	 $_REQUEST['module'] == 'nlfbr_BusinessRelationships' &&
+	 ( $_REQUEST['action'] == 'DetailView' ||	   
+	   $_REQUEST['action'] == 'EditView' ) ) {
+
+      echo '<script>
+
+var p = document.getElementsByTagName("title")[0];
+var name = p.childNodes[0].textContent;
+
+if ( name.indexOf("Muokkaa » ") == 0 ) { // Strip EditView "prefix"
+  name = name.substr(10);
+}
+
+
+var pos = name.indexOf("-");
+
+if ( pos >= 0 ) {
+  name = name.substring(0, pos);
+  var table;
+  var i=1;
+
+  do {
+
+    table = document.getElementById("detailpanel_"+i);
+    if ( table && table.innerHTML.indexOf("Asiakkuuden lisätiedot") > 0 &&
+       table.innerHTML.indexOf(name + " - Asiakkuuden lisätiedot") < 0 ) {
+    //alert("TODO: piilota asiakassuhteeseen kuulumattomat tiedot: "+name+": "+table.innerHTML);
+      table.style.display = "none";
+    }
+    i++;
+  }
+  while ( table );
+
+}
+      
+</script>
+';
+
+    }
+
 }
 
 register_shutdown_function('sugar_cleanup');

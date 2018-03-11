@@ -135,7 +135,7 @@ class SugarAuthenticate{
 		}
 		if(strtolower(get_class($this)) != 'sugarauthenticate'){
 			$sa = new SugarAuthenticate();
-			$error = (!empty($_SESSION['login_error']))?$_SESSION['login_error']:'';
+			//$error = (!empty($_SESSION['login_error']))?$_SESSION['login_error']:'';
 			if($sa->loginAuthenticate($username, $password, true, $PARAMS)){
 				return true;
 			}

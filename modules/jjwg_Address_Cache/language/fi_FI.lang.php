@@ -1,0 +1,37 @@
+<?php
+
+$mod_strings['LBL_ASSIGNED_TO_ID'] = 'Vastuuhenkilön tunnus';
+$mod_strings['LBL_ASSIGNED_TO_NAME'] = 'Kohdennettu hlölle';
+$mod_strings['LBL_ID'] = 'Tunnus';
+$mod_strings['LBL_DATE_ENTERED'] = 'Luontipvm';
+$mod_strings['LBL_DATE_MODIFIED'] = 'Muokkaus pvm';
+$mod_strings['LBL_MODIFIED'] = 'Muokkaaja';
+$mod_strings['LBL_MODIFIED_ID'] = 'Muokkaaja';
+$mod_strings['LBL_MODIFIED_NAME'] = 'Muokkaaja';
+$mod_strings['LBL_CREATED'] = 'Tekijä';
+$mod_strings['LBL_CREATED_ID'] = 'Tekijä';
+$mod_strings['LBL_DESCRIPTION'] = 'Kuvaus';
+$mod_strings['LBL_DELETED'] = 'Poistettu';
+$mod_strings['LBL_NAME'] = 'Osoite';
+$mod_strings['LBL_CREATED_USER'] = 'Tekijä';
+$mod_strings['LBL_MODIFIED_USER'] = 'Muokkaaja';
+$mod_strings['LBL_LIST_NAME'] = 'Osoite';
+$mod_strings['LBL_LIST_FORM_TITLE'] = 'Address Cache List';
+$mod_strings['LBL_MODULE_NAME'] = 'Karttaosoitteiden välimuisti';
+$mod_strings['LBL_MODULE_TITLE'] = 'Karttaosoitteiden välimuisti';
+$mod_strings['LBL_HOMEPAGE_TITLE'] = 'My Address Cache';
+$mod_strings['LNK_NEW_RECORD'] = 'Create Address Cache';
+$mod_strings['LNK_LIST'] = 'View Address Cache';
+$mod_strings['LNK_IMPORT_JJWG_ADRESS_CACHE'] = 'Import Address Cache';
+$mod_strings['LBL_SEARCH_FORM_TITLE'] = 'Search Address Cache';
+$mod_strings['LBL_HISTORY_SUBPANEL_TITLE'] = 'Historia';
+$mod_strings['LBL_ACTIVITIES_SUBPANEL_TITLE'] = 'Aktiviteetit';
+$mod_strings['LBL_JJWG_ADRESS_CACHE_SUBPANEL_TITLE'] = 'Karttaosoitteiden välimuisti';
+$mod_strings['LBL_NEW_FORM_TITLE'] = 'New Address Cache';
+$mod_strings['LBL_LAT'] = 'Leveyspiiri';
+$mod_strings['LBL_LNG'] = 'Pituuspiiri';
+$mod_strings['LBL_GEOCODE_STATUS'] = 'Geocoden tila';
+$mod_strings['LBL_CURRENT_USER_FILTER'] = 'Omat tietueet:';
+$mod_strings['LBL_ASSIGNED_TO'] = 'Vastuuhenkilö';
+$mod_strings['LNK_IMPORT_JJWG_ADDRESS_CACHE'] = 'Tuo osoitevälimuisti';
+$mod_strings['LBL_JJWG_ADDRESS_CACHE_SUBPANEL_TITLE'] = 'Karttaosoitteiden välimuisti';

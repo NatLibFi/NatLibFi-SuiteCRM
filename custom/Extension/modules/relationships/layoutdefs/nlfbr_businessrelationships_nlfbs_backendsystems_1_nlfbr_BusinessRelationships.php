@@ -1,0 +1,23 @@
+<?php
+ // created: 2017-07-07 18:01:23
+$layout_defs["nlfbr_BusinessRelationships"]["subpanel_setup"]['nlfbr_businessrelationships_nlfbs_backendsystems_1'] = array (
+  'order' => 100,
+  'module' => 'nlfbs_BackendSystems',
+  'subpanel_name' => 'default',
+  'sort_order' => 'asc',
+  'sort_by' => 'id',
+  'title_key' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_NLFBS_BACKENDSYSTEMS_1_FROM_NLFBS_BACKENDSYSTEMS_TITLE',
+  'get_subpanel_data' => 'nlfbr_businessrelationships_nlfbs_backendsystems_1',
+  'top_buttons' => 
+  array (
+    0 => 
+    array (
+      'widget_class' => 'SubPanelTopButtonQuickCreate',
+    ),
+    1 => 
+    array (
+      'widget_class' => 'SubPanelTopSelectButton',
+      'mode' => 'MultiSelect',
+    ),
+  ),
+);

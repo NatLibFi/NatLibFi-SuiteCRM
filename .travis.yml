@@ -29,12 +29,3 @@ script:
 
 after_script:
   - cat suitecrm.log
-
-branches:
-  only:
-    - master
-    - develop
-    - /hotfix.*/
-    - /feature.*/
-    - /fix.*/
-    - /staging.*/

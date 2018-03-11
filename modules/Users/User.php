@@ -107,6 +107,7 @@ class User extends Person
         'reports_to_name'
     );
     public $emailAddress;
+    public $saml_session_index = ''; // NVolk
     public $new_schema = true;
 
     /**

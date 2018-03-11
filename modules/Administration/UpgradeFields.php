@@ -80,8 +80,8 @@ foreach ($modules as $the_module => $fields) {
 
 	$table = $db->getTableDescription($mod->table_name."_cstm");
 	foreach($table as $row) {
-		$col = strtolower(empty ($row['Field']) ? $row['field'] : $row['Field']);
-		$the_field = $mod->custom_fields->getField($col);
+		$col = strtolower(empty ($row['Name']) ? $row['name'] : $row['Name']);
+		$the_field = $mod->custom_fields->getFieldWidget($the_module, $col);
 		$type = strtolower(empty ($row['Type']) ? $row['type'] : $row['Type']);
 		if (!empty($row['data_precision']) && !empty($row['data_scale'])) {
 			$type.='(' . $row['data_precision'];

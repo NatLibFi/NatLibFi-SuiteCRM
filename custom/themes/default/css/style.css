@@ -1,0 +1,30 @@
+#nlfbr_BusinessRelationships_detailview_tabs #detailpanel_3 {
+ /*   display: none;*/
+}
+
+.accountstable tr td[scope=row]
+{
+    padding-left:0 !important;
+    padding-top:0 !important;
+}
+
+.contractstable tr td[scope=row]
+{
+    padding-left:0 !important;
+    padding-top:0 !important;
+}
+
+.contract-name,
+.data-source-name {
+    font-weight: bold;
+}
+
+tr.multirow-last td
+{
+    padding-bottom: 2em !important;
+}
+
+@media print {
+    header { display: none }
+    a[href]:after { content: none !important; }
+}
