@@ -43,7 +43,7 @@ $themedef = array(
     'name'  => "Suite 7",
     'description' => "SuiteCRM 7.0 Theme",
     'version' => array(
-        'regex_matches' => array('6\.*.*'),
+        'regex_matches' => array('.+'),
         ),
     'group_tabs' => true,
     'classic' => true,
