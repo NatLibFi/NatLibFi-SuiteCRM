@@ -40,6 +40,9 @@
  * theme basis.
  ********************************************************************************/
 
+@import url('yui.css');
+@import url('deprecated.css');
+
 /* MAIN NAV STYLES */
 
 body {
