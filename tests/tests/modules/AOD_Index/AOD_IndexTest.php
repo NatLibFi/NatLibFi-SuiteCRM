@@ -180,7 +180,7 @@ class AOD_IndexTest extends PHPUnit_Framework_TestCase
                 'ProjectTask' => 'ProjectTask',
                 'ProspectLists' => 'ProspectList',
                 'Prospects' => 'Prospect',
-                'Tasks' => 'Task'
+                'Tasks' => 'Task',
                 'nlfal_Alliances' => 'nlfal_Alliances',
                 'nlfbr_BusinessRelationships' => 'nlfbr_BusinessRelationships',
                 'nlfbs_BackendSystems' => 'nlfbs_BackendSystems',
