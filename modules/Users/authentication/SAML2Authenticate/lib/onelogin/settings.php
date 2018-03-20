@@ -42,10 +42,10 @@ if (!defined('sugarEntry') || !sugarEntry) {
     die('Not A Valid Entry Point');
 }
 
-$spBase = $GLOBALS['sugar_config']['site_url'].'/index.php?action=Login&module=Users';
+$spBase = $GLOBALS['sugar_config']['site_url'].'/index.php?action=Authenticate&module=Users';
 $settingsInfo = array (
     'sp' => array (
-        'entityId' => $spBase,
+        'entityId' => 'ASKI',
         'assertionConsumerService' => array (
             'url' => $spBase,
         ),
