@@ -132,11 +132,15 @@ function getActiveAllianceMembersHtml($focus, $name, $value, $view) {
 }
 
 function getAllActiveAllianceMembers($allianceId) {
+    $noLeaderOptionAndAllAcounts = array_merge(
+        array('' => translate('LBL_NO_ALLIANCE_LEADER', 'nlfal_Alliances')),
+        getAllActiveAccounts()
+    );
     if ($allianceId === null) {
-        return getAllActiveAccounts();
+        return $noLeaderOptionAndAllAcounts;
     }
 
-    $members = array();
+    $members = array('' => translate('LBL_NO_ALLIANCE_LEADER', 'nlfal_Alliances'));
 
     $db = $GLOBALS['db'];
     $query = 'SELECT rel.nlfal_alliances_accounts_1accounts_idb AS account_id, acc.name AS account_name '.
@@ -149,6 +153,10 @@ function getAllActiveAllianceMembers($allianceId) {
 
     while ($row = $db->fetchByAssoc($result)) {
         $members[$row['account_id']] = $row['account_name'];
+    }
+
+    if (count($members) === 1) {
+        return $noLeaderOptionAndAllAcounts;
     }
 
     return $members;
