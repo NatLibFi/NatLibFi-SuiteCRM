@@ -93,7 +93,7 @@ function makeNonEditableRelateEnumHtml(array $options) {
 function printRelateMultiEnumListItem($id, $name, array $displayParams = array()) {
     $link = isset($displayParams['link']) && $displayParams['link'];
     $module = isset($displayParams['module']) ? $displayParams['module'] : '';
-    if ($link && $module) {
+    if ($link && $module && $id !== '') {
         $target = 'index.php?module=' . htmlentities($module) . '&action=DetailView&record=' . htmlentities($id);
         return '<a href="' . ajaxLink($target) . '">' . htmlentities($name) . '</a>';
     }
