@@ -4,6 +4,7 @@ php:
   - 5.6
   - 7.0
   - 7.1
+  - 7.2
 before_script:
   - mysql -e "CREATE DATABASE automated_tests;"
   - mysql -u root -e "CREATE USER 'automated_tests'@'localhost' IDENTIFIED BY 'automated_tests';"
