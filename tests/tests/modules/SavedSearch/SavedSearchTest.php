@@ -95,6 +95,7 @@ class SavedSearchTest extends PHPUnit_Framework_TestCase
 
     public function returnSavedSearch($id)
     {
+        $this->markTestIncomplete('Method calls exit()');
         $savedSearch = new SavedSearch();
 
         //execute the method and test if it works and does not throws an exception.
