@@ -121,7 +121,7 @@ class LogicHook{
 			while($entry = $dir->read()){
 				if($entry != '.' && $entry != '..' && strtolower(substr($entry, -4)) == ".php" && is_file($extpath.'/'.$entry)) {
 				    unset($hook_array);
-                    include($extpath.'/'.$entry);
+                    include_once($extpath.'/'.$entry);
                     if(!empty($hook_array)) {
                         foreach($hook_array as $type => $hookg) {
                             foreach($hookg as $index => $hook) {
