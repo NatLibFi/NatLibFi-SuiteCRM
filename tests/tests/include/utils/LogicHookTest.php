@@ -136,6 +136,13 @@ class LogicHookTest extends PHPUnit_Framework_TestCase {
         $expected_accounts = array(
                 'before_save' => array(
                         array(77, 'updateGeocodeInfo', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'updateGeocodeInfo'),
+			array(
+				1,
+				'Update Account name field to be in sync with the current default language name',
+				'custom/modules/Accounts/beforeSaveHook.php',
+				'AccountBeforeSaveHook',
+				'setAccountName'
+			),
                 ),
                 'after_save' => array(
                         array(77, 'updateRelatedMeetingsGeocodeInfo', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'updateRelatedMeetingsGeocodeInfo'),
@@ -265,6 +272,13 @@ class LogicHookTest extends PHPUnit_Framework_TestCase {
 				'before_save' =>
 				array (
 						array (77, 'updateGeocodeInfo', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'updateGeocodeInfo',),
+						array(
+							1,
+							'Update Account name field to be in sync with the current default language name',
+							'custom/modules/Accounts/beforeSaveHook.php',
+							'AccountBeforeSaveHook',
+							'setAccountName'
+						),
 				),
 				'after_save' =>
 				array (
