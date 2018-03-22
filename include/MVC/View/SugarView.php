@@ -529,6 +529,7 @@ class SugarView
             $ss->assign("recentRecords", $this->processRecentRecords($history));
         }
 
+        $groupTabs = array();
         $bakModStrings = $mod_strings;
         if (isset($_SESSION["authenticated_user_id"])) {
             // get the module list
