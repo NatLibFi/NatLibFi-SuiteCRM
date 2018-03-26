@@ -8,7 +8,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -30,7 +30,7 @@ type:::enum
 len:::100
 required:::0
 default_value:::unknown
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::1
@@ -52,7 +52,7 @@ type:::datetimecombo
 len:::0
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::1
@@ -74,7 +74,7 @@ type:::datetimecombo
 len:::0
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::1
@@ -96,7 +96,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -118,7 +118,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -140,7 +140,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -162,7 +162,7 @@ type:::float
 len:::10
 required:::0
 default_value:::0.00000000
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -184,7 +184,7 @@ type:::float
 len:::11
 required:::0
 default_value:::0.00000000
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -206,7 +206,7 @@ type:::url
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::1
 massupdate:::0
@@ -228,7 +228,7 @@ type:::enum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -250,7 +250,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -272,7 +272,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -294,7 +294,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -316,7 +316,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -338,7 +338,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -360,7 +360,7 @@ type:::enum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::1
@@ -382,7 +382,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -404,7 +404,7 @@ type:::bool
 len:::255
 required:::0
 default_value:::0
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::1
 massupdate:::0
@@ -426,7 +426,7 @@ type:::bool
 len:::255
 required:::0
 default_value:::0
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::1
 massupdate:::0
@@ -448,7 +448,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -470,7 +470,7 @@ type:::bool
 len:::255
 required:::0
 default_value:::0
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::1
 massupdate:::0
@@ -492,7 +492,7 @@ type:::bool
 len:::255
 required:::0
 default_value:::0
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::1
 massupdate:::0
@@ -514,7 +514,7 @@ type:::int
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -536,7 +536,7 @@ type:::multienum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -558,7 +558,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -580,7 +580,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -602,7 +602,7 @@ type:::float
 len:::10
 required:::0
 default_value:::0.00000000
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -624,7 +624,7 @@ type:::float
 len:::11
 required:::0
 default_value:::0.00000000
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -646,7 +646,7 @@ type:::enum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -668,7 +668,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -690,7 +690,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -712,7 +712,7 @@ type:::float
 len:::10
 required:::0
 default_value:::0.00000000
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -734,7 +734,7 @@ type:::float
 len:::11
 required:::0
 default_value:::0.00000000
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -756,7 +756,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -778,7 +778,7 @@ type:::bool
 len:::255
 required:::0
 default_value:::0
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -800,7 +800,7 @@ type:::multienum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::1
@@ -822,7 +822,7 @@ type:::enum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::1
@@ -844,7 +844,7 @@ type:::multienum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-19 08:03:51
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -866,7 +866,7 @@ type:::enum
 len:::100
 required:::0
 default_value:::account_ei_tiedossa
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -888,7 +888,7 @@ type:::text
 len:::0
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -910,7 +910,7 @@ type:::enum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::1
@@ -932,7 +932,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -954,7 +954,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -976,7 +976,7 @@ type:::float
 len:::10
 required:::0
 default_value:::0.00000000
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -998,7 +998,7 @@ type:::float
 len:::11
 required:::0
 default_value:::0.00000000
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1020,7 +1020,7 @@ type:::id
 len:::36
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1042,7 +1042,7 @@ type:::text
 len:::0
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1064,7 +1064,7 @@ type:::relate
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1086,7 +1086,7 @@ type:::enum
 len:::100
 required:::0
 default_value:::ei_valintaa
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::1
@@ -1108,7 +1108,7 @@ type:::enum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::1
@@ -1130,7 +1130,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1152,7 +1152,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1174,7 +1174,7 @@ type:::float
 len:::10
 required:::0
 default_value:::0.00000000
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1196,7 +1196,7 @@ type:::float
 len:::11
 required:::0
 default_value:::0.00000000
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1218,7 +1218,7 @@ type:::id
 len:::36
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1240,7 +1240,7 @@ type:::id
 len:::36
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1262,7 +1262,7 @@ type:::relate
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1284,7 +1284,7 @@ type:::enum
 len:::100
 required:::0
 default_value:::$vardef.default
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1306,7 +1306,7 @@ type:::int
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1328,7 +1328,7 @@ type:::enum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1350,7 +1350,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1372,7 +1372,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1394,7 +1394,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1416,7 +1416,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1438,7 +1438,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1460,7 +1460,7 @@ type:::id
 len:::36
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1482,7 +1482,7 @@ type:::relate
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1504,7 +1504,7 @@ type:::multienum
 len:::100
 required:::0
 default_value:::^ei_valintaa^
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::1
@@ -1526,7 +1526,7 @@ type:::enum
 len:::100
 required:::0
 default_value:::ei_valintaa
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::1
@@ -1548,7 +1548,7 @@ type:::enum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::1
@@ -1570,9 +1570,9 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:14:15
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -1592,7 +1592,7 @@ type:::id
 len:::36
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1614,7 +1614,7 @@ type:::id
 len:::36
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1636,9 +1636,9 @@ type:::multienum
 len:::100
 required:::1
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:05:13
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::1
 duplicate_merge:::0
 reportable:::1
@@ -1658,9 +1658,9 @@ type:::int
 len:::255
 required:::0
 default_value:::0
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:16:19
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -1680,9 +1680,9 @@ type:::enum
 len:::100
 required:::0
 default_value:::eitietoa
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:16:49
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::1
 duplicate_merge:::0
 reportable:::1
@@ -1702,9 +1702,9 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:14:02
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -1724,16 +1724,16 @@ type:::url
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:19:55
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
 importable:::true
 ext1:::
 ext2:::
-ext3:::0
+ext3:::
 ext4:::_blank
 DONE
 id:::nlfbr_BusinessRelationshipsfinna_production_year_c
@@ -1746,9 +1746,9 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:13:33
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -1768,9 +1768,9 @@ type:::multienum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:13:19
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::1
 duplicate_merge:::0
 reportable:::1
@@ -1790,9 +1790,9 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:10:17
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -1812,9 +1812,9 @@ type:::date
 len:::0
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:05:27
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::1
 duplicate_merge:::0
 reportable:::1
@@ -1834,9 +1834,9 @@ type:::int
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:06:03
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -1856,7 +1856,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -1878,9 +1878,9 @@ type:::multienum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:13:49
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::1
 duplicate_merge:::0
 reportable:::1
@@ -1900,9 +1900,9 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:13:06
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -1922,9 +1922,9 @@ type:::bool
 len:::255
 required:::0
 default_value:::0
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:18:43
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -1944,9 +1944,9 @@ type:::relate
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:18:59
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -1966,9 +1966,9 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:12:03
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -1988,9 +1988,9 @@ type:::text
 len:::0
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:15:48
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -2010,9 +2010,9 @@ type:::date
 len:::0
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:10:32
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::1
 duplicate_merge:::0
 reportable:::1
@@ -2032,7 +2032,7 @@ type:::id
 len:::36
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2054,9 +2054,9 @@ type:::bool
 len:::255
 required:::0
 default_value:::0
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:18:30
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -2076,7 +2076,7 @@ type:::bool
 len:::255
 required:::0
 default_value:::0
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2098,9 +2098,9 @@ type:::enum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:15:08
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::1
 duplicate_merge:::0
 reportable:::1
@@ -2120,9 +2120,9 @@ type:::date
 len:::0
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:11:03
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -2142,9 +2142,9 @@ type:::relate
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:14:44
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -2164,9 +2164,9 @@ type:::relate
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:12:46
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -2186,9 +2186,9 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:12:19
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -2208,9 +2208,9 @@ type:::url
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:19:40
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -2230,9 +2230,9 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:11:33
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -2252,9 +2252,9 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:19:18
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -2274,9 +2274,9 @@ type:::multienum
 len:::100
 required:::0
 default_value:::^ei_sopimusta^
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:14:30
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::1
 duplicate_merge:::0
 reportable:::1
@@ -2296,7 +2296,7 @@ type:::id
 len:::36
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2318,9 +2318,9 @@ type:::relate
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-03-25 10:16:02
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -2340,7 +2340,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2362,7 +2362,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2384,7 +2384,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2406,7 +2406,7 @@ type:::phone
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2428,7 +2428,7 @@ type:::enum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::1
@@ -2450,7 +2450,7 @@ type:::url
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2472,7 +2472,7 @@ type:::text
 len:::0
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2494,7 +2494,7 @@ type:::enum
 len:::100
 required:::1
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2516,7 +2516,7 @@ type:::date
 len:::0
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2538,7 +2538,7 @@ type:::date
 len:::0
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2560,7 +2560,7 @@ type:::url
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2582,7 +2582,7 @@ type:::enum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2604,7 +2604,7 @@ type:::enum
 len:::100
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2626,7 +2626,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2648,7 +2648,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2670,7 +2670,7 @@ type:::float
 len:::10
 required:::0
 default_value:::0.00000000
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2692,7 +2692,7 @@ type:::float
 len:::11
 required:::0
 default_value:::0.00000000
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2714,7 +2714,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2736,7 +2736,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2758,7 +2758,7 @@ type:::float
 len:::10
 required:::0
 default_value:::0.00000000
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2780,7 +2780,7 @@ type:::float
 len:::11
 required:::0
 default_value:::0.00000000
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2802,7 +2802,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2824,7 +2824,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2846,7 +2846,7 @@ type:::float
 len:::10
 required:::0
 default_value:::0.00000000
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
@@ -2868,7 +2868,7 @@ type:::float
 len:::11
 required:::0
 default_value:::0.00000000
-date_modified:::2017-12-01 13:22:29
+date_modified:::2018-02-25 15:30:02
 deleted:::0
 audited:::0
 massupdate:::0
