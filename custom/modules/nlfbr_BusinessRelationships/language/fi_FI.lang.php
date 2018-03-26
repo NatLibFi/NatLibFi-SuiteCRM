@@ -12,7 +12,6 @@ $mod_strings = array (
   'LBL_PAASY_HALLINTALIITTYMAAN' => 'Paasy hallintaliittymään?',
   'LBL_KAYTTORAJOITETTU_METATIETO' => 'Käyttörajoitettu metatieto',
   'LBL_AINEISTO_PALAUTE' => 'Aineistoa koskevan palautteen e-mail',
-  'LBL_HARAVOINTIFORMAATTI' => 'Haravointiformaatti',
   'LBL_FINNANAKYMA' => 'Oma Finna-näkymä',
   'LBL_FINNANAKYMA_URL' => 'Oman Finna-näkymän osoite',
   'LBL_LISATIETO' => 'Lisätietoa tietolähteestä',
