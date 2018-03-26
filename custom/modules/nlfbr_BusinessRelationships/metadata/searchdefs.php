@@ -72,22 +72,6 @@ array (
         'id' => 'NLFSE_SERVICES_NLFBR_BUSINESSRELATIONSHIPS_1NLFSE_SERVICES_IDA',
         'name' => 'nlfse_services_nlfbr_businessrelationships_1_name',
       ),
-      'assigned_user_id' => 
-      array (
-        'name' => 'assigned_user_id',
-        'label' => 'LBL_ASSIGNED_TO',
-        'type' => 'enum',
-        'function' => 
-        array (
-          'name' => 'get_user_array',
-          'params' => 
-          array (
-            0 => false,
-          ),
-        ),
-        'default' => true,
-        'width' => '10%',
-      ),
       'open_only_has_active_contract' => 
       array (
         'type' => 'bool',
@@ -103,6 +87,15 @@ array (
         'width' => '10%',
         'default' => true,
         'name' => 'nlfbr_businessrelationships_account_alliances',
+      ),
+      'account_industry' => 
+      array (
+        'type' => 'multienum',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_ACCOUNT_INDUSTRY',
+        'width' => '10%',
+        'name' => 'account_industry',
       ),
       'business_relationship_roles' => 
       array (
@@ -121,31 +114,6 @@ array (
         'width' => '10%',
         'name' => 'asiakassuhde_c',
       ),
-      'commercial' => 
-      array (
-        'type' => 'bool',
-        'default' => true,
-        'label' => 'LBL_COMMERCIAL',
-        'width' => '10%',
-        'name' => 'commercial',
-      ),
-      'date_entered' => 
-      array (
-        'type' => 'datetime',
-        'label' => 'LBL_DATE_ENTERED',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'date_entered',
-      ),
-      'finnanakyma_c' => 
-      array (
-        'type' => 'enum',
-        'default' => true,
-        'studio' => 'visible',
-        'label' => 'LBL_FINNANAKYMA',
-        'width' => '10%',
-        'name' => 'finnanakyma_c',
-      ),
       'palvelu_liittymisen_status_c' => 
       array (
         'type' => 'enum',
@@ -163,6 +131,15 @@ array (
         'width' => '10%',
         'name' => 'production_date_c',
       ),
+      'finnanakyma_c' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_FINNANAKYMA',
+        'width' => '10%',
+        'name' => 'finnanakyma_c',
+      ),
       'nfl_business_relation_begins_c' => 
       array (
         'type' => 'date',
@@ -171,14 +148,37 @@ array (
         'width' => '10%',
         'name' => 'nfl_business_relation_begins_c',
       ),
-      'account_industry' => 
+      'date_entered' => 
       array (
-        'type' => 'multienum',
-        'default' => true,
-        'studio' => 'visible',
-        'label' => 'LBL_ACCOUNT_INDUSTRY',
+        'type' => 'datetime',
+        'label' => 'LBL_DATE_ENTERED',
         'width' => '10%',
-        'name' => 'account_industry',
+        'default' => true,
+        'name' => 'date_entered',
+      ),
+      'commercial' => 
+      array (
+        'type' => 'bool',
+        'default' => true,
+        'label' => 'LBL_COMMERCIAL',
+        'width' => '10%',
+        'name' => 'commercial',
+      ),
+      'assigned_user_id' => 
+      array (
+        'name' => 'assigned_user_id',
+        'label' => 'LBL_ASSIGNED_TO',
+        'type' => 'enum',
+        'function' => 
+        array (
+          'name' => 'get_user_array',
+          'params' => 
+          array (
+            0 => false,
+          ),
+        ),
+        'default' => true,
+        'width' => '10%',
       ),
     ),
   ),
