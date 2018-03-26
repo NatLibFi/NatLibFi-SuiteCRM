@@ -790,28 +790,6 @@ ext2:::
 ext3:::
 ext4:::
 DONE
-id:::Contactspalvelu_c
-name:::palvelu_c
-vname:::LBL_PALVELU
-comments:::Tähän relaatio palveluihin. Pitää voida valita useita palveluita/hlö
-help:::
-custom_module:::Contacts
-type:::enum
-len:::100
-required:::0
-default_value:::
-date_modified:::2017-04-26 14:20:34
-deleted:::0
-audited:::0
-massupdate:::1
-duplicate_merge:::0
-reportable:::1
-importable:::true
-ext1:::nlfal_alliances_services_list
-ext2:::
-ext3:::
-ext4:::
-DONE
 id:::Contactsrooli_c
 name:::rooli_c
 vname:::LBL_ROOLI
