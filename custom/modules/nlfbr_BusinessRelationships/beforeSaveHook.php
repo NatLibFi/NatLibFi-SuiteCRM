@@ -594,42 +594,110 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
         foreach ($existingSources as $oldData) {
             $key = $oldData['record_id'];
             if (!array_key_exists($key, $updatedSources)) {
-                $toDelete[] = $oldData['record_id'];
+                $toDelete[] = array(
+                    'id' => $oldData['record_id'],
+                    'name' => $oldData['source_name'],
+                );
                 continue;
             }
             $newData = $updatedSources[$key];
             if (
-                $oldData['name'] !== $newData['name'] ||
-                $oldData['backend_system'] !== $newData['backend_system'] ||
-                $oldData['harvesting_format'] !== $newData['harvesting_format'] ||
+                $oldData['source_name'] !== $newData['name'] ||
+                encodeMultienumValue($oldData['backend_system']) !== $newData['backend_system'] ||
+                encodeMultienumValue($oldData['harvesting_format']) !== $newData['harvesting_format'] ||
                 $oldData['contact_email'] !== $newData['contact_email'] ||
                 $oldData['restricted_metadata'] !== $newData['restricted_metadata'] ||
                 $oldData['description'] !== $newData['description']
             ) {
-                $toUpdate[] = $newData;
+                $toUpdate[] = array(
+                    'new' => $newData,
+                    'old' => $oldData,
+                );
             }
         }
 
         $db = $GLOBALS['db'];
 
-        foreach ($toDelete as $id) {
-            $query = 'DELETE FROM nlfbr_businessrelationships_finna_sources WHERE id="' . $db->quote($id) . '"';
+        foreach ($toDelete as $data) {
+            $query = 'DELETE FROM nlfbr_businessrelationships_finna_sources WHERE id="' . $db->quote($data['id']) . '"';
+
+            $auditData = array(
+                'field_name' => 'finna_data_source',
+                'data_type' => 'varchar',
+                'before' => $data['name'],
+                'after' => '',
+            );
 
             $result = $db->query($query);
+            $db->save_audit_records($bean, $auditData);
         }
 
         foreach ($toUpdate as $data) {
             $query = 'UPDATE nlfbr_businessrelationships_finna_sources ' .
-                'SET source_name="' . $db->quote($data['name']) . '", ' .
-                'backend_system="' . $db->quote($data['backend_system']) . '", ' .
-                'harvesting_format="' . $db->quote($data['harvesting_format']) . '", ' .
-                'contact_email="' . $db->quote($data['contact_email']) . '", ' .
-                'restricted_metadata=' . ($data['restricted_metadata'] ? '1' : '0') . ', ' .
-                'description="' . $db->quote($data['description']) . '", ' .
+                'SET source_name="' . $db->quote($data['new']['name']) . '", ' .
+                'backend_system="' . $db->quote($data['new']['backend_system']) . '", ' .
+                'harvesting_format="' . $db->quote($data['new']['harvesting_format']) . '", ' .
+                'contact_email="' . $db->quote($data['new']['contact_email']) . '", ' .
+                'restricted_metadata=' . ($data['new']['restricted_metadata'] ? '1' : '0') . ', ' .
+                'description="' . $db->quote($data['new']['description']) . '", ' .
                 'date_modified=NOW() ' .
-                'WHERE id="' . $db->quote($data['record_id']) . '"';
+                'WHERE id="' . $db->quote($data['new']['record_id']) . '"';
+
+            $auditData = array();
+            if ($data['old']['source_name'] !== $data['new']['name']) {
+                $auditData[] = array(
+                    'field_name' => 'finna_data_source',
+                    'data_type' => 'varchar',
+                    'before' => $data['old']['source_name'],
+                    'after' => $data['new']['name'],
+                );
+            }
+            if (encodeMultienumValue($data['old']['backend_system']) !== $data['new']['backend_system']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['new']['name'] . '|finna_source_backend_system',
+                    'data_type' => 'enum',
+                    'before' => encodeMultienumValue($data['old']['backend_system']),
+                    'after' => $data['new']['backend_system'],
+                );
+            }
+            if (encodeMultienumValue($data['old']['harvesting_format']) !== $data['new']['harvesting_format']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['new']['name'] . '|finna_source_harvesting_format',
+                    'data_type' => 'enum',
+                    'before' => encodeMultienumValue($data['old']['harvesting_format']),
+                    'after' => $data['new']['harvesting_format'],
+                );
+            }
+            if ($data['old']['contact_email'] !== $data['new']['contact_email']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['new']['name'] . '|finna_source_contact_email',
+                    'data_type' => 'varchar',
+                    'before' => $data['old']['contact_email'],
+                    'after' => $data['new']['contact_email'],
+                );
+            }
+            if ($data['old']['restricted_metadata'] !== $data['new']['restricted_metadata']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['new']['name'] . '|finna_source_restricted_metadata',
+                    'data_type' => 'bool',
+                    'before' => $data['old']['restricted_metadata'] ? '1' : '0',
+                    'after' => $data['new']['restricted_metadata'] ? '1' : '0',
+                );
+            }
+            if ($data['old']['description'] !== $data['new']['description']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['new']['name'] . '|finna_source_description',
+                    'data_type' => 'text',
+                    'before' => $data['old']['description'],
+                    'after' => $data['new']['description'],
+                );
+            }
 
             $result = $db->query($query);
+            foreach ($auditData as $auditRow) {
+                $db->save_audit_records($bean, $auditRow);
+            }
+
         }
 
        foreach ($newSources as $data) {
@@ -646,7 +714,49 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 '"' . $db->quote($data['description']) . '", ' .
                 'NOW() )';
 
+            $auditData = array(
+                array(
+                    'field_name' => 'finna_data_source',
+                    'data_type' => 'varchar',
+                    'before' => '',
+                    'after' => $data['name'],
+                ),
+                array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['name'] . '|finna_source_backend_system',
+                    'data_type' => 'enum',
+                    'before' => '',
+                    'after' => $data['backend_system'],
+                ),
+                 array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['name'] . '|finna_source_harvesting_format',
+                    'data_type' => 'enum',
+                    'before' => '',
+                    'after' => $data['harvesting_format'],
+                ),
+                 array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['name'] . '|finna_source_contact_email',
+                    'data_type' => 'varchar',
+                    'before' => '',
+                    'after' => $data['contact_email'],
+                ),
+                array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['name'] . '|finna_source_restricted_metadata',
+                    'data_type' => 'bool',
+                    'before' => '',
+                    'after' => $data['restricted_metadata'] ? '1' : '0',
+                ),
+                array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['name'] . '|finna_source_description',
+                    'data_type' => 'text',
+                    'before' => '',
+                    'after' => $data['description'],
+                ),
+            );
+
             $result = $db->query($query);
+            foreach ($auditData as $auditRow) {
+                $db->save_audit_records($bean, $auditRow);
+            }
         }
 
         $this->updateAccountBackendSystemData($bean);
