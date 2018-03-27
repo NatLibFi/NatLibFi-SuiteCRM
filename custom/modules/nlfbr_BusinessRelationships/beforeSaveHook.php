@@ -851,7 +851,10 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
         foreach ($existingLinks as $oldData) {
             $key = $oldData['record_id'];
             if (!array_key_exists($key, $updatedLinks)) {
-                $toDelete[] = $oldData['record_id'];
+                $toDelete[] = array(
+                    'id' => $oldData['record_id'],
+                    'link_url' => $oldData['link_url'],
+                );
                 continue;
             }
             $newData = $updatedLinks[$key];
@@ -859,26 +862,58 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 $oldData['link_url'] !== $newData['link_url'] ||
                 $oldData['description'] !== $newData['description']
             ) {
-                $toUpdate[] = $newData;
+                $toUpdate[] = array(
+                    'new' => $newData,
+                    'old' => $oldData,
+                );
             }
         }
 
         $db = $GLOBALS['db'];
 
-        foreach ($toDelete as $id) {
-            $query = 'DELETE FROM nlfbr_businessrelationships_finna_links WHERE id="' . $db->quote($id) . '"';
+        foreach ($toDelete as $data) {
+            $query = 'DELETE FROM nlfbr_businessrelationships_finna_links WHERE id="' . $db->quote($data['id']) . '"';
+
+            $auditData = array(
+                'field_name' => 'finna_link',
+                'data_type' => 'varchar',
+                'before' => $data['link_url'],
+                'after' => '',
+            );
 
             $result = $db->query($query);
+            $db->save_audit_records($bean, $auditData);
         }
 
         foreach ($toUpdate as $data) {
             $query = 'UPDATE nlfbr_businessrelationships_finna_links ' .
-                'SET link_url="' . $db->quote($data['link_url']) . '", ' .
-                'description="' . $db->quote($data['description']) . '", ' .
+                'SET link_url="' . $db->quote($data['new']['link_url']) . '", ' .
+                'description="' . $db->quote($data['new']['description']) . '", ' .
                 'date_modified=NOW() ' .
-                'WHERE id="' . $db->quote($data['record_id']) . '"';
+                'WHERE id="' . $db->quote($data['new']['record_id']) . '"';
+
+            $auditData = array();
+            if ($data['old']['link_url'] !== $data['new']['link_url']) {
+                $auditData[] = array(
+                    'field_name' => 'finna_link',
+                    'data_type' => 'varchar',
+                    'before' => $data['old']['link_url'],
+                    'after' => $data['new']['link_url'],
+                );
+            }
+            if ($data['old']['description'] !== $data['new']['description']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_link|' . $data['new']['link_url'] . '|finna_link_description',
+                    'data_type' => 'text',
+                    'before' => $data['old']['description'],
+                    'after' => $data['new']['description'],
+                );
+            }
 
             $result = $db->query($query);
+            foreach ($auditData as $auditRow) {
+                $db->save_audit_records($bean, $auditRow);
+            }
         }
 
        foreach ($newLinks as $data) {
@@ -891,7 +926,25 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 '"' . $db->quote($data['description']) . '", ' .
                 'NOW() )';
 
+            $auditData = array(
+                array(
+                    'field_name' => 'finna_link',
+                    'data_type' => 'varchar',
+                    'before' => '',
+                    'after' => $data['link_url'],
+                ),
+                array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_link|' . $data['link_url'] . '|finna_link_description',
+                    'data_type' => 'text',
+                    'before' => '',
+                    'after' => $data['description'],
+                ),
+            );
+
             $result = $db->query($query);
+            foreach ($auditData as $auditRow) {
+                $db->save_audit_records($bean, $auditRow);
+            }
         }
 
     }
