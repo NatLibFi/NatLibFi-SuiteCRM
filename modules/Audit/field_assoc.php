@@ -86,4 +86,6 @@ $moduleAssocFieldsArray = array('Account' =>
                                 ),
                             );
 
-?>
+if (file_exists('custom/modules/Audit/field_assoc.php')) {
+    require('custom/modules/Audit/field_assoc.php');
+}
