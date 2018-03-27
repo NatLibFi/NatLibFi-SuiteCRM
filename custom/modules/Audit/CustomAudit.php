@@ -33,19 +33,25 @@ class CustomAudit extends Audit {
                     $afterKeys = unencodeMultienum($auditRecord['after_value_string']);
                     $afterValues = array();
 
-                    $list = '';
+                    $list = array();
                     if (isset($focus->field_defs[$fieldName]['options'])) {
-                        $list = $focus->field_defs[$fieldName]['options'];
+                        $listName = $focus->field_defs[$fieldName]['options'];
+                        $list = $app_list_strings[$listName];
+                    } elseif (isset($focus->field_defs[$fieldName]['function'])) {
+                        $functionName = $focus->field_defs[$fieldName]['function']['name'];
+                        if (function_exists($functionName)) {
+                            $list = $functionName();
+                        }
                     }
 
                     foreach ($beforeKeys as $key) {
-                        if (isset($app_list_strings[$list][$key])) {
-                            $beforeValues[] = $app_list_strings[$list][$key];
+                        if (isset($list[$key])) {
+                            $beforeValues[] = $list[$key];
                         }
                     }
                     foreach ($afterKeys as $key) {
-                        if (isset($app_list_strings[$list][$key])) {
-                            $afterValues[] = $app_list_strings[$list][$key];
+                        if (isset($list[$key])) {
+                            $afterValues[] = $list[$key];
                         }
                     }
 
