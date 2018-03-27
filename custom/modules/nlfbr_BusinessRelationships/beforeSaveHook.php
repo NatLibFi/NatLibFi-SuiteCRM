@@ -442,7 +442,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             }
             if ($data['old']['admin_access'] !== $data['new']['admin_access']) {
                 $auditData[] = array(
-                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['old']['view_url'] . '|finna_view_data_access',
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['new']['view_url'] . '|finna_view_data_access',
                     'data_type' => 'bool',
                     'before' => $data['old']['admin_access'] ? '1' : '0',
                     'after' => $data['new']['admin_access'] ? '1' : '0',
@@ -450,7 +450,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             }
             if ($data['old']['view_status'] !== $data['new']['view_status']) {
                 $auditData[] = array(
-                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['old']['view_url'] . '|finna_view_status',
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['new']['view_url'] . '|finna_view_status',
                     'data_type' => 'enum',
                     'before' => $data['old']['view_status'],
                     'after' => $data['new']['view_status'],
@@ -458,7 +458,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             }
             if ($data['old']['description'] !== $data['new']['description']) {
                 $auditData[] = array(
-                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['old']['view_url'] . '|finna_view_description',
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['new']['view_url'] . '|finna_view_description',
                     'data_type' => 'text',
                     'before' => $data['old']['description'],
                     'after' => $data['new']['description'],
