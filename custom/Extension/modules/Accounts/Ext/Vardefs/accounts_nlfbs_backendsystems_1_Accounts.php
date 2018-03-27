@@ -29,4 +29,16 @@ $dictionary["Account"]["fields"]["accounts_nlfbs_backendsystems_enum"] = array (
   //'bean_name' => 'nlfbs_BackendSystems',
   'vname' => 'LBL_ACCOUNTS_NLFBS_BACKENDSYSTEMS_1_FROM_NLFBS_BACKENDSYSTEMS_TITLE',
   'id_name' => 'accounts_nlfbs_backendsystems_1nlfbs_backendsystems_idb',
+  'audited' => true,
 );
+
+// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
+$dictionary["Account"]["fields"]['backend_system_id'] = array(
+  'name' => 'backend_system_id',
+  'vname' => 'LBL_ACCOUNTS_NLFBS_BACKENDSYSTEMS_1_FROM_NLFBS_BACKENDSYSTEMS_TITLE',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'studio' => array('visible' => false),
+);
+
+
