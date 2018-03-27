@@ -7,6 +7,7 @@ require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipCon
 require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipFinnaViewHelper.php';
 require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipFinnaDataSourceHelper.php';
 require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipFinnaLinkHelper.php';
+require_once 'custom/modules/Audit/CustomAudit.php';
 
 class BusinessRelationshipBeforeSaveHook
 {
@@ -126,7 +127,10 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
         foreach ($existingContracts as $oldData) {
             $key = $oldData['record_id'];
             if (!array_key_exists($key, $updatedContracts)) {
-                $toDelete[] = $oldData['record_id'];
+                $toDelete[] = array(
+                    'id' => $oldData['record_id'],
+                    'contract_id' => $oldData['contract_id'],
+                );
                 continue;
             }
             $newData = $updatedContracts[$key];
@@ -134,7 +138,10 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 $oldData['contract_id'] !== $newData['contract_id']
             ) {
                 // Contract was changed, do not reuse the old relation record,insert new instead
-                $toDelete[] = $oldData['record_id'];
+                $toDelete[] = array(
+                    'id' => $oldData['record_id'],
+                    'contract_id' => $oldData['contract_id'],
+                );
                 $newContracts[] = $newData;
             } elseif (
                 $oldData['active'] !== $newData['active'] ||
@@ -143,32 +150,88 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 $oldData['end_date'] !== $newData['end_date'] ||
                 $oldData['description'] !== $newData['description']
             ) {
-                $toUpdate[] = $newData;
+                $toUpdate[] = array(
+                    'new' => $newData,
+                    'old' => $oldData,
+                );
             }
             //else { $GLOBALS['log']->fatal('unchanged: ' . print_r($newData, true)); }
         }
 
         $db = $GLOBALS['db'];
 
-        foreach ($toDelete as $id) {
-            $query = 'DELETE FROM nlfbr_businessrelationships_aos_contracts_1_c WHERE id="' . $db->quote($id) . '"';
+        foreach ($toDelete as $data) {
+            $query = 'DELETE FROM nlfbr_businessrelationships_aos_contracts_1_c WHERE id="' . $db->quote($data['id']) . '"';
+
+            $auditData = array(
+                'field_name' => 'contract_id',
+                'data_type' => 'relate',
+                'before' => $data['contract_id'],
+                'after' => '',
+            );
 
             //$GLOBALS['log']->fatal('delrun: ' . $query);
             $result = $db->query($query);
+            $db->save_audit_records($bean, $auditData);
         }
 
         foreach ($toUpdate as $data) {
             $query = 'UPDATE nlfbr_businessrelationships_aos_contracts_1_c ' .
-                'SET active=' . ($data['active'] ? '1' : '0') . ', ' .
-                'kronodoc_id="' . $db->quote($data['kronodoc_id']) . '", ' .
-                'year="' . $db->quote($data['bind_year']) . '", ' .
-                ($data['end_date'] ? ('end_date="' . $db->quote($data['end_date']) . '"') : 'end_date=NULL') . ', ' . 
-                'description="' . $db->quote($data['description']) . '", ' .
+                'SET active=' . ($data['new']['active'] ? '1' : '0') . ', ' .
+                'kronodoc_id="' . $db->quote($data['new']['kronodoc_id']) . '", ' .
+                'year="' . $db->quote($data['new']['bind_year']) . '", ' .
+                ($data['new']['end_date'] ? ('end_date="' . $db->quote($data['new']['end_date']) . '"') : 'end_date=NULL') . ', ' . 
+                'description="' . $db->quote($data['new']['description']) . '", ' .
                 'date_modified=NOW() ' .
-                'WHERE id="' . $db->quote($data['record_id']) . '"';
+                'WHERE id="' . $db->quote($data['new']['record_id']) . '"';
+
+            $auditData = array();
+            if ($data['old']['active'] !== $data['new']['active']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'contract_id|' . $data['old']['contract_id'] . '|contract_active',
+                    'data_type' => 'bool',
+                    'before' => $data['old']['active'] ? '1' : '0',
+                    'after' => $data['new']['active'] ? '1' : '0',
+                );
+            }
+            if ($data['old']['kronodoc_id'] !== $data['new']['kronodoc_id']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'contract_id|' . $data['old']['contract_id'] . '|contract_kronodoc_id',
+                    'data_type' => 'varchar',
+                    'before' => $data['old']['kronodoc_id'],
+                    'after' => $data['new']['kronodoc_id'],
+                );
+            }
+            if ($data['old']['bind_year'] !== $data['new']['bind_year']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'contract_id|' . $data['old']['contract_id'] . '|contract_bind_year',
+                    'data_type' => 'varchar',
+                    'before' => $data['old']['bind_year'],
+                    'after' => $data['new']['bind_year'],
+                );
+            }
+            if ($data['old']['end_date'] !== $data['new']['end_date']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'contract_id|' . $data['old']['contract_id'] . '|contract_end_date',
+                    'data_type' => 'varchar',
+                    'before' => $data['old']['end_date'] ? $data['old']['end_date'] : 'NULL',
+                    'after' => $data['new']['end_date'] ? $data['new']['end_date'] : 'NULL',
+                );
+            }
+            if ($data['old']['description'] !== $data['new']['description']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'contract_id|' . $data['old']['contract_id'] . '|contract_description',
+                    'data_type' => 'varchar',
+                    'before' => $data['old']['description'],
+                    'after' => $data['new']['description'],
+                );
+            }
 
             //$GLOBALS['log']->fatal('updrun: ' . $query);
             $result = $db->query($query);
+            foreach ($auditData as $auditRow) {
+                $db->save_audit_records($bean, $auditRow);
+            }
         }
 
        foreach ($newContracts as $data) {
@@ -185,8 +248,50 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 '"' . $db->quote($data['description']) . '", ' .
                 'NOW() )';
 
+            $auditData = array(
+                array(
+                    'field_name' => 'contract_id',
+                    'data_type' => 'relate',
+                    'before' => '',
+                    'after' => $data['contract_id'],
+                ),
+                array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'contract_id|' . $data['contract_id'] . '|contract_active',
+                    'data_type' => 'bool',
+                    'before' => '',
+                    'after' => $data['active'] ? '1' : '0',
+                ),
+                array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'contract_id|' . $data['contract_id'] . '|contract_kronodoc_id',
+                    'data_type' => 'varchar',
+                    'before' => '',
+                    'after' => $data['kronodoc_id'],
+                ),
+                array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'contract_id|' . $data['contract_id'] . '|contract_bind_year',
+                    'data_type' => 'varchar',
+                    'before' => '',
+                    'after' => $data['bind_year'],
+                ),
+                array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'contract_id|' . $data['contract_id'] . '|contract_end_date',
+                    'data_type' => 'varchar',
+                    'before' => '',
+                    'after' => $data['end_date'] ? $data['end_date'] : 'NULL',
+                ),
+                array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'contract_id|' . $data['contract_id'] . '|contract_description',
+                    'data_type' => 'varchar',
+                    'before' => '',
+                    'after' => $data['description'],
+                ),
+            );
+
             //$GLOBALS['log']->fatal('insrun: ' . $query);
             $result = $db->query($query);
+            foreach ($auditData as $auditRow) {
+                $db->save_audit_records($bean, $auditRow);
+            }
         }
 
     }

@@ -82,6 +82,60 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['contract1'] = array(
   'studio' => array('visible' => false),
 );
 
+// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
+$dictionary["nlfbr_BusinessRelationships"]["fields"]['contract_id'] = array(
+  'name' => 'contract_id',
+  'vname' => 'LBL_CONTRACTS_TITLE',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'studio' => array('visible' => false),
+);
+
+// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
+$dictionary["nlfbr_BusinessRelationships"]["fields"]['contract_active'] = array(
+  'name' => 'contract_active',
+  'vname' => 'LBL_CONTRACT_ACTIVE_TITLE',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'studio' => array('visible' => false),
+);
+
+// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
+$dictionary["nlfbr_BusinessRelationships"]["fields"]['contract_kronodoc_id'] = array(
+  'name' => 'contract_kronodoc_id',
+  'vname' => 'LBL_KRONODOC_ID_TITLE',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'studio' => array('visible' => false),
+);
+
+// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
+$dictionary["nlfbr_BusinessRelationships"]["fields"]['contract_bind_year'] = array(
+  'name' => 'contract_bind_year',
+  'vname' => 'LBL_BIND_YEAR_TITLE',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'studio' => array('visible' => false),
+);
+
+// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
+$dictionary["nlfbr_BusinessRelationships"]["fields"]['contract_end_date'] = array(
+  'name' => 'contract_end_date',
+  'vname' => 'LBL_END_DATE_TITLE',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'studio' => array('visible' => false),
+);
+
+// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
+$dictionary["nlfbr_BusinessRelationships"]["fields"]['contract_description'] = array(
+  'name' => 'contract_description',
+  'vname' => 'LBL_DESCRIPTION_TITLE',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'studio' => array('visible' => false),
+);
+
 // Hack: open_only prefix in field name makes bool field to be displayed as a checkbox not a drop down in the search form
 // Found at: http://sugarmods.co.uk/adding-a-custom-search-filter-to-the-listview/
 $dictionary["nlfbr_BusinessRelationships"]["fields"]['open_only_has_active_contract'] = array(
