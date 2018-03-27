@@ -275,7 +275,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 ),
                 array(
                     'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'contract_id|' . $data['contract_id'] . '|contract_end_date',
-                    'data_type' => 'varchar',
+                    'data_type' => 'date',
                     'before' => '',
                     'after' => $data['end_date'] ? $data['end_date'] : 'NULL',
                 ),
@@ -386,7 +386,10 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
         foreach ($existingViews as $oldData) {
             $key = $oldData['record_id'];
             if (!array_key_exists($key, $updatedViews)) {
-                $toDelete[] = $oldData['record_id'];
+                $toDelete[] = array(
+                    'id' => $oldData['record_id'],
+                    'view_url' => $oldData['view_url'],
+                );
                 continue;
             }
             $newData = $updatedViews[$key];
@@ -396,28 +399,76 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 $oldData['view_url'] !== $newData['view_url'] ||
                 $oldData['description'] !== $newData['description']
             ) {
-                $toUpdate[] = $newData;
+                $toUpdate[] = array(
+                    'new' => $newData,
+                    'old' => $oldData
+                );
             }
         }
 
         $db = $GLOBALS['db'];
 
-        foreach ($toDelete as $id) {
-            $query = 'DELETE FROM nlfbr_businessrelationships_finna_views WHERE id="' . $db->quote($id) . '"';
+        foreach ($toDelete as $data) {
+            $query = 'DELETE FROM nlfbr_businessrelationships_finna_views WHERE id="' . $db->quote($data['id']) . '"';
+
+            $auditData = array(
+                'field_name' => 'finna_view_url',
+                'data_type' => 'varchar',
+                'before' => $data['view_url'],
+                'after' => '',
+            );
 
             $result = $db->query($query);
+            $db->save_audit_records($bean, $auditData);
         }
 
         foreach ($toUpdate as $data) {
             $query = 'UPDATE nlfbr_businessrelationships_finna_views ' .
-                'SET admin_access=' . ($data['admin_access'] ? '1' : '0') . ', ' .
-                'view_status="' . $db->quote($data['view_status']) . '", ' .
-                'view_url="' . $db->quote($data['view_url']) . '", ' .
-                'description="' . $db->quote($data['description']) . '", ' .
+                'SET admin_access=' . ($data['new']['admin_access'] ? '1' : '0') . ', ' .
+                'view_status="' . $db->quote($data['new']['view_status']) . '", ' .
+                'view_url="' . $db->quote($data['new']['view_url']) . '", ' .
+                'description="' . $db->quote($data['new']['description']) . '", ' .
                 'date_modified=NOW() ' .
-                'WHERE id="' . $db->quote($data['record_id']) . '"';
+                'WHERE id="' . $db->quote($data['new']['record_id']) . '"';
+
+            $auditData = array();
+            if ($data['old']['view_url'] !== $data['new']['view_url']) {
+                $auditData[] = array(
+                    'field_name' => 'finna_view_url',
+                    'data_type' => 'varchar',
+                    'before' => $data['old']['view_url'],
+                    'after' => $data['new']['view_url'],
+                );
+            }
+            if ($data['old']['admin_access'] !== $data['new']['admin_access']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['old']['view_url'] . '|finna_view_data_access',
+                    'data_type' => 'bool',
+                    'before' => $data['old']['admin_access'] ? '1' : '0',
+                    'after' => $data['new']['admin_access'] ? '1' : '0',
+                );
+            }
+            if ($data['old']['view_status'] !== $data['new']['view_status']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['old']['view_url'] . '|finna_view_status',
+                    'data_type' => 'enum',
+                    'before' => $data['old']['view_status'],
+                    'after' => $data['new']['view_status'],
+                );
+            }
+            if ($data['old']['description'] !== $data['new']['description']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['old']['view_url'] . '|finna_view_description',
+                    'data_type' => 'text',
+                    'before' => $data['old']['description'],
+                    'after' => $data['new']['description'],
+                );
+            }
 
             $result = $db->query($query);
+            foreach ($auditData as $auditRow) {
+                $db->save_audit_records($bean, $auditRow);
+            }
         }
 
        foreach ($newViews as $data) {
@@ -432,7 +483,37 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 '"' . $db->quote($data['description']) . '", ' .
                 'NOW() )';
 
+            $auditData = array(
+                array(
+                    'field_name' => 'finna_view_url',
+                    'data_type' => 'varchar',
+                    'before' => '',
+                    'after' => $data['view_url'],
+                ),
+                array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['view_url'] . '|finna_view_data_access',
+                    'data_type' => 'bool',
+                    'before' => '',
+                    'after' => $data['admin_access'] ? '1' : '0',
+                ),
+                array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['view_url'] . '|finna_view_status',
+                    'data_type' => 'enum',
+                    'before' => '',
+                    'after' => $data['view_status'],
+                ),
+                array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['view_url'] . '|finna_view_description',
+                    'data_type' => 'text',
+                    'before' => '',
+                    'after' => $data['description'],
+                ),
+            );
+
             $result = $db->query($query);
+            foreach ($auditData as $auditRow) {
+                $db->save_audit_records($bean, $auditRow);
+            }
         }
 
     }
