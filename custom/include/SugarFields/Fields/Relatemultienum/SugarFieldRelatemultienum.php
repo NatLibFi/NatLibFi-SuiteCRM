@@ -55,20 +55,48 @@ class SugarFieldRelatemultienum extends SugarFieldMultienum
             return;
         }
 
+        $audited = isset($bean->field_defs[$field]['audited']) && $bean->field_defs[$field]['audited'];
+        $auditData = array();
+
         $oldValues = $bean->$idField->get(true);
-        $roleField = $bean->$idField->_get_link_table_role_field($bean->$idField->_relationship_name);
+        $roleField = null;
+        if (get_class($bean->idField) === 'Link') {
+            $roleField = $bean->$idField->_get_link_table_role_field($bean->$idField->_relationship_name);
+        }
         foreach ($linkedObjects as $obj) {
             $roleArg = array();
             if (!empty($roleField)) {
                 $roleArg = array($roleField => 'NULL');
             }
             $bean->$idField->add($obj, $roleArg);
+            if ($audited && !in_array($obj->id, $oldValues)) {
+                $auditData[] = array(
+                    'field_name' => 'backend_system_id',
+                    'data_type' => 'relate',
+                    'before' => '',
+                    'after' => $obj->id,
+                );
+            }
         }
 
         // Remove ids no longer related
         foreach ($oldValues as $id) {
             if (!in_array($id, $values)) {
                 $bean->$idField->delete($bean->id, $id);
+                if ($audited) {
+                    $auditData[] = array(
+                        'field_name' => 'backend_system_id',
+                        'data_type' => 'relate',
+                        'before' => $id,
+                        'after' => '',
+                    );
+                }
+            }
+        }
+
+        if ($audited && !empty($auditData)) {
+            foreach ($auditData as $auditRow) {
+                $bean->db->save_audit_records($bean, $auditRow);
             }
         }
     }
