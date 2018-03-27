@@ -1,5 +1,6 @@
 <?php
 
+require_once 'include/utils.php';
 require_once 'modules/Audit/Audit.php';
 
 class CustomAudit extends Audit {
@@ -23,6 +24,37 @@ class CustomAudit extends Audit {
                     $label = $focus->field_defs[$fieldName]['vname'];
                     $fieldLabel = translate($label, $focus->module_dir);
                     $auditRecord['field_name'] = $fieldLabel . ' (' . $referedName . ')'; // TODO: i18n!
+                }
+
+                if ($auditRecord['data_type'] === 'enum' || $auditRecord['data_type'] === 'multienum') {
+                    global $app_list_strings;
+                    $beforeKeys = unencodeMultienum($auditRecord['before_value_string']);
+                    $beforeValues = array();
+                    $afterKeys = unencodeMultienum($auditRecord['after_value_string']);
+                    $afterValues = array();
+
+                    $list = '';
+                    if (isset($focus->field_defs[$fieldName]['options'])) {
+                        $list = $focus->field_defs[$fieldName]['options'];
+                    }
+
+                    foreach ($beforeKeys as $key) {
+                        if (isset($app_list_strings[$list][$key])) {
+                            $beforeValues[] = $app_list_strings[$list][$key];
+                        }
+                    }
+                    foreach ($afterKeys as $key) {
+                        if (isset($app_list_strings[$list][$key])) {
+                            $afterValues[] = $app_list_strings[$list][$key];
+                        }
+                    }
+
+                    if (!empty($beforeValues)) {
+                        $auditRecord['before_value_string'] = implode(', ', $beforeValues);
+                    }
+                    if (!empty($afterValues)) {
+                        $auditRecord['after_value_string'] = implode(', ', $afterValues);
+                    }
                 }
             }
         }
