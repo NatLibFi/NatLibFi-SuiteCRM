@@ -159,7 +159,6 @@ class ContactBeforeSaveHook
                 }
 
                 $result = $db->query($query);
-                // TODO: update only relevant fields, e.g. keep role unchanged
 
                 foreach ($auditData as $auditRow) {
                     $bean->db->save_audit_records($bean, $auditRow);
