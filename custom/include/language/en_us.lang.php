@@ -478,7 +478,7 @@ $GLOBALS['app_list_strings']['account_type_dom']=array (
   'User' => 'Käyttäjä',
 );
 $GLOBALS['app_list_strings']['haravointiformaatti_list']=array (
-  'mark21' => 'MARK21',
+  'marc21' => 'MARC21',
   'ead' => 'EAD',
   'lido' => 'LIDO',
   'dublincore' => 'Dublin Core',

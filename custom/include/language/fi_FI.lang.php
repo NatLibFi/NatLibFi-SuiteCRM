@@ -498,7 +498,7 @@ $GLOBALS['app_list_strings']['haravointiformaatti_list']=array (
   'ead' => 'EAD',
   'finmarc' => 'FINMARC',
   'lido' => 'LIDO',
-  'mark21' => 'MARK21',
+  'marc21' => 'MARC21',
   'muu' => 'Muu',
 );
 $GLOBALS['app_list_strings']['contact_account_role_list']=array (
