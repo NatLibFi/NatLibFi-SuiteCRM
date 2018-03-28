@@ -648,7 +648,7 @@ required:::0
 default_value:::
 date_modified:::2018-02-25 15:30:02
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -670,7 +670,7 @@ required:::0
 default_value:::
 date_modified:::2018-02-25 15:30:02
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -692,7 +692,7 @@ required:::0
 default_value:::
 date_modified:::2018-02-25 15:30:02
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -714,7 +714,7 @@ required:::0
 default_value:::0.00000000
 date_modified:::2018-02-25 15:30:02
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -736,7 +736,7 @@ required:::0
 default_value:::0.00000000
 date_modified:::2018-02-25 15:30:02
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -758,7 +758,7 @@ required:::0
 default_value:::
 date_modified:::2018-02-25 15:30:02
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -780,7 +780,7 @@ required:::0
 default_value:::0
 date_modified:::2018-02-25 15:30:02
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::0
 duplicate_merge:::0
 reportable:::1
@@ -802,7 +802,7 @@ required:::0
 default_value:::
 date_modified:::2018-02-25 15:30:02
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::1
 duplicate_merge:::0
 reportable:::1
@@ -824,7 +824,7 @@ required:::0
 default_value:::
 date_modified:::2018-02-25 15:30:02
 deleted:::0
-audited:::0
+audited:::1
 massupdate:::1
 duplicate_merge:::0
 reportable:::1

@@ -106,6 +106,31 @@ $dictionary["Contact"]["fields"]['account1'] = array(
   'studio' => array('editField' => true, 'searchview' => false),
 );
 
+// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
+$dictionary["Contact"]["fields"]['account_department'] = array(
+  'name' => 'account_department',
+  'vname' => 'LBL_CONTACT_ACCOUNT_DEPT_TITLE',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'studio' => array('visible' => false),
+);
+// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
+$dictionary["Contact"]["fields"]['account_address'] = array(
+  'name' => 'account_address',
+  'vname' => 'LBL_CONTACT_ACCOUNT_ADDRESS_TITLE',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'studio' => array('visible' => false),
+);
+// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
+$dictionary["Contact"]["fields"]['account_description'] = array(
+  'name' => 'account_description',
+  'vname' => 'LBL_CONTACT_ACCOUNT_DESC_TITLE',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'studio' => array('visible' => false),
+);
+
 $dictionary["Contact"]["fields"]["contact_account_names"] = array (
     'name' => 'contact_account_names',
     'type' => 'varchar',
