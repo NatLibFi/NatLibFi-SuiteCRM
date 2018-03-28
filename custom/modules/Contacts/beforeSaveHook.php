@@ -77,7 +77,7 @@ class ContactBeforeSaveHook
                         'address' => $accountData['address'],
                         'description' => $accountData['description'],
                     )
-                ); // TODO: additional fields: address etc
+                );
             } else{
                 $db = $GLOBALS['db'];
                 $query = 'UPDATE accounts_contacts ' .
