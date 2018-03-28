@@ -1,4 +1,5 @@
 <?php
- // created: 2017-06-20 14:56:59
+ // created: 2018-03-28 18:22:35
+$dictionary['nlfse_Services']['fields']['additional_information_url']['audited']=true;
 
  ?>
