@@ -154,19 +154,7 @@ class Audit extends SugarBean {
                                 }
 								 if(($field['name'] == 'before_value_string' || $field['name'] == 'after_value_string') && ($row['data_type'] == "enum" || $row['data_type'] == "multienum"))
 								 {
-								 	global $app_list_strings;
-                                    $enum_keys = unencodeMultienum($temp_list[$field['name']]);
-                                    $enum_values = array();
-                                    foreach($enum_keys as $enum_key) {
-									if(isset($focus->field_defs[$row['field_name']]['options'])) {
-										$domain = $focus->field_defs[$row['field_name']]['options'];
-                                            if(isset($app_list_strings[$domain][$enum_key]))
-                                                $enum_values[] = $app_list_strings[$domain][$enum_key];
-									}
-                                    }
-                                    if(!empty($enum_values)){
-                                    	$temp_list[$field['name']] = implode(', ', $enum_values);
-                                    }
+                                    $temp_list[$field['name']] = $this->formatEnumValue($row['field_name'], $temp_list[$field['name']], $focus);
 									if($temp_list['data_type']==='date'){
 										$temp_list[$field['name']]=$timedate->to_display_date($temp_list[$field['name']], false);
 									}
@@ -245,5 +233,23 @@ class Audit extends SugarBean {
             }
         }
     }
+
+    protected function formatEnumValue($fieldName, $value, $bean) {
+        global $app_list_strings;
+        $enum_keys = unencodeMultienum($value);
+        $enum_values = array();
+        foreach($enum_keys as $enum_key) {
+            if(isset($bean->field_defs[$fieldName]['options'])) {
+                $domain = $bean->field_defs[$fieldName]['options'];
+                if(isset($app_list_strings[$domain][$enum_key]))
+                    $enum_values[] = $app_list_strings[$domain][$enum_key];
+            }
+        }
+        if(!empty($enum_values)){
+            return implode(', ', $enum_values);
+        }
+        return $value;
+    }
+
 }
 ?>

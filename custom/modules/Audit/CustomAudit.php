@@ -27,40 +27,8 @@ class CustomAudit extends Audit {
                 }
 
                 if ($auditRecord['data_type'] === 'enum' || $auditRecord['data_type'] === 'multienum') {
-                    global $app_list_strings;
-                    $beforeKeys = unencodeMultienum($auditRecord['before_value_string']);
-                    $beforeValues = array();
-                    $afterKeys = unencodeMultienum($auditRecord['after_value_string']);
-                    $afterValues = array();
-
-                    $list = array();
-                    if (isset($focus->field_defs[$fieldName]['options'])) {
-                        $listName = $focus->field_defs[$fieldName]['options'];
-                        $list = $app_list_strings[$listName];
-                    } elseif (isset($focus->field_defs[$fieldName]['function'])) {
-                        $functionName = $focus->field_defs[$fieldName]['function']['name'];
-                        if (function_exists($functionName)) {
-                            $list = $functionName();
-                        }
-                    }
-
-                    foreach ($beforeKeys as $key) {
-                        if (isset($list[$key])) {
-                            $beforeValues[] = $list[$key];
-                        }
-                    }
-                    foreach ($afterKeys as $key) {
-                        if (isset($list[$key])) {
-                            $afterValues[] = $list[$key];
-                        }
-                    }
-
-                    if (!empty($beforeValues)) {
-                        $auditRecord['before_value_string'] = implode(', ', $beforeValues);
-                    }
-                    if (!empty($afterValues)) {
-                        $auditRecord['after_value_string'] = implode(', ', $afterValues);
-                    }
+                    $auditRecord['before_value_string'] = $this->formatEnumValue($fieldName, $auditRecord['before_value_string'], $focus);
+                    $auditRecord['after_value_string'] = $this->formatEnumValue($fieldName, $auditRecord['after_value_string'], $focus);
                 }
             }
         }
@@ -68,4 +36,28 @@ class CustomAudit extends Audit {
         return $auditList;
     }
 
+    protected function formatEnumValue($fieldName, $value, $bean) {
+        if (!isset($bean->field_defs[$fieldName]['function'])) {
+            return parent::formatEnumValue($fieldName, $value, $bean);
+        }
+        $keys = unencodeMultienum($value);
+        $functionName = $bean->field_defs[$fieldName]['function'];
+        if (isset($bean->field_defs[$fieldName]['function']['name'])) {
+            $functionName = $bean->field_defs[$fieldName]['function']['name'];
+        }
+        $list = array();
+        if (function_exists($functionName)) {
+            $list = $functionName($bean);
+        }
+        $values = array();
+        foreach ($keys as $key) {
+            if (isset($list[$key])) {
+                $values[] = $list[$key];
+            }
+        }
+        if (!empty($values)) {
+            return implode(', ', $values);
+        }
+        return $value;
+    }
 }
