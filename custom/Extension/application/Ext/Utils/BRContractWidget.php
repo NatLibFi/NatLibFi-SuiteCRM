@@ -81,7 +81,7 @@ function getBRContractWidgetForEditView($id, $module, $view, $tabindex='0') {
     $smarty->assign('contractData', $contractData);
     $smarty->assign('allContractData', $allContractData);
     $smarty->assign('tabindex', $tabindex);
-    $smarty->assign('addDefaultContract', 'true');
+    $smarty->assign('addDefaultContract', 'false');
 
     // Based on modules/Calendar/CalendarDisplay.php
     $smarty->assign('calendarFormat', $timedate->get_cal_date_format());
