@@ -9,4 +9,5 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]["nlfbr_businessrelationship
 //  'bean_name' => 'AOS_Contracts',
   'vname' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
   'linkModule' => 'nlfal_Alliances',
+  'audited' => true,
 );
