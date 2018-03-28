@@ -129,7 +129,9 @@ class ContactBeforeSaveHook
                     'SET department="' . $db->quote($accountData['department']) . '", ' .
                     'address="' . $db->quote($accountData['address']) . '", ' .
                     'description="' . $db->quote($accountData['description']) . '" ' .
-                    'WHERE account_id="' . $db->quote($id) . '"';
+                    'WHERE contact_id="' . $db->quote($bean->id) . '" AND ' .
+                    'account_id="' . $db->quote($id) . '" AND ' .
+                    'deleted=0';
 
                 $auditData = array(
                 );
