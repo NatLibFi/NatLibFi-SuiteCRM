@@ -1,6 +1,6 @@
 <?php
- // created: 2017-11-24 15:40:31
+ // created: 2018-03-28 18:08:46
 $dictionary['nlfal_Alliances']['fields']['name_eng_c']['inline_edit']='1';
-$dictionary['nlfal_Alliances']['fields']['name_eng_c']['labelValue']='Nimi englanti';
+$dictionary['nlfal_Alliances']['fields']['name_eng_c']['labelValue']='Nimi (englanti)';
 
  ?>
