@@ -39,6 +39,10 @@ function getBRContractWidgetForEditView($id, $module, $view, $tabindex='0') {
         }
     }
 
+    if (isset($_REQUEST['isDuplicate']) && $_REQUEST['isDuplicate'] === 'true') {
+        $contractDataArr = $helper->resetRecordIds($contractDataArr);
+    }
+
     if(!empty($contractDataArr)) {
         $json = new JSON(JSON_LOOSE_TYPE);
         $contractData = $json->encode(array_reverse($contractDataArr));
