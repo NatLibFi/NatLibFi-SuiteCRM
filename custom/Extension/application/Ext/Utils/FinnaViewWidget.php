@@ -34,6 +34,10 @@ function getBRFinnaViewWidgetForEditView($id, $module, $view, $tabindex='0') {
         }
     }
 
+    if (isset($_REQUEST['isDuplicate']) && $_REQUEST['isDuplicate'] === 'true') {
+        $viewDataArr = $helper->resetRecordIds($viewDataArr);
+    }
+
     if(!empty($viewDataArr)) {
         $json = new JSON(JSON_LOOSE_TYPE);
         $viewData = $json->encode($viewDataArr);

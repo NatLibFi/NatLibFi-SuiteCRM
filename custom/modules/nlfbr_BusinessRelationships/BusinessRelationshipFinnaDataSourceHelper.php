@@ -37,6 +37,16 @@ class BusinessRelationshipFinnaDataSourceHelper {
         return $data;
     }
 
+    public function resetRecordIds(array $data) {
+        $result = array();
+        foreach ($data as $record) {
+            $resetRecord = $record;
+            $resetRecord['record_id'] = '';
+            $result[] = $resetRecord;
+        }
+        return $result;
+    }
+
     public function getAvailableBackendSystems() {
         return getAllActiveBackEndSystems();
     }

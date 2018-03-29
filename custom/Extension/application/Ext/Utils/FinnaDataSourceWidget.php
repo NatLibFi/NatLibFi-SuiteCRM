@@ -34,6 +34,10 @@ function getBRFinnaDataSourceWidgetForEditView($id, $module, $view, $tabindex='0
         }
     }
 
+    if (isset($_REQUEST['isDuplicate']) && $_REQUEST['isDuplicate'] === 'true') {
+        $sourceDataArr = $helper->resetRecordIds($sourceDataArr);
+    }
+
     if(!empty($sourceDataArr)) {
         $json = new JSON(JSON_LOOSE_TYPE);
         $sourceData = $json->encode($sourceDataArr);
