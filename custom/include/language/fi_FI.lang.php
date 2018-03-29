@@ -507,6 +507,7 @@ $GLOBALS['app_list_strings']['contact_account_role_list']=array (
   'account_johtaja_osaston' => 'Osastonjohtaja/ Päällikkö',
   'account_asiantuntija' => 'Asiantuntija',
   'account_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
+  'account_ei_enaa' => 'Ei enää organisaation palveluksessa',
 );
 $GLOBALS['app_list_strings']['taustajajestelma_list']=array (
   'unknown' => 'ei tiedossa',
