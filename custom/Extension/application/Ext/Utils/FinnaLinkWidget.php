@@ -34,6 +34,10 @@ function getBRFinnaLinkWidgetForEditView($id, $module, $view, $tabindex='0') {
         }
     }
 
+    if (isset($_REQUEST['isDuplicate']) && $_REQUEST['isDuplicate'] === 'true') {
+        $linkDataArr = $helper->resetRecordIds($linkDataArr);
+    }
+
     if(!empty($linkDataArr)) {
         $json = new JSON(JSON_LOOSE_TYPE);
         $linkData = $json->encode($linkDataArr);

@@ -34,6 +34,16 @@ class BusinessRelationshipFinnaViewHelper {
         return $data;
     }
 
+    public function resetRecordIds(array $data) {
+        $result = array();
+        foreach ($data as $record) {
+            $resetRecord = $record;
+            $resetRecord['record_id'] = '';
+            $result[] = $resetRecord;
+        }
+        return $result;
+    }
+
     public function getAvailableStatusList() {
         global $app_list_strings;
         return $app_list_strings['finnanakyma_status_list'];
