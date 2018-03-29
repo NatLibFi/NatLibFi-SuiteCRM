@@ -129,6 +129,16 @@ class BusinessRelationshipContractHelper {
         return $date;
     }
 
+    public function resetRecordIds(array $contractData) {
+        $result = array();
+        foreach ($contractData as $record) {
+            $resetRecord = $record;
+            $resetRecord['record_id'] = '';
+            $result[] = $resetRecord;
+        }
+        return $result;
+    }
+
     public function getContractList($serviceId = null) {
         return array_merge(
             $this->getActiveContracts($serviceId),
