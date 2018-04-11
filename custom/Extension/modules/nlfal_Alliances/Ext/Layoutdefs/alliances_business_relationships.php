@@ -10,7 +10,7 @@ $layout_defs["nlfal_Alliances"]["subpanel_setup"]['nlfbr_businessrelationships']
     'get_subpanel_data' => 'function:getBusinessRelationshipForAllianceSubpanelQueryParts',
     'function_parameters' => array(
         'import_function_file' => 'custom/Extension/application/Ext/Utils/NLFAlliances.php',
-        'alliance_id' => $this->_focus->id,
+        'alliance_id' => $_REQUEST['record'],
         ),
     'generate_select' => true,
     'set_subpanel_data' => 'nlfbr_businessrelationships',
@@ -27,7 +27,7 @@ $layout_defs["nlfal_Alliances"]["subpanel_setup"]['member_account_nlfbr_business
     'get_subpanel_data' => 'function:getBusinessRelationshipForAllianceMembersSubpanelQueryParts',
     'function_parameters' => array(
         'import_function_file' => 'custom/Extension/application/Ext/Utils/NLFAlliances.php',
-        'alliance_id' => $this->_focus->id,
+        'alliance_id' => $_REQUEST['record'],
         ),
     'generate_select' => true,
     'set_subpanel_data' => 'nlfbr_businessrelationships',
