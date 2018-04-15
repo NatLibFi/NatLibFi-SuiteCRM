@@ -3,6 +3,8 @@
 if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
 require_once 'modules/nlfse_Services/nlfse_Services.php';
+require_once 'modules/nlfbs_BackendSystems/nlfbs_BackendSystems.php';
+
 class AccountProcessRecordHook
 {
     const SERVICE_REL_FIELD = 'nlfwg_workinggroups_nlfse_services_1';
@@ -58,6 +60,44 @@ class AccountProcessRecordHook
         }
 
         $bean->{self::SERVICE_NAMES_FIELD} = $serviceNames;
+    }
+
+    const FIELD_ACCOUNT_BACKEND_SYSTEM_REL = 'accounts_nlfbs_backendsystems_1';
+    const FIELD_BACKEND_SYSTEM_NAMES = 'account_backend_system_names';
+
+    function setAccountBackendSystemNames($bean, $event, $arguments)
+    {
+        $id = $bean->id;
+        if (!isset($id)) {
+            return;
+        }
+
+        if (!$bean->load_relationship(self::FIELD_ACCOUNT_BACKEND_SYSTEM_REL)) {
+            return;
+        }
+
+        $systemIds = $bean->{self::FIELD_ACCOUNT_BACKEND_SYSTEM_REL}->get(true);
+
+        $systemNames = '';
+        foreach ($systemIds as $systemId) {
+            $system = new nlfbs_BackendSystems();
+            $system->retrieve($systemId);
+
+            if (!$system) {
+                continue;
+            }
+
+            if (!$system->name) {
+                continue;
+            }
+
+            if ($systemNames !== '') {
+                $systemNames .= ', '; // TODO: i18n this
+            }
+            $systemNames .= $system->name;
+        }
+
+        $bean->{self::FIELD_BACKEND_SYSTEM_NAMES} = $systemNames;
     }
 
 }

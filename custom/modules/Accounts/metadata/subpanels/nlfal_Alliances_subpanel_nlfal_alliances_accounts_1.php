@@ -9,6 +9,14 @@ $subpanel_layout['list_fields'] = array (
     'default' => true,
     'widget_class' => 'SubPanelDetailViewLink',
   ),
+  'account_backend_system_names' =>
+  array(
+    'type' => 'varchar',
+    'vname' => 'LBL_ACCOUNT_BACKEND_SYSTEMS_TITLE',
+    'width' => '10%',
+    'default' => true,
+    'sortable' => false,
+  ),
   'edit_button' => 
   array (
     'width' => '4%',
