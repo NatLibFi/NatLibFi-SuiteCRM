@@ -1,8 +1,11 @@
 function updateBRSelector(records) {
     var brSelectParent = document.getElementById('nlfbr_businessrelationships_contacts_1_businessrelationships_enum_span');
     var brSelect = (brSelectParent.getElementsByTagName('select'))[0];
+    var updatedBRSelect = newBRSelect(records)
     brSelectParent.removeChild(brSelect);
-    brSelectParent.appendChild(newBRSelect(records));
+    brSelectParent.appendChild(updatedBRSelect);
+    updatedBRSelect.onchange = handleBRChange;
+    handleBRChange();
 }
 
 function newBRSelect(records) {
