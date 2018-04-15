@@ -173,7 +173,7 @@ function getAccountAndBRRolesForContact($contactId, $accountId) {
         }
     }
 
-    $query = 'SELECT br.name AS br_name, br_rel.role AS role FROM nlfbr_businessrelationships br ' .
+    $query = 'SELECT br.name AS br_name, br_rel.role AS role, br.nlfbr_businessrelationships_account_alliances as br_alliances FROM nlfbr_businessrelationships br ' .
         'JOIN nlfbr_businessrelationships_contacts_1_c br_rel ' .
         'ON br_rel.nlfbr_busic409onships_ida=br.id ' .
         'JOIN accounts_nlfbr_businessrelationships_1_c acc_rel ' .
@@ -186,7 +186,15 @@ function getAccountAndBRRolesForContact($contactId, $accountId) {
 
     $brRoles = array();
     while ($row = $db->fetchByAssoc($result)) {
-        $brRoles[$row['br_name']] = unencodeMultienum($row['role']);
+        $brName = $row['br_name'];
+        if ($row['br_alliances']) {
+            $allianceIds = unencodeMultienum($row['br_alliances']);
+            $allianceNames = getAllianceNameString($allianceIds);
+            if ($allianceNames) {
+                $brName .= ' (' . $allianceNames . ')';
+            }
+        }
+        $brRoles[$brName] = unencodeMultienum($row['role']);
     }
 
     $allRoles = $accRoles;
