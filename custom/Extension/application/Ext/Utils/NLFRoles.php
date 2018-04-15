@@ -278,7 +278,7 @@ function getActiveBusinessRelationshipsHtml($focus, $name, $value, $view) {
 
 // TODO: make accountId non nullable?
 // TODO: can be moved to ajax action file?
-function getAllActiveBusinessRelationships($accountId = null) {
+function getAllActiveBusinessRelationships($accountId = null, $options = array()) {
     $db = $GLOBALS['db'];
     $accountJoin = '';
     $accountWhere = '';
@@ -288,7 +288,7 @@ function getAllActiveBusinessRelationships($accountId = null) {
         $accountWhere = 'AND rel_accounts.accounts_nlfbr_businessrelationships_1accounts_ida="' . $db->quote($accountId) . '" ' .
             'AND rel_accounts.deleted=0 ';
     }
-    $query = 'SELECT br.id, br.name FROM nlfbr_businessrelationships br ' .
+    $query = 'SELECT br.id, br.name, br.nlfbr_businessrelationships_account_alliances FROM nlfbr_businessrelationships br ' .
         $accountJoin .
         'WHERE br.deleted=0 ' .
         $accountWhere .
@@ -297,10 +297,43 @@ function getAllActiveBusinessRelationships($accountId = null) {
 
     $list = array();
     while ($row = $db->fetchByAssoc($result)) {
-        $list[$row['id']] = $row['name'];
+        $name = $row['name'];
+        if (array_key_exists('include_alliance_name', $options) && $options['include_alliance_name']) {
+            $allianceIds = unencodeMultienum($row['nlfbr_businessrelationships_account_alliances']);
+            $allianceNames = getAllianceNameString($allianceIds);
+            if ($allianceNames) {
+                $name .= ' (' . $allianceNames . ')';
+            }
+        }
+        $list[$row['id']] = $name;
     }
 
     return $list;
+}
+
+function getAllianceNameString(array $ids) {
+    if (empty($ids)) {
+        return '';
+    }
+
+    $db = $GLOBALS['db'];
+    $idString = implode(', ', array_map(
+        function ($x) use ($db) {
+            return '"' . $db->quote($x) . '"';
+        },
+        $ids
+    ));
+    $query = 'SELECT name FROM nlfal_alliances ' .
+        'WHERE deleted=0 ' .
+        'AND id IN (' . $idString . ')';
+    $result = $db->query($query);
+
+    $names = array();
+    while ($row = $db->fetchByAssoc($result)) {
+        $names[] = $row['name'];
+    }
+
+    return implode(', ', $names);
 }
 
 // TODO: this no longer needed?

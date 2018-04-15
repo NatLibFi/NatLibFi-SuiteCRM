@@ -5,6 +5,6 @@ if (empty($_REQUEST['account_id'])) {
     echo ('Bad request');
 } else {
     echo json_encode(array(
-        'records' => getAllActiveBusinessRelationships($_REQUEST['account_id']),
+        'records' => getAllActiveBusinessRelationships($_REQUEST['account_id'], array('include_alliance_name' => true)),
     ));
 }
