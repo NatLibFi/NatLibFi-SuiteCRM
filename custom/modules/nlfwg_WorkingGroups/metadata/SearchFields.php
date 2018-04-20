@@ -68,4 +68,15 @@ $searchFields['nlfwg_WorkingGroups'] = array (
     ),
     'vname' => 'LBL_WORKING_GROUP_ROLES',
   ),
+  'related_service' => 
+  array (
+    'query_type' => 'format',
+    'operator' => 'subquery',
+    'subquery' => 'SELECT wg.id FROM nlfwg_workinggroups wg JOIN nlfwg_workinggroups_nlfse_services_1_c s_rel ON wg.id=s_rel.nlfwg_workinggroups_nlfse_services_1nlfwg_workinggroups_ida WHERE wg.deleted=0 AND s_rel.deleted=0 AND s_rel.nlfwg_workinggroups_nlfse_services_1nlfse_services_idb IN ({0})',
+    'db_field' => 
+    array (
+      0 => 'id',
+    ),
+    'vname' => 'LBL_RELATED_SERVICE_TITLE',
+  ),
 );

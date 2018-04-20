@@ -12,18 +12,13 @@ array (
         'default' => true,
         'width' => '10%',
       ),
-      'working_group_service_names' => 
+      'related_service' => 
       array (
-        'type' => 'varchar',
-        'studio' => 
-        array (
-          'detailview' => false,
-          'editview' => false,
-        ),
-        'label' => 'LBL_WORKING_GROUP_SERVICES_TITLE',
+        'type' => 'enum',
+        'label' => 'LBL_RELATED_SERVICE_TITLE',
         'width' => '10%',
         'default' => true,
-        'name' => 'working_group_service_names',
+        'name' => 'related_service',
       ),
       'workinggroup_status_c' => 
       array (
@@ -51,18 +46,13 @@ array (
         'default' => true,
         'width' => '10%',
       ),
-      'working_group_service_names' => 
+      'related_service' => 
       array (
-        'type' => 'varchar',
-        'studio' => 
-        array (
-          'detailview' => false,
-          'editview' => false,
-        ),
-        'label' => 'LBL_WORKING_GROUP_SERVICES_TITLE',
+        'type' => 'enum',
+        'label' => 'LBL_RELATED_SERVICE_TITLE',
         'width' => '10%',
         'default' => true,
-        'name' => 'working_group_service_names',
+        'name' => 'related_service',
       ),
       'workinggroup_status_c' => 
       array (
