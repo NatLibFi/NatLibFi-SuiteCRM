@@ -31,16 +31,15 @@ array (
         'width' => '10%',
         'name' => 'sektorit_c',
       ),
-      'jasenet_c' => 
+      'nlfal_alliances_accounts_1_name' => 
       array (
         'type' => 'relate',
         'default' => true,
-        'studio' => 'visible',
-        'label' => 'LBL_JASENET',
-        'id' => 'ACCOUNT_ID_C',
+        'label' => 'LBL_NLFAL_ALLIANCES_ACCOUNTS_1_FROM_ACCOUNTS_TITLE_SINGULAR',
+        'id' => 'NLFAL_ALLIANCES_ACCOUNTS_1ACCOUNTS_IDB',
         'link' => true,
         'width' => '10%',
-        'name' => 'jasenet_c',
+        'name' => 'nlfal_alliances_accounts_1_name',
       ),
       'alliance_roles' => 
       array (
