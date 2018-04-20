@@ -77,19 +77,6 @@ $subpanel_layout['list_fields'] = array (
     'vname' => 'LBL_FINNA_FIMU_URL',
     'width' => '5%',
   ),
-  'kohdennus_c' => 
-  array (
-    'type' => 'relate',
-    'default' => true,
-    'studio' => 'visible',
-    'vname' => 'LBL_KOHDENNUS',
-    'id' => 'USER_ID_C',
-    'link' => true,
-    'width' => '10%',
-    'widget_class' => 'SubPanelDetailViewLink',
-    'target_module' => 'Users',
-    'target_record_key' => 'user_id_c',
-  ),
   'edit_button' => 
   array (
     'vname' => 'LBL_EDIT_BUTTON',

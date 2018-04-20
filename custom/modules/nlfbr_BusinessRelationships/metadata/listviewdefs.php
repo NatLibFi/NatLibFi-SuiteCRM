@@ -72,16 +72,6 @@ array (
     'label' => 'LBL_PRODUCTION_DATE',
     'width' => '10%',
   ),
-  'KOHDENNUS_C' => 
-  array (
-    'type' => 'relate',
-    'default' => true,
-    'studio' => 'visible',
-    'label' => 'LBL_KOHDENNUS',
-    'id' => 'USER_ID_C',
-    'link' => true,
-    'width' => '10%',
-  ),
   'NFL_BUSINESS_RELATION_BEGINS_C' => 
   array (
     'type' => 'date',

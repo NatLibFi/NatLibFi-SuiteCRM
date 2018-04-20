@@ -98,12 +98,6 @@ array (
             'name' => 'nlfbr_businessrelationships_account_alliances',
             'label' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
           ),
-          1 => 
-          array (
-            'name' => 'kohdennus_c',
-            'studio' => 'visible',
-            'label' => 'LBL_KOHDENNUS',
-          ),
         ),
         2 => 
         array (
