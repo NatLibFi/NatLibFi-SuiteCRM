@@ -80,6 +80,14 @@ array (
         'width' => '10%',
         'name' => 'open_only_has_active_contract',
       ),
+      'active_contract' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'label' => 'LBL_ACTIVE_CONTRACT_TITLE',
+        'width' => '10%',
+        'name' => 'active_contract',
+      ),
       'nlfbr_businessrelationships_account_alliances' => 
       array (
         'type' => 'enum',
