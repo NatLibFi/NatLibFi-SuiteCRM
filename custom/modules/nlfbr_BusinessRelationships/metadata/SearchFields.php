@@ -1,5 +1,5 @@
 <?php
-// created: 2017-11-07 16:02:49
+// created: 2018-04-21 21:11:05
 $searchFields['nlfbr_BusinessRelationships'] = array (
   'name' => 
   array (
@@ -225,5 +225,23 @@ $searchFields['nlfbr_BusinessRelationships'] = array (
       0 => 'nlfbr_businessrelationships.id',
     ),
     'vname' => 'LBL_ACCOUNT_ADMINISTRATION',
+  ),
+  'range_production_date_c' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
+  ),
+  'start_range_production_date_c' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
+  ),
+  'end_range_production_date_c' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
   ),
 );
