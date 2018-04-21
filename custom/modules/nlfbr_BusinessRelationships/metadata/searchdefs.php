@@ -97,6 +97,14 @@ array (
         'width' => '10%',
         'name' => 'account_industry',
       ),
+      'account_administration' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'label' => 'LBL_ACCOUNT_ADMINISTRATION',
+        'width' => '10%',
+        'name' => 'account_administration',
+      ),
       'business_relationship_roles' => 
       array (
         'type' => 'enum',
