@@ -39,6 +39,7 @@ class AccountProcessRecordHook
         while ($row = $db->fetchByAssoc($result) ) {
             $serviceIds[] = $row['service_id'];
         }
+        $serviceIds = array_unique($serviceIds);
 
         $serviceNames = '';
         foreach ($serviceIds as $serviceId) {
