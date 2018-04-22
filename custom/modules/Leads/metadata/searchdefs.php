@@ -13,14 +13,14 @@ array (
         'default' => true,
         'width' => '10%',
       ),
-      'sektori_c' => 
+      'lead_industry' => 
       array (
         'type' => 'enum',
         'default' => true,
         'studio' => 'visible',
-        'label' => 'LBL_SEKTORI',
+        'label' => 'LBL_LEAD_INDUSTRY',
         'width' => '10%',
-        'name' => 'sektori_c',
+        'name' => 'lead_industry',
       ),
       'current_user_only' => 
       array (
