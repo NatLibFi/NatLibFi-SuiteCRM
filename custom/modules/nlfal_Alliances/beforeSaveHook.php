@@ -2,6 +2,8 @@
 
 if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
+require_once 'modules/Accounts/Account.php';
+
 class AllianceBeforeSaveHook
 {
     const FIELD_MEMBER_RELATIONSHIP = 'nlfal_alliances_accounts_1';
@@ -37,4 +39,35 @@ class AllianceBeforeSaveHook
             $bean->name = $bean->name_other_c;
         }
     }
+
+    const FIELD_INDUSTRY = 'sektorit_c';
+
+    function addMemberIndustryData($bean, $event, $arguments)
+    {
+        if (!$bean->load_relationship(self::FIELD_MEMBER_RELATIONSHIP)) {
+            return;
+        }
+
+        $allianceIndustryList = unencodeMultienum($bean->{self::FIELD_INDUSTRY});
+
+        $memberIds = $bean->{self::FIELD_MEMBER_RELATIONSHIP}->get(true);
+        foreach ($memberIds as $accountId) {
+            $account = new Account();
+            $account->retrieve($accountId);
+            if (!$account) {
+                continue;
+            }
+
+            if (!$account->industry) {
+                continue;
+            }
+
+            if (!in_array($account->industry, $allianceIndustryList)) {
+                $allianceIndustryList[] = $account->industry;
+            }
+        }
+
+        $bean->{self::FIELD_INDUSTRY} = encodeMultienumValue($allianceIndustryList);
+    }
+
 }

@@ -3,6 +3,7 @@
 if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
 require_once 'modules/nlfbr_BusinessRelationships/nlfbr_BusinessRelationships.php';
+require_once 'modules/nlfal_Alliances/nlfal_Alliances.php';
 
 class AccountAfterSaveHook
 {
@@ -51,5 +52,40 @@ class AccountAfterSaveHook
        }
     }
 
+    const FIELD_ACCOUNT_ALLIANCE_REL = 'nlfal_alliances_accounts_1';
+    const FIELD_ALLIANCE_INDUSTRY = 'sektorit_c';
+
+    function updateAllianceIndustryData($bean, $event, $arguments)
+    {
+        if (!$bean->load_relationship(self::FIELD_ACCOUNT_ALLIANCE_REL)) {
+            return;
+        }
+
+        $industry = $bean->industry;
+        if (!$industry) {
+            return;
+        }
+
+        $allianceIds = $bean->{self::FIELD_ACCOUNT_ALLIANCE_REL}->get(true);
+        foreach ($allianceIds as $allianceId) {
+            $alliance = new nlfal_Alliances();
+            $alliance->retrieve($allianceId);
+            if (!$alliance) {
+                continue;
+            }
+            $oldList = $alliance->{self::FIELD_ALLIANCE_INDUSTRY};
+            $allianceIndustryList = unencodeMultienum($alliance->{self::FIELD_ALLIANCE_INDUSTRY});
+
+            if (!in_array($industry, $allianceIndustryList)) {
+                $allianceIndustryList[] = $industry;
+            }
+
+            $newList = encodeMultienumValue($allianceIndustryList);
+            if ($oldList !== $newList) {
+                $alliance->{self::FIELD_ALLIANCE_INDUSTRY} = $newList;
+                $alliance->save();
+            }
+        }
+    }
 
 }
