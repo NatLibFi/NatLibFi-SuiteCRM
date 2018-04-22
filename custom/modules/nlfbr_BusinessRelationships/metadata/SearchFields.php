@@ -192,6 +192,17 @@ $searchFields['nlfbr_BusinessRelationships'] = array (
     ),
     'vname' => 'LBL_ACTIVE_CONTRACT_TITLE',
   ),
+  'br_contract' => 
+  array (
+    'query_type' => 'format',
+    'operator' => 'subquery',
+    'subquery' => 'SELECT br.id FROM nlfbr_businessrelationships br LEFT JOIN nlfbr_businessrelationships_aos_contracts_1_c br_rel ON br.id=br_rel.nlfbr_busi9351onships_ida JOIN aos_contracts c ON c.id=br_rel.nlfbr_businessrelationships_aos_contracts_1aos_contracts_idb WHERE br.deleted=0 AND c.deleted=0 AND br_rel.deleted=0 AND c.id IN ({0})',
+    'db_field' => 
+    array (
+      0 => 'id',
+    ),
+    'vname' => 'LBL_BR_CONTRACT_TITLE',
+  ),
   'nlfbr_businessrelationships_account_alliances' =>
   array (
     'query_type' => 'format',

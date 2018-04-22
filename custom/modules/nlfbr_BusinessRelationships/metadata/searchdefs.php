@@ -88,7 +88,15 @@ array (
         'width' => '10%',
         'name' => 'active_contract',
       ),
-      'nlfbr_businessrelationships_account_alliances' => 
+      'br_contract' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'label' => 'LBL_BR_CONTRACT_TITLE',
+        'width' => '10%',
+        'name' => 'br_contract',
+      ),
+       'nlfbr_businessrelationships_account_alliances' => 
       array (
         'type' => 'enum',
         'label' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',

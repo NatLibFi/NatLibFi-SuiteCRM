@@ -110,6 +110,21 @@ function getAllActiveContractsForAllServices() {
     return $list;
 }
 
+function getAllContractsForAllServices() {
+    $db = $GLOBALS['db'];
+    $query = 'SELECT contract.id, contract.name FROM aos_contracts contract ' .
+        'WHERE contract.deleted=0 ' .
+        'ORDER BY contract.name ASC';
+    $result = $db->query($query);
+
+    $list = array();
+    while ($row = $db->fetchByAssoc($result)) {
+        $list[$row['id']] = $row['name'];
+    }
+
+    return $list;
+}
+
 function getActiveContractsForBusinessRelationship($id, $serviceId = null) {
     $db = $GLOBALS['db'];
     $serviceJoin = '';

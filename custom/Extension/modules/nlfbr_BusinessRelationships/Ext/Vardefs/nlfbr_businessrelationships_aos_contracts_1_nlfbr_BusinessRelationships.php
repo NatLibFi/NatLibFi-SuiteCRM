@@ -154,3 +154,12 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['active_contract'] = array(
   'source' => 'non-db',
   'studio' => array('listview' => false, 'detailview' => false, 'editview' => false, 'searchview' => true),
 );
+
+$dictionary["nlfbr_BusinessRelationships"]["fields"]['br_contract'] = array(
+  'name' => 'br_contract',
+  'vname' => 'LBL_BR_CONTRACT_TITLE',
+  'type' => 'enum',
+  'function' => 'getAllContractsForAllServices',
+  'source' => 'non-db',
+  'studio' => array('listview' => false, 'detailview' => false, 'editview' => false, 'searchview' => true),
+);
