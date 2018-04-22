@@ -70,7 +70,16 @@ array (
         'default' => true,
         'width' => '10%',
       ),
-      'nlfse_services_leads_1_name' => 
+      'lead_industry' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_LEAD_INDUSTRY',
+        'width' => '10%',
+        'name' => 'lead_industry',
+      ),
+       'nlfse_services_leads_1_name' => 
       array (
         'type' => 'relate',
         'link' => true,
