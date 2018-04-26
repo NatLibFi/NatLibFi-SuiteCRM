@@ -86,20 +86,6 @@ $subpanel_layout['list_fields'] = array (
     'vname' => 'LBL_COMMERCIAL',
     'width' => '5%',
   ),
-  'sopimus_kronodoc_url_c' => 
-  array (
-    'type' => 'url',
-    'default' => true,
-    'vname' => 'LBL_SOPIMUS_KRONODOC_URL',
-    'width' => '10%',
-  ),
-  'finna_sopimus_paattyy_c' => 
-  array (
-    'type' => 'date',
-    'default' => true,
-    'vname' => 'LBL_FINNA_SOPIMUS_PAATTYY',
-    'width' => '10%',
-  ),
   'edit_button' => 
   array (
     'vname' => 'LBL_EDIT_BUTTON',
