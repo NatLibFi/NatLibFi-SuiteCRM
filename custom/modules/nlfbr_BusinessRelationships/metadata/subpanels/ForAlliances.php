@@ -54,6 +54,14 @@ $subpanel_layout = array(
             'vname' => 'LBL_ASIAKASSUHDE',
             'width' => '5%',
         ),
+        'open_only_has_active_contract' => 
+        array (
+            'type' => 'bool',
+            'vname' => 'LBL_HAS_ACTIVE_CONTRACT',
+            'width' => '5%',
+            'default' => true,
+            'sortable' => false,
+        ),
         'palvelu_liittymisen_status_c' => 
         array (
             'type' => 'enum',
