@@ -7,19 +7,4 @@
 // through config_override.php.
 
 $sugar_config['enable_legacy_search'] = array(
-  'Accounts',
-  'nlfal_Alliances',
-  'nlfbr_BusinessRelationships',
-  'Contacts',
-  'Leads',
-  'nlfse_Services',
-  'AOS_Contracts',
-  'nlfwg_WorkingGroups',
-  'nlfbs_BackendSystems',
-  'ProspectLists',
-  'Emails',
-  'AOR_Reports',
-  'Project',
-  'Campaigns',
-  'AOS_Invoices',
 );
