@@ -62,6 +62,13 @@ $subpanel_layout = array(
             'default' => true,
             'sortable' => false,
         ),
+        'commercial' => 
+        array (
+            'type' => 'bool',
+            'default' => true,
+            'vname' => 'LBL_COMMERCIAL',
+            'width' => '5%',
+        ),
         'palvelu_liittymisen_status_c' => 
         array (
             'type' => 'enum',
@@ -83,13 +90,6 @@ $subpanel_layout = array(
             'default' => true,
             'vname' => 'LBL_PRODUCTION_DATE',
             'width' => '10%',
-        ),
-        'commercial' => 
-        array (
-            'type' => 'bool',
-            'default' => true,
-            'vname' => 'LBL_COMMERCIAL',
-            'width' => '5%',
         ),
         'edit_button' => 
         array (
