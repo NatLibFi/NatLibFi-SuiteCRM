@@ -29,12 +29,19 @@ $subpanel_layout = array(
 			'vname' => 'LBL_LIST_NAME',
 			'widget_class' => 'SubPanelDetailViewLink',
 		 	'module' => 'Contacts',
-			'width' => '45%',
+			'width' => '35%',
 		),
-        'account_name'=>array(
+        'email1'=>array(
+            'name'=>'email1',               
+            'vname' => 'LBL_LIST_EMAIL',
+            'widget_class' => 'SubPanelEmailLink',
+            'width' => '15%',
+            'sortable' => false,
+         ),
+         'account_name'=>array(
             'name' => 'account_name',
             'vname' => 'LBL_ACCOUNT_NAME',
-            'width' => '20%',
+            'width' => '15%',
         ),
         'contact_wg_role_fields' => array(
             'usage' => 'query_only',
