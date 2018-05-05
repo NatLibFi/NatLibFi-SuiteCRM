@@ -57,7 +57,7 @@ $subpanel_layout = array(
         'open_only_has_active_contract' => 
         array (
             'type' => 'bool',
-            'vname' => 'LBL_HAS_ACTIVE_CONTRACT',
+            'vname' => 'LBL_HAS_ACTIVE_CONTRACT_TITLE',
             'width' => '5%',
             'default' => true,
             'sortable' => false,
