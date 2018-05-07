@@ -19,6 +19,7 @@ $mod_strings = array (
   'LBL_HALLINNONALA' => 'Hallinnonala',
   'LBL_SEKTORI' => 'Sektori',
   'LBL_EDITVIEW_PANEL1' => 'Yhteyshenkilö',
+  'LBL_EDITVIEW_PANEL2' => 'Uuden organisaation tiedot',
   'LNK_NEW_LEAD' => 'Luo liidi',
   'LNK_LEAD_LIST' => 'Potentiaaliset asiakkuudet',
   'LNK_IMPORT_VCARD' => 'Luotiin liidi vCard:sta',
