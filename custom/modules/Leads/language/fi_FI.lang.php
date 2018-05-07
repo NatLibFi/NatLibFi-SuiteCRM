@@ -1,5 +1,5 @@
 <?php
-// created: 2017-12-19 00:02:10
+// created: 2018-05-07 22:40:53
 $mod_strings = array (
   'LBL_PALVELU_NLFSE_SERVICES_ID' => 'Palvelu (related Palvelu ID)',
   'LBL_PALVELU' => 'Palvelu',
@@ -28,15 +28,16 @@ $mod_strings = array (
   'LBL_SEARCH_FORM_TITLE' => 'Liidien haku',
   'LBL_LIST_MY_LEADS' => 'Omat liidit',
   'LBL_MODULE_NAME' => 'Potentiaaliset asiakkuudet',
-  'LBL_ACCOUNT_DESCRIPTION' => 'Kuvaus',
+  'LBL_ACCOUNT_DESCRIPTION' => 'Uuden organisaation kuvaus',
   'LBL_LEAD_SOURCE' => 'Tiedustelun lähde:',
   'LBL_LEAD_SOURCE_DESCRIPTION' => 'Tiedustelun lähteen kuvaus:',
   'LBL_CONTACT_INFORMATION' => 'Perustiedot',
   'LBL_TITLE' => 'Titteli',
-  'LBL_CONTACT_DESCRIPTION' => 'Lisätiedot',
+  'LBL_CONTACT_DESCRIPTION' => 'Yhteyshenkilön lisätiedot',
   'LBL_CONTACT_ACCOUNT_ROLE' => 'Rooli organisaatiossa',
   'LBL_STATUS_DESCRIPTION' => 'Tilan kuvaus',
   'LBL_CONTACTS_LEADS_1_FROM_CONTACTS_TITLE' => 'Valitse henkilö:',
   'LBL_OTHER_CONTACTS' => 'Muut yhteyshenkilöt',
   'LBL_ALLIANCES' => 'Asiakassuhteessa yhteenliittymän jäsenenä',
+  'LBL_DESCRIPTION' => 'Asiakassuhteen kuvaus:',
 );
