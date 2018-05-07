@@ -140,12 +140,7 @@ array (
         ),
         3 => 
         array (
-          0 => 
-          array (
-            'name' => 'contact_description_c',
-            'studio' => 'visible',
-            'label' => 'LBL_CONTACT_DESCRIPTION',
-          ),
+          0 => 'description',
         ),
       ),
       'lbl_editview_panel2' => 
@@ -180,7 +175,12 @@ array (
         ),
         3 => 
         array (
-          0 => 'description',
+          0 => 
+          array (
+            'name' => 'account_description',
+            'comment' => 'Description of lead account',
+            'label' => 'LBL_ACCOUNT_DESCRIPTION',
+          ),
         ),
         4 => 
         array (
