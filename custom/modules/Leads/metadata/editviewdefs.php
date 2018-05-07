@@ -43,12 +43,17 @@ array (
           'newTab' => false,
           'panelDefault' => 'expanded',
         ),
-        'LBL_PANEL_ADVANCED' => 
+        'LBL_EDITVIEW_PANEL2' => 
         array (
           'newTab' => false,
           'panelDefault' => 'expanded',
         ),
         'LBL_EDITVIEW_PANEL1' => 
+        array (
+          'newTab' => false,
+          'panelDefault' => 'expanded',
+        ),
+        'LBL_PANEL_ADVANCED' => 
         array (
           'newTab' => false,
           'panelDefault' => 'expanded',
@@ -88,17 +93,29 @@ array (
         ),
         2 => 
         array (
-          0 => 'website',
+          0 => 
+          array (
+            'name' => 'alliances_c',
+            'label' => 'LBL_ALLIANCES',
+          ),
         ),
         3 => 
         array (
           0 => 
           array (
-            'name' => 'jjwg_maps_address_c',
-            'label' => 'LBL_JJWG_MAPS_ADDRESS',
+            'name' => 'contact_description_c',
+            'studio' => 'visible',
+            'label' => 'LBL_CONTACT_DESCRIPTION',
           ),
         ),
-        4 => 
+      ),
+      'lbl_editview_panel2' => 
+      array (
+        0 => 
+        array (
+          0 => 'website',
+        ),
+        1 => 
         array (
           0 => 
           array (
@@ -113,7 +130,7 @@ array (
             'label' => 'LBL_SIDOSRYHMA',
           ),
         ),
-        5 => 
+        2 => 
         array (
           0 => 
           array (
@@ -122,55 +139,30 @@ array (
             'label' => 'LBL_SEKTORI',
           ),
         ),
-        6 => 
+        3 => 
         array (
           0 => 'description',
         ),
-        7 =>
-        array (
-          0 =>
-          array (
-            'name' => 'alliances_c',
-            'label' => 'LBL_ALLIANCES',
-          ),
-        ),
-      ),
-      'LBL_PANEL_ADVANCED' => 
-      array (
-        0 => 
-        array (
-          0 => 'status',
-          1 => 'lead_source',
-        ),
-        1 => 
+        4 => 
         array (
           0 => 
           array (
-            'name' => 'status_description',
-          ),
-          1 => 
-          array (
-            'name' => 'lead_source_description',
+            'name' => 'primary_address_street',
+            'hideLabel' => true,
+            'type' => 'address',
+            'displayParams' => 
+            array (
+              'key' => 'primary',
+              'rows' => 2,
+              'cols' => 30,
+              'maxlength' => 150,
+            ),
           ),
         ),
-        2 => 
+        5 => 
         array (
-          0 => 'campaign_name',
-        ),
-        3 => 
-        array (
-          0 => 
-          array (
-            'name' => 'date_entered',
-            'comment' => 'Date record created',
-            'label' => 'LBL_DATE_ENTERED',
-          ),
-          1 => 
-          array (
-            'name' => 'date_modified',
-            'comment' => 'Date record last modified',
-            'label' => 'LBL_DATE_MODIFIED',
-          ),
+          0 => '',
+          1 => '',
         ),
       ),
       'lbl_editview_panel1' => 
@@ -223,18 +215,47 @@ array (
         array (
           0 => 
           array (
-            'name' => 'contact_description_c',
-            'studio' => 'visible',
-            'label' => 'LBL_CONTACT_DESCRIPTION',
-          ),
-        ),
-        7 => 
-        array (
-          0 => 
-          array (
             'name' => 'other_contacts_c',
             'studio' => 'visible',
             'label' => 'LBL_OTHER_CONTACTS',
+          ),
+        ),
+      ),
+      'LBL_PANEL_ADVANCED' => 
+      array (
+        0 => 
+        array (
+          0 => 'status',
+          1 => 'lead_source',
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            'name' => 'status_description',
+          ),
+          1 => 
+          array (
+            'name' => 'lead_source_description',
+          ),
+        ),
+        2 => 
+        array (
+          0 => 'campaign_name',
+        ),
+        3 => 
+        array (
+          0 => 
+          array (
+            'name' => 'date_entered',
+            'comment' => 'Date record created',
+            'label' => 'LBL_DATE_ENTERED',
+          ),
+          1 => 
+          array (
+            'name' => 'date_modified',
+            'comment' => 'Date record last modified',
+            'label' => 'LBL_DATE_MODIFIED',
           ),
         ),
       ),
@@ -242,11 +263,8 @@ array (
       array (
         0 => 
         array (
-          0 => 
-          array (
-            'name' => 'assigned_user_name',
-            'label' => 'LBL_ASSIGNED_TO',
-          ),
+          0 => '',
+          1 => '',
         ),
       ),
     ),
