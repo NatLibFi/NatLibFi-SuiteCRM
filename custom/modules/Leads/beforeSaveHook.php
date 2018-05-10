@@ -175,6 +175,13 @@ class LeadBeforeSaveHook
     }
 
     private function setAccountData(&$account, $lead, array $postData) {
+        $account->{'account_type'} = 'Customer';
+        $account->{'organisaatio_status_c'} = 'toiminnassa';
+
+        $this->setAccountBackendSystemData($account, $postData);
+    }
+
+    private function setAccountBackendSystemData(&$account, array $postData) {
         if (!isset($_REQUEST['Accountsaccount_backend_systems_c'])) {
             return;
         }
