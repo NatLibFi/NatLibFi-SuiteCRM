@@ -132,17 +132,26 @@ array (
         ),
         2 => 
         array (
+          0 => '',
+          1 => 
+          array (
+            'name' => 'assigned_user_name',
+            'label' => 'LBL_ASSIGNED_TO',
+          ),
+        ),
+        3 => 
+        array (
           0 => 
           array (
             'name' => 'alliances_c',
             'label' => 'LBL_ALLIANCES',
           ),
         ),
-        3 => 
+        4 => 
         array (
           0 => 'description',
         ),
-        4 => 
+        5 => 
         array (
           0 => 
           array (
@@ -151,7 +160,7 @@ array (
           ),
           1 => '',
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (

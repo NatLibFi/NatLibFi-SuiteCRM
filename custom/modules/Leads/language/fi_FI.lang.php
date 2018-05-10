@@ -29,6 +29,7 @@ $mod_strings = array (
   'LBL_LIST_MY_LEADS' => 'Omat liidit',
   'LBL_MODULE_NAME' => 'Potentiaaliset asiakkuudet',
   'LBL_ACCOUNT_DESCRIPTION' => 'Uuden organisaation kuvaus',
+  'LBL_ASSIGNED_TO' => 'Vastuuhenkilö',
   'LBL_LEAD_SOURCE' => 'Tiedustelun lähde:',
   'LBL_LEAD_SOURCE_DESCRIPTION' => 'Tiedustelun lähteen kuvaus:',
   'LBL_CONTACT_INFORMATION' => 'Perustiedot',
