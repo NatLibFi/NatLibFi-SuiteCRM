@@ -224,6 +224,10 @@ class CustomViewConvertLead extends ViewConvertLead
 	                {
 	                    $focus->name = $this->focus->account_name;
 	                }
+	                elseif ($module === 'Accounts' && $field === 'description')
+	                {
+	                    $focus->description = $this->focus->account_description;
+	                }
 	                else if ($module == "Opportunities" && $field == 'amount')
 	                {
 	                    $focus->amount = unformat_number($this->focus->opportunity_amount);
