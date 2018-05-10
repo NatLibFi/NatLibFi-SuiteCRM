@@ -410,5 +410,45 @@ class CustomViewConvertLead extends ViewConvertLead
         return $jsOut;
     }
 
+    // in case of Account, prefer shipping address over billing address
+    protected function copyAddressFields($bean, $contact)
+    {
+        if ($bean->module_name === 'Accounts') {
+            foreach($bean->field_defs as $field => $def)
+            {
+                if(!isset($_REQUEST[$bean->module_dir . $field]) && strpos($field, "_address_") !== false)
+                {
+                    $set = "primary";
+                    if (strpos($field, "alt_") !== false || strpos($field, "billing_") !== false)
+                        $set = "alt";
+                    $type = "";
+
+                    if(strpos($field, "_address_street_2") !== false)
+                        $type = "_address_street_2";
+                    else if(strpos($field, "_address_street_3") !== false)
+                        $type = "_address_street_3";
+                    else if(strpos($field, "_address_street_4") !== false)
+                        $type = "";
+                    else if(strpos($field, "_address_street") !== false)
+                        $type = "_address_street";
+                    else if(strpos($field, "_address_city") !== false)
+                        $type = "_address_city";
+                    else if(strpos($field, "_address_state") !== false)
+                        $type = "_address_state";
+                    else if(strpos($field, "_address_postalcode") !== false)
+                        $type = "_address_postalcode";
+                    else if(strpos($field, "_address_country") !== false)
+                        $type = "_address_country";
+
+                    $var = $set.$type;
+                    if (isset($contact->$var))
+                        $bean->$field = $contact->$var;
+                }
+            }
+            return;
+        }
+
+        parent::copyAddressFields($bean, $contact);
+    }
 
 }
