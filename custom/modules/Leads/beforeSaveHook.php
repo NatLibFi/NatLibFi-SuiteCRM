@@ -47,6 +47,8 @@ class LeadBeforeSaveHook
         $brBean->{'accounts_nlfbr_businessrelationships_1_name'} = $account->name;
         $brBean->{'nlfse_services_nlfbr_businessrelationships_1_name'} = $service->name;
 
+        $brBean->{'description'} = $bean->{'description'};
+
         $brBean->save();
 
         $brId = $brBean->{'id'};
