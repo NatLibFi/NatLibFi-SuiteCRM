@@ -29,6 +29,16 @@ $viewdefs['Accounts']['ConvertLead'] = array(
             ),
             array(
                 array(
+                   'name' => 'industry',
+                   'label' => 'LBL_INDUSTRY',
+                ),
+                array(
+                    'name' => 'hallinnonala_c',
+                    'label' => 'LBL_HALLINNONALA',
+                ),
+            ),
+            array(
+                array(
                     'name' => 'sic_code',
                     'label' => 'LBL_SIC_CODE'
                 ),

@@ -232,9 +232,9 @@ class CustomViewConvertLead extends ViewConvertLead
 	                {
 	                    $focus->sic_code = $this->focus->sic_code_c;
 	                }
-	                elseif ($module === 'Accounts' && $field === 'isil_c')
+	                elseif ($module === 'Accounts' && $field === 'industry')
 	                {
-	                    $focus->isil_c = $this->focus->isil_c;
+	                    $focus->industry = $this->focus->sektori_c;
 	                }
 	                else if ($module == "Opportunities" && $field == 'amount')
 	                {
