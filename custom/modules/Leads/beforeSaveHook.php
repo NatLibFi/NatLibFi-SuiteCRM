@@ -33,6 +33,10 @@ class LeadBeforeSaveHook
         $account->retrieve($accountId);
         // TODO: check if exists and stop if not?
 
+        if ($_REQUEST['newAccounts'] === 'yes') {
+            $this->setAccountData($account, $bean, $_REQUEST);
+        }
+
         $serviceBeanName = $beanList['nlfse_Services'];
         require_once($beanFiles[$serviceBeanName]);
         $service = new $serviceBeanName();
@@ -168,6 +172,24 @@ class LeadBeforeSaveHook
         $contact->{'contacts_nlfro_roles_1'}->add($roleId, array());
         $contact->save();*/
        
+    }
+
+    private function setAccountData(&$account, $lead, array $postData) {
+        // TODO: use data from post data once the field in conversion form (ASKI-125)
+        $systemIds = unencodeMultienum($lead->{'account_backend_systems_c'});
+        if (empty($systemIds)) {
+            return;
+        }
+
+        if (!$account->load_relationship('accounts_nlfbs_backendsystems_1')) {
+            return;
+        }
+
+        $account->{'accounts_nlfbs_backendsystems_1'}->get(true);
+
+        foreach ($systemIds as $systemId) {
+            $account->{'accounts_nlfbs_backendsystems_1'}->add($systemId, array());
+        }
     }
 
 }
