@@ -25,7 +25,6 @@ $viewdefs['Accounts']['ConvertLead'] = array(
         'LNK_NEW_ACCOUNT' => array (
             array (
                 'name',
-                'phone_office',
             ),
             array(
                 array(
@@ -45,6 +44,16 @@ $viewdefs['Accounts']['ConvertLead'] = array(
                 array(
                     'name' => 'isil_c',
                     'label' => 'LBL_ISIL'
+                ),
+            ),
+            array(
+                array(
+                    'name' => 'phone_office',
+                    'label' => 'LBL_PHONE_OFFICE',    
+                ),
+                array(
+                    'name' => 'phone_alternate',
+                    'label' => 'LBL_PHONE_ALTERNATE',
                 ),
             ),
             array (

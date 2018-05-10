@@ -236,6 +236,14 @@ class CustomViewConvertLead extends ViewConvertLead
 	                {
 	                    $focus->industry = $this->focus->sektori_c;
 	                }
+	                elseif ($module === 'Accounts' && $field === 'phone_office')
+	                {
+	                    $focus->phone_office = $this->focus->phone_office_c;
+	                }
+	                elseif ($module === 'Accounts' && $field === 'phone_alternate')
+	                {
+	                    $focus->phone_alternate = $this->focus->phone_alternate_c;
+	                }
 	                else if ($module == "Opportunities" && $field == 'amount')
 	                {
 	                    $focus->amount = unformat_number($this->focus->opportunity_amount);
