@@ -52,6 +52,12 @@ $viewdefs['Accounts']['ConvertLead'] = array(
                 ),
             ),
             array(
+                array(
+                    'name' => 'account_backend_systems_c',
+                    'label' => 'LBL_LEAD_BACKEND_SYSTEMS',
+                ),
+            ),
+            array(
                 'description'
             ),
             array (

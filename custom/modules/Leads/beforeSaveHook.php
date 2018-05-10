@@ -175,8 +175,11 @@ class LeadBeforeSaveHook
     }
 
     private function setAccountData(&$account, $lead, array $postData) {
-        // TODO: use data from post data once the field in conversion form (ASKI-125)
-        $systemIds = unencodeMultienum($lead->{'account_backend_systems_c'});
+        if (!isset($_REQUEST['Accountsaccount_backend_systems_c'])) {
+            return;
+        }
+
+        $systemIds = $_REQUEST['Accountsaccount_backend_systems_c'];
         if (empty($systemIds)) {
             return;
         }
