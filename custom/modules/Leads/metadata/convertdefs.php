@@ -27,6 +27,16 @@ $viewdefs['Accounts']['ConvertLead'] = array(
                 'name',
                 'phone_office',
             ),
+            array(
+                array(
+                    'name' => 'sic_code',
+                    'label' => 'LBL_SIC_CODE'
+                ),
+                array(
+                    'name' => 'isil_c',
+                    'label' => 'LBL_ISIL'
+                ),
+            ),
             array (
                 'website',
                 array (
