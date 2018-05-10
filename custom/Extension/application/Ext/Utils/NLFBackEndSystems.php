@@ -12,7 +12,7 @@ function getActiveBackEndSystemsHtml($focus, $name, $value, $view) {
     }
 
     if ($id && $moduleName) {
-        $linkedSystems = getSelectedBackEndSystems($id, $moduleName);
+        $linkedSystems = getSelectedBackEndSystems($focus, $moduleName);
     }
 
     $options = array(
@@ -38,13 +38,17 @@ function getAllActiveBackEndSystems() {
     return $list;
 }
 
-function getSelectedBackEndSystems($id, $moduleName) {
+function getSelectedBackEndSystems($bean, $moduleName) {
     if ($moduleName === 'Accounts') {
-        return getSelectedBackEndSystemsForAccount($id);
+        return getSelectedBackEndSystemsForAccount($bean->id);
     }
  
     if ($moduleName === 'nlfbr_BusinessRelationships') {
-        return getSelectedBackEndSystemsForBusinessRelationship($id);
+        return getSelectedBackEndSystemsForBusinessRelationship($bean->id);
+    }
+
+    if ($moduleName === 'Leads') {
+        return getSelectedBackEndSystemsForLead($bean);
     }
 
     return array();
@@ -88,6 +92,24 @@ function getSelectedBackEndSystemsForBusinessRelationship($id) {
     }
 
     return $list;
+}
+
+function getSelectedBackEndSystemsForLead($bean) {
+    if (!$bean->{'account_backend_systems_c'}) {
+        return;
+    }
+
+    $systemIds = unencodeMultienum($bean->{'account_backend_systems_c'});
+    $allSystems = getAllActiveBackEndSystems();
+
+    $result = array();
+    foreach ($systemIds as $id) {
+        if (!array_key_exists($id, $allSystems)) {
+            continue;
+        }
+        $result[$id] = $allSystems[$id];
+    }
+    return $result;
 }
 
 

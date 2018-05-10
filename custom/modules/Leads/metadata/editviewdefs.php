@@ -178,12 +178,21 @@ array (
         array (
           0 => 
           array (
+            'name' => 'account_backend_systems_c',
+            'studio' => 'visible',
+            'label' => 'LBL_ACCOUNT_BACKEND_SYSTEMS',
+          ),
+        ),
+        5 => 
+        array (
+          0 => 
+          array (
             'name' => 'account_description',
             'comment' => 'Description of lead account',
             'label' => 'LBL_ACCOUNT_DESCRIPTION',
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (
@@ -199,7 +208,7 @@ array (
             ),
           ),
         ),
-        6 => 
+        7 => 
         array (
           0 => '',
           1 => '',
