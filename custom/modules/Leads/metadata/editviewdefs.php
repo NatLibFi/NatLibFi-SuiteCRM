@@ -165,12 +165,25 @@ array (
         array (
           0 => 
           array (
+            'name' => 'sic_code_c',
+            'label' => 'LBL_SIC_CODE',
+          ),
+          1 => 
+          array (
+            'name' => 'isil_c',
+            'label' => 'LBL_ISIL',
+          ),
+        ),
+        4 => 
+        array (
+          0 => 
+          array (
             'name' => 'account_description',
             'comment' => 'Description of lead account',
             'label' => 'LBL_ACCOUNT_DESCRIPTION',
           ),
         ),
-        4 => 
+        5 => 
         array (
           0 => 
           array (
@@ -186,7 +199,7 @@ array (
             ),
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => '',
           1 => '',
