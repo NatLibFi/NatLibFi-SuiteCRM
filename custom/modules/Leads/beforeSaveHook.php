@@ -21,7 +21,7 @@ class LeadBeforeSaveHook
         $contactId = $bean->{'contact_id'};
         $accountId = $bean->{'account_id'};
         $serviceId = $bean->{'nlfse_services_leads_1nlfse_services_ida'};
-        if (!isset($contactId) || !isset($accountId) || !isset($serviceId)) {
+        if (!$contactId || !$accountId || !$serviceId) {
             return;
         }
 
