@@ -178,12 +178,25 @@ array (
         array (
           0 => 
           array (
+            'name' => 'phone_office_c',
+            'label' => 'LBL_PHONE_OFFICE',
+          ),
+          1 => 
+          array (
+            'name' => 'phone_alternate_c',
+            'label' => 'LBL_PHONE_ALTERNATE',
+          ),
+        ),
+        5 => 
+        array (
+          0 => 
+          array (
             'name' => 'account_backend_systems_c',
             'studio' => 'visible',
             'label' => 'LBL_ACCOUNT_BACKEND_SYSTEMS',
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (
@@ -192,7 +205,7 @@ array (
             'label' => 'LBL_ACCOUNT_DESCRIPTION',
           ),
         ),
-        6 => 
+        7 => 
         array (
           0 => 
           array (
@@ -208,7 +221,7 @@ array (
             ),
           ),
         ),
-        7 => 
+        8 => 
         array (
           0 => '',
           1 => '',

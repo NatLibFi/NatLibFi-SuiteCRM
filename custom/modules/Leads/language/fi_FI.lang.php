@@ -1,5 +1,5 @@
 <?php
-// created: 2018-05-10 19:36:58
+// created: 2018-05-10 22:43:42
 $mod_strings = array (
   'LBL_PALVELU_NLFSE_SERVICES_ID' => 'Palvelu (related Palvelu ID)',
   'LBL_PALVELU' => 'Palvelu',
@@ -46,4 +46,6 @@ $mod_strings = array (
   'LBL_SIC_CODE' => ' Y-Tunnus/Hetu',
   'LBL_ISIL' => ' ISIL -tunnus',
   'LBL_ACCOUNT_BACKEND_SYSTEMS' => 'Tietojärjestelmät',
+  'LBL_PHONE_OFFICE' => 'Puhelinnumero',
+  'LBL_PHONE_ALTERNATE' => 'Muu puhelin',
 );
