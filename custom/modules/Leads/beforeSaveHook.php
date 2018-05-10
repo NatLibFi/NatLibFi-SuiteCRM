@@ -48,6 +48,8 @@ class LeadBeforeSaveHook
         $brBean->{'nlfse_services_nlfbr_businessrelationships_1_name'} = $service->name;
 
         $brBean->{'description'} = $bean->{'description'};
+        $brBean->{'commercial'} = $bean->{'commercial_c'};
+        $brBean->{'maksullisen_lisatiedot2_c'} = $bean->{'commercial_description_c'};
 
         $brBean->save();
 
