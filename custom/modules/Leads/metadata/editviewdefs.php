@@ -103,6 +103,24 @@ array (
         array (
           0 => 'description',
         ),
+        4 => 
+        array (
+          0 => 
+          array (
+            'name' => 'commercial_c',
+            'label' => 'LBL_COMMERCIAL',
+          ),
+          1 => '',
+        ),
+        5 => 
+        array (
+          0 => 
+          array (
+            'name' => 'commercial_description_c',
+            'studio' => 'visible',
+            'label' => 'LBL_COMMERCIAL_DESCRIPTION',
+          ),
+        ),
       ),
       'lbl_editview_panel2' => 
       array (

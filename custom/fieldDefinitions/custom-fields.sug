@@ -856,6 +856,50 @@ ext2:::
 ext3:::
 ext4:::
 DONE
+id:::Leadscommercial_c
+name:::commercial_c
+vname:::LBL_COMMERCIAL
+comments:::
+help:::
+custom_module:::Leads
+type:::bool
+len:::255
+required:::0
+default_value:::0
+date_modified:::2018-05-10 11:59:25
+deleted:::0
+audited:::1
+massupdate:::0
+duplicate_merge:::0
+reportable:::1
+importable:::true
+ext1:::
+ext2:::
+ext3:::
+ext4:::
+DONE
+id:::Leadscommercial_description_c
+name:::commercial_description_c
+vname:::LBL_COMMERCIAL_DESCRIPTION
+comments:::
+help:::
+custom_module:::Leads
+type:::text
+len:::
+required:::0
+default_value:::
+date_modified:::2018-05-10 12:02:53
+deleted:::0
+audited:::1
+massupdate:::0
+duplicate_merge:::0
+reportable:::1
+importable:::true
+ext1:::
+ext2:::4
+ext3:::20
+ext4:::
+DONE
 id:::Leadscontact_account_role_c
 name:::contact_account_role_c
 vname:::LBL_CONTACT_ACCOUNT_ROLE
@@ -888,7 +932,7 @@ type:::text
 len:::0
 required:::0
 default_value:::
-date_modified:::2018-02-25 15:30:02
+date_modified:::2018-05-07 19:40:53
 deleted:::0
 audited:::1
 massupdate:::0
@@ -2054,7 +2098,7 @@ type:::date
 len:::0
 required:::0
 default_value:::
-date_modified:::2018-03-25 10:11:03
+date_modified:::2018-04-21 18:11:05
 deleted:::0
 audited:::1
 massupdate:::0

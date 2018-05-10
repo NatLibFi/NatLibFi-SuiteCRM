@@ -1,5 +1,5 @@
 <?php
-// created: 2018-05-07 22:40:53
+// created: 2018-05-10 15:02:54
 $mod_strings = array (
   'LBL_PALVELU_NLFSE_SERVICES_ID' => 'Palvelu (related Palvelu ID)',
   'LBL_PALVELU' => 'Palvelu',
@@ -40,4 +40,6 @@ $mod_strings = array (
   'LBL_OTHER_CONTACTS' => 'Muut yhteyshenkilöt',
   'LBL_ALLIANCES' => 'Asiakassuhteessa yhteenliittymän jäsenenä',
   'LBL_DESCRIPTION' => 'Asiakassuhteen kuvaus:',
+  'LBL_COMMERCIAL' => 'Maksava asiakas',
+  'LBL_COMMERCIAL_DESCRIPTION' => 'Maksullisen asiakkuuden lisätiedot',
 );
