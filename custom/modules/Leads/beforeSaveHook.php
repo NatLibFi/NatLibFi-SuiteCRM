@@ -198,6 +198,7 @@ class LeadBeforeSaveHook
         $account->{'account_type'} = 'Customer';
         $account->{'organisaatio_status_c'} = 'toiminnassa';
 
+        $this->saveAccountEmailAddressesAfterConversion($account, $postData);
         $this->setAccountBackendSystemData($account, $postData);
     }
 
@@ -219,6 +220,64 @@ class LeadBeforeSaveHook
 
         foreach ($systemIds as $systemId) {
             $account->{'accounts_nlfbs_backendsystems_1'}->add($systemId, array());
+        }
+    }
+
+    private function saveAccountEmailAddressesAfterConversion(&$account, array $postData) {
+        $fieldAdded = false;
+        $newFields = array();
+
+        foreach ($postData as $field => $value) {
+            if (substr($field, 0, strlen('LeadAccount')) !== 'LeadAccount') {
+                continue;
+            }
+
+            if ($field === 'LeadAccount_email_widget_id') {
+                $_REQUEST['Accounts_email_widget_id'] = $value;
+                $newFields[] = 'Accounts_email_widget_id';
+            }
+
+            if (substr($field, 0, strlen('LeadAccount0emailAddress')) !== 'LeadAccount0emailAddress') {
+                continue;
+            }
+            $newFieldName = 'Accounts0' . substr($field, strlen('LeadAccount0'));
+            $newValue = $value;
+            if ($field === 'LeadAccount0emailAddressPrimaryFlag') {
+                $newValue = 'Accounts0' . substr($value, strlen('LeadAccount0'));
+            }
+            elseif ($field === 'LeadAccount0emailAddressOptOutFlag' || $field === 'LeadAccount0emailAddressInvalidFlag') {
+                $newValue = array();
+                foreach ($value as $name) {
+                    $newValue[] = 'Accounts0' . substr($name, strlen('LeadAccount0'));
+                }
+            }
+
+            // TODO: this is hacky but how to do it better if SugarEmailAddress reads data from $_REQUEST?
+            $_REQUEST[$newFieldName] = $newValue;
+            $newFields[] = $newFieldName;
+            $fieldAdded = true;
+        }
+
+        if (!$fieldAdded) {
+            return;
+        }
+
+        // Clean all possible old email data that might have been copied over from Lead's contact data
+        $account->email1 = null;
+        $account->email2 = null;
+        $account->email_opt_out = null;
+        $account->invalid_email = null;
+        $account->emailAddress->addresses = array();
+
+        // Hack: SugarEmailAddress:populateAddresses changes passed module to 'Leads'
+        // if action is ConvertLead. This is OK, but in this case we want to jump over it
+        $action = $_REQUEST['action'];
+        $_REQUEST['action'] = 'ConvertLead-AccountEmail';
+        $emailAddress = new SugarEmailAddress();
+        $emailAddress->saveEmail($account->id, 'Accounts');
+        $_REQUEST['action'] = $action;
+        foreach ($newFields as $field) {
+            unset($_REQUEST[$field]);
         }
     }
 

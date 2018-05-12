@@ -56,6 +56,9 @@ $viewdefs['Accounts']['ConvertLead'] = array(
                     'label' => 'LBL_PHONE_ALTERNATE',
                 ),
             ),
+            array(
+                'lead_email_address',
+            ),
             array (
                 'website',
                 array (
