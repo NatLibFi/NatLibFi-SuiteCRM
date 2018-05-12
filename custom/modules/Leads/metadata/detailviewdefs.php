@@ -226,7 +226,11 @@ array (
             'label' => 'LBL_PHONE_ALTERNATE',
           ),
         ),
-        5 => 
+        5 =>
+        array(
+          0 => 'account_email',
+        ),
+        6 => 
         array (
           0 => 
           array (
@@ -235,7 +239,7 @@ array (
             'label' => 'LBL_ACCOUNT_BACKEND_SYSTEMS',
           ),
         ),
-        6 => 
+        7 => 
         array (
           0 => 
           array (
@@ -244,7 +248,7 @@ array (
             'label' => 'LBL_ACCOUNT_DESCRIPTION',
           ),
         ),
-        7 => 
+        8 => 
         array (
           0 => 
           array (
@@ -257,7 +261,7 @@ array (
             ),
           ),
         ),
-        8 => 
+        9 => 
         array (
           0 => '',
           1 => '',

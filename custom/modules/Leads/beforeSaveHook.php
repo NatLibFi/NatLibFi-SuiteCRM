@@ -2,8 +2,28 @@
 
 if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
+require_once 'include/SugarEmailAddress/SugarEmailAddress.php';
+
 class LeadBeforeSaveHook
 {
+    function saveAccountEmailAddresses($bean, $event, $arguments)
+    {
+        if (!isset($_REQUEST['action'])) {
+            return;
+        }
+
+        if ($_REQUEST['action'] !== 'Save') {
+            return;
+        }
+
+        if (!$bean->id) {
+            return;
+        }
+
+        $emailAddress = new SugarEmailAddress();
+        $emailAddress->saveEmail($bean->id, 'LeadAccount');
+    }
+
     function createBusinessRelationship($bean, $event, $arguments)
     {
         if (!isset($_REQUEST['action'])) {
