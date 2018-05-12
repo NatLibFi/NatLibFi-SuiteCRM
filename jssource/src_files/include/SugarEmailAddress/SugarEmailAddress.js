@@ -223,7 +223,7 @@
       }
 
       // Clone from hidden template on the page
-      var lineContainer = $('.template.email-address-line-container').clone();
+      var lineContainer = $('.template.email-address-line-container').first().clone();
       lineContainer.removeClass('template');
       lineContainer.removeClass('hidden');
       lineContainer.attr('id', this.module + _eaw.id + 'emailAddressRow' + _eaw.totalEmailAddresses);
@@ -391,7 +391,7 @@
         .attr('id', 'emailAddressWidget' + _eaw.totalEmailAddresses);
 
       // Add line item to lines container
-      $(lineContainer).appendTo('.email-address-lines-container');
+      $(lineContainer).appendTo($('#' + tableId).siblings('.email-address-lines-container'));
 
       // Add validation to field
       _eaw.EmailAddressValidation(
@@ -404,7 +404,7 @@
       _eaw.numberEmailAddresses = _eaw.totalEmailAddresses;
       _eaw.addInProgress = false;
 
-      _eaw.fixPrimaryRadioCheckboxValue();
+      _eaw.fixPrimaryRadioCheckboxValue($('#' + tableId).siblings('.email-address-lines-container'));
 
 
     }, //addEmailAddress
@@ -421,6 +421,7 @@
       var email_id = $(this).attr('module-email-id');
       var rowId = $(this).attr('data-row');
       var index = this.name;
+      var rowContainer = $('#' + rowId).parent();
 
       removeFromValidate($(this).parents('form').attr('name'), module + id + 'emailAddress' + email_id);
       $('#' + rowId).remove();
@@ -429,7 +430,7 @@
       var removedIndex = parseInt(index);
       // If we are not deleting the last email address, we need to shift the numbering to fill the gap
 
-      _eaw.totalEmailAddresses = $('.email-address-line-container:not(.template)').length;
+      _eaw.totalEmailAddresses = rowContainer.find('.email-address-line-container:not(.template)').length;
 
 
       //var primaryFound = ($('[name='+ module + '0emailAddressPrimaryFlag]:checked').length != 0);
@@ -442,11 +443,11 @@
       }
 
 
-      _eaw.fixPrimaryRadioCheckboxValue();
+      _eaw.fixPrimaryRadioCheckboxValue(rowContainer);
 
       var elemName = '';
       var counter = 0;
-      $('.email-address-line-container').each(function(index, value) {
+      rowContainer.find('.email-address-line-container').each(function(index, value) {
         // skip template
         if(!$(value).hasClass('template')) {
 
@@ -495,18 +496,18 @@
     },//removeEmailAddress
 
     //private
-    fixPrimaryRadioCheckboxValue: function() {
-      $('.email-address-line-container').find('input[type="email"]').each(function(){
+    fixPrimaryRadioCheckboxValue: function(container) {
+      container.find('.email-address-line-container').find('input[type="email"]').each(function(){
         if(!$(this).hasClass('template')) {
           var thisValueId = $(this).attr('name');
           $(this).closest('.email-address-line-container').find('.email-address-primary-flag').val(thisValueId);
         }
       });
       // bind click on primary radio checkbox
-      $('.email-address-lines-container .email-address-line-container:not(.template) input[type="radio"].email-address-primary-flag').each(function(i,e){
+      container.find('.email-address-lines-container .email-address-line-container:not(.template) input[type="radio"].email-address-primary-flag').each(function(i,e){
         if(typeof $._data($(e), 'events') == 'undefined') {
           $(e).click(function(){
-            $('.email-address-lines-container .email-address-line-container:not(.template) input[type="radio"].email-address-primary-flag').prop('checked', false);
+            container.find('.email-address-lines-container .email-address-line-container:not(.template) input[type="radio"].email-address-primary-flag').prop('checked', false);
             $(this).prop('checked', true);
           });
         }
