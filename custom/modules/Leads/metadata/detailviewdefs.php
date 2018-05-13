@@ -169,6 +169,14 @@ array (
             'label' => 'LBL_COMMERCIAL_DESCRIPTION',
           ),
         ),
+        7 =>
+        array (
+          0 =>
+          array (
+            'name' => 'service_mail_link1',
+            'label' => 'LBL_SERVICE_MAIL_LINK_TITLE',
+          ),
+        ),
       ),
       'lbl_editview_panel2' => 
       array (

@@ -3,6 +3,8 @@
 if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
 require_once 'include/SugarEmailAddress/SugarEmailAddress.php';
+require_once 'custom/modules/Leads/ServiceMailLinkHelper.php';
+require_once 'custom/modules/Audit/CustomAudit.php';
 
 class LeadBeforeSaveHook
 {
@@ -22,6 +24,159 @@ class LeadBeforeSaveHook
 
         $emailAddress = new SugarEmailAddress();
         $emailAddress->saveEmail($bean->id, 'LeadAccount');
+    }
+
+    public function setServiceMailLinkData($bean, $event, $arguments) {
+        if (!isset($_REQUEST['module']) || $_REQUEST['module'] !== 'Leads') {
+            return;
+        }
+
+        if (!isset($_REQUEST['action']) || $_REQUEST['action'] !== 'Save') {
+            return;
+        }
+
+        $helper = new ServiceMailLinkHelper();
+        $existingLinks = $helper->getLinkData($bean->id);
+
+        $newLinks = array();
+        $updatedLinks = array();
+        foreach (array_keys($_REQUEST) as $field) {
+            $index = '';
+            if (substr($field, 0, strlen('service_mail_link_id')) === 'service_mail_link_id') {
+                $index = substr($field, strlen('service_mail_link_id'));
+
+            }
+            if ($index === '') {
+                continue;
+            }
+
+            if (!isset($_REQUEST['service_mail_link_id' . $index]) || !array_key_exists('service_mail_link_url' . $index, $_REQUEST)) {
+                continue;
+            }
+
+            $id = $_REQUEST['service_mail_link_id' . $index];
+            $linkUrl = '';
+            $description = '';
+            if (isset($_REQUEST['service_mail_link_url' . $index])) {
+                $linkUrl = $_REQUEST['service_mail_link_url' . $index];
+            }
+            if (isset($_REQUEST['service_mail_link_description' . $index])) {
+                $description = $_REQUEST['service_mail_link_description' . $index];
+            }
+            if ($id) {
+                $updatedLinks[$id] = array(
+                    'record_id' => $id,
+                    'link_url' => $linkUrl,
+                    'description' => $description,
+                );
+            } else {
+                $newLinks[] = array(
+                    'link_url' => $linkUrl,
+                    'description' => $description,
+                );
+            }
+        }
+
+        $toUpdate = array();
+        $toDelete = array();
+        foreach ($existingLinks as $oldData) {
+            $key = $oldData['record_id'];
+            if (!array_key_exists($key, $updatedLinks)) {
+                $toDelete[] = array(
+                    'id' => $oldData['record_id'],
+                    'link_url' => $oldData['link_url'],
+                );
+                continue;
+            }
+            $newData = $updatedLinks[$key];
+            if (
+                $oldData['link_url'] !== $newData['link_url'] ||
+                $oldData['description'] !== $newData['description']
+            ) {
+                $toUpdate[] = array(
+                    'new' => $newData,
+                    'old' => $oldData,
+                );
+            }
+        }
+
+        $db = $GLOBALS['db'];
+
+        foreach ($toDelete as $data) {
+            $query = 'DELETE FROM lead_service_mail_links WHERE id="' . $db->quote($data['id']) . '"';
+
+            $auditData = array(
+                'field_name' => 'service_mail_link',
+                'data_type' => 'varchar',
+                'before' => $data['link_url'],
+                'after' => '',
+            );
+
+            $result = $db->query($query);
+            $db->save_audit_records($bean, $auditData);
+        }
+
+        foreach ($toUpdate as $data) {
+            $query = 'UPDATE lead_service_mail_links ' .
+                'SET link_url="' . $db->quote($data['new']['link_url']) . '", ' .
+                'description="' . $db->quote($data['new']['description']) . '", ' .
+                'date_modified=NOW() ' .
+                'WHERE id="' . $db->quote($data['new']['record_id']) . '"';
+
+            $auditData = array();
+            if ($data['old']['link_url'] !== $data['new']['link_url']) {
+                $auditData[] = array(
+                    'field_name' => 'service_mail_link',
+                    'data_type' => 'varchar',
+                    'before' => $data['old']['link_url'],
+                    'after' => $data['new']['link_url'],
+                );
+            }
+            if ($data['old']['description'] !== $data['new']['description']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'service_mail_link|' . $data['new']['link_url'] . '|service_mail_link_description',
+                    'data_type' => 'text',
+                    'before' => $data['old']['description'],
+                    'after' => $data['new']['description'],
+                );
+            }
+
+            $result = $db->query($query);
+            foreach ($auditData as $auditRow) {
+                $db->save_audit_records($bean, $auditRow);
+            }
+        }
+
+       foreach ($newLinks as $data) {
+            $query = 'INSERT INTO lead_service_mail_links ' .
+                '(id, lead_id, link_url, description, date_modified) ' .
+                'VALUES(' .
+                '"' . $db->quote(create_guid()) . '", ' .
+                '"' . $db->quote($bean->id) . '", ' .
+                '"' . $db->quote($data['link_url']) . '", ' .
+                '"' . $db->quote($data['description']) . '", ' .
+                'NOW() )';
+
+            $auditData = array(
+                array(
+                    'field_name' => 'service_mail_link',
+                    'data_type' => 'varchar',
+                    'before' => '',
+                    'after' => $data['link_url'],
+                ),
+                array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'service_mail_link|' . $data['link_url'] . '|service_mail_link_description',
+                    'data_type' => 'text',
+                    'before' => '',
+                    'after' => $data['description'],
+                ),
+            );
+
+            $result = $db->query($query);
+            foreach ($auditData as $auditRow) {
+                $db->save_audit_records($bean, $auditRow);
+            }
+        }
     }
 
     function createBusinessRelationship($bean, $event, $arguments)
