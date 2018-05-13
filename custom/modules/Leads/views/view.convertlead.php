@@ -228,6 +228,14 @@ class CustomViewConvertLead extends ViewConvertLead
 	                {
 	                    $focus->description = $this->focus->account_description;
 	                }
+	                elseif ($module === 'Accounts' && $field === 'parent_id')
+	                {
+	                    $focus->parent_id = $this->focus->account_id_c;
+	                }
+	                elseif ($module === 'Accounts' && $field === 'parent_name')
+	                {
+	                    $focus->parent_name = $this->focus->account_parent_c;
+	                }
 	                elseif ($module === 'Accounts' && $field === 'sic_code')
 	                {
 	                    $focus->sic_code = $this->focus->sic_code_c;

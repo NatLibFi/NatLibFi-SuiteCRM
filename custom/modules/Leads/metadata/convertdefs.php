@@ -27,6 +27,9 @@ $viewdefs['Accounts']['ConvertLead'] = array(
                 'name',
             ),
             array(
+                'parent_name',
+            ),
+            array(
                 array(
                    'name' => 'industry',
                    'label' => 'LBL_INDUSTRY',
