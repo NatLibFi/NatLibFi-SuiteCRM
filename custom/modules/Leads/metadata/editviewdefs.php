@@ -141,6 +141,15 @@ array (
         array (
           0 => 
           array (
+            'name' => 'account_parent_c',
+            'studio' => 'visible',
+            'label' => 'LBL_ACCOUNT_PARENT',
+          ),
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
             'name' => 'hallinnonala_c',
             'studio' => 'visible',
             'label' => 'LBL_HALLINNONALA',
@@ -152,7 +161,7 @@ array (
             'label' => 'LBL_SIDOSRYHMA',
           ),
         ),
-        2 => 
+        3 => 
         array (
           0 => 
           array (
@@ -161,7 +170,7 @@ array (
             'label' => 'LBL_SEKTORI',
           ),
         ),
-        3 => 
+        4 => 
         array (
           0 => 
           array (
@@ -174,7 +183,7 @@ array (
             'label' => 'LBL_ISIL',
           ),
         ),
-        4 => 
+        5 => 
         array (
           0 => 
           array (
@@ -187,11 +196,11 @@ array (
             'label' => 'LBL_PHONE_ALTERNATE',
           ),
         ),
-        5 =>
-        array(
+        6 => 
+        array (
           0 => 'account_email',
         ),
-        6 => 
+        7 => 
         array (
           0 => 
           array (
@@ -200,7 +209,7 @@ array (
             'label' => 'LBL_ACCOUNT_BACKEND_SYSTEMS',
           ),
         ),
-        7 => 
+        8 => 
         array (
           0 => 
           array (
@@ -209,7 +218,7 @@ array (
             'label' => 'LBL_ACCOUNT_DESCRIPTION',
           ),
         ),
-        8 => 
+        9 => 
         array (
           0 => 
           array (
@@ -225,7 +234,7 @@ array (
             ),
           ),
         ),
-        9 => 
+        10 => 
         array (
           0 => '',
           1 => '',
