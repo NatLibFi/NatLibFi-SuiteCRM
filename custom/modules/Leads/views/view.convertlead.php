@@ -252,6 +252,18 @@ class CustomViewConvertLead extends ViewConvertLead
 	                {
 	                    $focus->phone_alternate = $this->focus->phone_alternate_c;
 	                }
+	                elseif ($module === 'Accounts' && $field === 'lead_description')
+	                {
+	                    $focus->lead_description = $this->focus->description;
+	                }
+	                elseif ($module === 'Accounts' && $field === 'lead_commercial')
+	                {
+	                    $focus->lead_commercial = $this->focus->commercial_c;
+	                }
+	                elseif ($module === 'Accounts' && $field === 'lead_commercial_description')
+	                {
+	                    $focus->lead_commercial_description = $this->focus->commercial_description_c;
+	                }
 	                else if ($module == "Opportunities" && $field == 'amount')
 	                {
 	                    $focus->amount = unformat_number($this->focus->opportunity_amount);

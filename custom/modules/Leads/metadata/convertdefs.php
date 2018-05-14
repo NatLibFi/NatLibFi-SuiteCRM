@@ -42,6 +42,15 @@ $viewdefs['Accounts']['ConvertLead'] = array(
                 ),
             ),
             array(
+                'lead_commercial',
+            ),
+            array(
+                'lead_commercial_description',
+            ),
+            array(
+                'lead_description',
+            ),
+            array(
                 array(
                     'customCode' => '<hr>'
                 ),

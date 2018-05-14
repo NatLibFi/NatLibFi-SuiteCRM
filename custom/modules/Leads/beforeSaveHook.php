@@ -226,9 +226,7 @@ class LeadBeforeSaveHook
         $brBean->{'accounts_nlfbr_businessrelationships_1_name'} = $account->name;
         $brBean->{'nlfse_services_nlfbr_businessrelationships_1_name'} = $service->name;
 
-        $brBean->{'description'} = $bean->{'description'};
-        $brBean->{'commercial'} = $bean->{'commercial_c'};
-        $brBean->{'maksullisen_lisatiedot2_c'} = $bean->{'commercial_description_c'};
+        $this->setBusinessRelationshipData($brBean, $bean, $_REQUEST);
 
         $brBean->save();
 
@@ -435,5 +433,20 @@ class LeadBeforeSaveHook
             unset($_REQUEST[$field]);
         }
     }
+
+    private function setBusinessRelationshipData(&$br, $lead, array $postData) {
+        if (isset($postData['Accountslead_description'])) {
+            $br->description = $postData['Accountslead_description'];
+        }
+
+        if (isset($postData['Accountslead_commercial'])) {
+            $br->{'commercial'} = $postData['Accountslead_commercial'];
+        }
+
+        if (isset($postData['Accountslead_commercial_description'])) {
+            $br->{'maksullisen_lisatiedot2_c'} = $postData['Accountslead_commercial_description'];
+        }
+    }
+
 
 }
