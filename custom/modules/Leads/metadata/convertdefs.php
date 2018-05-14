@@ -23,6 +23,34 @@ $viewdefs['Accounts']['ConvertLead'] = array(
     ),
     'panels' =>array (
         'LNK_NEW_ACCOUNT' => array (
+            array(
+                array(
+                    'customCode' => '<span><b>Asiakassuhteen tiedot</b></span>', // TODO: i18n this
+                ),
+            ),
+            array(
+                array (
+                    'label' => 'LBL_NLFSE_SERVICES_LEADS_1_FROM_NLFSE_SERVICES_TITLE_SINGULAR',
+                    'customCode' => '<span>{$nlf_service_name}</span>',
+                ),
+
+            ),
+            array (
+                array (
+                    'name' => 'alliances_c',
+                    'label' => 'LBL_LEAD_ALLIANCES',
+                ),
+            ),
+            array(
+                array(
+                    'customCode' => '<hr>'
+                ),
+            ),
+            array(
+                array(
+                    'customCode' => '<span><b>Uuden organisaation tiedot</b></span>', // TODO: i18n this
+                ),
+            ),
             array (
                 'name',
             ),
@@ -64,17 +92,6 @@ $viewdefs['Accounts']['ConvertLead'] = array(
             ),
             array (
                 'website',
-                array (
-                    'name' => 'foobar_TODO',
-                    'label' => 'LBL_NLFSE_SERVICES_LEADS_1_FROM_NLFSE_SERVICES_TITLE_SINGULAR',
-                    //'customCode' => '{php}$this->_tpl_vars["nlfse_service_name"] = $this->_tpl_vars["bean"]->nlfse_services_leads_1_name;{/php}<span>{$nlfse_service_name}</span>',
-                    //'customCode' => '{php}echo var_export($this->_tpl_vars["bean"]->{"nlfse_services_leads_1_name"}, true);{/php}<span>{$bean.nlfse_services_leads_1_name}</span>',
-                    'customCode' => '<span>{$nlf_service_name}</span>',
-                /*    'displayParams' => 
-                    array (
-                   //   'disabled' => true,
-                    ),*/
-                ),
             ),
             array(
                 array(
@@ -84,12 +101,6 @@ $viewdefs['Accounts']['ConvertLead'] = array(
             ),
             array(
                 'description'
-            ),
-            array (
-                array (
-                    'name' => 'alliances_c',
-                    'label' => 'LBL_LEAD_ALLIANCES',
-                ),
             ),
         )
     ),
