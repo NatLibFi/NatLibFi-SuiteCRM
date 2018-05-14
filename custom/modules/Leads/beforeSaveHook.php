@@ -435,6 +435,10 @@ class LeadBeforeSaveHook
     }
 
     private function setBusinessRelationshipData(&$br, $lead, array $postData) {
+        $br->{'asiakassuhde_c'} = 'aktiivinen';
+        $br->{'palvelu_liittymisen_status_c'} = 'ilmoittautunut';
+        $br->{'nfl_business_relation_begins_c'} = $this->formatDate(date('d.m.Y'));
+
         if (isset($postData['Accountslead_description'])) {
             $br->description = $postData['Accountslead_description'];
         }
@@ -448,5 +452,20 @@ class LeadBeforeSaveHook
         }
     }
 
+    // Copied from SugarFieldDatetime::save
+    private function formatDate($date) {
+        global $timedate;
+
+        if (!$date) {
+            return '';
+        }
+
+        $offset = strlen(trim($date)) < 11 ? false : true;
+        if ($timedate->check_matching_format($date, TimeDate::DB_DATE_FORMAT)) {
+            return $date;
+        } else {
+            return $timedate->to_db_date($date, $offset);
+        }
+    }
 
 }
