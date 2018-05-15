@@ -264,6 +264,10 @@ class CustomViewConvertLead extends ViewConvertLead
 	                {
 	                    $focus->lead_commercial_description = $this->focus->commercial_description_c;
 	                }
+	                elseif ($module === 'Contacts' && $field === 'lead_address')
+	                {
+	                    $focus->lead_address = $this->getOneLineContactAddress($this->focus);
+	                }
 	                else if ($module == "Opportunities" && $field == 'amount')
 	                {
 	                    $focus->amount = unformat_number($this->focus->opportunity_amount);
@@ -487,4 +491,17 @@ class CustomViewConvertLead extends ViewConvertLead
         parent::copyAddressFields($bean, $contact);
     }
 
+    private function getOneLineContactAddress($lead) {
+        $address = $lead->primary_address_street;
+        if ($address && (!empty($lead->primary_address_city) || !empty($lead->primary_address_postalcode))) {
+            $address .= ', ';
+        }
+        if (!empty($lead->primary_address_postalcode)) {
+            $address .= ' ' . $lead->primary_address_postalcode;
+        }
+        if (!empty($lead->primary_address_city)) {
+            $address .= ' ' . $lead->primary_address_city;
+        }
+        return $address;
+    }
 }
