@@ -275,6 +275,15 @@ class LeadBeforeSaveHook
             $accountRole = $_REQUEST['Contactscontact_account_role_c'];
         }
 
+        $contactDepartment = '';
+        $contactAddress = '';
+        if (isset($_REQUEST['Contactsdepartment']) && $_REQUEST['Contactsdepartment']) {
+            $contactDepartment = $_REQUEST['Contactsdepartment'];
+        }
+        if (isset($_REQUEST['Contactslead_address']) && $_REQUEST['Contactslead_address']) {
+            $contactAddress = $_REQUEST['Contactslead_address'];
+        }
+
         // Additional relationship fields cannot be accessed and edited using beans,
         // so let's do this directly to the database.
         $db = $GLOBALS['db'];
@@ -297,7 +306,14 @@ class LeadBeforeSaveHook
 
             $account->{'contacts'}->get(true);
 
-            $account->{'contacts'}->add($contactId, array('role' => encodeMultienumValue(array($accountRole))));
+            $account->{'contacts'}->add(
+                $contactId,
+                array(
+                    'department' => $contactDepartment,
+                    'address' => $contactAddress,
+                    'role' => encodeMultienumValue(array($accountRole))
+                )
+            );
             $account->save();
             return;
         }
