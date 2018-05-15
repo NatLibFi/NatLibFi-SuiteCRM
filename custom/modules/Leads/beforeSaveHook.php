@@ -258,9 +258,14 @@ class LeadBeforeSaveHook
              return;
         }
 
+        $contactBrRole = 'br_yhteyshenkilo';
+        if (isset($_REQUEST['Contactslead_contact_br_role'])) {
+            $contactBrRole = $_REQUEST['Contactslead_contact_br_role'];
+        }
+
         $brBean->{'nlfbr_businessrelationships_contacts_1'}->get(true);
 
-        $brBean->{'nlfbr_businessrelationships_contacts_1'}->add($contactId, array('role' => encodeMultienumValue(array('br_yhteyshenkilo'))));
+        $brBean->{'nlfbr_businessrelationships_contacts_1'}->add($contactId, array('role' => encodeMultienumValue(array($contactBrRole))));
 
         $brAlliances = '';
         if (isset($_REQUEST['Accountsalliances_c']) && $_REQUEST['Accountsalliances_c']) {

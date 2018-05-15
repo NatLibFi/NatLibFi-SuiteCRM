@@ -170,6 +170,9 @@ $viewdefs['Contacts']['ConvertLead'] = array(
                     //'customCode' => '{php}echo var_export($this->_tpl_vars["bean"], true);{/php}<span>test</span>',
                 ),
             ),
+            array(
+                'lead_contact_br_role',
+            ),
             /*array(
                 'description'
             ),*/
