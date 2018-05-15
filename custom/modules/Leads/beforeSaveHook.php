@@ -273,6 +273,12 @@ class LeadBeforeSaveHook
         }
         $brBean->{'nlfbr_businessrelationships_account_alliances'} = $brAlliances;
 
+        if (!$brBean->load_relationship('nlfbr_businessrelationships_leads_1')) {
+             return;
+        }
+
+        $brBean->{'nlfbr_businessrelationships_leads_1'}->add($bean->id, array());
+
         $brBean->save();
 
         $accountRole = 'account_ei_tiedossa';
