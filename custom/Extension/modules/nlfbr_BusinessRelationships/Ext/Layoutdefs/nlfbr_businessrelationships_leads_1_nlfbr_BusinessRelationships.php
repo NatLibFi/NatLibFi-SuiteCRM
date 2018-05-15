@@ -3,7 +3,7 @@
 $layout_defs["nlfbr_BusinessRelationships"]["subpanel_setup"]['nlfbr_businessrelationships_leads_1'] = array (
   'order' => 100,
   'module' => 'Leads',
-  'subpanel_name' => 'default',
+  'subpanel_name' => 'ForBusinessRelationships',
   'sort_order' => 'asc',
   'sort_by' => 'id',
   'title_key' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_LEADS_1_FROM_LEADS_TITLE',

@@ -61,4 +61,30 @@ class LeadProcessRecordHook
 
     }
 
+    function setServiceMailLinkUrls($bean, $event, $arguments)
+    {
+        $id = $bean->id;
+        if (!isset($id)) {
+            return;
+        }
+
+        $db = $GLOBALS['db'];
+
+        $query = 'SELECT link_url FROM lead_service_mail_links ' .
+            'WHERE lead_id="' . $db->quote($id) . '" ' .
+            'AND deleted = 0';
+
+        $result = $db->query($query);
+
+        $linkString = '';
+        while ($row = $db->fetchByAssoc($result) ) {
+            if ($linkString) {
+                $linkString .= ', '; // TODO: i18n this
+            }
+            $linkString .= '<a href="' . $row['link_url'] . '">' . $row['link_url'] . '</a>';
+        }
+
+        $bean->{service_mail_link_urls} = $linkString;
+    }
+
 }
