@@ -24,6 +24,11 @@ tr.multirow-last td
     padding-bottom: 2em !important;
 }
 
+.edit.view table#createAccounts
+{
+    margin-bottom: 2.5em;
+}
+
 @media print {
     header { display: none }
     a[href]:after { content: none !important; }
