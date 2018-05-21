@@ -15,17 +15,6 @@ $popupMeta = array (
   2 => 'account_name',
   4 => 'contact_roles_all',
 ),
-    'create' => array (
-  'formBase' => 'ContactFormBase.php',
-  'formBaseClass' => 'ContactFormBase',
-  'getFormBodyParams' => 
-  array (
-    0 => '',
-    1 => '',
-    2 => 'ContactSave',
-  ),
-  'createButton' => 'LNK_NEW_CONTACT',
-),
     'searchdefs' => array (
   'first_name' => 
   array (
