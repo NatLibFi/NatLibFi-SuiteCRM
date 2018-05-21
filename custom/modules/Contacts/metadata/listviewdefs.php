@@ -74,6 +74,7 @@ array (
     ),
     'label' => 'LBL_CONTACT_ALL_ROLE_NAMES',
     'width' => '10%',
+    'sortable' => false,
     'default' => true,
   ),
   'CONTACT_SERVICE_NAMES' => 
