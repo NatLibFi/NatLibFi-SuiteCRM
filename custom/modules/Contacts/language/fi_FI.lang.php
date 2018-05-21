@@ -24,6 +24,7 @@ $mod_strings = array (
   'LBL_HOMEPAGE_TITLE' => 'Omat kontaktit',
   'LBL_MODULE_NAME' => 'Henkilöt',
   'LBL_ACCOUNT_NAME' => 'Organisaatio',
+  'LBL_LIST_ACCOUNT_NAME' => 'Organisaatio',
   'LBL_ACCOUNT_ID' => 'Asiakkaan ID:',
   'LBL_ACCOUNT' => 'Asiakas',
   'LBL_CONTACT_INFORMATION' => 'Henkilön tiedot',
