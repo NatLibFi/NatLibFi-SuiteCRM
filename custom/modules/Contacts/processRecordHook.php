@@ -5,6 +5,7 @@ if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 class ContactProcessRecordHook
 {
     const FIELD_ROLE = 'accounts_contacts_role_incl_businessrelationships';
+    const FIELD_ALL_ROLES = 'contact_all_role_names';
     const ACCOUNT_NAMES_FIELD = 'contact_account_names';
     const SERVICE_NAMES_FIELD = 'contact_service_names';
 
@@ -19,6 +20,20 @@ class ContactProcessRecordHook
         $roleString = getAccountAndBRRolesForContactSubpanelHtml($id);
         if ($roleString) {
             $bean->{self::FIELD_ROLE} = $roleString;
+        }
+    }
+
+    // TODO: this could be made function called from vardef instead of using a hook?
+    function setContactRoles($bean, $event, $arguments)
+    {
+        $id = $bean->id;
+        if (!isset($id)) {
+            return;
+        }
+
+        $roleString = getAllContactRoleString($id);
+        if ($roleString) {
+            $bean->{self::FIELD_ALL_ROLES} = $roleString;
         }
     }
 

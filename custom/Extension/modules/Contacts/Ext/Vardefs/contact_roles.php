@@ -23,3 +23,13 @@ $dictionary['Contact']["fields"]["contact_roles_all_new"] = array (
   'vname' => 'LBL_CONTACT_ROLES_ALL',
   //'id_name' => 'nlfse_services_accounts_enum',
 );
+
+$dictionary['Contact']["fields"]["contact_all_role_names"] = array (
+  'name' => 'contact_all_role_names',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'vname' => 'LBL_CONTACT_ALL_ROLE_NAMES',
+  'studio' => array('listview' => true, 'editview' => false, 'detailview' => false, 'searchview' => false),
+);
+
+
