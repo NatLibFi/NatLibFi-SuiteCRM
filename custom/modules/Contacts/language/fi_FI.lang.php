@@ -1,5 +1,5 @@
 <?php
-// created: 2017-10-15 14:42:57
+// created: 2018-03-28 15:57:50
 $mod_strings = array (
   'LBL_LEAD_SOURCE' => 'Liidin lähde:',
   'LBL_LEAD_DESCRIPTION' => 'Liidin lisätieto',
@@ -39,4 +39,9 @@ $mod_strings = array (
   'LBL_CONTACT_ACCOUNT_ROLE' => 'Rooli organisaatiossa',
   'LBL_NO_MAILING' => 'Ei toistaiseksi lähetetä viestejä',
   'LBL_BUSINESS_RELATIONSHIPS_CONTACTS_SUBPANEL_TITLE' => 'Roolit asiakassuhteissa',
+  'LBL_DESCRIPTION' => 'Kuvaus:',
+  'LBL_FIRST_NAME' => 'Etunimi:',
+  'LBL_LAST_NAME' => 'Sukunimi:',
+  'LBL_TITLE' => 'Titteli:',
+  'LBL_EMAIL_ADDRESS' => 'Sähköpostiosoite:',
 );
