@@ -335,6 +335,10 @@ class PopupSmarty extends ListViewSmarty{
 		} elseif(file_exists('modules/'.$this->module.'/metadata/SearchFields.php')) {
 			require('modules/'.$this->module.'/metadata/SearchFields.php');
 	    }
+		if (file_exists('custom/modules/' . $this->module . '/metadata/SearchFields.php')) {
+			require('custom/modules/' . $this->module . '/metadata/SearchFields.php');
+		}
+
         $this->searchdefs[$this->module]['templateMeta']['maxColumns'] = 2;
         $this->searchdefs[$this->module]['templateMeta']['widths']['label'] = 10;
         $this->searchdefs[$this->module]['templateMeta']['widths']['field'] = 30;
