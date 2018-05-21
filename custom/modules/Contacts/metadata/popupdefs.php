@@ -7,13 +7,13 @@ $popupMeta = array (
   'first_name' => 'contacts.first_name',
   'last_name' => 'contacts.last_name',
   'account_name' => 'accounts.name',
-  'account_id' => 'accounts.id',
+  'contact_roles_all' => 'contacts.contact_roles_all',
 ),
     'searchInputs' => array (
   0 => 'first_name',
   1 => 'last_name',
   2 => 'account_name',
-  3 => 'email',
+  4 => 'contact_roles_all',
 ),
     'create' => array (
   'formBase' => 'ContactFormBase.php',
@@ -27,39 +27,28 @@ $popupMeta = array (
   'createButton' => 'LNK_NEW_CONTACT',
 ),
     'searchdefs' => array (
-  0 => 'first_name',
-  1 => 'last_name',
-  2 => 
+  'first_name' => 
+  array (
+    'name' => 'first_name',
+    'width' => '10%',
+  ),
+  'last_name' => 
+  array (
+    'name' => 'last_name',
+    'width' => '10%',
+  ),
+  'account_name' => 
   array (
     'name' => 'account_name',
     'type' => 'varchar',
+    'width' => '10%',
   ),
-  3 => 'title',
-  4 => 'lead_source',
-  5 => 'email',
-  6 => 
+  'contact_roles_all' => 
   array (
-    'name' => 'campaign_name',
-    'displayParams' => 
-    array (
-      'hideButtons' => 'true',
-      'size' => 30,
-      'class' => 'sqsEnabled sqsNoAutofill',
-    ),
-  ),
-  7 => 
-  array (
-    'name' => 'assigned_user_id',
     'type' => 'enum',
-    'label' => 'LBL_ASSIGNED_TO',
-    'function' => 
-    array (
-      'name' => 'get_user_array',
-      'params' => 
-      array (
-        0 => false,
-      ),
-    ),
+    'label' => 'LBL_CONTACT_ROLES_ALL',
+    'width' => '10%',
+    'name' => 'contact_roles_all',
   ),
 ),
     'listviewdefs' => array (
