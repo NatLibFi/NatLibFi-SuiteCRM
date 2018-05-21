@@ -5,6 +5,7 @@ if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 require_once 'include/SugarEmailAddress/SugarEmailAddress.php';
 require_once 'custom/modules/Leads/ServiceMailLinkHelper.php';
 require_once 'custom/modules/Audit/CustomAudit.php';
+require_once 'include/TimeDate.php';
 
 class LeadBeforeSaveHook
 {
@@ -192,6 +193,8 @@ class LeadBeforeSaveHook
         if ($bean->status !== 'Converted') {
             return;
         }
+
+        $bean->{'date_converted_c'} = TimeDate::getInstance()->nowDb();
 
         $contactId = $bean->{'contact_id'};
         $accountId = $bean->{'account_id'};
