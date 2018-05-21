@@ -246,6 +246,8 @@ class LeadTest extends PHPUnit_Framework_TestCase {
                                           'contacts_leads_1contacts_ida',
                                           'nlfse_services_leads_1',
                                           'nlfse_services_leads_1nlfse_services_ida',
+                                          'nlfbr_busif7d0onships_ida',
+                                          'nlfbr_businessrelationships_leads_1',
 					);
     	$actual = $lead->get_linked_fields();
     	$this->assertTrue(is_array($actual));
