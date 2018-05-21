@@ -18,10 +18,10 @@ $subpanel_layout['list_fields'] = array (
     'default' => true,
     'sortable' => false,
   ),
-  'date_modified' => 
+  'date_converted_c' => 
   array (
     'type' => 'datetime',
-    'vname' => 'LBL_DATE_MODIFIED',
+    'vname' => 'LBL_DATE_CONVERTED',
     'width' => '10%',
     'default' => true,
   ),
