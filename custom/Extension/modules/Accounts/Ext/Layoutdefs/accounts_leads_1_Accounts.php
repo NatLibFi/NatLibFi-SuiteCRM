@@ -14,16 +14,5 @@ $layout_defs["Accounts"]["subpanel_setup"]['accounts_leads_1'] = array (
       ),
   'generate_select' => true,
   'set_subpanel_data' => 'accounts_leads_1',
-  'top_buttons' => 
-  array (
-    0 => 
-    array (
-      'widget_class' => 'SubPanelTopButtonQuickCreate',
-    ),
-    1 => 
-    array (
-      'widget_class' => 'SubPanelTopSelectButton',
-      'mode' => 'MultiSelect',
-    ),
-  ),
+  'top_buttons' => '',
 );
