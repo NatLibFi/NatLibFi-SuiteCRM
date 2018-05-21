@@ -62,13 +62,19 @@ array (
       0 => 'account_id',
     ),
   ),
-  'ROOLI_C' => 
+  'CONTACT_ALL_ROLE_NAMES' => 
   array (
-    'type' => 'multienum',
-    'default' => true,
-    'studio' => 'visible',
-    'label' => 'LBL_ROOLI',
+    'type' => 'varchar',
+    'studio' => 
+    array (
+      'listview' => true,
+      'editview' => false,
+      'detailview' => false,
+      'searchview' => false,
+    ),
+    'label' => 'LBL_CONTACT_ALL_ROLE_NAMES',
     'width' => '10%',
+    'default' => true,
   ),
   'CONTACT_SERVICE_NAMES' => 
   array (
