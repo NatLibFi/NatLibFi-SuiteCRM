@@ -35,3 +35,20 @@ function getLeadsForAccountSubpanelQueryParts($params) {
 
     return $query;
 }
+
+function getLeadsForContactSubpanelQueryParts($params) {
+    $contactId = $params['contact_id'];
+
+    $db = $GLOBALS['db'];
+
+    $query = array(
+            'select' => 'SELECT leads.*',
+            'from' => 'FROM leads',
+            'where' => 'WHERE leads.deleted=0 AND (leads.contact_id="' . $db->quote($contactId) . '" OR (rel.contacts_leads_1contacts_ida="' . $db->quote($contactId) . '" AND rel.deleted=0))',
+            'join' => ' LEFT JOIN contacts_leads_1_c rel ' .
+            'ON rel.contacts_leads_1leads_idb=leads.id ',
+            'join_tables' => '',
+            );
+
+    return $query;
+}
