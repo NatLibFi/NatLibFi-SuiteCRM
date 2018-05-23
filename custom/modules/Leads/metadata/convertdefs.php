@@ -25,38 +25,6 @@ $viewdefs['Accounts']['ConvertLead'] = array(
         'LNK_NEW_ACCOUNT' => array (
             array(
                 array(
-                    'customCode' => '<span><b>Asiakassuhteen tiedot</b></span>', // TODO: i18n this
-                ),
-            ),
-            array(
-                array (
-                    'label' => 'LBL_NLFSE_SERVICES_LEADS_1_FROM_NLFSE_SERVICES_TITLE_SINGULAR',
-                    'customCode' => '<span>{$nlf_service_name}</span>',
-                ),
-
-            ),
-            array (
-                array (
-                    'name' => 'alliances_c',
-                    'label' => 'LBL_LEAD_ALLIANCES',
-                ),
-            ),
-            array(
-                'lead_commercial',
-            ),
-            array(
-                'lead_commercial_description',
-            ),
-            array(
-                'lead_description',
-            ),
-            array(
-                array(
-                    'customCode' => '<hr>'
-                ),
-            ),
-            array(
-                array(
                     'customCode' => '<span><b>Uuden organisaation tiedot</b></span>', // TODO: i18n this
                 ),
             ),
@@ -110,6 +78,43 @@ $viewdefs['Accounts']['ConvertLead'] = array(
             ),
             array(
                 'description'
+            ),
+            array(
+                array(
+                    'customCode' => '<hr>'
+                ),
+            ),
+            array(
+                array(
+                    'customCode' => '<span><b>Asiakassuhteen tiedot</b></span>', // TODO: i18n this
+                ),
+            ),
+            array(
+                array (
+                    'label' => 'LBL_NLFSE_SERVICES_LEADS_1_FROM_NLFSE_SERVICES_TITLE_SINGULAR',
+                    'customCode' => '<span>{$nlf_service_name}</span>',
+                ),
+
+            ),
+            array (
+                array (
+                    'name' => 'alliances_c',
+                    'label' => 'LBL_LEAD_ALLIANCES',
+                ),
+            ),
+            array(
+                'lead_commercial',
+            ),
+            array(
+                'lead_commercial_description',
+            ),
+            array(
+                'lead_description',
+            ),
+            array(
+                array(
+                    'customCode' => '<hr>'
+                ),
             ),
         )
     ),
