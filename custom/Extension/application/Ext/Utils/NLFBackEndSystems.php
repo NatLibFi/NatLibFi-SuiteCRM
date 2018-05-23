@@ -96,7 +96,7 @@ function getSelectedBackEndSystemsForBusinessRelationship($id) {
 
 function getSelectedBackEndSystemsForLead($bean) {
     if (!$bean->{'account_backend_systems_c'}) {
-        return;
+        return array();
     }
 
     $systemIds = unencodeMultienum($bean->{'account_backend_systems_c'});
