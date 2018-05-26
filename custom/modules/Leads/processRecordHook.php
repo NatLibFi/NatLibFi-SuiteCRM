@@ -24,7 +24,15 @@ class LeadProcessRecordHook
         $bean->get_contact();
 
         if ($bean->{self::CONVERTED_CONTACT_NAME_FIELD}) {
-            $bean->{self::CONTACT_NAME_FIELD} = $bean->{self::CONVERTED_CONTACT_NAME_FIELD};
+            $target = '';
+            $name = $bean->{self::CONVERTED_CONTACT_NAME_FIELD};
+            if (isset($bean->{self::CONVERTED_CONTACT_ID_FIELD}) && $bean->{self::CONVERTED_CONTACT_ID_FIELD}) {
+                $target = 'index.php?module=Contacts&action=DetailView&record=' . htmlentities($bean->{self::CONVERTED_CONTACT_ID_FIELD});
+            }
+            $bean->{self::CONTACT_NAME_FIELD} = $name;
+            if ($target) {
+                $bean->{self::CONTACT_NAME_FIELD} = '<a href="' . ajaxLink($target) . '">' . $name . '</a>';
+            }
             return;
         }
 
@@ -55,7 +63,9 @@ class LeadProcessRecordHook
             $lastName = $contact->last_name;
             $salutation = $contact->salutation;
             if ($firstName || $lastName) {
-                $bean->{self::CONTACT_NAME_FIELD} = $locale->getLocaleFormattedName($firstName, $lastName, $salutation);
+                $target = 'index.php?module=Contacts&action=DetailView&record=' . htmlentities($contactId);
+                $name = $locale->getLocaleFormattedName($firstName, $lastName, $salutation);
+                $bean->{self::CONTACT_NAME_FIELD} = '<a href="' . ajaxLink($target) . '">' . $name . '</a>';
             }
         }
 
