@@ -160,11 +160,6 @@ array (
             'comment' => 'Date record last modified',
             'label' => 'LBL_DATE_MODIFIED',
           ),
-          1 => 
-          array (
-            'name' => 'modified_by_name',
-            'label' => 'LBL_MODIFIED_NAME',
-          ),
         ),
       ),
       'lbl_editview_panel4' => 
