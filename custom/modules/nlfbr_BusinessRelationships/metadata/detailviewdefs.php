@@ -162,11 +162,10 @@ array (
         ),
         6 => 
         array (
-          0 => 'date_modified',
-          1 => 
-          array (
-            'name' => 'modified_by_name',
-            'label' => 'LBL_MODIFIED_NAME',
+          0 => array(
+            'name' => 'date_modified',
+            'label' => 'LBL_DATE_MODIFIED',
+            'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
           ),
         ),
       ),
