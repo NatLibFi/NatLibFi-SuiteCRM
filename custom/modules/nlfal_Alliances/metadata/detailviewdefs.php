@@ -79,7 +79,11 @@ array (
             'name' => 'alliance_leader_enum',
             'label' => 'LBL_ALLIANCE_LEADER_TITLE',
           ),
-          1 => 'date_modified',
+          1 => array(
+            'name' => 'date_modified',
+            'label' => 'LBL_DATE_MODIFIED',
+            'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
+          ),
         ),
         4 => 
         array (
@@ -87,11 +91,6 @@ array (
           array (
             'name' => 'member_count',
             'label' => 'LBL_MEMBER_COUNT',
-          ),
-          1 => 
-          array (
-            'name' => 'modified_by_name',
-            'label' => 'LBL_MODIFIED_NAME',
           ),
         ),
         5 => 
