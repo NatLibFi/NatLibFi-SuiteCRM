@@ -87,14 +87,6 @@ array (
         ),
         4 => 
         array (
-          0 => 
-          array (
-            'name' => 'modified_by_name',
-            'label' => 'LBL_MODIFIED_NAME',
-          ),
-        ),
-        5 => 
-        array (
           0 => 'description',
         ),
       ),
