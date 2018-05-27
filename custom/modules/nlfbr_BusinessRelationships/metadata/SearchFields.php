@@ -1,5 +1,5 @@
 <?php
-// created: 2018-04-21 21:11:05
+// created: 2018-04-23 15:24:55
 $searchFields['nlfbr_BusinessRelationships'] = array (
   'name' => 
   array (
@@ -203,7 +203,7 @@ $searchFields['nlfbr_BusinessRelationships'] = array (
     ),
     'vname' => 'LBL_BR_CONTRACT_TITLE',
   ),
-  'nlfbr_businessrelationships_account_alliances' =>
+  'nlfbr_businessrelationships_account_alliances' => 
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
@@ -215,8 +215,8 @@ $searchFields['nlfbr_BusinessRelationships'] = array (
     ),
     'vname' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
   ),
-  'finnanakyma_c' =>
-  array(
+  'finnanakyma_c' => 
+  array (
     'query_type' => 'format',
     'operator' => 'subquery',
     'subquery' => 'SELECT br.id FROM nlfbr_businessrelationships br JOIN nlfbr_businessrelationships_finna_views brv ON br.id=brv.businessrelationship_id WHERE br.deleted=0 AND brv.view_status IN ({0})',
@@ -226,8 +226,8 @@ $searchFields['nlfbr_BusinessRelationships'] = array (
     ),
     'vname' => 'LBL_FINNANAKYMA',
   ),
-  'account_industry' =>
-  array(
+  'account_industry' => 
+  array (
     'query_type' => 'format',
     'operator' => 'subquery',
     'subquery' => 'SELECT br.id FROM nlfbr_businessrelationships br JOIN accounts_nlfbr_businessrelationships_1_c br_acc ON br.id=br_acc.accounts_n824donships_idb JOIN accounts acc ON br_acc.accounts_nlfbr_businessrelationships_1accounts_ida=acc.id WHERE br.deleted=0 AND br_acc.deleted=0 AND acc.deleted=0 AND acc.industry IN ({0})',
@@ -237,8 +237,8 @@ $searchFields['nlfbr_BusinessRelationships'] = array (
     ),
     'vname' => 'LBL_ACCOUNT_INDUSTRY',
   ),
-  'account_administration' =>
-  array(
+  'account_administration' => 
+  array (
     'query_type' => 'format',
     'operator' => 'subquery',
     'subquery' => 'SELECT br.id FROM nlfbr_businessrelationships br JOIN accounts_nlfbr_businessrelationships_1_c br_acc ON br.id=br_acc.accounts_n824donships_idb JOIN accounts acc ON br_acc.accounts_nlfbr_businessrelationships_1accounts_ida=acc.id JOIN accounts_cstm acc_cstm ON acc.id=acc_cstm.id_c WHERE br.deleted=0 AND br_acc.deleted=0 AND acc.deleted=0 AND acc_cstm.hallinnonala_c IN ({0})',

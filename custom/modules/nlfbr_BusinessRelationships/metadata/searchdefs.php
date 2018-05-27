@@ -96,7 +96,7 @@ array (
         'width' => '10%',
         'name' => 'br_contract',
       ),
-       'nlfbr_businessrelationships_account_alliances' => 
+      'nlfbr_businessrelationships_account_alliances' => 
       array (
         'type' => 'enum',
         'label' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
@@ -147,14 +147,6 @@ array (
         'width' => '10%',
         'name' => 'palvelu_liittymisen_status_c',
       ),
-      'production_date_c' => 
-      array (
-        'type' => 'date',
-        'default' => true,
-        'label' => 'LBL_PRODUCTION_DATE',
-        'width' => '10%',
-        'name' => 'production_date_c',
-      ),
       'finnanakyma_c' => 
       array (
         'type' => 'enum',
@@ -163,6 +155,14 @@ array (
         'label' => 'LBL_FINNANAKYMA',
         'width' => '10%',
         'name' => 'finnanakyma_c',
+      ),
+      'production_date_c' => 
+      array (
+        'type' => 'date',
+        'default' => true,
+        'label' => 'LBL_PRODUCTION_DATE',
+        'width' => '10%',
+        'name' => 'production_date_c',
       ),
       'nfl_business_relation_begins_c' => 
       array (
@@ -187,22 +187,6 @@ array (
         'label' => 'LBL_COMMERCIAL',
         'width' => '10%',
         'name' => 'commercial',
-      ),
-      'assigned_user_id' => 
-      array (
-        'name' => 'assigned_user_id',
-        'label' => 'LBL_ASSIGNED_TO',
-        'type' => 'enum',
-        'function' => 
-        array (
-          'name' => 'get_user_array',
-          'params' => 
-          array (
-            0 => false,
-          ),
-        ),
-        'default' => true,
-        'width' => '10%',
       ),
     ),
   ),
