@@ -328,7 +328,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
 
     private function setFinnaViewData($bean) {
         $helper = new BusinessRelationshipFinnaViewHelper();
-        $existingViews = $helper->getViewData($bean->id);
+        $existingViews = $helper->getViewData($bean->id, true);
 
         $newViews = array();
         $updatedViews = array();
@@ -350,6 +350,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             $hasAdminAccess = false;
             $viewStatus = '';
             $viewUrl = '';
+            $viewProductionDate = '';
             $description = '';
             if (isset($_REQUEST['finna_view_admin_access' . $index])) {
                 $hasAdminAccess = true;
@@ -360,6 +361,9 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             if (isset($_REQUEST['finna_view_url' . $index])) {
                 $viewUrl = $_REQUEST['finna_view_url' . $index];
             }
+            if (isset($_REQUEST['finna_view_production_date' . $index])) {
+                $viewProductionDate = $this->formatDate($_REQUEST['finna_view_production_date' . $index]);
+            }
             if (isset($_REQUEST['finna_view_description' . $index])) {
                 $description = $_REQUEST['finna_view_description' . $index];
             }
@@ -369,6 +373,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                     'admin_access' => $hasAdminAccess,
                     'view_status' => $viewStatus,
                     'view_url' => $viewUrl,
+                    'production_date' => $viewProductionDate,
                     'description' => $description,
                 );
             } else {
@@ -376,6 +381,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                     'admin_access' => $hasAdminAccess,
                     'view_status' => $viewStatus,
                     'view_url' => $viewUrl,
+                    'production_date' => $viewProductionDate,
                     'description' => $description,
                 );
             }
@@ -397,6 +403,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 $oldData['admin_access'] !== $newData['admin_access'] ||
                 $oldData['view_status'] !== $newData['view_status'] ||
                 $oldData['view_url'] !== $newData['view_url'] ||
+                $oldData['production_date'] !== $newData['production_date'] ||
                 $oldData['description'] !== $newData['description']
             ) {
                 $toUpdate[] = array(
@@ -427,6 +434,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 'SET admin_access=' . ($data['new']['admin_access'] ? '1' : '0') . ', ' .
                 'view_status="' . $db->quote($data['new']['view_status']) . '", ' .
                 'view_url="' . $db->quote($data['new']['view_url']) . '", ' .
+                ($data['new']['production_date'] ? ('view_production_date="' . $db->quote($data['new']['production_date']) . '"') : 'view_production_date=NULL') . ', ' .
                 'description="' . $db->quote($data['new']['description']) . '", ' .
                 'date_modified=NOW() ' .
                 'WHERE id="' . $db->quote($data['new']['record_id']) . '"';
@@ -446,6 +454,14 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                     'data_type' => 'bool',
                     'before' => $data['old']['admin_access'] ? '1' : '0',
                     'after' => $data['new']['admin_access'] ? '1' : '0',
+                );
+            }
+            if ($data['old']['production_date'] !== $data['new']['production_date']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['new']['view_url'] . '|finna_view_production_date',
+                    'data_type' => 'dater',
+                    'before' => $data['old']['production_date'] ? $data['old']['production_date'] : 'NULL',
+                    'after' => $data['new']['production_date'] ? $data['new']['production_date'] : 'NULL',
                 );
             }
             if ($data['old']['view_status'] !== $data['new']['view_status']) {
@@ -473,13 +489,14 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
 
        foreach ($newViews as $data) {
             $query = 'INSERT INTO nlfbr_businessrelationships_finna_views ' .
-                '(id, businessrelationship_id, admin_access, view_status, view_url, description, date_modified) ' .
+                '(id, businessrelationship_id, admin_access, view_status, view_url, view_production_date, description, date_modified) ' .
                 'VALUES(' .
                 '"' . $db->quote(create_guid()) . '", ' .
                 '"' . $db->quote($bean->id) . '", ' .
                 ($data['admin_access'] ? '1' : '0') . ', ' .
                 '"' . $db->quote($data['view_status']) . '", ' .
                 '"' . $db->quote($data['view_url']) . '", ' .
+                ($data['production_date'] ? ('"' . $db->quote($data['production_date']) . '"') : 'NULL') . ', ' .
                 '"' . $db->quote($data['description']) . '", ' .
                 'NOW() )';
 
@@ -501,6 +518,12 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                     'data_type' => 'enum',
                     'before' => '',
                     'after' => $data['view_status'],
+                ),
+                array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['view_url'] . '|finna_view_production_date',
+                    'data_type' => 'date',
+                    'before' => '',
+                    'after' => $data['production_date'] ? $data['production_date'] : 'NULL',
                 ),
                 array(
                     'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['view_url'] . '|finna_view_description',

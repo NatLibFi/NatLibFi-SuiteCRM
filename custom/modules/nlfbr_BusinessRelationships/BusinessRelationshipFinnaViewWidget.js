@@ -35,6 +35,9 @@
 		finnaViewIsRequired: false,
 		tabIndex: -1,
         viewStatusList: new Object(),
+        calendarIcon: '',
+        calendarFormat: "%m/%d/%Y",
+        calendarFdow: 0,
 		
 		prefillViewData: function(tableId, o){
 			for (i = 0; i < o.length; i++) {
@@ -44,6 +47,7 @@
                     o[i].view_status,
                     o[i].view_url,
                     o[i].admin_access,
+                    o[i].production_date,
                     o[i].description
                 );
 			}
@@ -65,7 +69,7 @@
 		    return false;
 		},//freezeEvent
 		
-		addFinnaView : function (tableId, recordId, viewStatus, viewUrl, hasAdminAccess, viewDescription) {
+		addFinnaView : function (tableId, recordId, viewStatus, viewUrl, hasAdminAccess, productionDate, viewDescription) {
 			if (this.addInProgress)
 			    return;
 			this.addInProgress = true;
@@ -80,6 +84,7 @@
 		    var newContentRecordId = document.createElement("input");
 		    var newContentViewUrl = document.createElement("input");
 		    var newContentAdminAccessFlag = document.createElement("input");
+            var newContentProductionDate = document.createElement("input");
 		    var newContentDescription = document.createElement("input");
 		    var removeButton = document.createElement("button");
             var removeButtonImg = document.createElement('img');
@@ -173,6 +178,35 @@
                 newContentAdminAccessFlag.setAttribute('checked', 'checked');
             }
 
+            // This is more or less mocking include/SugarFields/Fields/Datetime/EditView.tpl to enable date picker
+            newContentProductionDateWrapper = document.createElement('span');
+            newContentProductionDateWrapper.setAttribute('class', 'dateTime');
+
+            if (productionDate === null) {
+                productionDate = '';
+            }
+
+		    newContentProductionDate.setAttribute("type", "text");
+		    newContentProductionDate.setAttribute("name", "finna_view_production_date" + this.numberViews);
+		    newContentProductionDate.setAttribute("id", "finna_view_production_date" + this.numberViews);
+		    newContentProductionDate.setAttribute("value", productionDate);
+            newContentProductionDate.setAttribute('class', 'date_input');
+            newContentProductionDate.setAttribute('autocomplete', 'off');
+		    newContentProductionDate.setAttribute("size", "11");
+		    newContentProductionDate.setAttribute("maxlength", "10");
+		    newContentProductionDate.setAttribute("enabled", "true");
+            newContentProductionDate.setAttribute("tabindex", tabIndexCount);
+
+            newContentProductionDateIcon = document.createElement('img');
+            newContentProductionDateIcon.setAttribute('src', this.calendarIcon);
+            newContentProductionDateIcon.setAttribute('alt', 'TODO'); // TODO: $APP.LBL_ENTER_DATE
+            newContentProductionDateIcon.setAttribute('style', 'position:relative; top:6px');
+            newContentProductionDateIcon.setAttribute('border', '0');
+            newContentProductionDateIcon.setAttribute('id', 'finna_view_production_date' + this.numberViews + '_trigger');
+
+            newContentProductionDateWrapper.appendChild(newContentProductionDate);
+            newContentProductionDateWrapper.appendChild(newContentProductionDateIcon);
+
 		    //Add to validation
 		    this.view = (this.view == '') ? 'EditView' : this.view;
 		    
@@ -206,9 +240,10 @@
             td4.appendChild(newAdminAccessLabel);
             td4.appendChild(newContentAdminAccessFlag);
 
-		    spanNodeRow2 = document.createElement('span');
-		    spanNodeRow2.innerHTML = '&nbsp;';
-		    td5.appendChild(spanNodeRow2);
+            newContactProductionDateLabel = document.createElement('span');
+            newContactProductionDateLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_FINNA_VIEW_PRODUCTION_DATE_TITLE')
+            td5.appendChild(newContactProductionDateLabel);
+            td5.appendChild(newContentProductionDateWrapper);
 
 		    spanNodeRow3 = document.createElement('span');
 		    spanNodeRow3.innerHTML = '&nbsp;';
@@ -248,12 +283,29 @@
 		    // insert the new div->input into the DOM
 		    parentObj.insertBefore(Dom.get('targetBody'), insertInto);
 		    
+            this.initCalendar('finna_view_production_date' +  this.numberViews, 'finna_view_production_date' + this.numberViews + '_trigger', productionDate);
+
 		    // Add validation to field
             this.BusinessRelationshipFinnaViewValidation(this.view, this.id+ 'brFinnaView' + this.numberViews,this.finnaViewIsRequired, SUGAR.language.get('app_strings', 'LBL_FIXME_WHAT_HERE'));
             this.numberViews++;
 			this.addInProgress = false;
 
 		}, //addFinnaView
+
+        initCalendar(fieldName, triggerName, value) {
+            Calendar.setup( {
+                inputField : fieldName,
+                form : this.view,
+                ifFormat : this.calendarFormat,
+                daFormat : this.calendarFormat,
+                button : triggerName,
+                singleClick : true,
+                dateStr : value,
+                startWeekday: this.calendarFdow,
+                step : 1,
+                weekNumbers: false
+            } );
+        },
 
         BusinessRelationshipFinnaViewValidation : function(ev,fn,r,stR) {
             YAHOO.util.Event.onContentReady(fn,

@@ -67,6 +67,10 @@ function getBRFinnaViewWidgetForEditView($id, $module, $view, $tabindex='0') {
     $smarty->assign('tabindex', $tabindex);
     $smarty->assign('addDefaultFinnaView', 'false');
 
+    // Based on modules/Calendar/CalendarDisplay.php
+    $smarty->assign('calendarFormat', $timedate->get_cal_date_format());
+    $smarty->assign('calendarFdow', $current_user->get_first_day_of_week());
+
     $form = $view;
 
     $smarty->assign('finnaViewView', $form);

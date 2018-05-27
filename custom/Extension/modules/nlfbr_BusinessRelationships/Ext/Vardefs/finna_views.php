@@ -35,7 +35,16 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['finna_view_status'] = arra
   'type' => 'enum',
   'source' => 'non-db',
   'studio' => array('visible' => false),
-);// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
+);
+// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
+$dictionary["nlfbr_BusinessRelationships"]["fields"]['finna_view_production_date'] = array(
+  'name' => 'finna_view_production_date',
+  'vname' => 'LBL_FINNA_VIEW_PRODUCTION_DATE_TITLE',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'studio' => array('visible' => false),
+);
+// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
 $dictionary["nlfbr_BusinessRelationships"]["fields"]['finna_view_description'] = array(
   'name' => 'finna_view_description',
   'vname' => 'LBL_FINNA_VIEW_DESCRIPTION_TITLE',
