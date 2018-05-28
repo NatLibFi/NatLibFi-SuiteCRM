@@ -266,4 +266,25 @@ $searchFields['nlfbr_BusinessRelationships'] = array (
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
+  'range_finna_view_moved_to_production_date' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
+    'db_field' => array('nlfbr_businessrelationships_finna_views.view_production_date'),
+  ),
+  'start_range_finna_view_moved_to_production_date' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
+    'db_field' => array('nlfbr_businessrelationships_finna_views.view_production_date'),
+  ),
+  'end_range_finna_view_moved_to_production_date' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
+    'db_field' => array('nlfbr_businessrelationships_finna_views.view_production_date'),
+  ),
 );

@@ -172,6 +172,14 @@ array (
         'width' => '10%',
         'name' => 'nfl_business_relation_begins_c',
       ),
+      'finna_view_moved_to_production_date' => 
+      array (
+        'type' => 'date',
+        'default' => true,
+        'label' => 'LBL_FINNA_VIEW_PRODUCTION_DATE_TITLE',
+        'width' => '10%',
+        'name' => 'finna_view_moved_to_production_date',
+      ),
       'date_entered' => 
       array (
         'type' => 'datetime',
