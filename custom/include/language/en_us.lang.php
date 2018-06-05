@@ -541,3 +541,14 @@ $GLOBALS['app_list_strings']['industry_dom']=array (
   'polytechnic_library' => 'AMK-kirjasto',
   'university_library' => 'Yliopistokirjasto',
 );
+
+$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
+  'br_projektinvetaja' => 'Projektinvetäjä (br)',
+  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö (br)',
+  'br_yhteyshenkilo' => 'Yhteyshenkilö (br)',
+  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö (br)',
+  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä (br)',
+  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) br',
+  'br_ei_tiedossa' => 'Ei tiedossa',
+  'br_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
+);

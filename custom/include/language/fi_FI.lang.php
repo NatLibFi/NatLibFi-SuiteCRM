@@ -556,3 +556,14 @@ $GLOBALS['app_list_strings']['industry_dom']=array (
   'media' => 'Media',
   'Other' => 'muu',
 );
+
+$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
+  'br_projektinvetaja' => 'Projektinvetäjä',
+  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
+  'br_yhteyshenkilo' => 'Yhteyshenkilö',
+  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
+  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä',
+  'br_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
+  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
+  'br_ei_tiedossa' => 'Ei tiedossa',
+);
