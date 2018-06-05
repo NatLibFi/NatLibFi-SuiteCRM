@@ -1,5 +1,5 @@
 <?php
-// created: 2017-08-30 21:31:22
+// created: 2018-03-28 18:12:08
 $mod_strings = array (
   'LBL_NLFWG_WORKINGGROUPS_NLFSE_SERVICES_1_FROM_NLFSE_SERVICES_TITLE' => 'Palvelu',
   'LNK_NEW_RECORD' => 'Create Työryhmät',
@@ -15,4 +15,6 @@ $mod_strings = array (
   'LBL_ALKU' => 'Toiminnan alku',
   'LBL_LOPPU' => 'Toiminnan loppu',
   'LBL_URL' => 'URL',
+  'LBL_NAME' => 'Nimi',
+  'LBL_DESCRIPTION' => 'Kuvaus',
 );

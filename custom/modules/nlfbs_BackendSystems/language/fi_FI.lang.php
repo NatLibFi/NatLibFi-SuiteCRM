@@ -1,5 +1,5 @@
 <?php
-// created: 2017-06-29 11:29:45
+// created: 2018-03-28 18:28:18
 $mod_strings = array (
   'LNK_NEW_RECORD' => 'Luo uusi Tietojärjestelmät',
   'LNK_LIST' => 'Katso Tietojärjestelmät',
@@ -14,4 +14,6 @@ $mod_strings = array (
   'LBL_PUHELIN' => 'Puhelin',
   'LBL_WWW' => 'Website',
   'LBL_TYYPPI' => 'Järjestelmän tyyppi',
+  'LBL_DESCRIPTION' => 'Kuvaus',
+  'LBL_NAME' => 'Nimi',
 );

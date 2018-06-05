@@ -1,5 +1,5 @@
 <?php
-// created: 2017-06-20 14:56:59
+// created: 2018-03-28 18:22:52
 $mod_strings = array (
   'LNK_NEW_RECORD' => 'Create Palvelut',
   'LNK_LIST' => 'View Palvelut',
@@ -13,4 +13,6 @@ $mod_strings = array (
   'LBL_NLFSE_SERVICES_ACCOUNTS_1_FROM_ACCOUNTS_TITLE' => 'Accounts',
   'LBL_NLFSE_SERVICES_LEADS_1_FROM_LEADS_TITLE' => 'Liidit',
   'LBL_ADDITIONAL_INFORMATION_URL' => 'Lisätietoa',
+  'LBL_DESCRIPTION' => 'Kuvaus',
+  'LBL_NAME' => 'Nimi',
 );

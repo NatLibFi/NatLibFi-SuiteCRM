@@ -1,5 +1,5 @@
 <?php
-// created: 2017-03-21 16:20:56
+// created: 2018-03-28 17:40:49
 $mod_strings = array (
   'LBL_LINE_ITEMS' => 'Maksullisen palvelun sopimuksen lisätiedot',
   'LBL_CONTRACT_TYPE' => 'Sopimustyyppi',
@@ -13,4 +13,13 @@ $mod_strings = array (
   'LBL_CONTACT' => 'Henkilö',
   'LBL_NLFBR_BUSINESSRELATIONSHIPS_AOS_CONTRACTS_1_FROM_NLFBR_BUSINESSRELATIONSHIPS_TITLE' => 'Asiakassuhteet',
   'LBL_ACCOUNTS_AOS_CONTRACTS_1_FROM_ACCOUNTS_TITLE' => 'Accounts',
+  'LBL_NAME' => 'Nimi',
+  'LBL_DESCRIPTION' => 'Kuvaus',
+  'LBL_END_DATE' => 'Vanhentumispäivä',
+  'LBL_CURRENCY' => 'Valuutta:',
+  'LBL_RENEWAL_REMINDER_DATE' => 'Sopimuksen uusinnan muistutus',
+  'LBL_GRAND_TOTAL' => 'Kokonaissumma',
+  'LBL_SHIPPING_AMOUNT' => 'Toimitusmaksu',
+  'LBL_SHIPPING_TAX_AMT' => 'Toimituskulujen ALV',
+  'LBL_SHIPPING_TAX' => 'Toimituskulujen ALV',
 );

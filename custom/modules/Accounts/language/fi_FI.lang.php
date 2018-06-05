@@ -1,5 +1,5 @@
 <?php
-// created: 2017-11-28 11:41:04
+// created: 2018-03-27 20:36:29
 $mod_strings = array (
   'LBL_NLFSE_SERVICES_ACCOUNTS_1_FROM_NLFSE_SERVICES_TITLE' => 'Palvelut',
   'LBL_ACCOUNTS_NLFBR_BUSINESSRELATIONSHIPS_1_FROM_NLFBR_BUSINESSRELATIONSHIPS_TITLE' => 'Asiakassuhteet',
@@ -53,4 +53,12 @@ $mod_strings = array (
   'LBL_NAME_OTHER' => 'Nimi (muu kieli)',
   'LBL_NAME_OTHER_LANG' => 'Kieli',
   'LBL_NAME_DEFAULT_LANG' => 'Oletusnimi',
+  'LBL_DESCRIPTION' => 'Kuvaus:',
+  'LBL_BILLING_ADDRESS_STREET' => 'Laskutusosoite Katuosoite:',
+  'LBL_BILLING_ADDRESS_CITY' => 'Laskutusosoite Kaupunki/kunta:',
+  'LBL_BILLING_ADDRESS_POSTALCODE' => 'Laskutusosoite Postinumero:',
+  'LBL_PHONE_ALT' => 'Muu puhelin:',
+  'LBL_WEBSITE' => 'Kotisivu:',
+  'LBL_SIC_CODE' => 'Y-Tunnus/Hetu:',
+  'LBL_EMAIL' => 'Sähköpostiosoite:',
 );

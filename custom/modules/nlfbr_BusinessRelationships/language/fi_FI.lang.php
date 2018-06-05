@@ -1,5 +1,5 @@
 <?php
-// created: 2017-09-28 21:32:15
+// created: 2018-03-26 18:32:39
 $mod_strings = array (
   'LBL_NLFBR_BUSINESSRELATIONSHIPS_NLFSE_SERVICES_1_FROM_NLFSE_SERVICES_TITLE' => 'Palvelu',
   'LBL_NAME' => 'Nimi',
@@ -63,4 +63,5 @@ $mod_strings = array (
   'LBL_PALVELU_LIITTYMISEN_STATUS' => 'Palveluun liittymisen tilanne',
   'LBL_PRODUCTION_DATE' => 'Siirtynyt tuotantoon pvm',
   'LBL_HARVESTING_FORMAT' => 'Haravointiformaatti',
+  'LBL_DELETED' => 'Poistettu',
 );
