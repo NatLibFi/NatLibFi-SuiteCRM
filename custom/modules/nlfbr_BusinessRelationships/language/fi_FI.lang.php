@@ -1,5 +1,5 @@
 <?php
-// created: 2018-06-05 22:37:27
+// created: 2018-06-05 22:43:23
 $mod_strings = array (
   'LBL_NLFBR_BUSINESSRELATIONSHIPS_NLFSE_SERVICES_1_FROM_NLFSE_SERVICES_TITLE' => 'Palvelu',
   'LBL_NAME' => 'Nimi',
@@ -64,4 +64,5 @@ $mod_strings = array (
   'LBL_PRODUCTION_DATE' => 'Siirtynyt tuotantoon pvm',
   'LBL_HARVESTING_FORMAT' => 'Haravointiformaatti',
   'LBL_DELETED' => 'Poistettu',
+  'LBL_LOW_TAG' => 'LOW-tag',
 );
