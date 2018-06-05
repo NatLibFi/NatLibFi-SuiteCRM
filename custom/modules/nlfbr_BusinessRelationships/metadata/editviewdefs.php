@@ -48,12 +48,17 @@ array (
           'newTab' => false,
           'panelDefault' => 'expanded',
         ),
-        'LBL_EDITVIEW_PANEL3' => 
+        'LBL_EDITVIEW_PANEL6' => 
         array (
           'newTab' => false,
           'panelDefault' => 'expanded',
         ),
-        'LBL_EDITVIEW_PANEL6' => 
+        'LBL_EDITVIEW_PANEL7' => 
+        array (
+          'newTab' => false,
+          'panelDefault' => 'expanded',
+        ),
+        'LBL_EDITVIEW_PANEL8' => 
         array (
           'newTab' => false,
           'panelDefault' => 'expanded',
@@ -176,7 +181,7 @@ array (
       ),
       'lbl_editview_panel2' => 
       array (
-        0 =>
+        0 => 
         array (
           0 => 
           array (
@@ -185,7 +190,7 @@ array (
             'label' => 'LBL_FINNA_DATA_SOURCE_TITLE',
           ),
         ),
-        1 =>
+        1 => 
         array (
           0 => 
           array (
@@ -194,7 +199,7 @@ array (
             'label' => 'LBL_FINNA_VIEW_TITLE',
           ),
         ),
-        2 =>
+        2 => 
         array (
           0 => 
           array (
@@ -203,7 +208,7 @@ array (
             'label' => 'LBL_FINNA_LINK_TITLE',
           ),
         ),
-     ),
+      ),
       'lbl_editview_panel5' => 
       array (
         0 => 
@@ -212,7 +217,7 @@ array (
           1 => '',
         ),
       ),
-      'lbl_editview_panel3' => 
+      'lbl_editview_panel6' => 
       array (
         0 => 
         array (
@@ -220,7 +225,31 @@ array (
           1 => '',
         ),
       ),
-      'lbl_editview_panel6' => 
+      'lbl_editview_panel7' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            'name' => 'low_tag_c',
+            'label' => 'LBL_LOW_TAG',
+          ),
+          1 => 
+          array (
+            'name' => 'replikoinnin_domain_c',
+            'label' => 'LBL_REPLIKOINNIN_DOMAIN',
+          ),
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            'name' => 'ip_osoitteet_c',
+            'label' => 'LBL_IP_OSOITTEET',
+          ),
+        ),
+      ),
+      'lbl_editview_panel8' => 
       array (
         0 => 
         array (

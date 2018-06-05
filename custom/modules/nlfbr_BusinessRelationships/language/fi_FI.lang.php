@@ -1,5 +1,5 @@
 <?php
-// created: 2018-03-26 18:32:39
+// created: 2018-06-05 22:37:27
 $mod_strings = array (
   'LBL_NLFBR_BUSINESSRELATIONSHIPS_NLFSE_SERVICES_1_FROM_NLFSE_SERVICES_TITLE' => 'Palvelu',
   'LBL_NAME' => 'Nimi',
@@ -31,7 +31,7 @@ $mod_strings = array (
   'LBL_EDITVIEW_PANEL5' => 'Finto - Asiakkuuden lisätiedot',
   'LBL_EDITVIEW_PANEL6' => 'Systeeminhoitopalvelu - Asiakkuuden lisätiedot',
   'LBL_EDITVIEW_PANEL7' => 'KITT - Asiakkuuden lisätiedot',
-  'LBL_EDITVIEW_PANEL8' => 'Systeeminhoitopalvelu - Asiakkuuden lisätiedot',
+  'LBL_EDITVIEW_PANEL8' => 'Melnda - Asiakkuuden lisätiedot',
   'LBL_PALVELUSOPIMUS_VOIMASSA' => 'Palvelusopimus voimassa POISTA MINUT',
   'LBL_MAKSULLISEN_LISATIEDOT2' => 'Maksullisen asiakkuuden lisätiedot',
   'LBL_SOPIMUS_AOS_CONTRACTS_ID' => 'Voimassa oleva sopimus (related  ID)',
