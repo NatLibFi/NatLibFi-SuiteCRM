@@ -239,19 +239,6 @@ array (
         array (
           0 => 
           array (
-            'name' => 'low_tag_c',
-            'label' => 'LBL_LOW_TAG',
-          ),
-          1 => 
-          array (
-            'name' => 'replikoinnin_domain_c',
-            'label' => 'LBL_REPLIKOINNIN_DOMAIN',
-          ),
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
             'name' => 'ip_osoitteet_c',
             'label' => 'LBL_IP_OSOITTEET',
           ),
@@ -261,8 +248,16 @@ array (
       array (
         0 => 
         array (
-          0 => '',
-          1 => '',
+          0 => 
+          array (
+            'name' => 'low_tag_c',
+            'label' => 'LBL_LOW_TAG',
+          ),
+          1 => 
+          array (
+            'name' => 'replikoinnin_domain_c',
+            'label' => 'LBL_REPLIKOINNIN_DOMAIN',
+          ),
         ),
       ),
     ),
