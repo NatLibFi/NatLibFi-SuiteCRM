@@ -552,3 +552,19 @@ $GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
   'br_ei_tiedossa' => 'Ei tiedossa',
   'br_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
 );
+$GLOBALS['app_list_strings']['liittymismallit_list']=array (
+  'iso_raatali' => 'Iso räätäli',
+  'pikku_raatali' => 'Pikku räätäli',
+  'kevyt' => 'Kevyt',
+);
+$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
+  'br_projektinvetaja' => 'Projektinvetäjä (br)',
+  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö (br)',
+  'br_yhteyshenkilo' => 'Yhteyshenkilö (br)',
+  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö (br)',
+  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä (br)',
+  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) br',
+  'br_ei_tiedossa' => 'Ei tiedossa',
+  'br_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
+  'br_tietokannanyhteyshenkilo' => 'Tietokannan yhteyshenkilö',
+);
