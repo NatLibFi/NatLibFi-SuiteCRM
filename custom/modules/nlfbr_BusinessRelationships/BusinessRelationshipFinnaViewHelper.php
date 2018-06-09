@@ -23,7 +23,7 @@ class BusinessRelationshipFinnaViewHelper {
         $data = array();
 
         while ($row = $db->fetchByAssoc($result)) {
-            $productionDate = $row['production_date'];
+            $productionDate = (string)$row['production_date'];
             if (!$useDbDateFormat) {
                 $productionDate = $this->convertDateForDisplay($productionDate);
             }
