@@ -1,5 +1,5 @@
 <?php
-// created: 2018-06-05 23:12:00
+// created: 2018-06-08 12:47:05
 $mod_strings = array (
   'LBL_NLFBR_BUSINESSRELATIONSHIPS_NLFSE_SERVICES_1_FROM_NLFSE_SERVICES_TITLE' => 'Palvelu',
   'LBL_NAME' => 'Nimi',
@@ -65,4 +65,12 @@ $mod_strings = array (
   'LBL_HARVESTING_FORMAT' => 'Haravointiformaatti',
   'LBL_DELETED' => 'Poistettu',
   'LBL_LOW_TAG' => 'LOW-tag',
+  'LBL_REPLIKOINNIN_DOMAIN' => 'Replikoinnin domain',
+  'LBL_TIETOKANNAN_TUNNUS' => 'Tietokannan tunnus',
+  'LBL_IP_ALUEET_MELINDA' => 'IP-alueet',
+  'LBL_LIITTYVAT_TIKETIT_MELINDA' => 'Liittyvät tiketit',
+  'LBL_MELINDA_MUKAANTULO_DOC' => 'Mukaantulon dokumentaatio',
+  'LBL_LUETTELOIJATUNNUKSEN_ETULIIT' => 'Luetteloijatunnuksen etuliite',
+  'LBL_MELINDA_LIITTYMISMALLI' => 'Liittymismalli',
+  'LBL_EDITVIEW_PANEL9' => 'Palveluun liitettävät tietolähteet',
 );
