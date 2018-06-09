@@ -458,7 +458,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             if ($data['old']['production_date'] !== $data['new']['production_date']) {
                 $auditData[] = array(
                     'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['new']['view_url'] . '|finna_view_production_date',
-                    'data_type' => 'dater',
+                    'data_type' => 'date',
                     'before' => $data['old']['production_date'] ? $data['old']['production_date'] : 'NULL',
                     'after' => $data['new']['production_date'] ? $data['new']['production_date'] : 'NULL',
                 );
