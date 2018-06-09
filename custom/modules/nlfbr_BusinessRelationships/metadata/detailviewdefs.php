@@ -46,7 +46,12 @@ array (
         'LBL_EDITVIEW_PANEL4' => 
         array (
           'newTab' => false,
-          'panelDefault' => 'expanded',
+          'panelDefault' => 'collapsed',
+        ),
+        'LBL_EDITVIEW_PANEL9' => 
+        array (
+          'newTab' => false,
+          'panelDefault' => 'collapsed',
         ),
         'LBL_EDITVIEW_PANEL2' => 
         array (
@@ -56,22 +61,22 @@ array (
         'LBL_EDITVIEW_PANEL5' => 
         array (
           'newTab' => false,
-          'panelDefault' => 'expanded',
+          'panelDefault' => 'collapsed',
         ),
         'LBL_EDITVIEW_PANEL6' => 
         array (
           'newTab' => false,
-          'panelDefault' => 'expanded',
+          'panelDefault' => 'collapsed',
         ),
         'LBL_EDITVIEW_PANEL7' => 
         array (
           'newTab' => false,
-          'panelDefault' => 'expanded',
+          'panelDefault' => 'collapsed',
         ),
         'LBL_EDITVIEW_PANEL8' => 
         array (
           'newTab' => false,
-          'panelDefault' => 'expanded',
+          'panelDefault' => 'collapsed',
         ),
       ),
       'includes' => 
@@ -187,7 +192,7 @@ array (
           ),
         ),
       ),
-      'lbl_editview_panel2' => 
+      'lbl_editview_panel9' => 
       array (
         0 => 
         array (
@@ -198,7 +203,10 @@ array (
             'label' => 'LBL_FINNA_DATA_SOURCE_TITLE',
           ),
         ),
-        1 => 
+      ),
+      'lbl_editview_panel2' => 
+      array (
+        0 => 
         array (
           0 => 
           array (
@@ -207,7 +215,7 @@ array (
             'label' => 'LBL_FINNA_VIEW_TITLE',
           ),
         ),
-        2 => 
+        1 => 
         array (
           0 => 
           array (
@@ -250,13 +258,67 @@ array (
         array (
           0 => 
           array (
-            'name' => 'low_tag_c',
-            'label' => 'LBL_LOW_TAG',
+            'name' => 'melinda_liittymismalli_c',
+            'studio' => 'visible',
+            'label' => 'LBL_MELINDA_LIITTYMISMALLI',
           ),
-          1 => 
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            'name' => 'luetteloijatunnuksen_etuliit_c',
+            'studio' => 'visible',
+            'label' => 'LBL_LUETTELOIJATUNNUKSEN_ETULIIT',
+          ),
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            'name' => 'tietokannan_tunnus_c',
+            'label' => 'LBL_TIETOKANNAN_TUNNUS',
+          ),
+        ),
+        3 => 
+        array (
+          0 => 
           array (
             'name' => 'replikoinnin_domain_c',
             'label' => 'LBL_REPLIKOINNIN_DOMAIN',
+          ),
+        ),
+        4 => 
+        array (
+          0 => 
+          array (
+            'name' => 'ip_alueet_melinda_c',
+            'studio' => 'visible',
+            'label' => 'LBL_IP_ALUEET_MELINDA',
+          ),
+        ),
+        5 => 
+        array (
+          0 => 
+          array (
+            'name' => 'low_tag_c',
+            'label' => 'LBL_LOW_TAG',
+          ),
+        ),
+        6 => 
+        array (
+          0 => 
+          array (
+            'name' => 'liittyvat_tiketit_melinda_c',
+            'label' => 'LBL_LIITTYVAT_TIKETIT_MELINDA',
+          ),
+        ),
+        7 => 
+        array (
+          0 => 
+          array (
+            'name' => 'melinda_mukaantulo_doc_c',
+            'label' => 'LBL_MELINDA_MUKAANTULO_DOC',
           ),
         ),
       ),
