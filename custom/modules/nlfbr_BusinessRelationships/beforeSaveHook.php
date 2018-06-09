@@ -571,6 +571,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             $id = $_REQUEST['data_source_id' . $index];
             $hasRestrictedMetadata = false;
             $name = '';
+            $databaseId = '';
             $email = '';
             $description = '';
             $systems = array();
@@ -580,6 +581,9 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             }
             if (isset($_REQUEST['data_source_name' . $index])) {
                 $name = $_REQUEST['data_source_name' . $index];
+            }
+            if (isset($_REQUEST['data_source_database_id' . $index])) {
+                $databaseId = $_REQUEST['data_source_database_id' . $index];
             }
             if (isset($_REQUEST['data_source_backend_system' . $index])) {
                 $systems = $_REQUEST['data_source_backend_system' . $index];
@@ -601,6 +605,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 $updatedSources[$id] = array(
                     'record_id' => $id,
                     'name' => $name,
+                    'database_id' => $databaseId,
                     'backend_system' => encodeMultienumValue($systems),
                     'harvesting_format' => encodeMultienumValue($formats),
                     'contact_email' => $email,
@@ -610,6 +615,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             } else {
                 $newSources[] = array(
                     'name' => $name,
+                    'database_id' => $databaseId,
                     'backend_system' => encodeMultienumValue($systems),
                     'harvesting_format' => encodeMultienumValue($formats),
                     'contact_email' => $email,
@@ -633,6 +639,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             $newData = $updatedSources[$key];
             if (
                 $oldData['source_name'] !== $newData['name'] ||
+                $oldData['database_id'] !== $newData['database_id'] ||
                 encodeMultienumValue($oldData['backend_system']) !== $newData['backend_system'] ||
                 encodeMultienumValue($oldData['harvesting_format']) !== $newData['harvesting_format'] ||
                 $oldData['contact_email'] !== $newData['contact_email'] ||
@@ -665,6 +672,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
         foreach ($toUpdate as $data) {
             $query = 'UPDATE nlfbr_businessrelationships_data_sources ' .
                 'SET source_name="' . $db->quote($data['new']['name']) . '", ' .
+                'database_id="' . $db->quote($data['new']['database_id']) . '", ' .
                 'backend_system="' . $db->quote($data['new']['backend_system']) . '", ' .
                 'harvesting_format="' . $db->quote($data['new']['harvesting_format']) . '", ' .
                 'contact_email="' . $db->quote($data['new']['contact_email']) . '", ' .
@@ -680,6 +688,14 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                     'data_type' => 'varchar',
                     'before' => $data['old']['source_name'],
                     'after' => $data['new']['name'],
+                );
+            }
+            if ($data['old']['database_id'] !== $data['new']['database_id']) {
+                $auditData[] = array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'data_source|' . $data['new']['name'] . '|data_source_database_id',
+                    'data_type' => 'varchar',
+                    'before' => $data['old']['database_id'],
+                    'after' => $data['new']['database_id'],
                 );
             }
             if (encodeMultienumValue($data['old']['backend_system']) !== $data['new']['backend_system']) {
@@ -732,11 +748,12 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
 
        foreach ($newSources as $data) {
             $query = 'INSERT INTO nlfbr_businessrelationships_data_sources ' .
-                '(id, businessrelationship_id, source_name, backend_system, harvesting_format, contact_email, restricted_metadata, description, date_modified) ' .
+                '(id, businessrelationship_id, source_name, database_id, backend_system, harvesting_format, contact_email, restricted_metadata, description, date_modified) ' .
                 'VALUES(' .
                 '"' . $db->quote(create_guid()) . '", ' .
                 '"' . $db->quote($bean->id) . '", ' .
                 '"' . $db->quote($data['name']) . '", ' .
+                '"' . $db->quote($data['database_id']) . '", ' .
                 '"' . $db->quote($data['backend_system']) . '", ' .
                 '"' . $db->quote($data['harvesting_format']) . '", ' .
                 '"' . $db->quote($data['contact_email']) . '", ' .
@@ -750,6 +767,12 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                     'data_type' => 'varchar',
                     'before' => '',
                     'after' => $data['name'],
+                ),
+                array(
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'data_source|' . $data['name'] . '|data_source_database_id',
+                    'data_type' => 'varchar',
+                    'before' => '',
+                    'after' => $data['database_id'],
                 ),
                 array(
                     'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'data_source|' . $data['name'] . '|data_source_backend_system',

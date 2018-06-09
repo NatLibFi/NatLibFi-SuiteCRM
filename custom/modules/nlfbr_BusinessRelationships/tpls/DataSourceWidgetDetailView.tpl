@@ -11,6 +11,13 @@
         </tr>
         <tr>
             <td>
+                {$mod_strings.LBL_DATA_SOURCE_DATABASE_ID_TITLE}
+                {$source.database_id}
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
                 {$mod_strings.LBL_DATA_SOURCE_BACKEND_SYSTEM_TITLE}
                 {foreach from=$source.backend_system item=system}
                     <li>{$systems.$system}</li>

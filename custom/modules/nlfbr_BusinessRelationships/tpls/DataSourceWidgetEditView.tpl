@@ -18,7 +18,7 @@ var brDataSourceWidgetLoaded = false;
                         <td scope="row" NOWRAP>
                             <input type=hidden id="{$module}_data_source_widget_id" name="{$module}_data_source_widget_id" value="">
                             <input type=hidden id='brDataSourceWidget' name='brDataSourceWidget' value='1'>
-                            {capture assign="other_attributes"}id="{$module}_data_source_widget_add" onclick="javascript:SUGAR.BusinessRelationshipDataSourceWidget.instances.{$module}.addDataSource('{$module}DataSourcesTable', '', '', '', '', '', false, '');"{/capture}
+                            {capture assign="other_attributes"}id="{$module}_data_source_widget_add" onclick="javascript:SUGAR.BusinessRelationshipDataSourceWidget.instances.{$module}.addDataSource('{$module}DataSourcesTable', '', '', '', '', '', '', false, '');"{/capture}
                             <button type="button" {$other_attributes}>{sugar_getimage name="id-ff-add" alt="$app_strings.LBL_ID_FF_ADD" ext=".png"}</button>
                         </td>
                     </tr>
@@ -45,7 +45,7 @@ function init{$module}DataSource(){ldelim}
 	    if(prefillSourceData == 'true') {ldelim}
 	        brdsw.prefillSourceData('{$module}DataSourcesTable', sourceData);
 		{rdelim} else if(addDefaultSource == 'true') {ldelim}
-	        brdsw.addDataSource('{$module}DataSourcesTable', '', '', '', '', '', false, '');
+	        brdsw.addDataSource('{$module}DataSourcesTable', '', '', '', '', '', '', false, '');
 		{rdelim}
 		if('{$module}_data_source_widget_id') {ldelim}
 		   document.getElementById('{$module}_data_source_widget_id').value = brdsw.count;

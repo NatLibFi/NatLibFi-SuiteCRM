@@ -6,6 +6,7 @@ $dictionary["nlfbr_businessrelationships_data_sources"] = array (
         array('name' =>'id', 'type' =>'varchar', 'len'=>'36'),
         array('name' =>'businessrelationship_id', 'type' =>'varchar', 'len'=>'36'),
         array('name' =>'source_name', 'type' =>'varchar', 'len'=>'255'),
+        array('name' =>'database_id', 'type' =>'varchar', 'len'=>'255'),
         array('name' =>'backend_system', 'type' =>'text'),
         array('name' =>'harvesting_format', 'type' =>'text'),
         array('name' =>'contact_email', 'type' =>'varchar', 'len'=>'255'),

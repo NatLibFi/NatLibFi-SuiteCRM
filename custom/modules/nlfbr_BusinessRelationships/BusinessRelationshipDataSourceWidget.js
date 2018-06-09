@@ -43,6 +43,7 @@
                     tableId,
                     o[i].record_id,
                     o[i].source_name,
+                    o[i].database_id,
                     o[i].backend_system,
                     o[i].harvesting_format,
                     o[i].contact_email,
@@ -68,7 +69,7 @@
 		    return false;
 		},//freezeEvent
 		
-		addDataSource : function (tableId, recordId, sourceName, backendSystems, harvestingFormats, contactEmail, hasRestrictedMetadata, sourceDescription) {
+		addDataSource : function (tableId, recordId, sourceName, databaseId, backendSystems, harvestingFormats, contactEmail, hasRestrictedMetadata, sourceDescription) {
 			if (this.addInProgress)
 			    return;
 			this.addInProgress = true;
@@ -82,6 +83,7 @@
 
 		    var newContentRecordId = document.createElement("input");
 		    var newContentSourceName = document.createElement("input");
+		    var newContentDatabaseId = document.createElement("input");
 		    var newContentContactEmail = document.createElement("input");
 		    var newContentRestrictedMetadataFlag = document.createElement("input");
 		    var newContentDescription = document.createElement("input");
@@ -92,6 +94,7 @@
 		    var tr2 = document.createElement("tr");
 		    var tr3 = document.createElement("tr");
 		    var tr4 = document.createElement("tr");
+		    var tr5 = document.createElement("tr");
 		    var td1 = document.createElement("td");
 		    var td2 = document.createElement("td");
 		    var td3 = document.createElement("td");
@@ -104,6 +107,9 @@
 		    var td10 = document.createElement("td");
 		    var td11 = document.createElement("td");
 		    var td12 = document.createElement("td");
+		    var td13 = document.createElement("td");
+		    var td14 = document.createElement("td");
+		    var td15 = document.createElement("td");
 
             //use the value if the tabindex value for the field has been passed in from metadata (defined in include/EditView/EditView.tpl
             //else default to 0 
@@ -188,6 +194,15 @@
             newContentSourceName.setAttribute("tabindex", tabIndexCount);
 		    newContentSourceName.setAttribute("type", "text");
 
+		    newContentDatabaseId.setAttribute("type", "text");
+		    newContentDatabaseId.setAttribute("name", "data_source_database_id" + this.numberDataSources);
+		    newContentDatabaseId.setAttribute("id", "data_source_database_id" + this.numberDataSources);
+		    newContentDatabaseId.setAttribute("value", databaseId);
+		    newContentDatabaseId.setAttribute("size", "30");
+		    newContentDatabaseId.setAttribute("enabled", "true");
+            newContentDatabaseId.setAttribute("tabindex", tabIndexCount);
+		    newContentDatabaseId.setAttribute("type", "text");
+
 		    newContentContactEmail.setAttribute("name", "data_source_contact_email" + this.numberDataSources);
 		    newContentContactEmail.setAttribute("id", "data_source_contact_email" + this.numberDataSources);
 		    newContentContactEmail.setAttribute("value", contactEmail);
@@ -217,9 +232,10 @@
 		    this.view = (this.view == '') ? 'EditView' : this.view;
 		    
 		    tr.setAttribute("id", this.id + "brDataSourceRow" + this.numberDataSources);
-		    tr2.setAttribute("id", this.id + "brDataSourceRowSystem" + this.numberDataSources);
-		    tr3.setAttribute("id", this.id + "brDataSourceRowEmail" + this.numberDataSources);
-		    tr4.setAttribute("id", this.id + "brDataSourceRowDesc" + this.numberDataSources);
+		    tr2.setAttribute("id", this.id + "brDataSourceRowDatabase" + this.numberDataSources);
+		    tr3.setAttribute("id", this.id + "brDataSourceRowSystem" + this.numberDataSources);
+		    tr4.setAttribute("id", this.id + "brDataSourceRowEmail" + this.numberDataSources);
+		    tr5.setAttribute("id", this.id + "brDataSourceRowDesc" + this.numberDataSources);
 		    
 		    td1.appendChild(newContentRecordId);
 
@@ -241,48 +257,61 @@
 		       td3.appendChild(removeButton);
             }
 
+            newDatabaseIdLabel = document.createElement('span');
+            newDatabaseIdLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_DATA_SOURCE_DATABASE_ID_TITLE')
+            td4.appendChild(newDatabaseIdLabel);
+		    td4.appendChild(newContentDatabaseId);
+
+		    spanNode3 = document.createElement('span');
+		    spanNode3.innerHTML = '&nbsp;';
+		    td5.appendChild(spanNode3);
+
+		    spanNode4 = document.createElement('span');
+		    spanNode4.innerHTML = '&nbsp;';
+		    td6.appendChild(spanNode4);
+
             newBackendSystemLabel = document.createElement('span');
             newBackendSystemLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_DATA_SOURCE_BACKEND_SYSTEM_TITLE')
             newBackendSystemLabel.setAttribute('style', 'vertical-align: top');
-            td4.appendChild(newBackendSystemLabel);
-            td4.appendChild(backendSystemSelector);
+            td7.appendChild(newBackendSystemLabel);
+            td7.appendChild(backendSystemSelector);
 
             newHarvestingFormatLabel = document.createElement('span');
             newHarvestingFormatLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_DATA_SOURCE_HARVESTING_FORMAT_TITLE')
             newHarvestingFormatLabel.setAttribute('style', 'vertical-align: top');
-            td5.appendChild(newHarvestingFormatLabel);
-            td5.appendChild(harvestingFormatSelector);
+            td8.appendChild(newHarvestingFormatLabel);
+            td8.appendChild(harvestingFormatSelector);
 
-   		    spanNodeRow2 = document.createElement('span');
-		    spanNodeRow2.innerHTML = '&nbsp;';
-		    td6.appendChild(spanNodeRow2);
+   		    spanNodeRow5 = document.createElement('span');
+		    spanNodeRow5.innerHTML = '&nbsp;';
+		    td9.appendChild(spanNodeRow5);
 
             newContactEmailLabel = document.createElement('span');
             newContactEmailLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_DATA_SOURCE_CONTACT_EMAIL_TITLE')
-            td7.appendChild(newContactEmailLabel);
-		    td7.appendChild(newContentContactEmail);
+            td10.appendChild(newContactEmailLabel);
+		    td10.appendChild(newContentContactEmail);
 
             newRestrictedMetadataLabel = document.createElement('span');
             newRestrictedMetadataLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_DATA_SOURCE_RESTRICTED_METADATA_TITLE')
-            td8.appendChild(newRestrictedMetadataLabel);
-            td8.appendChild(newContentRestrictedMetadataFlag);
+            td11.appendChild(newRestrictedMetadataLabel);
+            td11.appendChild(newContentRestrictedMetadataFlag);
 
-		    spanNodeRow3 = document.createElement('span');
-		    spanNodeRow3.innerHTML = '&nbsp;';
-		    td9.appendChild(spanNodeRow3);
+		    spanNodeRow6 = document.createElement('span');
+		    spanNodeRow6.innerHTML = '&nbsp;';
+		    td12.appendChild(spanNodeRow6);
 
             newContactDescriptionLabel = document.createElement('span');
             newContactDescriptionLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_DATA_SOURCE_DESCRIPTION_TITLE')
-            td10.appendChild(newContactDescriptionLabel);
-            td10.appendChild(newContentDescription);
+            td13.appendChild(newContactDescriptionLabel);
+            td13.appendChild(newContentDescription);
 		    
-		    spanNodeRow4 = document.createElement('span');
-		    spanNodeRow4.innerHTML = '&nbsp;';
-		    td11.appendChild(spanNodeRow4);
+		    spanNodeRow7 = document.createElement('span');
+		    spanNodeRow7.innerHTML = '&nbsp;';
+		    td14.appendChild(spanNodeRow7);
 
-		    spanNodeRow5 = document.createElement('span');
-		    spanNodeRow5.innerHTML = '&nbsp;';
-		    td12.appendChild(spanNodeRow5);
+		    spanNodeRow8 = document.createElement('span');
+		    spanNodeRow8.innerHTML = '&nbsp;';
+		    td15.appendChild(spanNodeRow8);
 
 		    tr.appendChild(td1);
 		    tr.appendChild(td2);
@@ -300,10 +329,15 @@
 		    tr4.appendChild(td11);
 		    tr4.appendChild(td12);
 
+		    tr5.appendChild(td13);
+		    tr5.appendChild(td14);
+		    tr5.appendChild(td15);
+
 		    tbody.appendChild(tr);
 		    tbody.appendChild(tr2);
 		    tbody.appendChild(tr3);
 		    tbody.appendChild(tr4);
+		    tbody.appendChild(tr5);
 
             insertInto.appendChild(tbody);
 		    
@@ -326,11 +360,13 @@
 		removeDataSource : function(index) {
 			removeFromValidate(this.view, this.id + 'brDataSource' + index);
             var oNodeToRemove = Dom.get(this.id +  'brDataSourceRow' + index);
+            var oNodeToRemoveDatabase = Dom.get(this.id +  'brDataSourceRowDatabase' + index);
             var oNodeToRemoveSystem = Dom.get(this.id +  'brDataSourceRowSystem' + index);
             var oNodeToRemoveEmail = Dom.get(this.id +  'brDataSourceRowEmail' + index);
             var oNodeToRemoveDesc = Dom.get(this.id +  'brDataSourceRowDesc' + index);
             var form = Dom.getAncestorByTagName(oNodeToRemove, "form");
             oNodeToRemove.parentNode.removeChild(oNodeToRemove);
+            oNodeToRemoveDatabase.parentNode.removeChild(oNodeToRemoveDatabase);
             oNodeToRemoveSystem.parentNode.removeChild(oNodeToRemoveSystem);
             oNodeToRemoveEmail.parentNode.removeChild(oNodeToRemoveEmail);
             oNodeToRemoveDesc.parentNode.removeChild(oNodeToRemoveDesc);
@@ -346,6 +382,7 @@
                    rButton.setAttribute("name", (x-1));
                    rButton.setAttribute("id", this.id + "removeButton" + (x-1));
                    Dom.get(this.id + 'brDataSourceRow' + x).setAttribute("id", this.id + 'brDataSourceRow' + (x-1));
+                   Dom.get(this.id + 'brDataSourceRowDatabase' + x).setAttribute("id", this.id + 'brDataSourceRowDatabase' + (x-1));
                    Dom.get(this.id + 'brDataSourceRowSystem' + x).setAttribute("id", this.id + 'brDataSourceRowSystem' + (x-1));
                    Dom.get(this.id + 'brDataSourceRowEmail' + x).setAttribute("id", this.id + 'brDataSourceRowEmail' + (x-1));
                    Dom.get(this.id + 'brDataSourceRowDesc' + x).setAttribute("id", this.id + 'brDataSourceRowDesc' + (x-1));

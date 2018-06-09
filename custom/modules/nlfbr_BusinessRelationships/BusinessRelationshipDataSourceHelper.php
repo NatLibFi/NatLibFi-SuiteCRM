@@ -9,7 +9,8 @@ class BusinessRelationshipDataSourceHelper {
 
         $db = $GLOBALS['db'];
 
-        $query = 'SELECT source.id AS source_id, source.source_name AS source_name, source.backend_system AS backend_system,' .
+        $query = 'SELECT source.id AS source_id, source.source_name AS source_name, ' .
+            'source.database_id AS database_id, source.backend_system AS backend_system,' .
             'source.harvesting_format AS harvesting_format, source.contact_email AS contact_email, ' .
             'source.restricted_metadata AS restricted_metadata, source.description AS description ' .
             'FROM nlfbr_businessrelationships_data_sources source ' .
@@ -26,6 +27,7 @@ class BusinessRelationshipDataSourceHelper {
             $data[] = array(
                 'record_id' => $row['source_id'],
                 'source_name' => $row['source_name'],
+                'database_id' => (string)$row['database_id'],
                 'backend_system' => unencodeMultienum($row['backend_system']),
                 'harvesting_format' => unencodeMultienum($row['harvesting_format']),
                 'contact_email' => (string)$row['contact_email'],

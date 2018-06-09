@@ -21,6 +21,14 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source'] = array(
   'studio' => array('visible' => false),
 );
 // This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
+$dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source_database_id'] = array(
+  'name' => 'data_source_database_id',
+  'vname' => 'LBL_DATA_SOURCE_DATABASE_ID_TITLE',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'studio' => array('visible' => false),
+);
+// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
 $dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source_backend_system'] = array(
   'name' => 'data_source_backend_system',
   'vname' => 'LBL_DATA_SOURCE_BACKEND_SYSTEM_TITLE',
