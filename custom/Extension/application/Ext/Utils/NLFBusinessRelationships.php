@@ -287,7 +287,7 @@ function getBackendSystemsRelatedToBusinessRelationship($id) {
     $systems = array();
 
     $db = $GLOBALS['db'];
-    $query = 'SELECT source.backend_system AS systems FROM nlfbr_businessrelationships_finna_sources source ' .
+    $query = 'SELECT source.backend_system AS systems FROM nlfbr_businessrelationships_data_sources source ' .
         'JOIN nlfbr_businessrelationships br ON br.id=source.businessrelationship_id ' .
         'WHERE source.deleted=0 AND br.deleted=0 AND ' .
         'br.id="' . $db->quote($id) . '"';

@@ -1,7 +1,7 @@
 <?php
 
-$dictionary["nlfbr_businessrelationships_finna_sources"] = array (
-    'table' => 'nlfbr_businessrelationships_finna_sources',
+$dictionary["nlfbr_businessrelationships_data_sources"] = array (
+    'table' => 'nlfbr_businessrelationships_data_sources',
     'fields' => array(
         array('name' =>'id', 'type' =>'varchar', 'len'=>'36'),
         array('name' =>'businessrelationship_id', 'type' =>'varchar', 'len'=>'36'),
@@ -15,7 +15,7 @@ $dictionary["nlfbr_businessrelationships_finna_sources"] = array (
         array('name' =>'deleted', 'type' =>'bool', 'len'=>'1', 'default'=>'0', 'required'=>false),
     ),
     'indices' => array(
-        array('name' =>'nlfbr_businessrelationships_finna_sourcespk', 'type' =>'primary', 'fields'=>array('id')),
-        array('name' =>'nlfbr_businessrelationships_finna_sources_alt', 'type' =>'alternate_key', 'fields'=>array('businessrelationship_id')),
+        array('name' =>'nlfbr_businessrelationships_data_sourcespk', 'type' =>'primary', 'fields'=>array('id')),
+        array('name' =>'nlfbr_businessrelationships_data_sources_alt', 'type' =>'alternate_key', 'fields'=>array('businessrelationship_id')),
     ),
 );

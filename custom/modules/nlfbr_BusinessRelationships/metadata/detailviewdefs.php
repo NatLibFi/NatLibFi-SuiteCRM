@@ -198,9 +198,9 @@ array (
         array (
           0 => 
           array (
-            'name' => 'finna_data_source1',
+            'name' => 'data_source1',
             'studio' => false,
-            'label' => 'LBL_FINNA_DATA_SOURCE_TITLE',
+            'label' => 'LBL_DATA_SOURCE_TITLE',
           ),
         ),
       ),

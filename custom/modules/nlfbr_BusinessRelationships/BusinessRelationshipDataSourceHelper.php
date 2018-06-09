@@ -1,6 +1,6 @@
 <?php
 
-class BusinessRelationshipFinnaDataSourceHelper {
+class BusinessRelationshipDataSourceHelper {
 
     public function getSourceData($brId) {
         if (!$brId) {
@@ -12,7 +12,7 @@ class BusinessRelationshipFinnaDataSourceHelper {
         $query = 'SELECT source.id AS source_id, source.source_name AS source_name, source.backend_system AS backend_system,' .
             'source.harvesting_format AS harvesting_format, source.contact_email AS contact_email, ' .
             'source.restricted_metadata AS restricted_metadata, source.description AS description ' .
-            'FROM nlfbr_businessrelationships_finna_sources source ' .
+            'FROM nlfbr_businessrelationships_data_sources source ' .
             'JOIN nlfbr_businessrelationships br ' .
             'ON br.id=source.businessrelationship_id ' .
             'WHERE source.businessrelationship_id="' . $db->quote($brId) . '" AND ' .

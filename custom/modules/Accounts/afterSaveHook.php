@@ -43,7 +43,7 @@ class AccountAfterSaveHook
 
           foreach ($brSystems as $systemId) {
               if (!in_array($systemId, $accSystems)) {
-                  $query = 'DELETE FROM nlfbr_businessrelationships_finna_sources ' .
+                  $query = 'DELETE FROM nlfbr_businessrelationships_data_sources ' .
                     'WHERE businessrelationship_id="' . $db->quote($brId) .'" AND ' .
                     'backend_system REGEXP "\\\\^' . $db->quote($systemId) . '\\\\^"';
                   $db->query($query);

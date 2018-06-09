@@ -1,13 +1,13 @@
 <?php
 
-require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipFinnaDataSourceHelper.php';
+require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipDataSourceHelper.php';
 
-function getBRFinnaDataSourceWidgetForEditView($id, $module, $view, $tabindex='0') {
+function getBRDataSourceWidgetForEditView($id, $module, $view, $tabindex='0') {
     $smarty = new Sugar_Smarty();
 
     global $mod_strings, $dictionary, $beanList, $timedate, $current_user;
 
-    $helper = new BusinessRelationshipFinnaDataSourceHelper();
+    $helper = new BusinessRelationshipDataSourceHelper();
 
     $prefill = 'false';
 
@@ -21,16 +21,16 @@ function getBRFinnaDataSourceWidgetForEditView($id, $module, $view, $tabindex='0
     $sourceDataArr = array();
     if(!empty($id)) {
         $sourceDataArr = $helper->getSourceData($id);
-    } else if(isset($_REQUEST['full_form']) && !empty($_REQUEST['brFinnaDataSourceWidget'])){
-        $widget_id = isset($_REQUEST[$module . '_finna_data_source_widget_id']) ? $_REQUEST[$module . '_finna_data_source_widget_id'] : '0';
+    } else if(isset($_REQUEST['full_form']) && !empty($_REQUEST['brDataSourceWidget'])){
+        $widget_id = isset($_REQUEST[$module . '_data_source_widget_id']) ? $_REQUEST[$module . '_data_source_widget_id'] : '0';
         $count = 0;
-        $key = $module . $widget_id . 'brFinnaDataSource' . $count;
+        $key = $module . $widget_id . 'brDataSource' . $count;
         while(isset($_REQUEST[$key])) {
             $name = $_REQUEST[$key];
             $sourceDataArr[] = array(
                 // TODO: fix this!
             );
-            $key = $module . $widget_id . 'brFinnaDataSource' . ++$count;
+            $key = $module . $widget_id . 'brDataSource' . ++$count;
         }
     }
 
@@ -61,7 +61,7 @@ function getBRFinnaDataSourceWidgetForEditView($id, $module, $view, $tabindex='0
 
     $required = false;
     $vardefs = $dictionary[$beanList[$passedModule]]['fields'];
-    if (!empty($vardefs['finna_data_source1']) && isset($vardefs['finna_data_source1']['required']) && $vardefs['finna_data_source1']['required']) {
+    if (!empty($vardefs['data_source1']) && isset($vardefs['data_source1']['required']) && $vardefs['data_source1']['required']) {
         $required = true;
     }
     $smarty->assign('required', $required);
@@ -73,22 +73,22 @@ function getBRFinnaDataSourceWidgetForEditView($id, $module, $view, $tabindex='0
     $smarty->assign('backendSystemList', $backendSystemData);
     $smarty->assign('harvestingFormatList', $harvestingFormatData);
     $smarty->assign('tabindex', $tabindex);
-    $smarty->assign('addDefaultFinnaDataSource', 'false');
+    $smarty->assign('addDefaultDataSource', 'false');
 
     $form = $view;
 
-    $smarty->assign('finnaDataSourceView', $form);
+    $smarty->assign('dataSourceView', $form);
 
-    $templateFile = 'custom/modules/nlfbr_BusinessRelationships/tpls/FinnaDataSourceWidgetEditView.tpl';
+    $templateFile = 'custom/modules/nlfbr_BusinessRelationships/tpls/DataSourceWidgetEditView.tpl';
 
     return $smarty->fetch($templateFile);
 }
 
-function getBRFinnaDataSourceWidgetForDetailView($focus) {
+function getBRDataSourceWidgetForDetailView($focus) {
     global $mod_strings, $app_strings, $app_list_strings;
 
     $smarty = new Sugar_Smarty();
-    $helper = new BusinessRelationshipFinnaDataSourceHelper();
+    $helper = new BusinessRelationshipDataSourceHelper();
 
     $sourceData = $helper->getSourceData($focus->id);
 
@@ -104,15 +104,15 @@ function getBRFinnaDataSourceWidgetForDetailView($focus) {
     $smarty->assign('mod_strings', $mod_strings);
     $smarty->assign('app_strings', $app_strings);
 
-    $templateFile = 'custom/modules/nlfbr_BusinessRelationships/tpls/FinnaDataSourceWidgetDetailView.tpl';
+    $templateFile = 'custom/modules/nlfbr_BusinessRelationships/tpls/DataSourceWidgetDetailView.tpl';
 
     return $smarty->fetch($templateFile);
 }
 
-function getBRFinnaDataSourceWidget($focus, $field, $value, $view) {
+function getBRDataSourceWidget($focus, $field, $value, $view) {
     if ($view === 'EditView' || $view === 'QuickCreate') {
-        return getBRFinnaDataSourceWidgetForEditView($focus->id, $focus->module_name, $view);
+        return getBRDataSourceWidgetForEditView($focus->id, $focus->module_name, $view);
     }
 
-    return getBRFinnaDataSourceWidgetForDetailView($focus);
+    return getBRDataSourceWidgetForDetailView($focus);
 }

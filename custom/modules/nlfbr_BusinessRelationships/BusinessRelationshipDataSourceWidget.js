@@ -2,44 +2,44 @@
 
 (function() {
 	//Do not double define
-	if (SUGAR.BusinessRelationshipFinnaDataSourceWidget) {
+	if (SUGAR.BusinessRelationshipDataSourceWidget) {
         return;
     }
 	
 	var Dom = YAHOO.util.Dom;
 	
-	SUGAR.BusinessRelationshipFinnaDataSourceWidget = function(module) {
-		if (!SUGAR.BusinessRelationshipFinnaDataSourceWidget.count[module]) {
-            SUGAR.BusinessRelationshipFinnaDataSourceWidget.count[module] = 0;
+	SUGAR.BusinessRelationshipDataSourceWidget = function(module) {
+		if (!SUGAR.BusinessRelationshipDataSourceWidget.count[module]) {
+            SUGAR.BusinessRelationshipDataSourceWidget.count[module] = 0;
         }
-		this.count = SUGAR.BusinessRelationshipFinnaDataSourceWidget.count[module];
-		SUGAR.BusinessRelationshipFinnaDataSourceWidget.count[module]++;
+		this.count = SUGAR.BusinessRelationshipDataSourceWidget.count[module];
+		SUGAR.BusinessRelationshipDataSourceWidget.count[module]++;
 		this.module = module;
 		this.id = this.module + this.count;
-		if (document.getElementById(module+'_finna_data_source_widget_id')) {
-		    document.getElementById(module+'_finna_data_source_widget_id').value = this.id;
+		if (document.getElementById(module+'_data_source_widget_id')) {
+		    document.getElementById(module+'_data_source_widget_id').value = this.id;
         }
-		SUGAR.BusinessRelationshipFinnaDataSourceWidget.instances[this.id] = this;
+		SUGAR.BusinessRelationshipDataSourceWidget.instances[this.id] = this;
 	}
 	
-	SUGAR.BusinessRelationshipFinnaDataSourceWidget.instances = {};
-	SUGAR.BusinessRelationshipFinnaDataSourceWidget.count = {};
+	SUGAR.BusinessRelationshipDataSourceWidget.instances = {};
+	SUGAR.BusinessRelationshipDataSourceWidget.count = {};
 	
-	SUGAR.BusinessRelationshipFinnaDataSourceWidget.prototype = {
+	SUGAR.BusinessRelationshipDataSourceWidget.prototype = {
 		numberDataSources : 0,
         replyToFlagObject : new Object(),
         verifying : false,
         enterPressed : false,
 		tabPressed : false,
         view:"",
-		finnaDataSourceIsRequired: false,
+		dataSourceIsRequired: false,
 		tabIndex: -1,
         backendSystemList: new Object(),
         harvestingFormatList: new Object(),
 		
 		prefillSourceData: function(tableId, o){
 			for (i = 0; i < o.length; i++) {
-				this.addFinnaDataSource(
+				this.addDataSource(
                     tableId,
                     o[i].record_id,
                     o[i].source_name,
@@ -68,7 +68,7 @@
 		    return false;
 		},//freezeEvent
 		
-		addFinnaDataSource : function (tableId, recordId, sourceName, backendSystems, harvestingFormats, contactEmail, hasRestrictedMetadata, sourceDescription) {
+		addDataSource : function (tableId, recordId, sourceName, backendSystems, harvestingFormats, contactEmail, hasRestrictedMetadata, sourceDescription) {
 			if (this.addInProgress)
 			    return;
 			this.addInProgress = true;
@@ -108,20 +108,20 @@
             //use the value if the tabindex value for the field has been passed in from metadata (defined in include/EditView/EditView.tpl
             //else default to 0 
             var tabIndexCount = 0;
-            if(typeof(SUGAR.TabFields) !='undefined' && typeof(SUGAR.TabFields['finna_data_source1']) != 'undefined'){
-                tabIndexCount = SUGAR.TabFields['finna_data_source1'];
+            if(typeof(SUGAR.TabFields) !='undefined' && typeof(SUGAR.TabFields['data_source1']) != 'undefined'){
+                tabIndexCount = SUGAR.TabFields['data_source1'];
             }
 		    // set input field attributes
 		    newContent.setAttribute("type", "text");
-		    newContent.setAttribute("name", this.id + "brFinnaDataSource" + this.numberDataSources);
-		    newContent.setAttribute("id", this.id + "brFinnaDataSource" + this.numberDataSources);
+		    newContent.setAttribute("name", this.id + "brDataSource" + this.numberDataSources);
+		    newContent.setAttribute("id", this.id + "brDataSource" + this.numberDataSources);
 		    newContent.setAttribute("tabindex", tabIndexCount);
 		    newContent.setAttribute("size", "30");
             newContent.setAttribute("title", SUGAR.language.get('app_strings', 'LBL_FIXXME'));
 		
             backendSystemSelector = document.createElement("select");
-            backendSystemSelector.setAttribute('id', 'finna_data_source_backend_system' + this.numberDataSources);
-            backendSystemSelector.setAttribute('name', 'finna_data_source_backend_system' + this.numberDataSources + '[]');
+            backendSystemSelector.setAttribute('id', 'data_source_backend_system' + this.numberDataSources);
+            backendSystemSelector.setAttribute('name', 'data_source_backend_system' + this.numberDataSources + '[]');
             backendSystemSelector.setAttribute('multiple', 'multiple');
             backendSystemSelector.setAttribute('size', '6');
             backendSystemSelector.setAttribute('style', 'width: 150px');
@@ -139,8 +139,8 @@
             }
 
             harvestingFormatSelector = document.createElement("select");
-            harvestingFormatSelector.setAttribute('id', 'finna_data_source_harvesting_format' + this.numberDataSources);
-            harvestingFormatSelector.setAttribute('name', 'finna_data_source_harvesting_format' + this.numberDataSources + '[]');
+            harvestingFormatSelector.setAttribute('id', 'data_source_harvesting_format' + this.numberDataSources);
+            harvestingFormatSelector.setAttribute('name', 'data_source_harvesting_format' + this.numberDataSources + '[]');
             harvestingFormatSelector.setAttribute('multiple', 'multiple');
             harvestingFormatSelector.setAttribute('size', '6');
             harvestingFormatSelector.setAttribute('style', 'width: 150px');
@@ -166,46 +166,46 @@
 		    removeButton.setAttribute("name", this.numberDataSources);
 		    removeButton.setAttribute("type", "button");
             removeButton.setAttribute("tabindex", tabIndexCount);
-            removeButton.onclick = (function(brfdsw) {
+            removeButton.onclick = (function(brdsw) {
                 return function() {
-                    brfdsw.removeFinnaDataSource(this.name);
+                    brdsw.removeDataSource(this.name);
                 }
             })(this);
             removeButton.appendChild(removeButtonImg);
 		    
 		    // set record id
 		    newContentRecordId.setAttribute("type", "hidden");
-		    newContentRecordId.setAttribute("name", "finna_data_source_id" + this.numberDataSources);
-		    newContentRecordId.setAttribute("id", "finna_data_source_id" + this.numberDataSources);
+		    newContentRecordId.setAttribute("name", "data_source_id" + this.numberDataSources);
+		    newContentRecordId.setAttribute("id", "data_source_id" + this.numberDataSources);
 		    newContentRecordId.setAttribute("value", recordId);
 
 		    newContentSourceName.setAttribute("type", "text");
-		    newContentSourceName.setAttribute("name", "finna_data_source_name" + this.numberDataSources);
-		    newContentSourceName.setAttribute("id", "finna_data_source_name" + this.numberDataSources);
+		    newContentSourceName.setAttribute("name", "data_source_name" + this.numberDataSources);
+		    newContentSourceName.setAttribute("id", "data_source_name" + this.numberDataSources);
 		    newContentSourceName.setAttribute("value", sourceName);
 		    newContentSourceName.setAttribute("size", "30");
 		    newContentSourceName.setAttribute("enabled", "true");
             newContentSourceName.setAttribute("tabindex", tabIndexCount);
 		    newContentSourceName.setAttribute("type", "text");
 
-		    newContentContactEmail.setAttribute("name", "finna_data_source_contact_email" + this.numberDataSources);
-		    newContentContactEmail.setAttribute("id", "finna_data_source_contact_email" + this.numberDataSources);
+		    newContentContactEmail.setAttribute("name", "data_source_contact_email" + this.numberDataSources);
+		    newContentContactEmail.setAttribute("id", "data_source_contact_email" + this.numberDataSources);
 		    newContentContactEmail.setAttribute("value", contactEmail);
 		    newContentContactEmail.setAttribute("size", "30");
 		    newContentContactEmail.setAttribute("enabled", "true");
             newContentContactEmail.setAttribute("tabindex", tabIndexCount);
 
 		    newContentDescription.setAttribute("type", "text");
-		    newContentDescription.setAttribute("name", "finna_data_source_description" + this.numberDataSources);
-		    newContentDescription.setAttribute("id", "finna_data_source_description" + this.numberDataSources);
+		    newContentDescription.setAttribute("name", "data_source_description" + this.numberDataSources);
+		    newContentDescription.setAttribute("id", "data_source_description" + this.numberDataSources);
 		    newContentDescription.setAttribute("value", sourceDescription);
 		    newContentDescription.setAttribute("size", "30");
 		    newContentDescription.setAttribute("enabled", "true");
             newContentDescription.setAttribute("tabindex", tabIndexCount);
 
             newContentRestrictedMetadataFlag.setAttribute("type", "checkbox");
-		    newContentRestrictedMetadataFlag.setAttribute("name", "finna_data_source_restricted_metadata" + this.numberDataSources);
-		    newContentRestrictedMetadataFlag.setAttribute("id", "finna_data_source_restricted_metadata" + this.numberDataSources);
+		    newContentRestrictedMetadataFlag.setAttribute("name", "data_source_restricted_metadata" + this.numberDataSources);
+		    newContentRestrictedMetadataFlag.setAttribute("id", "data_source_restricted_metadata" + this.numberDataSources);
 		    newContentRestrictedMetadataFlag.setAttribute("value", this.id + "view" + this.numberDataSources);
 		    newContentRestrictedMetadataFlag.setAttribute("enabled", "true");
             newContentRestrictedMetadataFlag.setAttribute("tabindex", tabIndexCount);
@@ -216,17 +216,17 @@
 		    //Add to validation
 		    this.view = (this.view == '') ? 'EditView' : this.view;
 		    
-		    tr.setAttribute("id", this.id + "brFinnaDataSourceRow" + this.numberDataSources);
-		    tr2.setAttribute("id", this.id + "brFinnaDataSourceRowSystem" + this.numberDataSources);
-		    tr3.setAttribute("id", this.id + "brFinnaDataSourceRowEmail" + this.numberDataSources);
-		    tr4.setAttribute("id", this.id + "brFinnaDataSourceRowDesc" + this.numberDataSources);
+		    tr.setAttribute("id", this.id + "brDataSourceRow" + this.numberDataSources);
+		    tr2.setAttribute("id", this.id + "brDataSourceRowSystem" + this.numberDataSources);
+		    tr3.setAttribute("id", this.id + "brDataSourceRowEmail" + this.numberDataSources);
+		    tr4.setAttribute("id", this.id + "brDataSourceRowDesc" + this.numberDataSources);
 		    
 		    td1.appendChild(newContentRecordId);
 
 		    td1.setAttribute("nowrap", "NOWRAP");
 
             newSourceNameLabel = document.createElement('span');
-            newSourceNameLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_FINNA_SOURCE_NAME_TITLE')
+            newSourceNameLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_DATA_SOURCE_NAME_TITLE')
             td1.appendChild(newSourceNameLabel);
 		    td1.appendChild(newContentSourceName);
 
@@ -237,18 +237,18 @@
 		    spanNode2 = document.createElement('span');
 		    spanNode2.innerHTML = '&nbsp;';
 		    td3.appendChild(spanNode2);
-		    if (this.numberDataSources != 0 || typeof (this.finnaDataSourceIsRequired) == "undefined" || !this.finnaDataSourceIsRequired) {
+		    if (this.numberDataSources != 0 || typeof (this.dataSourceIsRequired) == "undefined" || !this.dataSourceIsRequired) {
 		       td3.appendChild(removeButton);
             }
 
             newBackendSystemLabel = document.createElement('span');
-            newBackendSystemLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_FINNA_SOURCE_BACKEND_SYSTEM_TITLE')
+            newBackendSystemLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_DATA_SOURCE_BACKEND_SYSTEM_TITLE')
             newBackendSystemLabel.setAttribute('style', 'vertical-align: top');
             td4.appendChild(newBackendSystemLabel);
             td4.appendChild(backendSystemSelector);
 
             newHarvestingFormatLabel = document.createElement('span');
-            newHarvestingFormatLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_FINNA_SOURCE_HARVESTING_FORMAT_TITLE')
+            newHarvestingFormatLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_DATA_SOURCE_HARVESTING_FORMAT_TITLE')
             newHarvestingFormatLabel.setAttribute('style', 'vertical-align: top');
             td5.appendChild(newHarvestingFormatLabel);
             td5.appendChild(harvestingFormatSelector);
@@ -258,12 +258,12 @@
 		    td6.appendChild(spanNodeRow2);
 
             newContactEmailLabel = document.createElement('span');
-            newContactEmailLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_FINNA_SOURCE_CONTACT_EMAIL_TITLE')
+            newContactEmailLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_DATA_SOURCE_CONTACT_EMAIL_TITLE')
             td7.appendChild(newContactEmailLabel);
 		    td7.appendChild(newContentContactEmail);
 
             newRestrictedMetadataLabel = document.createElement('span');
-            newRestrictedMetadataLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_FINNA_SOURCE_RESTRICTED_METADATA_TITLE')
+            newRestrictedMetadataLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_DATA_SOURCE_RESTRICTED_METADATA_TITLE')
             td8.appendChild(newRestrictedMetadataLabel);
             td8.appendChild(newContentRestrictedMetadataFlag);
 
@@ -272,7 +272,7 @@
 		    td9.appendChild(spanNodeRow3);
 
             newContactDescriptionLabel = document.createElement('span');
-            newContactDescriptionLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_FINNA_SOURCE_DESCRIPTION_TITLE')
+            newContactDescriptionLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_DATA_SOURCE_DESCRIPTION_TITLE')
             td10.appendChild(newContactDescriptionLabel);
             td10.appendChild(newContentDescription);
 		    
@@ -311,24 +311,24 @@
 		    parentObj.insertBefore(Dom.get('targetBody'), insertInto);
 		    
 		    // Add validation to field
-            this.BusinessRelationshipFinnaDataSourceValidation(this.view, this.id+ 'brFinnaDataSource' + this.numberDataSources,this.finnaDataSourceIsRequired, SUGAR.language.get('app_strings', 'LBL_FIXME_WHAT_HERE'));
+            this.BusinessRelationshipDataSourceValidation(this.view, this.id+ 'brDataSource' + this.numberDataSources,this.dataSourceIsRequired, SUGAR.language.get('app_strings', 'LBL_FIXME_WHAT_HERE'));
             this.numberDataSources++;
 			this.addInProgress = false;
 
-		}, //addFinnaDataSource
+		}, //addDataSource
 
-        BusinessRelationshipFinnaDataSourceValidation : function(ev,fn,r,stR) {
+        BusinessRelationshipDataSourceValidation : function(ev,fn,r,stR) {
             YAHOO.util.Event.onContentReady(fn,
-                function () { addToValidate(ev, fn, 'finna_data_source', r, stR);})
+                function () { addToValidate(ev, fn, 'data_source', r, stR);})
             ;
         },
 
-		removeFinnaDataSource : function(index) {
-			removeFromValidate(this.view, this.id + 'brFinnaDataSource' + index);
-            var oNodeToRemove = Dom.get(this.id +  'brFinnaDataSourceRow' + index);
-            var oNodeToRemoveSystem = Dom.get(this.id +  'brFinnaDataSourceRowSystem' + index);
-            var oNodeToRemoveEmail = Dom.get(this.id +  'brFinnaDataSourceRowEmail' + index);
-            var oNodeToRemoveDesc = Dom.get(this.id +  'brFinnaDataSourceRowDesc' + index);
+		removeDataSource : function(index) {
+			removeFromValidate(this.view, this.id + 'brDataSource' + index);
+            var oNodeToRemove = Dom.get(this.id +  'brDataSourceRow' + index);
+            var oNodeToRemoveSystem = Dom.get(this.id +  'brDataSourceRowSystem' + index);
+            var oNodeToRemoveEmail = Dom.get(this.id +  'brDataSourceRowEmail' + index);
+            var oNodeToRemoveDesc = Dom.get(this.id +  'brDataSourceRowDesc' + index);
             var form = Dom.getAncestorByTagName(oNodeToRemove, "form");
             oNodeToRemove.parentNode.removeChild(oNodeToRemove);
             oNodeToRemoveSystem.parentNode.removeChild(oNodeToRemoveSystem);
@@ -339,16 +339,16 @@
             //If we are not deleting the last item, we need to shift the numbering to fill the gap
             if(this.numberDataSources != removedIndex) {
                for(var x = removedIndex + 1; x < this.numberDataSources; x++) {
-                   Dom.get(this.id + 'brFinnaDataSource' + x).setAttribute("name", this.id +"brFinnaDataSource" + (x-1));
-                   Dom.get(this.id + 'brFinnaDataSource' + x).setAttribute("id", this.id +"brFinnaDataSource" + (x-1));
+                   Dom.get(this.id + 'brDataSource' + x).setAttribute("name", this.id +"brDataSource" + (x-1));
+                   Dom.get(this.id + 'brDataSource' + x).setAttribute("id", this.id +"brDataSource" + (x-1));
                    
                    var rButton = Dom.get(this.id + 'removeButton' + x);
                    rButton.setAttribute("name", (x-1));
                    rButton.setAttribute("id", this.id + "removeButton" + (x-1));
-                   Dom.get(this.id + 'brFinnaDataSourceRow' + x).setAttribute("id", this.id + 'brFinnaDataSourceRow' + (x-1));
-                   Dom.get(this.id + 'brFinnaDataSourceRowSystem' + x).setAttribute("id", this.id + 'brFinnaDataSourceRowSystem' + (x-1));
-                   Dom.get(this.id + 'brFinnaDataSourceRowEmail' + x).setAttribute("id", this.id + 'brFinnaDataSourceRowEmail' + (x-1));
-                   Dom.get(this.id + 'brFinnaDataSourceRowDesc' + x).setAttribute("id", this.id + 'brFinnaDataSourceRowDesc' + (x-1));
+                   Dom.get(this.id + 'brDataSourceRow' + x).setAttribute("id", this.id + 'brDataSourceRow' + (x-1));
+                   Dom.get(this.id + 'brDataSourceRowSystem' + x).setAttribute("id", this.id + 'brDataSourceRowSystem' + (x-1));
+                   Dom.get(this.id + 'brDataSourceRowEmail' + x).setAttribute("id", this.id + 'brDataSourceRowEmail' + (x-1));
+                   Dom.get(this.id + 'brDataSourceRowDesc' + x).setAttribute("id", this.id + 'brDataSourceRowDesc' + (x-1));
                }
             }
 			
@@ -383,5 +383,5 @@
         } //forceSubmit
     };
 
-    brFinnaDataSourceWidgetLoaded = true;
+    brDataSourceWidgetLoaded = true;
 })();

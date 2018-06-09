@@ -5,7 +5,7 @@ if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 require_once 'modules/Accounts/Account.php';
 require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipContractHelper.php';
 require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipFinnaViewHelper.php';
-require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipFinnaDataSourceHelper.php';
+require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipDataSourceHelper.php';
 require_once 'custom/modules/nlfbr_BusinessRelationships/BusinessRelationshipFinnaLinkHelper.php';
 require_once 'custom/modules/Audit/CustomAudit.php';
 
@@ -322,7 +322,6 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
         }
 
         $this->setFinnaViewData($bean);
-        $this->setFinnaDataSourceData($bean);
         $this->setFinnaLinkData($bean);
     }
 
@@ -541,50 +540,58 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
 
     }
 
-    private function setFinnaDataSourceData($bean) {
-        $helper = new BusinessRelationshipFinnaDataSourceHelper();
+    public function setDataSourceData($bean, $event, $arguments) {
+        if (!isset($_REQUEST['module']) || $_REQUEST['module'] !== 'nlfbr_BusinessRelationships') {
+            return;
+        }
+
+        if (!isset($_REQUEST['action']) || $_REQUEST['action'] !== 'Save') {
+            return;
+        }
+
+        $helper = new BusinessRelationshipDataSourceHelper();
         $existingSources = $helper->getSourceData($bean->id);
 
         $newSources = array();
         $updatedSources = array();
         foreach (array_keys($_REQUEST) as $field) {
             $index = '';
-            if (substr($field, 0, strlen('finna_data_source_id')) === 'finna_data_source_id') {
-                $index = substr($field, strlen('finna_data_source_id'));
+            if (substr($field, 0, strlen('data_source_id')) === 'data_source_id') {
+                $index = substr($field, strlen('data_source_id'));
 
             }
             if ($index === '') {
                 continue;
             }
 
-            if (!isset($_REQUEST['finna_data_source_id' . $index]) || !array_key_exists('finna_data_source_name' . $index, $_REQUEST)) {
+            if (!isset($_REQUEST['data_source_id' . $index]) || !array_key_exists('data_source_name' . $index, $_REQUEST)) {
                 continue;
             }
 
-            $id = $_REQUEST['finna_data_source_id' . $index];
+            $id = $_REQUEST['data_source_id' . $index];
             $hasRestrictedMetadata = false;
             $name = '';
             $email = '';
             $description = '';
             $systems = array();
             $formats = array();
-            if (isset($_REQUEST['finna_data_source_restricted_metadata' . $index])) {
+            if (isset($_REQUEST['data_source_restricted_metadata' . $index])) {
                 $hasRestrictedMetadata = true;
             }
-            if (isset($_REQUEST['finna_data_source_name' . $index])) {
-                $name = $_REQUEST['finna_data_source_name' . $index];
+            if (isset($_REQUEST['data_source_name' . $index])) {
+                $name = $_REQUEST['data_source_name' . $index];
             }
-            if (isset($_REQUEST['finna_data_source_backend_system' . $index])) {
-                $systems = $_REQUEST['finna_data_source_backend_system' . $index];
+            if (isset($_REQUEST['data_source_backend_system' . $index])) {
+                $systems = $_REQUEST['data_source_backend_system' . $index];
             }
-            if (isset($_REQUEST['finna_data_source_harvesting_format' . $index])) {
-                $formats = $_REQUEST['finna_data_source_harvesting_format' . $index];
+            if (isset($_REQUEST['data_source_harvesting_format' . $index])) {
+                $formats = $_REQUEST['data_source_harvesting_format' . $index];
             }
-            if (isset($_REQUEST['finna_data_source_contact_email' . $index])) {
-                $email = $_REQUEST['finna_data_source_contact_email' . $index];
+            if (isset($_REQUEST['data_source_contact_email' . $index])) {
+                $email = $_REQUEST['data_source_contact_email' . $index];
             }
-            if (isset($_REQUEST['finna_data_source_description' . $index])) {
-                $description = $_REQUEST['finna_data_source_description' . $index];
+            if (isset($_REQUEST['data_source_description' . $index])) {
+                $description = $_REQUEST['data_source_description' . $index];
             }
             if (!$name) {
                 continue;
@@ -642,10 +649,10 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
         $db = $GLOBALS['db'];
 
         foreach ($toDelete as $data) {
-            $query = 'DELETE FROM nlfbr_businessrelationships_finna_sources WHERE id="' . $db->quote($data['id']) . '"';
+            $query = 'DELETE FROM nlfbr_businessrelationships_data_sources WHERE id="' . $db->quote($data['id']) . '"';
 
             $auditData = array(
-                'field_name' => 'finna_data_source',
+                'field_name' => 'data_source',
                 'data_type' => 'varchar',
                 'before' => $data['name'],
                 'after' => '',
@@ -656,7 +663,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
         }
 
         foreach ($toUpdate as $data) {
-            $query = 'UPDATE nlfbr_businessrelationships_finna_sources ' .
+            $query = 'UPDATE nlfbr_businessrelationships_data_sources ' .
                 'SET source_name="' . $db->quote($data['new']['name']) . '", ' .
                 'backend_system="' . $db->quote($data['new']['backend_system']) . '", ' .
                 'harvesting_format="' . $db->quote($data['new']['harvesting_format']) . '", ' .
@@ -669,7 +676,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             $auditData = array();
             if ($data['old']['source_name'] !== $data['new']['name']) {
                 $auditData[] = array(
-                    'field_name' => 'finna_data_source',
+                    'field_name' => 'data_source',
                     'data_type' => 'varchar',
                     'before' => $data['old']['source_name'],
                     'after' => $data['new']['name'],
@@ -677,7 +684,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             }
             if (encodeMultienumValue($data['old']['backend_system']) !== $data['new']['backend_system']) {
                 $auditData[] = array(
-                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['new']['name'] . '|finna_source_backend_system',
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'data_source|' . $data['new']['name'] . '|data_source_backend_system',
                     'data_type' => 'enum',
                     'before' => encodeMultienumValue($data['old']['backend_system']),
                     'after' => $data['new']['backend_system'],
@@ -685,7 +692,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             }
             if (encodeMultienumValue($data['old']['harvesting_format']) !== $data['new']['harvesting_format']) {
                 $auditData[] = array(
-                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['new']['name'] . '|finna_source_harvesting_format',
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'data_source|' . $data['new']['name'] . '|data_source_harvesting_format',
                     'data_type' => 'enum',
                     'before' => encodeMultienumValue($data['old']['harvesting_format']),
                     'after' => $data['new']['harvesting_format'],
@@ -693,7 +700,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             }
             if ($data['old']['contact_email'] !== $data['new']['contact_email']) {
                 $auditData[] = array(
-                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['new']['name'] . '|finna_source_contact_email',
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'data_source|' . $data['new']['name'] . '|data_source_contact_email',
                     'data_type' => 'varchar',
                     'before' => $data['old']['contact_email'],
                     'after' => $data['new']['contact_email'],
@@ -701,7 +708,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             }
             if ($data['old']['restricted_metadata'] !== $data['new']['restricted_metadata']) {
                 $auditData[] = array(
-                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['new']['name'] . '|finna_source_restricted_metadata',
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'data_source|' . $data['new']['name'] . '|data_source_restricted_metadata',
                     'data_type' => 'bool',
                     'before' => $data['old']['restricted_metadata'] ? '1' : '0',
                     'after' => $data['new']['restricted_metadata'] ? '1' : '0',
@@ -709,7 +716,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             }
             if ($data['old']['description'] !== $data['new']['description']) {
                 $auditData[] = array(
-                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['new']['name'] . '|finna_source_description',
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'data_source|' . $data['new']['name'] . '|data_source_description',
                     'data_type' => 'text',
                     'before' => $data['old']['description'],
                     'after' => $data['new']['description'],
@@ -724,7 +731,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
         }
 
        foreach ($newSources as $data) {
-            $query = 'INSERT INTO nlfbr_businessrelationships_finna_sources ' .
+            $query = 'INSERT INTO nlfbr_businessrelationships_data_sources ' .
                 '(id, businessrelationship_id, source_name, backend_system, harvesting_format, contact_email, restricted_metadata, description, date_modified) ' .
                 'VALUES(' .
                 '"' . $db->quote(create_guid()) . '", ' .
@@ -739,37 +746,37 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
 
             $auditData = array(
                 array(
-                    'field_name' => 'finna_data_source',
+                    'field_name' => 'data_source',
                     'data_type' => 'varchar',
                     'before' => '',
                     'after' => $data['name'],
                 ),
                 array(
-                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['name'] . '|finna_source_backend_system',
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'data_source|' . $data['name'] . '|data_source_backend_system',
                     'data_type' => 'enum',
                     'before' => '',
                     'after' => $data['backend_system'],
                 ),
                  array(
-                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['name'] . '|finna_source_harvesting_format',
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'data_source|' . $data['name'] . '|data_source_harvesting_format',
                     'data_type' => 'enum',
                     'before' => '',
                     'after' => $data['harvesting_format'],
                 ),
                  array(
-                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['name'] . '|finna_source_contact_email',
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'data_source|' . $data['name'] . '|data_source_contact_email',
                     'data_type' => 'varchar',
                     'before' => '',
                     'after' => $data['contact_email'],
                 ),
                 array(
-                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['name'] . '|finna_source_restricted_metadata',
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'data_source|' . $data['name'] . '|data_source_restricted_metadata',
                     'data_type' => 'bool',
                     'before' => '',
                     'after' => $data['restricted_metadata'] ? '1' : '0',
                 ),
                 array(
-                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_data_source|' . $data['name'] . '|finna_source_description',
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'data_source|' . $data['name'] . '|data_source_description',
                     'data_type' => 'text',
                     'before' => '',
                     'after' => $data['description'],
