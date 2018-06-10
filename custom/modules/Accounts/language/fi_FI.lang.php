@@ -1,5 +1,5 @@
 <?php
-// created: 2018-03-27 20:36:29
+// created: 2018-06-10 19:17:40
 $mod_strings = array (
   'LBL_NLFSE_SERVICES_ACCOUNTS_1_FROM_NLFSE_SERVICES_TITLE' => 'Palvelut',
   'LBL_ACCOUNTS_NLFBR_BUSINESSRELATIONSHIPS_1_FROM_NLFBR_BUSINESSRELATIONSHIPS_TITLE' => 'Asiakassuhteet',
@@ -16,7 +16,7 @@ $mod_strings = array (
   'LBL_ILMOITTANUT_KIINNOSTUKSEN' => 'Ilmoittanut kiinnostuksen',
   'LBL_HYVAKSYTTY' => 'Hyväksytty palveluun',
   'LBL_SOPIMUS_FINNA' => 'Sopimus voimassa (Finna)',
-  'LBL_EDITVIEW_PANEL5' => 'New Panel 5',
+  'LBL_EDITVIEW_PANEL5' => 'Osoitetiedot',
   'LBL_SHIPPING_ADDRESS_COUNTRY' => 'Maa:',
   'LBL_BILLING_ADDRESS_COUNTRY' => 'Laskutusosoite Maa:',
   'LBL_SHIPPING_ADDRESS_POSTALCODE' => 'Postinumero:',
