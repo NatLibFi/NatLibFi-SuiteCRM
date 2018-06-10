@@ -9,7 +9,7 @@
             </td>
             <td>
                 {$mod_strings.LBL_FINNA_VIEW_URL_TITLE}
-                <a href="{$view.view_url}">{$view.view_url}</a>
+                <a href="{$view.view_url|to_url}" target="_blank">{$view.view_url}</a>
             </td>
         </tr>
         <tr>

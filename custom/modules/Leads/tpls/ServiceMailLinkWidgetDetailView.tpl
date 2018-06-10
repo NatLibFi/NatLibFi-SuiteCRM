@@ -5,7 +5,7 @@
         <tr>
             <td>
                 {$mod_strings.LBL_SERVICE_MAIL_LINK_URL_TITLE}
-                <a href="{$link.link_url|to_url}">{$link.link_url}</a>
+                <a href="{$link.link_url|to_url}" target="_blank">{$link.link_url}</a>
             </td>
         </tr>
         <tr class="multirow-last">
