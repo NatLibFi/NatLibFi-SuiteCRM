@@ -8,3 +8,8 @@
 
 $sugar_config['enable_legacy_search'] = array(
 );
+// Max tabs setting determines number of modules for which the "top menu" is generated.
+// The number has to be equal (or greater) to the number of all modules visible in the main menu,
+// otherwise modules from the end of the list might miss their "top menu" (i.e. the one with
+// options like "Create", "List", "Import"). See also: ASKI-243
+$sugar_config['default_max_tabs'] = 16;
