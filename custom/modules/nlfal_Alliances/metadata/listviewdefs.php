@@ -58,16 +58,6 @@ array (
     'width' => '10%',
     'default' => false,
   ),
-  'JASENET_C' => 
-  array (
-    'type' => 'relate',
-    'default' => false,
-    'studio' => 'visible',
-    'label' => 'LBL_JASENET',
-    'id' => 'ACCOUNT_ID_C',
-    'link' => true,
-    'width' => '10%',
-  ),
   'STATUS_C' => 
   array (
     'type' => 'enum',
