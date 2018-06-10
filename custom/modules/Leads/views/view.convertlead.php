@@ -504,4 +504,83 @@ class CustomViewConvertLead extends ViewConvertLead
         }
         return $address;
     }
+
+    // Also adds a link to a new Business Relationship record
+    // TODO: will not be necessary once BR is also part of $beans, it is converted
+    // as other modules.
+    protected function displaySaveResults($beans) {
+        global $beanList;
+    	echo "<div><ul>";
+        foreach($beans as $bean)
+        {
+            $beanName = $bean->object_name;
+            if ( $beanName == 'Contact' && !$this->new_contact ) {
+                echo "<li>" . translate("LBL_EXISTING_CONTACT") . " -
+                    <a href='index.php?module={$bean->module_dir}&action=DetailView&record={$bean->id}'>
+                       {$bean->get_summary_text()}
+                    </a></li>";
+            }
+            else {
+                global $app_list_strings;
+                if(!empty($app_list_strings['moduleListSingular'][$bean->module_dir])) {
+                    $module_name = $app_list_strings['moduleListSingular'][$bean->module_dir];
+                } else {
+                    $module_name = translate('LBL_MODULE_NAME', $bean->module_dir);
+                }
+                if(empty($module_name)) {
+                    $module_name = translate($beanName);
+                }
+                echo "<li>" . translate("LBL_CREATED_NEW") . ' ' . $module_name . " -
+                    <a href='index.php?module={$bean->module_dir}&action=DetailView&record={$bean->id}'>
+                       {$bean->get_summary_text()}
+                    </a></li>";
+                if ($beanName === 'Account') {
+                    $brData = $this->getNewBusinessRelationshipData($bean);
+                    if ($brData) {
+                        echo '<li>' .
+                            translate("LBL_CREATED_NEW") .
+                            ' ' .
+                            $app_list_strings['moduleListSingular']['nlfbr_BusinessRelationships'] .
+                            ' - ' . 
+                            "<a href='index.php?module=nlfbr_BusinessRelationships&action=DetailView&record=" . $brData['id'] . "'>" .
+                            $brData['name'] .
+                            '</a></li>';
+                    }
+                }
+             }
+        }
+
+    	echo "</ul></div>";
+    }
+
+    private function getNewBusinessRelationshipData($bean) {
+        $account = new Account();
+        $account->retrieve($bean->id);
+
+        if (!$account) {
+            return array();
+        }
+
+        if (!$account->load_relationship('accounts_nlfbr_businessrelationships_1')) {
+            return array();
+        }
+
+        $brIds = $account->{'accounts_nlfbr_businessrelationships_1'}->get(true);
+
+        if (!$brIds) {
+            return array();
+        }
+
+        $brId = $brIds[count($brIds)-1];
+
+        require_once 'modules/nlfbr_BusinessRelationships/nlfbr_BusinessRelationships.php';
+        $br = new nlfbr_BusinessRelationships();
+        $br->retrieve($brId);
+
+        if (!$br) {
+            return array();
+        }
+
+        return array('id' => $brId, 'name' => $br->name);
+    }
 }
