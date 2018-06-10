@@ -10,8 +10,8 @@ $layout_defs["nlfbs_BackendSystems"]["subpanel_setup"]['backend_systems_business
     'get_subpanel_data' => 'function:getBusinessRelationshipForBackendSystemSubpanelQueryParts',
     'function_parameters' => array(
         'import_function_file' => 'custom/Extension/application/Ext/Utils/NLFBackEndSystems.php',
-        'system_id' => $this->_focus->id,
-        ),
+        'system_id' => $_REQUEST['record'],
+    ),
     'generate_select' => true,
     'set_subpanel_data' => 'nlfbr_businessrelationships',
     'top_buttons' => '',
