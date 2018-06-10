@@ -2,21 +2,6 @@
 $module_name = 'nlfbr_BusinessRelationships';
 $listViewDefs [$module_name] = 
 array (
-  'OPEN_ONLY_HAS_ACTIVE_CONTRACT' => 
-  array (
-    'type' => 'bool',
-    'studio' => 
-    array (
-      'listview' => false,
-      'detailview' => false,
-      'editview' => false,
-      'searchview' => true,
-    ),
-    'label' => 'LBL_HAS_ACTIVE_CONTRACT_TITLE',
-    'width' => '5%',
-    'default' => true,
-    'sortable' => false,
-  ),
   'NAME' => 
   array (
     'width' => '32%',
@@ -48,6 +33,21 @@ array (
     'label' => 'LBL_ALLIANCE_NAMES',
     'width' => '10%',
     'default' => true,
+  ),
+  'OPEN_ONLY_HAS_ACTIVE_CONTRACT' => 
+  array (
+    'type' => 'bool',
+    'studio' => 
+    array (
+      'listview' => false,
+      'detailview' => false,
+      'editview' => false,
+      'searchview' => true,
+    ),
+    'label' => 'LBL_HAS_ACTIVE_CONTRACT_TITLE',
+    'width' => '5%',
+    'default' => true,
+    'sortable' => false,
   ),
   'PALVELU_LIITTYMISEN_STATUS_C' => 
   array (
