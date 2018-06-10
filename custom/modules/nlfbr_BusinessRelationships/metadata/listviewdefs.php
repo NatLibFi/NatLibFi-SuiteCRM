@@ -49,14 +49,6 @@ array (
     'width' => '10%',
     'default' => true,
   ),
-  'ASIAKASSUHDE_C' => 
-  array (
-    'type' => 'multienum',
-    'default' => true,
-    'studio' => 'visible',
-    'label' => 'LBL_ASIAKASSUHDE',
-    'width' => '10%',
-  ),
   'PALVELU_LIITTYMISEN_STATUS_C' => 
   array (
     'type' => 'enum',
@@ -70,6 +62,14 @@ array (
     'type' => 'date',
     'default' => true,
     'label' => 'LBL_PRODUCTION_DATE',
+    'width' => '10%',
+  ),
+  'ASIAKASSUHDE_C' => 
+  array (
+    'type' => 'multienum',
+    'default' => true,
+    'studio' => 'visible',
+    'label' => 'LBL_ASIAKASSUHDE',
     'width' => '10%',
   ),
   'NFL_BUSINESS_RELATION_BEGINS_C' => 
