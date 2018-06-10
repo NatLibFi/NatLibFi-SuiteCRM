@@ -46,6 +46,15 @@ array (
         'default' => true,
         'width' => '10%',
       ),
+      'wg_tyyppi_c' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_WG_TYYPPI',
+        'width' => '10%',
+        'name' => 'wg_tyyppi_c',
+      ),
       'related_service' => 
       array (
         'type' => 'enum',
@@ -62,31 +71,6 @@ array (
         'label' => 'LBL_WORKINGGROUP_STATUS',
         'width' => '10%',
         'name' => 'workinggroup_status_c',
-      ),
-      'wg_tyyppi_c' => 
-      array (
-        'type' => 'enum',
-        'default' => true,
-        'studio' => 'visible',
-        'label' => 'LBL_WG_TYYPPI',
-        'width' => '10%',
-        'name' => 'wg_tyyppi_c',
-      ),
-      'assigned_user_id' => 
-      array (
-        'name' => 'assigned_user_id',
-        'label' => 'LBL_ASSIGNED_TO',
-        'type' => 'enum',
-        'function' => 
-        array (
-          'name' => 'get_user_array',
-          'params' => 
-          array (
-            0 => false,
-          ),
-        ),
-        'default' => true,
-        'width' => '10%',
       ),
       'working_group_roles' => 
       array (
