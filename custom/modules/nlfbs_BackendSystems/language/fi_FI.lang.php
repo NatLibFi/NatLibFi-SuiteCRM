@@ -1,5 +1,5 @@
 <?php
-// created: 2018-03-28 18:28:18
+// created: 2018-06-11 14:25:02
 $mod_strings = array (
   'LNK_NEW_RECORD' => 'Luo uusi Tietojärjestelmät',
   'LNK_LIST' => 'Katso Tietojärjestelmät',
@@ -16,4 +16,5 @@ $mod_strings = array (
   'LBL_TYYPPI' => 'Järjestelmän tyyppi',
   'LBL_DESCRIPTION' => 'Kuvaus',
   'LBL_NAME' => 'Nimi',
+  'LBL_BACKEND_SYSTEMS_BUSINESS_RELATIONSHIPS_SUBPANEL_TITLE' => 'Asiakassuhteet',
 );
