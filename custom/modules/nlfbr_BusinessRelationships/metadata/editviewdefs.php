@@ -268,19 +268,11 @@ array (
         array (
           0 => 
           array (
-            'name' => 'tietokannan_tunnus_c',
-            'label' => 'LBL_TIETOKANNAN_TUNNUS',
-          ),
-        ),
-        3 => 
-        array (
-          0 => 
-          array (
             'name' => 'replikoinnin_domain_c',
             'label' => 'LBL_REPLIKOINNIN_DOMAIN',
           ),
         ),
-        4 => 
+        3 => 
         array (
           0 => 
           array (
@@ -289,7 +281,7 @@ array (
             'label' => 'LBL_IP_ALUEET_MELINDA',
           ),
         ),
-        5 => 
+        4 => 
         array (
           0 => 
           array (
@@ -297,7 +289,7 @@ array (
             'label' => 'LBL_LOW_TAG',
           ),
         ),
-        6 => 
+        5 => 
         array (
           0 => 
           array (
@@ -305,7 +297,7 @@ array (
             'label' => 'LBL_LIITTYVAT_TIKETIT_MELINDA',
           ),
         ),
-        7 => 
+        6 => 
         array (
           0 => 
           array (
