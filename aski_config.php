@@ -13,3 +13,11 @@ $sugar_config['enable_legacy_search'] = array(
 // otherwise modules from the end of the list might miss their "top menu" (i.e. the one with
 // options like "Create", "List", "Import"). See also: ASKI-243
 $sugar_config['default_max_tabs'] = 16;
+
+// Use Finnish decimal separator and number grouping separator.
+// NB! seperator is their typo, not mine, so keep it!
+$sugar_config['default_decimal_seperator'] = ',';
+// This is UTF-code for non-breaking space:
+$sugar_config['default_number_grouping_seperator'] = "\xc2\xa0";                     
+
+
