@@ -150,7 +150,7 @@ class SugarAuthenticate{
 	 * Once a user is authenticated on login this function will be called. Populate the session with what is needed and log anything that needs to be logged
 	 *
 	 */
-	function postLoginAuthenticate(){
+	protected function postLoginAuthenticate(){
 
 		global $reset_language_on_default_user, $sugar_config;
 		
