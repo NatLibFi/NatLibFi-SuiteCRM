@@ -42,6 +42,9 @@ $subpanel_layout = array(
             'name' => 'account_name',
             'vname' => 'LBL_ACCOUNT_NAME',
             'width' => '15%',
+            'widget_class' => 'SubPanelDetailViewLink',
+            'target_record_key' => 'account_id',
+            'target_module' => 'Accounts',
         ),
         'contact_wg_role_fields' => array(
             'usage' => 'query_only',
