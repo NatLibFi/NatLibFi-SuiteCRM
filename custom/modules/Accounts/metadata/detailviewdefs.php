@@ -205,12 +205,6 @@ array (
           0 => 
           array (
             'name' => 'shipping_address_street',
-            'label' => 'LBL_SHIPPING_ADDRESS',
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'shipping',
-            ),
           ),
         ),
         1 => 
@@ -256,12 +250,6 @@ array (
           0 => 
           array (
             'name' => 'billing_address_street',
-            'label' => 'LBL_BILLING_ADDRESS',
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'billing',
-            ),
           ),
         ),
         1 => 

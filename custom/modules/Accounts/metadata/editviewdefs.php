@@ -191,16 +191,6 @@ array (
           0 => 
           array (
             'name' => 'shipping_address_street',
-            'hideLabel' => true,
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'shipping',
-              'copy' => 'billing',
-              'rows' => 2,
-              'cols' => 30,
-              'maxlength' => 150,
-            ),
           ),
         ),
         1 => 
@@ -246,15 +236,6 @@ array (
           0 => 
           array (
             'name' => 'billing_address_street',
-            'hideLabel' => true,
-            'type' => 'address',
-            'displayParams' => 
-            array (
-              'key' => 'billing',
-              'rows' => 2,
-              'cols' => 30,
-              'maxlength' => 150,
-            ),
           ),
         ),
         1 => 
