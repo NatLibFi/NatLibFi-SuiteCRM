@@ -93,7 +93,8 @@ class BusinessRelationshipProcessRecordHook
             if ($allianceNames !== '') {
                 $allianceNames .= ', '; // TODO: i18n this
             }
-            $allianceNames .= $alliance->name;
+            $allianceLink = 'index.php?module=nlfal_Alliances&action=DetailView&record=' . htmlentities($allianceId);
+            $allianceNames .= '<a href="' . ajaxLink($allianceLink) . '">' . $alliance->name . '</a>';
         }
 
         $bean->{self::FIELD_ALLIANCE_NAMES} = $allianceNames;
