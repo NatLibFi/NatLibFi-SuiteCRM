@@ -28,6 +28,7 @@ array (
     'label' => 'LBL_ALLIANCE_LEADER_TITLE',
     'width' => '10%',
     'default' => true,
+    'sortable' => false,
   ),
   'MEMBER_COUNT' => 
   array (
@@ -35,6 +36,7 @@ array (
     'default' => true,
     'label' => 'LBL_MEMBER_COUNT',
     'width' => '10%',
+    'sortable' => false,
   ),
   'ALLIANCE_SERVICE_NAMES' => 
   array (
@@ -49,6 +51,7 @@ array (
     'label' => 'LBL_ALLIANCE_SERVICES_TITLE',
     'width' => '10%',
     'default' => true,
+    'sortable' => false,
   ),
   'DESCRIPTION' => 
   array (
