@@ -66,6 +66,26 @@ array (
         'default' => true,
         'width' => '10%',
       ),
+      'related_alliance' => 
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_RELATED_ALLIANCE',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'related_alliance',
+      ),
+      'account_type' => 
+      array (
+        'name' => 'account_type',
+        'default' => true,
+        'width' => '10%',
+      ),
+      'industry' => 
+      array (
+        'name' => 'industry',
+        'default' => true,
+        'width' => '10%',
+      ),
       'open_only_has_active_contract' => 
       array (
         'type' => 'bool',
@@ -89,18 +109,6 @@ array (
         'width' => '10%',
         'default' => true,
         'name' => 'production_status',
-      ),
-      'account_type' => 
-      array (
-        'name' => 'account_type',
-        'default' => true,
-        'width' => '10%',
-      ),
-      'industry' => 
-      array (
-        'name' => 'industry',
-        'default' => true,
-        'width' => '10%',
       ),
       'hallinnonala_c' => 
       array (
@@ -126,14 +134,6 @@ array (
         'width' => '10%',
         'default' => true,
         'name' => 'accounts_nlfbs_backendsystems_enum',
-      ),
-      'related_alliance' => 
-      array (
-        'type' => 'enum',
-        'label' => 'LBL_RELATED_ALLIANCE',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'related_alliance',
       ),
     ),
   ),
