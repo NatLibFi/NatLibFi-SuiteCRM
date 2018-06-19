@@ -21,13 +21,6 @@ array (
     'link' => true,
     'default' => true,
   ),
-  'TITLE' => 
-  array (
-    'width' => '15%',
-    'label' => 'LBL_TITLE',
-    'link' => true,
-    'default' => true,
-  ),
   'DEPARTMENT' => 
   array (
     'width' => '15%',
@@ -50,13 +43,6 @@ array (
     'link' => true,
     'default' => true,
   ),
-  'STATUS' => 
-  array (
-    'width' => '10%',
-    'label' => 'LBL_STATUS',
-    'link' => false,
-    'default' => true,
-  ),
   'IS_ADMIN' => 
   array (
     'width' => '10%',
@@ -72,10 +58,24 @@ array (
     'default' => true,
     'sortable' => false,
   ),
+  'STATUS' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_STATUS',
+    'link' => false,
+    'default' => true,
+  ),
   'IS_GROUP' => 
   array (
     'width' => '10%',
     'label' => 'LBL_LIST_GROUP',
+    'link' => true,
+    'default' => false,
+  ),
+  'TITLE' => 
+  array (
+    'width' => '15%',
+    'label' => 'LBL_TITLE',
     'link' => true,
     'default' => false,
   ),
