@@ -4,11 +4,11 @@ vname:::LBL_BILLING_INFO
 comments:::
 help:::
 custom_module:::Accounts
-type:::varchar
-len:::255
+type:::text
+len:::
 required:::0
 default_value:::
-date_modified:::2018-02-25 15:30:02
+date_modified:::2018-06-19 20:02:48
 deleted:::0
 audited:::1
 massupdate:::0
