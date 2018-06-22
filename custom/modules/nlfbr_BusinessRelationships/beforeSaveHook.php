@@ -828,6 +828,10 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
        */
        $brSystems = getBackendSystemsRelatedToBusinessRelationship($bean->id);
 
+       if (empty($brSystems) && isset($_REQUEST['record']) && $_REQUEST['record'] === '') {
+           $brSystems = $this->getNewRecordSystems($_REQUEST);
+       }
+
        if (empty($brSystems)) {
            return;
        }
@@ -854,6 +858,18 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
            }
        }
 
+    }
+
+    private function getNewRecordSystems($postData) {
+        $systems = array();
+
+        foreach (array_keys($postData) as $field) {
+            if (substr($field, 0, strlen('data_source_backend_system')) === 'data_source_backend_system') {
+                $systems = array_merge($systems, $postData[$field]);
+            }
+        }
+ 
+        return array_unique($systems);
     }
 
     private function setFinnaLinkData($bean) {
