@@ -29,4 +29,31 @@ class AccountBeforeSaveHook
             $bean->name_default_lang_c = 'fin';
         }
     }
+
+    public function setInitialBackendSystems($bean, $event, $arguments)
+    {
+        if (!isset($_REQUEST['module']) || $_REQUEST['module'] !== 'Accounts') {
+            return;
+        }
+
+        if (!isset($_REQUEST['action']) || $_REQUEST['action'] !== 'Save') {
+            return;
+        }
+
+        if (!isset($_REQUEST['record']) || $_REQUEST['record'] !== '') {
+            return;
+        }
+
+        if (!isset($_REQUEST['accounts_nlfbs_backendsystems_1nlfbs_backendsystems_idb'])) {
+            return;
+        }
+
+        if (!$bean->load_relationship('accounts_nlfbs_backendsystems_1')) {
+            return;
+        }
+
+        foreach ($_REQUEST['accounts_nlfbs_backendsystems_1nlfbs_backendsystems_idb'] as $id) {
+            $bean->{'accounts_nlfbs_backendsystems_1'}->add($id, array());
+        }
+    }
 }
