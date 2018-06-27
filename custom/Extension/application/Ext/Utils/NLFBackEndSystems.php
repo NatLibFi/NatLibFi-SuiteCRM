@@ -167,3 +167,25 @@ function getBackEndSystemsForServiceSubpanelQueryParts($params) {
 
     return $query;
 }
+
+function getServicesForBackendSystemSubpanelQueryParts($params) {
+    $systemId = $params['system_id'];
+
+    $query = array(
+        'select' => 'SELECT nlfse_services.*',
+        'from' => 'FROM nlfse_services',
+        'where' => 'WHERE nlfse_services.id IN (' .
+            'SELECT nlfse_services.id FROM nlfse_services ' .
+            ' JOIN nlfse_services_nlfbr_businessrelationships_1_c br_rel ' .
+            'ON nlfse_services.id=br_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida ' .
+            'JOIN nlfbr_businessrelationships_data_sources bs_rel ' .
+            'ON bs_rel.businessrelationship_id=br_rel.nlfse_serva51aonships_idb ' .
+            'WHERE nlfse_services.deleted=0 AND bs_rel.deleted=0 AND bs_rel.backend_system REGEXP "\\\\^' . $GLOBALS['db']->quote($systemId) . '\\\\^" AND br_rel.deleted=0 ' .
+            ')',
+        'join' => '',
+        'join_tables' => '',
+        );
+
+    return $query;
+
+}
