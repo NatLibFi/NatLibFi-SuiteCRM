@@ -147,3 +147,19 @@ function getBusinessRelationshipForBackendSystemSubpanelQueryParts($params) {
     return $query;
 }
 
+function getBackEndSystemsForServiceSubpanelQueryParts($params) {
+    $serviceId = $params['service_id'];
+
+    $query = array(
+        'select' => 'SELECT nlfbs_backendsystems.*',
+        'from' => 'FROM nlfbs_backendsystems',
+        'where' => 'WHERE nlfbs_backendsystems.deleted=0 AND br_rel.deleted=0 AND s_rel.deleted=0 AND s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida="' . $GLOBALS['db']->quote($serviceId) . '"',
+        'join' => ' JOIN nlfbr_businessrelationships_nlfbs_backendsystems_1_c br_rel ' .
+        'ON br_rel.nlfbr_busi06f0systems_idb=nlfbs_backendsystems.id ' .
+        'JOIN nlfse_services_nlfbr_businessrelationships_1_c s_rel ' .
+        'ON s_rel.nlfse_serva51aonships_idb=br_rel.nlfbr_busib52fonships_ida',
+        'join_tables' => '',
+    );
+
+    return $query;
+}
