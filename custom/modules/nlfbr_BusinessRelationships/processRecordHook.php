@@ -3,6 +3,7 @@
 if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
 require_once 'modules/nlfal_Alliances/nlfal_Alliances.php';
+require_once 'modules/nlfbs_BackendSystems/nlfbs_BackendSystems.php';
 class BusinessRelationshipProcessRecordHook
 {
     const TABLE_BUSINESS_RELATIONSHIPS_CONTRACTS = 'nlfbr_businessrelationships_aos_contracts_1_c';
@@ -109,5 +110,52 @@ class BusinessRelationshipProcessRecordHook
         $name = $bean->{self::FIELD_ACCOUNT_NAME} . self::NAME_PART_SEPARATOR . $bean->{self::FIELD_SERVICE_NAME};
         $bean->{'name_account_name_first'} = $name;
     }
+
+    const FIELD_BACKEND_SYSTEMS_NAMES = 'backend_system_names';
+    function setBackendSystemNames($bean, $event, $arguments)
+    {
+        $id = $bean->id;
+        if (!isset($id)) {
+            return;
+        }
+
+        $db = $GLOBALS['db'];
+
+        $query = 'SELECT backend_system ' .
+            'FROM nlfbr_businessrelationships_data_sources ' .
+            'WHERE businessrelationship_id="' . $db->quote($id) . '" ' .
+            'AND deleted=0';
+
+        $result = $db->query($query);
+
+        $systemIds = array();
+        while ($row = $db->fetchByAssoc($result) ) {
+            $systemIds = array_merge($systemIds, unencodeMultienum($row['backend_system']));
+        }
+        $systemIds = array_unique($systemIds);
+
+        $systemNames = '';
+
+        foreach ($systemIds as $systemId) {
+            $system = new nlfbs_BackendSystems();
+            $system->retrieve($systemId);
+
+            if (!$system) {
+                continue;
+            }
+
+            if (!$system->name) {
+                continue;
+            }
+
+            if ($systemNames !== '') {
+                $systemNames .= ', '; // TODO: i18n this
+            }
+            $systemNames .= $system->name;
+        }
+
+        $bean->{self::FIELD_BACKEND_SYSTEMS_NAMES} = $systemNames;
+    }
+
 
 }

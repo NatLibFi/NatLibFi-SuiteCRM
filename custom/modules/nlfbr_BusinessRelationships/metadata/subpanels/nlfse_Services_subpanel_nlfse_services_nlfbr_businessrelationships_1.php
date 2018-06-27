@@ -77,6 +77,14 @@ $subpanel_layout['list_fields'] = array (
     'vname' => 'LBL_FINNA_FIMU_URL',
     'width' => '5%',
   ),
+  'backend_system_names' => 
+  array (
+    'type' => 'varchar',
+    'default' => true,
+    'vname' => 'LBL_BACKEND_SYSTEM_NAMES',
+    'width' => '5%',
+    'sortable' => false,
+  ),
   'edit_button' => 
   array (
     'vname' => 'LBL_EDIT_BUTTON',

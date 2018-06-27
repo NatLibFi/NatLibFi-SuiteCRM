@@ -29,3 +29,12 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]["nlfbr_businessrelationship
   'vname' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_NLFBS_BACKENDSYSTEMS_1_FROM_NLFBS_BACKENDSYSTEMS_TITLE',
   'id_name' => 'nlfbr_busi06f0systems_idb',
 );
+
+
+$dictionary["nlfbr_BusinessRelationships"]["fields"]["backend_system_names"] = array (
+  'name' => 'backend_system_names',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'vname' => 'LBL_BACKEND_SYSTEM_NAMES',
+  'studio' => array('detailview' => false, 'editview' => false, 'listview' => true, 'searchview' => false),
+);
