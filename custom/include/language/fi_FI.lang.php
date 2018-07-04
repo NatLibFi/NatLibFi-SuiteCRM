@@ -31,13 +31,6 @@ $GLOBALS['app_list_strings']['alliance_coordinator_contact_list']=array (
 $GLOBALS['app_list_strings']['contact_list']=array (
   'hlo1' => 'kontakti1',
 );
-$GLOBALS['app_list_strings']['finnanakyma_status_list']=array (
-  'aikomus' => 'Aikoo tehdä',
-  'tyonalla' => 'Työn alla',
-  'beta' => 'Beta',
-  'tuotannossa' => 'Tuotannossa',
-  'eitietoa' => 'Ei tietoa',
-);
 $GLOBALS['app_list_strings']['finna_sopimus_list']=array (
   'finnasopimus2015' => 'Palvelusopimus 2015 (voimassa toistaiseksi)',
   'finnasopimus2016_2018' => 'Palvelusopimus 2016-2018 (päättyy 31.12.2018)',
@@ -582,4 +575,11 @@ $GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
   'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
   'br_ei_tiedossa' => 'Ei tiedossa',
   'br_tietokannanyhteyshenkilo' => 'Tietokannan yhteyshenkilö',
+);
+$GLOBALS['app_list_strings']['finnanakyma_status_list']=array (
+  'eitietoa' => 'Ei tietoa',
+  'aikomus' => 'Aikoo tehdä',
+  'mukana' => 'Mukana näkymässä',
+  'tyonalla' => 'Työn alla',
+  'tuotannossa' => 'Tuotannossa',
 );
