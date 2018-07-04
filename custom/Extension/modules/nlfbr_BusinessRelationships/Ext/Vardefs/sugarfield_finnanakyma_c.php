@@ -1,6 +1,6 @@
 <?php
- // created: 2017-04-26 17:23:48
+ // created: 2018-07-04 14:48:41
 $dictionary['nlfbr_BusinessRelationships']['fields']['finnanakyma_c']['inline_edit']='1';
-$dictionary['nlfbr_BusinessRelationships']['fields']['finnanakyma_c']['labelValue']='Oma Finna-näkymä';
+$dictionary['nlfbr_BusinessRelationships']['fields']['finnanakyma_c']['labelValue']='Finna-näkymän tilanne';
 
  ?>

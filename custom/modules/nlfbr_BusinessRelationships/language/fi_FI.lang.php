@@ -1,5 +1,5 @@
 <?php
-// created: 2018-06-12 21:13:48
+// created: 2018-07-04 14:48:41
 $mod_strings = array (
   'LBL_NLFBR_BUSINESSRELATIONSHIPS_NLFSE_SERVICES_1_FROM_NLFSE_SERVICES_TITLE' => 'Palvelu',
   'LBL_NAME' => 'Nimi',
@@ -12,7 +12,7 @@ $mod_strings = array (
   'LBL_PAASY_HALLINTALIITTYMAAN' => 'Paasy hallintaliittymään?',
   'LBL_KAYTTORAJOITETTU_METATIETO' => 'Käyttörajoitettu metatieto',
   'LBL_AINEISTO_PALAUTE' => 'Aineistoa koskevan palautteen e-mail',
-  'LBL_FINNANAKYMA' => 'Oma Finna-näkymä',
+  'LBL_FINNANAKYMA' => 'Finna-näkymän tilanne',
   'LBL_FINNANAKYMA_URL' => 'Oman Finna-näkymän osoite',
   'LBL_LISATIETO' => 'Lisätietoa tietolähteestä',
   'LBL_FINNA_SOPIMUS' => 'Finnan palvelusopimus',
