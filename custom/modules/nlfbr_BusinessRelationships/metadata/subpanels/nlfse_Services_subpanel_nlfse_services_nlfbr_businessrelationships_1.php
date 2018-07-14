@@ -1,5 +1,5 @@
 <?php
-// created: 2017-09-19 16:29:42
+// created: 2018-07-03 11:53:55
 $subpanel_layout['list_fields'] = array (
   'name' => 
   array (
@@ -27,34 +27,6 @@ $subpanel_layout['list_fields'] = array (
     'width' => '15%',
     'default' => true,
   ),
-  'asiakassuhde_c' => 
-  array (
-    'type' => 'multienum',
-    'default' => true,
-    'studio' => 'visible',
-    'vname' => 'LBL_ASIAKASSUHDE',
-    'width' => '5%',
-  ),
-  'sopimus_c' => 
-  array (
-    'type' => 'relate',
-    'default' => true,
-    'studio' => 'visible',
-    'vname' => 'LBL_SOPIMUS',
-    'id' => 'AOS_CONTRACTS_ID_C',
-    'link' => true,
-    'width' => '10%',
-    'widget_class' => 'SubPanelDetailViewLink',
-    'target_module' => 'AOS_Contracts',
-    'target_record_key' => 'aos_contracts_id_c',
-  ),
-  'sopimus_kronodoc_c' => 
-  array (
-    'type' => 'varchar',
-    'default' => true,
-    'vname' => 'LBL_SOPIMUS_KRONODOC',
-    'width' => '5%',
-  ),
   'palvelu_liittymisen_status_c' => 
   array (
     'type' => 'enum',
@@ -70,12 +42,13 @@ $subpanel_layout['list_fields'] = array (
     'vname' => 'LBL_PRODUCTION_DATE',
     'width' => '5%',
   ),
-  'finna_fimu_url_c' => 
+  'sopimus_voimassa_c' => 
   array (
-    'type' => 'url',
+    'type' => 'multienum',
     'default' => true,
-    'vname' => 'LBL_FINNA_FIMU_URL',
-    'width' => '5%',
+    'studio' => 'visible',
+    'vname' => 'LBL_SOPIMUS_VOIMASSA',
+    'width' => '10%',
   ),
   'backend_system_names' => 
   array (
