@@ -42,13 +42,13 @@ $subpanel_layout['list_fields'] = array (
     'vname' => 'LBL_PRODUCTION_DATE',
     'width' => '5%',
   ),
-  'sopimus_voimassa_c' => 
+  'active_contract_names' => 
   array (
-    'type' => 'multienum',
+    'type' => 'varchar',
     'default' => true,
-    'studio' => 'visible',
-    'vname' => 'LBL_SOPIMUS_VOIMASSA',
+    'vname' => 'LBL_ACTIVE_CONTRACT_NAMES',
     'width' => '10%',
+    'sortable' => 'false',
   ),
   'backend_system_names' => 
   array (

@@ -4,6 +4,7 @@ if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
 require_once 'modules/nlfal_Alliances/nlfal_Alliances.php';
 require_once 'modules/nlfbs_BackendSystems/nlfbs_BackendSystems.php';
+require_once 'modules/AOS_Contracts/AOS_Contracts.php';
 class BusinessRelationshipProcessRecordHook
 {
     const TABLE_BUSINESS_RELATIONSHIPS_CONTRACTS = 'nlfbr_businessrelationships_aos_contracts_1_c';
@@ -155,6 +156,49 @@ class BusinessRelationshipProcessRecordHook
         }
 
         $bean->{self::FIELD_BACKEND_SYSTEMS_NAMES} = $systemNames;
+    }
+
+    const FIELD_ACTIVE_CONTRACT_NAMES = 'active_contract_names';
+    public function setActiveContractNames($bean, $event, $arguments)
+    {
+        $id = $bean->id;
+        if (!isset($id)) {
+            return;
+        }
+
+        $db = $GLOBALS['db'];
+        $query = 'SELECT nlfbr_businessrelationships_aos_contracts_1aos_contracts_idb AS contract_id from ' . self::TABLE_BUSINESS_RELATIONSHIPS_CONTRACTS .
+            ' WHERE ' . self::FIELD_BUSINESS_RELATIONSHIP_ID . '="' . $db->quote($id) . '" ' .
+            ' AND active=1 ' .
+            ' AND deleted=0 ';
+
+        $result = $db->query($query);
+
+        $contractIds = array();
+        while ($row = $db->fetchByAssoc($result)) {
+            $contractIds[] = $row['contract_id'];
+        }
+
+        $contractNames = '';
+        foreach ($contractIds as $contractId) {
+            $contract = new AOS_Contracts();
+            $contract->retrieve($contractId);
+
+            if (!$contract) {
+                continue;
+            }
+
+            if (!$contract->name) {
+                continue;
+            }
+
+            if ($contractNames !== '') {
+                $contractNames .= ', '; // TODO: i18n this
+            }
+            $contractNames .= $contract->name;
+        }
+
+        $bean->{self::FIELD_ACTIVE_CONTRACT_NAMES} = $contractNames;
     }
 
 

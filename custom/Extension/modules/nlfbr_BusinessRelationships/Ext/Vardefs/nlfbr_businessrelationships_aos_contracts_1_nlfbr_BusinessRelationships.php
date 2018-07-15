@@ -163,3 +163,13 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['br_contract'] = array(
   'source' => 'non-db',
   'studio' => array('listview' => false, 'detailview' => false, 'editview' => false, 'searchview' => true),
 );
+
+
+
+$dictionary["nlfbr_BusinessRelationships"]["fields"]["active_contract_names"] = array (
+  'name' => 'active_contract_names',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'vname' => 'LBL_ACTIVE_CONTRACT_NAMES',
+  'studio' => array('detailview' => false, 'editview' => false, 'listview' => true, 'searchview' => false),
+);
