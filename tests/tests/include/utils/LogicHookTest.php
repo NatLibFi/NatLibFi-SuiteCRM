@@ -143,6 +143,13 @@ class LogicHookTest extends PHPUnit_Framework_TestCase {
 				'AccountBeforeSaveHook',
 				'setAccountName'
 			),
+			array(
+				2,
+				'Set Backend systems relationship with the newly created Account',
+				'custom/modules/Accounts/beforeSaveHook.php',
+				'AccountBeforeSaveHook',
+				'setInitialBackendSystems'
+			),
                 ),
                 'after_save' => array(
                         array(77, 'updateRelatedMeetingsGeocodeInfo', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'updateRelatedMeetingsGeocodeInfo'),
@@ -280,6 +287,13 @@ class LogicHookTest extends PHPUnit_Framework_TestCase {
 							'custom/modules/Accounts/beforeSaveHook.php',
 							'AccountBeforeSaveHook',
 							'setAccountName'
+						),
+						array(
+							2,
+							'Set Backend systems relationship with the newly created Account',
+							'custom/modules/Accounts/beforeSaveHook.php',
+							'AccountBeforeSaveHook',
+							'setInitialBackendSystems'
 						),
 				),
 				'after_save' =>
