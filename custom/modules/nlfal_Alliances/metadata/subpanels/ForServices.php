@@ -20,9 +20,9 @@ $subpanel_layout = array(
 			'sortable' => false,
 			'width' => '20%',
 		),
-		'members_amount_c' => array(
-			'name' => 'members_amount_c',
-			'vname' => 'LBL_MEMBERS_AMOUNT',
+		'member_count' => array(
+			'name' => 'member_count',
+			'vname' => 'LBL_MEMBER_COUNT',
 			'sortable' => false,
 			'width' => '10%',
 		),
