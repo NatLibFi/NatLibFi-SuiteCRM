@@ -76,4 +76,46 @@ class BackendSystemProcessRecordHook
         $bean->{self::SERVICE_NAMES_FIELD} = $serviceNames;
     }
 
+    public function setAccountCountForService($bean, $event, $arguments)
+    {
+        $id = $bean->id;
+        if (!isset($id)) {
+            return;
+        }
+
+        // Do nothing if this is not fired in the Service DetailView subpanel
+        if (!isset($_REQUEST['module']) || $_REQUEST['module'] !== 'nlfse_Services') {
+            return;
+        }
+        if (!isset($_REQUEST['action']) || $_REQUEST['action'] !== 'SubPanelViewer') {
+            return;
+        }
+        if (!isset($_REQUEST['record']) || $_REQUEST['record'] === '') {
+            return;
+        }
+
+        $serviceId = $_REQUEST['record'];
+
+        $db = $GLOBALS['db'];
+
+        $query = 'SELECT COUNT(a_rel.accounts_nlfbr_businessrelationships_1accounts_ida) AS acc_count ' .
+            'FROM accounts_nlfbr_businessrelationships_1_c a_rel ' .
+            'JOIN nlfbr_businessrelationships_data_sources bs_rel ' .
+            'ON a_rel.accounts_n824donships_idb=bs_rel.businessrelationship_id ' .
+            'JOIN nlfse_services_nlfbr_businessrelationships_1_c s_rel ' .
+            'ON bs_rel.businessrelationship_id=s_rel.nlfse_serva51aonships_idb ' .
+            'WHERE a_rel.deleted=0 AND s_rel.deleted=0 AND bs_rel.deleted=0 AND ' .
+            's_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida="' . $db->quote($serviceId) . '" AND ' .
+            'bs_rel.backend_system like "%^' . $db->quote($id) . '^%"';
+
+        $result = $db->query($query);
+
+        $count = 0;
+        if ($row = $db->fetchByAssoc($result) ) {
+            $count = (int)$row['acc_count'];
+        }
+
+        $bean->{'account_count_for_service'} = $count;
+     }
+
 }
