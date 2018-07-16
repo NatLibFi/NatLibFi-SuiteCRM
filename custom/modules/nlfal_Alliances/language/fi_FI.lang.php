@@ -1,9 +1,8 @@
 <?php
-// created: 2018-03-28 18:09:36
+// created: 2018-07-17 00:14:50
 $mod_strings = array (
   'LBL_NLFAL_ALLIANCES_NLFSE_SERVICES_1_FROM_NLFSE_SERVICES_TITLE' => 'Palvelut',
   'LBL_NAME' => 'Nimi',
-  'LBL_MEMBERS_AMOUNT' => 'Jäsenten määrä POISTA MINUT',
   'LBL_DESCRIPTION' => 'Kuvaus',
   'LBL_KIMPAN_VETAJA_ACCOUNT_ID' => 'Yhteenliittymän vetäjä (related Asiakkaat ID)',
   'LBL_KIMPAN_VETAJA' => 'Yhteenliittymän vetäjä',
