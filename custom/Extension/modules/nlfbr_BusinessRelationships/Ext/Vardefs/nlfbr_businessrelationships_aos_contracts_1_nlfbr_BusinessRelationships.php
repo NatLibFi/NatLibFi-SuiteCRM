@@ -143,7 +143,8 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['open_only_has_active_contr
   'vname' => 'LBL_HAS_ACTIVE_CONTRACT_TITLE',
   'type' => 'bool',
   'source' => 'non-db',
-  'studio' => array('listview' => false, 'detailview' => false, 'editview' => false, 'searchview' => true),
+  'studio' => array('listview' => true, 'detailview' => false, 'editview' => false, 'searchview' => true),
+  'sortable' => false,
 );
 
 $dictionary["nlfbr_BusinessRelationships"]["fields"]['active_contract'] = array(

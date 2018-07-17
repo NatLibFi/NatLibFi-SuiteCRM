@@ -6,4 +6,5 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]["name_account_name_first"] 
   'source' => 'non-db',
   'vname' => 'LBL_NAME',
   'studio' => array('detailview' => false, 'editview' => false, 'listview' => true, 'searchview' => false),
+  'sortable' => false,
 );
