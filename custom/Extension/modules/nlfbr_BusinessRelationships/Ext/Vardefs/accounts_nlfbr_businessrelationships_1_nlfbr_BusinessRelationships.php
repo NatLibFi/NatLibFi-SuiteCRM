@@ -55,4 +55,5 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]["alliance_names"] = array (
   'source' => 'non-db',
   'vname' => 'LBL_ALLIANCE_NAMES',
   'studio' => array('detailview' => false, 'editview' => false, 'listview' => true, 'searchview' => false),
+  'sortable' => false,
 );

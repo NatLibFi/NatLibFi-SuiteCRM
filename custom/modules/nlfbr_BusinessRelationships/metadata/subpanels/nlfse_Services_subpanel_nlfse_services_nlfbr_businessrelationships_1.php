@@ -48,7 +48,7 @@ $subpanel_layout['list_fields'] = array (
     'default' => true,
     'vname' => 'LBL_ACTIVE_CONTRACT_NAMES',
     'width' => '10%',
-    'sortable' => 'false',
+    'sortable' => false,
   ),
   'backend_system_names' => 
   array (

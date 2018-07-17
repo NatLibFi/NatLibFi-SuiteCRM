@@ -30,6 +30,7 @@ $subpanel_layout['list_fields'] = array (
     'vname' => 'LBL_ALLIANCE_NAMES',
     'width' => '20%',
     'default' => true,
+    'sortable' => false,
   ),
   'palvelu_liittymisen_status_c' => 
   array (

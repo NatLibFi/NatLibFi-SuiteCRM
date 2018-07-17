@@ -26,6 +26,7 @@ $subpanel_layout['list_fields'] = array (
     'vname' => 'LBL_ALLIANCE_NAMES',
     'width' => '10%',
     'default' => true,
+    'sortable' => false,
   ),
   'asiakassuhde_c' => 
   array (

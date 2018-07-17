@@ -37,4 +37,5 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]["backend_system_names"] = a
   'source' => 'non-db',
   'vname' => 'LBL_BACKEND_SYSTEM_NAMES',
   'studio' => array('detailview' => false, 'editview' => false, 'listview' => true, 'searchview' => false),
+  'sortable' => false,
 );

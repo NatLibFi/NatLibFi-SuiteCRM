@@ -173,4 +173,5 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]["active_contract_names"] = 
   'source' => 'non-db',
   'vname' => 'LBL_ACTIVE_CONTRACT_NAMES',
   'studio' => array('detailview' => false, 'editview' => false, 'listview' => true, 'searchview' => false),
+  'sortable' => false,
 );

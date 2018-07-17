@@ -47,7 +47,6 @@ array (
     'label' => 'LBL_HAS_ACTIVE_CONTRACT_TITLE',
     'width' => '5%',
     'default' => true,
-    'sortable' => false,
   ),
   'PALVELU_LIITTYMISEN_STATUS_C' => 
   array (
