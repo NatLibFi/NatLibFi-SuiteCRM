@@ -19,6 +19,7 @@ $subpanel_layout = array(
         'service_names_for_account' => array(
             'vname' => 'LBL_SERVICE_NAMES_FOR_ACCOUNT',
             'width' => '25%',
+            'sortable' => false,
         ),
 
         'tyyppi_c'=>array(

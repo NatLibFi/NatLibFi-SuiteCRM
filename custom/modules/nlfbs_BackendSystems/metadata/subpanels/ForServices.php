@@ -24,6 +24,7 @@ $subpanel_layout = array(
         'account_count_for_service' => array(
             'vname' => 'LBL_ACCOUNT_COUNT_FOR_SERVICE',
             'width' => '15%',
+            'sortable' => false,
         ),
 
         'date_modified'=>array(
