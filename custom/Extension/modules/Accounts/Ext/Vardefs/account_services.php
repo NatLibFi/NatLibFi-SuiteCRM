@@ -6,5 +6,6 @@ $dictionary["Account"]["fields"]["account_service_names"] = array (
     'source' => 'non-db',
     'vname' => 'LBL_ACCOUNT_SERVICES_TITLE',
     'studio' => array('detailview' => false, 'editview' => false, 'listview' => true, 'searchview' => false),
+    'sortable' => false,
 );
 
