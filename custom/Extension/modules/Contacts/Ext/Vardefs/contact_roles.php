@@ -30,6 +30,7 @@ $dictionary['Contact']["fields"]["contact_all_role_names"] = array (
   'source' => 'non-db',
   'vname' => 'LBL_CONTACT_ALL_ROLE_NAMES',
   'studio' => array('listview' => true, 'editview' => false, 'detailview' => false, 'searchview' => false),
+  'sortable' => false,
 );
 
 

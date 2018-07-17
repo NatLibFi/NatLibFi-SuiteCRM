@@ -90,6 +90,7 @@ $dictionary["Contact"]["fields"]["accounts_contacts_role_incl_businessrelationsh
   'source' => 'non-db',
   'vname' => 'LBL_ACCOUNTS_CONTACTS_ROLE',
   'studio' => array('detailview' => false, 'editview' => false),
+  'sortable' => false,
 );
 
 
@@ -137,5 +138,6 @@ $dictionary["Contact"]["fields"]["contact_account_names"] = array (
     'source' => 'non-db',
     'vname' => 'LBL_CONTACT_ACCOUNT_NAMES',
     'studio' => array('detailview' => false, 'editview' => false, 'listview' => true, 'searchview' => false),
+    'sortable' => false,
 );
 

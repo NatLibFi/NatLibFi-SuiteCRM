@@ -55,6 +55,7 @@ $subpanel_layout = array(
             'name' => 'accounts_contacts_role_incl_businessrelationships',
             'vname' => 'LBL_ACCOUNTS_CONTACTS_ROLE',
             'width' => '45%',
+            'sortable' => false,
         ),
 		'date_modified'=>array(
 	 		'vname' => 'LBL_DATE_MODIFIED',
