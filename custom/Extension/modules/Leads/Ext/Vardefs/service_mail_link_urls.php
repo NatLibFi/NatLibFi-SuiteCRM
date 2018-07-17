@@ -6,6 +6,7 @@ $dictionary["Lead"]["fields"]['service_mail_link_urls'] = array(
   'type' => 'varchar',
   'source' => 'non-db',
   'studio' => array('detailview' => false, 'editview' => false, 'listview' => true, 'searchview' => false),
+  'sortable' => false,
 );
 
 

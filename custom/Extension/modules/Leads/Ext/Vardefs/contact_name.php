@@ -6,4 +6,5 @@ $dictionary["Lead"]["fields"]["lead_contact_name"] = array (
     'source' => 'non-db',
     'vname' => 'LBL_CONTACT_NAME_TITLE',
     'studio' => array('detailview' => false, 'editview' => false),
+    'sortable' => false,
 );
