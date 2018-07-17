@@ -24,21 +24,14 @@ array (
         'default' => true,
         'name' => 'nlfse_services_aos_contracts_1_name',
       ),
-      'current_user_only' => 
+      'status' => 
       array (
-        'name' => 'current_user_only',
-        'label' => 'LBL_CURRENT_USER_FILTER',
-        'type' => 'bool',
+        'type' => 'enum',
         'default' => true,
+        'studio' => 'visible',
         'width' => '10%',
-      ),
-      'favorites_only' => 
-      array (
-        'name' => 'favorites_only',
-        'label' => 'LBL_FAVORITES_FILTER',
-        'type' => 'bool',
-        'default' => true,
-        'width' => '10%',
+        'label' => 'LBL_STATUS',
+        'name' => 'status',
       ),
     ),
     'advanced_search' => 
@@ -64,12 +57,6 @@ array (
       'status' => 
       array (
         'name' => 'status',
-        'default' => true,
-        'width' => '10%',
-      ),
-      'contract_type' => 
-      array (
-        'name' => 'contract_type',
         'default' => true,
         'width' => '10%',
       ),
@@ -100,15 +87,6 @@ array (
         ),
         'default' => true,
         'width' => '10%',
-      ),
-      'sovellettavat_liitteet_c' => 
-      array (
-        'type' => 'multienum',
-        'default' => true,
-        'studio' => 'visible',
-        'label' => 'LBL_SOVELLETTAVAT_LIITTEET',
-        'width' => '10%',
-        'name' => 'sovellettavat_liitteet_c',
       ),
     ),
   ),
