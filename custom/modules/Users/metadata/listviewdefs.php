@@ -56,7 +56,6 @@ array (
     'label' => 'LBL_SECURITY_GROUP_NAMES',
     'width' => '10%',
     'default' => true,
-    'sortable' => false,
   ),
   'STATUS' => 
   array (
