@@ -20,12 +20,13 @@ $subpanel_layout['list_fields'] = array (
     'target_module' => 'Accounts',
     'target_record_key' => 'accounts_nlfbr_businessrelationships_1accounts_ida',
   ),
-  'nlfbr_businessrelationships_account_alliances' => 
+  'alliance_names' => 
   array (
-    'type' => 'multienum',
-    'vname' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
-    'width' => '15%',
+    'type' => 'varchar',
+    'vname' => 'LBL_ALLIANCE_NAMES',
+    'width' => '10%',
     'default' => true,
+    'sortable' => false,
   ),
   'palvelu_liittymisen_status_c' => 
   array (
