@@ -1,5 +1,5 @@
 <?php
-// created: 2018-03-28 15:57:50
+// created: 2018-07-11 14:30:04
 $mod_strings = array (
   'LBL_LEAD_SOURCE' => 'Liidin lähde:',
   'LBL_LEAD_DESCRIPTION' => 'Liidin lisätieto',
@@ -45,4 +45,5 @@ $mod_strings = array (
   'LBL_LAST_NAME' => 'Sukunimi:',
   'LBL_TITLE' => 'Titteli:',
   'LBL_EMAIL_ADDRESS' => 'Sähköpostiosoite:',
+  'LBL_ANY_PHONE' => 'Puhelin',
 );
