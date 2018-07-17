@@ -1,6 +1,13 @@
 <?php
-// created: 2018-06-11 14:28:46
+// created: 2018-07-11 16:02:33
 $subpanel_layout['list_fields'] = array (
+  'name' => 
+  array (
+    'vname' => 'LBL_NAME',
+    'widget_class' => 'SubPanelDetailViewLink',
+    'width' => '10%',
+    'default' => true,
+  ),
   'accounts_nlfbr_businessrelationships_1_name' => 
   array (
     'type' => 'relate',
@@ -25,19 +32,13 @@ $subpanel_layout['list_fields'] = array (
     'target_module' => 'nlfse_Services',
     'target_record_key' => 'nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida',
   ),
-  'name' => 
-  array (
-    'vname' => 'LBL_NAME',
-    'widget_class' => 'SubPanelDetailViewLink',
-    'width' => '10%',
-    'default' => true,
-  ),
   'alliance_names' => 
   array (
     'type' => 'varchar',
     'vname' => 'LBL_ALLIANCE_NAMES',
     'width' => '10%',
     'default' => true,
+    'sortable' => false,
   ),
   'palvelu_liittymisen_status_c' => 
   array (
