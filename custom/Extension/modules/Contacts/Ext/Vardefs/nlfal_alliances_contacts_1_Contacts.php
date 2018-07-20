@@ -26,6 +26,20 @@ $dictionary["Contact"]["fields"]["nlfal_alliances_contacts_1_contact_name"] = ar
 //    1 => 'last_name',
 //  ),
 );
+$dictionary["Contact"]["fields"]["nlfal_alliances_contacts_1_name"] = array (
+  'name' => 'nlfal_alliances_contacts_1_name',
+  'type' => 'relate',
+  'source' => 'non-db',
+  'vname' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_NAME',
+  'save' => true,
+  'id_name' => 'nlfal_alliances_contacts_1nlfal_alliances_ida',
+  'link' => 'nlfal_alliances_contacts_1',
+  'table' => 'nlfal_alliances',
+  'module' => 'nlfal_Alliances',
+  'rname' => 'name',
+);
+
+
 
 $dictionary["Contact"]["fields"]['contact_alliance_role_fields'] = array(
   'name' => 'contact_alliance_role_fields',

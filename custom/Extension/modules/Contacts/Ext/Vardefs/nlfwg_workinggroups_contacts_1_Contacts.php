@@ -26,6 +26,18 @@ $dictionary["Contact"]["fields"]["nlfwg_workinggroups_contacts_1_contact_name"] 
 //    1 => 'last_name',
 //  ),
 );
+$dictionary["Contact"]["fields"]["nlfwg_workinggroups_contacts_1_name"] = array (
+  'name' => 'nlfwg_workinggroups_contacts_1_name',
+  'type' => 'relate',
+  'source' => 'non-db',
+  'vname' => 'LBL_NLFWG_WORKINGGROUPS_CONTACTS_1_NAME',
+  'save' => true,
+  'id_name' => 'nlfwg_workinggroups_contacts_1nlfwg_workinggroups_ida',
+  'link' => 'nlfwg_workinggroups_contacts_1',
+  'table' => 'nlfwg_workinggroups',
+  'module' => 'nlfwg_WorkingGroups',
+  'rname' => 'name',
+);
 
 
 $dictionary["Contact"]["fields"]['contact_wg_role_fields'] = array(

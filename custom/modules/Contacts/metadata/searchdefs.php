@@ -55,29 +55,25 @@ array (
     ),
     'advanced_search' => 
     array (
-      'nlfwg_workinggroups_contacts_1_id' => 
+      'nlfwg_workinggroups_contacts_1_name' => 
       array (
-        'type' => 'varchar',
-        'studio' => 
-        array (
-          'listview' => false,
-        ),
-        'label' => 'LBL_NLFWG_WORKINGGROUPS_CONTACTS_1_ID',
+        'type' => 'relate',
+        'link' => true,
+        'label' => 'LBL_NLFWG_WORKINGGROUPS_CONTACTS_1_NAME',
         'width' => '10%',
         'default' => true,
-        'name' => 'nlfwg_workinggroups_contacts_1_id',
+        'name' => 'nlfwg_workinggroups_contacts_1_name',
+        'id' => 'NLFWG_WORKINGGROUPS_CONTACTS_1_NLFWG_WORKINGGROUPS_IDA',
       ),
-      'nlfal_alliances_contacts_1_id' => 
+      'nlfal_alliances_contacts_1_name' => 
       array (
-        'type' => 'varchar',
-        'studio' => 
-        array (
-          'listview' => false,
-        ),
-        'label' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_ID',
+        'type' => 'relate',
+        'link' => true,
+        'label' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_NAME',
         'width' => '10%',
         'default' => true,
-        'name' => 'nlfal_alliances_contacts_1_id',
+        'name' => 'nlfal_alliances_contacts_1_name',
+        'id' => 'NLFAL_ALLIANCES_CONTACTS_1_NLFAL_ALLIANCES_IDA',
       ),
       'search_name' => 
       array (
