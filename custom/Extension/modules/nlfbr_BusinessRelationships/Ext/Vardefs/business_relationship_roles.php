@@ -6,4 +6,5 @@ $dictionary['nlfbr_BusinessRelationships']["fields"]["business_relationship_role
   'options' => 'contact_business_relationship_role_list',
   'source' => 'non-db',
   'vname' => 'LBL_BUSINESS_RELATIONSHIP_ROLES',
+  'massupdate' => false,
 );

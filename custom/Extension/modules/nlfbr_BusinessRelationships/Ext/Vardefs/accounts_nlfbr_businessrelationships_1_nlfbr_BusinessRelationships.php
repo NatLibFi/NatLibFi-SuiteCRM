@@ -23,6 +23,7 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]["accounts_nlfbr_businessrel
   'module' => 'Accounts',
   'rname' => 'name',
   'required' => true, // Added: 2016-12-27 (LM)
+  'massupdate' => false,
 );
 $dictionary["nlfbr_BusinessRelationships"]["fields"]["accounts_nlfbr_businessrelationships_1accounts_ida"] = array (
   'name' => 'accounts_nlfbr_businessrelationships_1accounts_ida',
@@ -47,6 +48,7 @@ $dictionary["Account"]["fields"]["nlfbr_businessrelationships_account_alliances"
   'vname' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
   'id_name' => 'nlfbr_businessrelationships_account_alliances',
   'studio' => array('detailview' => false, 'editview' => false, 'listview' => false, 'searchview' => true),
+  'massupdate' => false,
 );
 
 $dictionary["nlfbr_BusinessRelationships"]["fields"]["alliance_names"] = array (

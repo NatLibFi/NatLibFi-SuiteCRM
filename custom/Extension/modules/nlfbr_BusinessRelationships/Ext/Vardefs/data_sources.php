@@ -10,6 +10,7 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source1'] = array(
   ),
   'source' => 'non-db',
   'studio' => array('visible' => false),
+  'massupdate' => false,
 );
 
 // This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
@@ -19,6 +20,7 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source'] = array(
   'type' => 'varchar',
   'source' => 'non-db',
   'studio' => array('visible' => false),
+  'massupdate' => false,
 );
 // This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
 $dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source_database_id'] = array(
@@ -27,6 +29,7 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source_database_id'] 
   'type' => 'varchar',
   'source' => 'non-db',
   'studio' => array('visible' => false),
+  'massupdate' => false,
 );
 // This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
 $dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source_backend_system'] = array(
@@ -38,6 +41,7 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source_backend_system
   ),
   'source' => 'non-db',
   'studio' => array('visible' => false),
+  'massupdate' => false,
 );// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
 $dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source_harvesting_format'] = array(
   'name' => 'data_source_harvesting_format',
@@ -46,6 +50,7 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source_harvesting_for
   'options' => 'haravointiformaatti_list',
   'source' => 'non-db',
   'studio' => array('visible' => false),
+  'massupdate' => false,
 );// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
 $dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source_contact_email'] = array(
   'name' => 'data_source_contact_email',
@@ -53,6 +58,7 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source_contact_email'
   'type' => 'varchar',
   'source' => 'non-db',
   'studio' => array('visible' => false),
+  'massupdate' => false,
 );// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
 $dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source_restricted_metadata'] = array(
   'name' => 'data_source_restricted_metadata',
@@ -60,6 +66,7 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source_restricted_met
   'type' => 'varchar',
   'source' => 'non-db',
   'studio' => array('visible' => false),
+  'massupdate' => false,
 );// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
 $dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source_description'] = array(
   'name' => 'data_source_description',
@@ -67,4 +74,5 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['data_source_description'] 
   'type' => 'varchar',
   'source' => 'non-db',
   'studio' => array('visible' => false),
+  'massupdate' => false,
 );

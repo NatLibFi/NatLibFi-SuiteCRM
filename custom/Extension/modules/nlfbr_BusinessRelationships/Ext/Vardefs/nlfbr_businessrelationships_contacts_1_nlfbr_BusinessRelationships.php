@@ -21,6 +21,7 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]["nlfbr_businessrelationship
   'table' => 'contacts',
   'module' => 'Contacts',
   'rname' => 'name',
+  'massupdate' => false,
 //  array (
 //    0 => 'first_name',
 //    1 => 'last_name',
@@ -68,6 +69,7 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]["nlfbr_businessrelationship
   //'function' => array( 'name' => 'getBusinessRelationshipRolesForContactHtml', 'returns' => 'html' ),
   'source' => 'non-db',
   'vname' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_CONTACTS_1_ROLE',
+  'massupdate' => false,
   //'save' => true,
   //'id_name' => 'role',
 //  'relationship' => 'nlfbr_businessrelationships_contacts_1',
@@ -83,6 +85,7 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]["nlfbr_businessrelationship
   'function' => array( 'name' => 'getBusinessRelationshipRolesForContactHtml', 'returns' => 'html' ),
   'source' => 'non-db',
   'vname' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_CONTACTS_1_ROLE',
+  'massupdate' => false,
   //'save' => true,
   //'id_name' => 'role',
 //  'relationship' => 'nlfbr_businessrelationships_contacts_1',
@@ -103,6 +106,7 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]["nlfbr_businessrelationship
   //'module' => 'nlfbr_BusinessRelationships',
   'vname' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_CONTACTS_1_BUSINESS_RELATIONSHIP_TITLE',
   'id_name' => 'nlfbr_busic409onships_ida',
+  'massupdate' => false,
 );
 
 $dictionary["nlfbr_BusinessRelationships"]["fields"]["nlfbr_businessrelationships_contacts_1_accounts_enum"] = array(
@@ -113,4 +117,5 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]["nlfbr_businessrelationship
   'vname' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_CONTACTS_1_ACCOUNT_TITLE',
   //'id_name' => 'nlfro_roles_nlfbr_businessrelationships_accounts_enum',
   'source' => 'non-db',
+  'massupdate' => false,
 );

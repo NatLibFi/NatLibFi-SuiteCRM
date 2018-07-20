@@ -7,4 +7,5 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]["account_administration"] =
   'vname' => 'LBL_ACCOUNT_ADMINISTRATION',
   'source' => 'non-db',
   'studio' => array('detailview' => false, 'editview' => false, 'listview' => false, 'searchview' => true),
+  'massupdate' => false,
 );

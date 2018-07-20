@@ -10,4 +10,5 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]["nlfbr_businessrelationship
   'vname' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
   'linkModule' => 'nlfal_Alliances',
   'audited' => true,
+  'massupdate' => false,
 );

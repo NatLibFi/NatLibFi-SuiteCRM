@@ -1834,10 +1834,10 @@ type:::enum
 len:::100
 required:::0
 default_value:::eitietoa
-date_modified:::2018-07-04 11:48:41
+date_modified:::2018-07-20 18:54:43
 deleted:::0
 audited:::1
-massupdate:::1
+massupdate:::0
 duplicate_merge:::0
 reportable:::1
 importable:::true
@@ -1922,10 +1922,10 @@ type:::multienum
 len:::100
 required:::0
 default_value:::
-date_modified:::2018-03-25 10:13:19
+date_modified:::2018-07-20 18:45:29
 deleted:::0
 audited:::1
-massupdate:::1
+massupdate:::0
 duplicate_merge:::0
 reportable:::1
 importable:::true
@@ -1966,10 +1966,10 @@ type:::date
 len:::0
 required:::0
 default_value:::
-date_modified:::2018-03-25 10:05:27
+date_modified:::2018-07-20 18:54:56
 deleted:::0
 audited:::1
-massupdate:::1
+massupdate:::0
 duplicate_merge:::0
 reportable:::1
 importable:::true
@@ -2032,10 +2032,10 @@ type:::multienum
 len:::100
 required:::0
 default_value:::
-date_modified:::2018-03-25 10:13:49
+date_modified:::2018-07-20 18:54:31
 deleted:::0
 audited:::1
-massupdate:::1
+massupdate:::0
 duplicate_merge:::0
 reportable:::1
 importable:::true
@@ -2230,10 +2230,10 @@ type:::enum
 len:::100
 required:::0
 default_value:::
-date_modified:::2018-06-06 08:06:05
+date_modified:::2018-07-20 19:01:10
 deleted:::0
 audited:::1
-massupdate:::1
+massupdate:::0
 duplicate_merge:::0
 reportable:::1
 importable:::true
@@ -2560,10 +2560,10 @@ type:::multienum
 len:::100
 required:::0
 default_value:::^ei_sopimusta^
-date_modified:::2018-03-25 10:14:30
+date_modified:::2018-07-20 18:49:30
 deleted:::0
 audited:::1
-massupdate:::1
+massupdate:::0
 duplicate_merge:::0
 reportable:::1
 importable:::true
