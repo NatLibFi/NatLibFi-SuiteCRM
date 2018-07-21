@@ -282,6 +282,14 @@ class LeadBeforeSaveHook
 
         $brBean->{'nlfbr_businessrelationships_leads_1'}->add($bean->id, array());
 
+        $additionalContactIds = array();
+        $bean->load_relationship('contacts_leads_2');
+        $additionalContactIds = $bean->{'contacts_leads_2'}->get(true);
+        foreach ($additionalContactIds as $id) {
+            $additionalContactRole = 'br_ei_tiedossa'; // TODO: to be customied and come from relationship (DB query needed instead of load_relationship!)
+            $brBean->{'nlfbr_businessrelationships_contacts_1'}->add($id, array('role' => encodeMultienumValue(array($additionalContactRole))));
+        }
+
         $brBean->save();
 
         $accountRole = 'account_ei_tiedossa';
@@ -329,6 +337,7 @@ class LeadBeforeSaveHook
                 )
             );
             $account->save();
+            // TODO: also need to do the same for additional contact ids? What role to use?
             return;
         }
 
@@ -343,6 +352,7 @@ class LeadBeforeSaveHook
         $newRoles = $roles;
         $newRoles[] = $accountRole;
         $newRolesEncoded = encodeMultienumValue($newRoles);
+        // TODO: also need to do the same for additional contact ids? What role to use?
 
         $query = 'UPDATE accounts_contacts ' .
             'SET role="' . $db->quote($newRolesEncoded) . '" ' .
