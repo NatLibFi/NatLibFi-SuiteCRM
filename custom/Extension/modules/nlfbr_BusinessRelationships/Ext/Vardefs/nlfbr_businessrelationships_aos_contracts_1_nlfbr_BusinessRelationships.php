@@ -155,6 +155,7 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['active_contract'] = array(
   'function' => 'getAllActiveContractsForAllServices',
   'source' => 'non-db',
   'studio' => array('listview' => false, 'detailview' => false, 'editview' => false, 'searchview' => true),
+  'massupdate' => false,
 );
 
 $dictionary["nlfbr_BusinessRelationships"]["fields"]['br_contract'] = array(
