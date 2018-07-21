@@ -12,10 +12,6 @@ $layout_defs["Leads"]["subpanel_setup"]['contacts_leads_2'] = array (
   array (
     0 => 
     array (
-      'widget_class' => 'SubPanelTopButtonQuickCreate',
-    ),
-    1 => 
-    array (
       'widget_class' => 'SubPanelTopSelectButton',
       'mode' => 'MultiSelect',
     ),
