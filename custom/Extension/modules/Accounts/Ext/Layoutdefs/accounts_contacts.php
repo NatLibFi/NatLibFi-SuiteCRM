@@ -37,7 +37,9 @@ $layout_defs["Accounts"]["subpanel_setup"]['contacts'] = array(
   'type' => 'collection',
   'header_definition_from_subpanel' => 'contacts',
 
-  // TODO: add top buttons z Contacts/ForAccounts subpanela!
+  'top_buttons' => array(
+    array('widget_class' => 'SubPanelTopButtonContactRoleAdd' ),
+  ),
 
   'collection_list' =>
   array(

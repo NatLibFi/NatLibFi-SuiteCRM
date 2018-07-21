@@ -16,7 +16,7 @@ $relationship = $_REQUEST['relate_to'];
 $relatedModule = $_REQUEST['return_module'];
 
 $relatedIdField = null;
-if ($relationship === 'accounts_contacts'){
+if ($relationship === 'accounts_contacts' || $relationship === 'Contacts'){
      $relationship = $relatedModule === 'Contacts' ? 'accounts' : 'contacts';
      $relatedIdField = $relatedModule === 'Contacts' ? 'account_id' : 'contact_id';
 }
