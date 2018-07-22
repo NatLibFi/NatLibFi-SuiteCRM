@@ -282,12 +282,20 @@ class LeadBeforeSaveHook
 
         $brBean->{'nlfbr_businessrelationships_leads_1'}->add($bean->id, array());
 
-        $additionalContactIds = array();
-        $bean->load_relationship('contacts_leads_2');
-        $additionalContactIds = $bean->{'contacts_leads_2'}->get(true);
-        foreach ($additionalContactIds as $id) {
-            $additionalContactRole = 'br_ei_tiedossa'; // TODO: to be customied and come from relationship (DB query needed instead of load_relationship!)
-            $brBean->{'nlfbr_businessrelationships_contacts_1'}->add($id, array('role' => encodeMultienumValue(array($additionalContactRole))));
+        // Additional relationship fields cannot be accessed and edited using beans,
+        // so let's do this directly to the database.
+        $db = $GLOBALS['db'];
+
+        $query = 'SELECT contacts_leads_2contacts_ida AS contact_id, role FROM contacts_leads_2_c ' .
+            'WHERE deleted=0 AND contacts_leads_2leads_idb="' . $db->quote($bean->id) . '"';
+
+        $result = $db->query($query);
+
+        while ($row = $db->fetchByAssoc($result)) {
+            $id = $row['contact_id'];
+            $additionalContactRoles = unencodeMultienum($row['role']);
+
+            $brBean->{'nlfbr_businessrelationships_contacts_1'}->add($id, array('role' => encodeMultienumValue($additionalContactRoles)));
         }
 
         $brBean->save();
@@ -306,16 +314,14 @@ class LeadBeforeSaveHook
             $contactAddress = $_REQUEST['Contactslead_address'];
         }
 
-        // Additional relationship fields cannot be accessed and edited using beans,
-        // so let's do this directly to the database.
-        $db = $GLOBALS['db'];
-
         $query = 'SELECT id, role FROM accounts_contacts ' .
             'WHERE account_id="' . $db->quote($accountId) . '" AND ' .
             'contact_id="' . $db->quote($contactId) . '" AND ' .
             'deleted=0';
 
         $result = $db->query($query);
+
+        $row = $db->fetchByAssoc($result);
 
         $relId = $row['id'];
         $roleString = $row['role'];
@@ -342,8 +348,6 @@ class LeadBeforeSaveHook
         }
 
         $roles = unencodeMultienum($roleString);
-
-        $row = $db->fetchByAssoc($result);
 
         if (in_array($accountRole, $roles)) {
             return;
