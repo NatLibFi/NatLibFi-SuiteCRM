@@ -53,6 +53,12 @@ $dictionary["contacts_leads_2"] = array (
       'type' => 'varchar',
       'len' => 36,
     ),
+    5 =>
+    array (
+      'name' => 'role',
+      'type' => 'varchar',
+      'len' => 200,
+    ),
   ),
   'indices' => 
   array (
