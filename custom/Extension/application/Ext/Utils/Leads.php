@@ -52,3 +52,42 @@ function getLeadsForContactSubpanelQueryParts($params) {
 
     return $query;
 }
+
+
+function getLeadRolesForContactHtml($focus, $name, $value, $view) {
+    global $app_list_strings;
+
+    $selectedRoles = array();
+
+    // TODO: no more logic really needed until no quick create form on the Contact side!
+
+    return makeHtmlOfEnumOptions($app_list_strings['contact_business_relationship_role_list'], $selectedRoles, $view);;
+}
+
+function getLeadRolesForContact($contactId = null, $leadId = null) {
+    if ($contactId === null) {
+        return array();
+    }
+
+    if ($leadId === null) {
+        return array();
+    }
+
+    $roles = array();
+
+    $db = $GLOBALS['db'];
+    $query = 'SELECT rel.role FROM contacts_leads_2_c rel ' .
+        'WHERE rel.deleted=0 AND ' .
+        'rel.contacts_leads_2leads_idb="' . $db->quote($leadId) . '" AND ' .
+        'rel.contacts_leads_2contacts_ida="' . $db->quote($contactId) . '"';
+    $result = $db->query($query);
+
+    if ($row = $db->fetchByAssoc($result)) {
+        $roles = unencodeMultienum($row['role']);
+        $roles = array_flip($roles); // Could also do array_flip($roles) probably
+    }
+
+    return $roles;
+}
+
+

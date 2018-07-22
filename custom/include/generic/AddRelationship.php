@@ -29,6 +29,9 @@ if ($relationship === 'nlfwg_workinggroups_contacts_1'){
 if ($relationship === 'nlfal_alliances_contacts_1'){
      $relatedIdField = $relatedModule === 'Contacts' ? 'nlfal_alliances_contacts_1nlfal_alliances_ida' : 'nlfal_alliances_contacts_1contacts_idb';
 }
+if ($relationship === 'contacts_leads_2') {
+    $relatedIdField = $relatedModule === 'Leads' ? 'contacts_leads_2contacts_ida' : null;
+}
 
 if ($relatedIdField === null) {
     return;

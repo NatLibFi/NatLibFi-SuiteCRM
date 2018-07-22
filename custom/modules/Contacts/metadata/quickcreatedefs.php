@@ -67,6 +67,21 @@ if ($returnModule === 'Accounts') {
             ),
         ),
     ) );
+} elseif ($returnModule === 'Leads') {
+    $fields = array( array(
+        array(
+            'name' => 'contacts_leads_2_contact_name',
+        ),
+        //), array(
+        array(
+            'name' => 'contacts_leads_2_role_enum',
+            'label' => 'LBL_CONTACTS_LEADS_2_ROLE',
+            'displayParams' =>
+            array (
+                'idName' => 'role',
+            ),
+        ),
+    ) );
 }
 
 
@@ -144,6 +159,9 @@ if ($returnModule === 'Accounts') {
 } elseif ($returnModule === 'nlfal_Alliances') {
     $includes = array( 'file' => 'custom/modules/Contacts/roles_alliances.js' );
     $subpanelName = 'nlfal_Alliances';
+} elseif ($returnModule === 'Leads') {
+    $includes = array( 'file' => 'custom/modules/Contacts/roles_leads.js' );
+    $subpanelName = 'Leads';
 }
 
 
