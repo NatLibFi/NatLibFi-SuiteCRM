@@ -244,6 +244,7 @@ class LeadTest extends PHPUnit_Framework_TestCase {
                                           'accounts_leads_1accounts_ida',
                                           'contacts_leads_1',
                                           'contacts_leads_1contacts_ida',
+                                          'contacts_leads_2',
                                           'nlfse_services_leads_1',
                                           'nlfse_services_leads_1nlfse_services_ida',
                                           'nlfbr_busif7d0onships_ida',
