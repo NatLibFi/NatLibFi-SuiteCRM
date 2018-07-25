@@ -701,6 +701,41 @@ class SugarView
             $ss->assign("moduleTopMenu", $groupTabs[$app_strings['LBL_TABGROUP_ALL']]['modules']);
             $ss->assign("moduleExtraMenu", $groupTabs[$app_strings['LBL_TABGROUP_ALL']]['extra']);
 
+            // NLF Custom: generate list for top bar quick create links
+            $quickCreateMenu = array();
+            foreach (array_keys($fullModuleList) as $module) {
+                if ($module === 'Home' || $module === 'Emails') {
+                    continue;
+                }
+                if ($module === 'Accounts') {
+                    $quickCreateMenu[$module] = translate('LNK_NEW_ACCOUNT', $module);
+                    continue;
+                }
+                if ($module === 'Contacts') {
+                    $quickCreateMenu[$module] = translate('LNK_NEW_CONTACT', $module);
+                    continue;
+                }
+                if ($module === 'Leads') {
+                    $quickCreateMenu[$module] = translate('LNK_NEW_LEAD', $module);
+                    continue;
+                }
+                if ($module === 'Campaigns') {
+                    $quickCreateMenu[$module] = translate('LNL_NEW_CAMPAIGN_WIZARD', $module);
+                    continue;
+                }
+                if ($module === 'Project') {
+                    $quickCreateMenu[$module] = translate('LNK_NEW_PROJECT', $module);
+                    continue;
+                }
+                if ($module === 'ProspectLists') {
+                    $quickCreateMenu[$module] = translate('LNK_NEW_PROSPECT_LIST', $module);
+                    continue;
+                }
+                 $quickCreateMenu[$module] = translate('LNK_NEW_RECORD', $module);
+            }
+            $quickCreateMenu['Calls'] = translate('LNK_NEW_CALL', 'Calls');
+            $quickCreateMenu['Tasks'] = translate('LNK_NEW_TASK', 'Tasks');
+            $ss->assign('quickCreateTopMenu', $quickCreateMenu);
         }
 
         if (isset($extraTabs) && is_array($extraTabs)) {
