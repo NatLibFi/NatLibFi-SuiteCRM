@@ -2,7 +2,7 @@
 // created: 2018-03-28 18:12:08
 $mod_strings = array (
   'LBL_NLFWG_WORKINGGROUPS_NLFSE_SERVICES_1_FROM_NLFSE_SERVICES_TITLE' => 'Palvelu',
-  'LNK_NEW_RECORD' => 'Create Työryhmät',
+  'LNK_NEW_RECORD' => 'Luo työryhmä',
   'LNK_LIST' => 'View Työryhmät',
   'LNK_IMPORT_NLFWG_WORKINGGROUPS' => 'Import Työryhmät',
   'LBL_LIST_FORM_TITLE' => 'Työryhmä List',

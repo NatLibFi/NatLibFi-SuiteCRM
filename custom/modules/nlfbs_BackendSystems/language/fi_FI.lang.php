@@ -1,7 +1,7 @@
 <?php
 // created: 2018-07-11 16:07:52
 $mod_strings = array (
-  'LNK_NEW_RECORD' => 'Luo uusi Tietojärjestelmät',
+  'LNK_NEW_RECORD' => 'Luo tietojärjestelmä',
   'LNK_LIST' => 'Katso Tietojärjestelmät',
   'LNK_IMPORT_NLFBS_BACKENDSYSTEMS' => 'Tuo Tietojärjestelmät',
   'LBL_LIST_FORM_TITLE' => 'Tietojärjestelmä Lista',

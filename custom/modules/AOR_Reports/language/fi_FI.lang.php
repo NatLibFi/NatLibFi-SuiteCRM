@@ -3,4 +3,5 @@
 $mod_strings = array (
   'LBL_NAME' => 'Nimi',
   'LBL_DESCRIPTION' => 'Kuvaus',
+  'LNK_NEW_RECORD' => 'Luo raportti',
 );

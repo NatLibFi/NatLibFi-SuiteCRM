@@ -1,7 +1,7 @@
 <?php
 // created: 2018-03-28 18:22:52
 $mod_strings = array (
-  'LNK_NEW_RECORD' => 'Create Palvelut',
+  'LNK_NEW_RECORD' => 'Luo palvelu',
   'LNK_LIST' => 'View Palvelut',
   'LNK_IMPORT_NLFSE_SERVICES' => 'Import Palvelut',
   'LBL_LIST_FORM_TITLE' => 'Palvelu List',
