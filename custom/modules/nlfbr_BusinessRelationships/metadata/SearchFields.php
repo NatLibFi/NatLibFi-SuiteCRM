@@ -248,6 +248,17 @@ $searchFields['nlfbr_BusinessRelationships'] = array (
     ),
     'vname' => 'LBL_ACCOUNT_ADMINISTRATION',
   ),
+  'related_alliance_enum' => 
+  array (
+    'query_type' => 'format',
+    'operator' => 'subquery',
+    'subquery' => 'SELECT br.id FROM nlfbr_businessrelationships br JOIN accounts_nlfbr_businessrelationships_1_c br_acc ON br.id=br_acc.accounts_n824donships_idb JOIN nlfal_alliances_accounts_1_c al_rel ON br_acc.accounts_nlfbr_businessrelationships_1accounts_ida=al_rel.nlfal_alliances_accounts_1accounts_idb WHERE br.deleted=0 AND br_acc.deleted=0 AND al_rel.deleted=0 AND al_rel.nlfal_alliances_accounts_1nlfal_alliances_ida IN ({0})',
+    'db_field' => 
+    array (
+      0 => 'id',
+    ),
+    'vname' => 'LBL_RELATED_ALLIANCE_ENUM',
+  ),
   'range_production_date_c' => 
   array (
     'query_type' => 'default',
