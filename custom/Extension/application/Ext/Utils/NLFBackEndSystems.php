@@ -189,3 +189,32 @@ function getServicesForBackendSystemSubpanelQueryParts($params) {
     return $query;
 
 }
+
+function getContactsForBackendSystemSubpanelQueryParts($params) {
+    $systemId = $params['system_id'];
+
+    $query = array(
+        'select' => 'SELECT contacts.*',
+        'from' => 'FROM contacts',
+        'where' => 'WHERE contacts.id IN (' .
+            'SELECT contacts.id FROM contacts ' .
+            ' JOIN nlfbr_businessrelationships_contacts_1_c br_rel ' .
+            'ON contacts.id=br_rel.nlfbr_businessrelationships_contacts_1contacts_idb ' .
+            'JOIN nlfbr_businessrelationships_data_sources bs_rel ' .
+            'ON bs_rel.businessrelationship_id=br_rel.nlfbr_busic409onships_ida ' .
+            'WHERE contacts.deleted=0 AND bs_rel.deleted=0 AND bs_rel.backend_system REGEXP "\\\\^' . $GLOBALS['db']->quote($systemId) . '\\\\^" AND br_rel.deleted=0 ' .
+            'UNION ' .
+            'SELECT contacts.id FROM contacts ' .
+            'JOIN accounts_contacts ac ' .
+            'ON contacts.id=ac.contact_id ' .
+            'JOIN accounts_nlfbs_backendsystems_1_c abs_rel ' .
+            'ON ac.account_id=abs_rel.accounts_nlfbs_backendsystems_1accounts_ida ' .
+            'WHERE contacts.deleted=0 AND ac.deleted=0 AND abs_rel.deleted=0 AND abs_rel.accounts_nlfbs_backendsystems_1nlfbs_backendsystems_idb="' . $GLOBALS['db']->quote($systemId) . '" ' .
+            ')',
+        'join' => '',
+        'join_tables' => '',
+        );
+
+    return $query;
+
+}

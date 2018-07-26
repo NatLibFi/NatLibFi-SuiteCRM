@@ -18,4 +18,5 @@ $mod_strings = array (
   'LBL_NAME' => 'Nimi',
   'LBL_BACKEND_SYSTEMS_BUSINESS_RELATIONSHIPS_SUBPANEL_TITLE' => 'Asiakassuhteet',
   'LBL_ACCOUNTS_NLFBS_BACKENDSYSTEMS_1_FROM_ACCOUNTS_TITLE' => 'Organisaatiot',
+  'LBL_CONTACTS_SUBPANEL' => 'Henkilöt',
 );
