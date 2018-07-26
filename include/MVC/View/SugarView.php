@@ -733,8 +733,6 @@ class SugarView
                 }
                  $quickCreateMenu[$module] = translate('LNK_NEW_RECORD', $module);
             }
-            $quickCreateMenu['Calls'] = translate('LNK_NEW_CALL', 'Calls');
-            $quickCreateMenu['Tasks'] = translate('LNK_NEW_TASK', 'Tasks');
             $ss->assign('quickCreateTopMenu', $quickCreateMenu);
         }
 
