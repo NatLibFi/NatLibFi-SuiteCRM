@@ -135,6 +135,21 @@ array (
         'default' => true,
         'name' => 'accounts_nlfbs_backendsystems_enum',
       ),
+      'related_alliance_enum' => 
+      array (
+        'type' => 'enum',
+        'studio' => 
+        array (
+          'detailview' => false,
+          'editview' => false,
+          'listview' => false,
+          'searchview' => true,
+        ),
+        'label' => 'LBL_RELATED_ALLIANCE_ENUM',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'related_alliance_enum',
+      ),
     ),
   ),
   'templateMeta' => 

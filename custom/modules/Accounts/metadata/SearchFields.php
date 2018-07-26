@@ -437,6 +437,17 @@ $searchFields['Accounts'] = array (
     ),
     'vname' => 'LBL_SERVICE_PRODUCTION_USAGE_YEAR',
   ),
+  'related_alliance_enum' => 
+  array (
+    'query_type' => 'format',
+    'operator' => 'subquery',
+    'subquery' => 'SELECT accounts.id FROM accounts JOIN nlfal_alliances_accounts_1_c rel ON accounts.id=rel.nlfal_alliances_accounts_1accounts_idb WHERE accounts.deleted=0 AND rel.deleted=0 AND rel.nlfal_alliances_accounts_1nlfal_alliances_ida IN ({0})',
+    'db_field' => 
+    array (
+      0 => 'id',
+    ),
+    'vname' => 'LBL_RELATED_ALLIANCE_ENUM',
+  ),
   'description' => 
   array (
     'query_type' => 'default',
