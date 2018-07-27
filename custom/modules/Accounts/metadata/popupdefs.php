@@ -56,7 +56,7 @@ $popupMeta = array (
   ),
   'ACCOUNT_TYPE' => 
   array (
-    'type' => 'enum',
+    'type' => 'multienum',
     'label' => 'LBL_TYPE',
     'width' => '10%',
     'default' => true,
