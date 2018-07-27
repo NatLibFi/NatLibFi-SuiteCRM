@@ -1,5 +1,5 @@
 <?php
-// created: 2018-05-13 13:13:16
+// created: 2018-07-27 22:10:13
 $mod_strings = array (
   'LBL_PALVELU_NLFSE_SERVICES_ID' => 'Palvelu (related Palvelu ID)',
   'LBL_PALVELU' => 'Palvelu',
@@ -50,4 +50,5 @@ $mod_strings = array (
   'LBL_PHONE_ALTERNATE' => 'Muu puhelin',
   'LBL_ACCOUNT_PARENT_ACCOUNT_ID' => 'Kuuluu organisaatioon (related Organisaatio ID)',
   'LBL_ACCOUNT_PARENT' => 'Kuuluu organisaatioon',
+  'LBL_OTHER_PHONE' => 'Toinen puhelin:',
 );

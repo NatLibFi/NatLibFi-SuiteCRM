@@ -1234,13 +1234,13 @@ id:::Leadsphone_alternate_c
 name:::phone_alternate_c
 vname:::LBL_PHONE_ALTERNATE
 comments:::
-help:::
+help:::puhelinnumero muodossa +358501234567
 custom_module:::Leads
 type:::phone
 len:::255
 required:::0
 default_value:::
-date_modified:::2018-05-10 19:43:42
+date_modified:::2018-07-27 19:08:35
 deleted:::0
 audited:::1
 massupdate:::0
@@ -1256,13 +1256,13 @@ id:::Leadsphone_office_c
 name:::phone_office_c
 vname:::LBL_PHONE_OFFICE
 comments:::
-help:::
+help:::puhelinnumero muodossa +358501234567
 custom_module:::Leads
 type:::phone
 len:::255
 required:::0
 default_value:::
-date_modified:::2018-05-10 19:43:24
+date_modified:::2018-07-27 19:08:19
 deleted:::0
 audited:::1
 massupdate:::0
