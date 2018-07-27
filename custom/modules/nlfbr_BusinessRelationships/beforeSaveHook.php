@@ -55,7 +55,7 @@ class BusinessRelationshipBeforeSaveHook
 //$GLOBALS['log']->fatal(print_r($_REQUEST, true));
         /*$accountIds = $bean->{self::FIELD_ACCOUNT_RELATIONSHIP}->get(true);*/
         $helper = new BusinessRelationshipContractHelper();
-        $existingContracts = $helper->getContractData($bean->id, $serviceId, true);
+        $existingContracts = $helper->getContractData($bean->id, null, true);
 
         $newContracts = array();
         $updatedContracts = array();
