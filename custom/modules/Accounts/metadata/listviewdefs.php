@@ -65,6 +65,14 @@ array (
     'width' => '10%',
     'default' => true,
   ),
+  'ORGANISAATIO_STATUS_C' => 
+  array (
+    'type' => 'enum',
+    'default' => true,
+    'studio' => 'visible',
+    'label' => 'LBL_ORGANISAATIO_STATUS',
+    'width' => '10%',
+  ),
   'ACCOUNTS_NLFBS_BACKENDSYSTEMS_ENUM' => 
   array (
     'type' => 'relatemultienum',
