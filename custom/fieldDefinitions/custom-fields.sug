@@ -1324,7 +1324,7 @@ vname:::LBL_SIDOSRYHMA
 comments:::
 help:::
 custom_module:::Leads
-type:::enum
+type:::multienum
 len:::100
 required:::0
 default_value:::
