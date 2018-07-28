@@ -2330,28 +2330,6 @@ ext2:::
 ext3:::
 ext4:::
 DONE
-id:::nlfbr_BusinessRelationshipspalvelusopimus_voimassa_c
-name:::palvelusopimus_voimassa_c
-vname:::LBL_PALVELUSOPIMUS_VOIMASSA
-comments:::
-help:::
-custom_module:::nlfbr_BusinessRelationships
-type:::bool
-len:::255
-required:::0
-default_value:::0
-date_modified:::2018-02-25 15:30:02
-deleted:::0
-audited:::0
-massupdate:::0
-duplicate_merge:::0
-reportable:::1
-importable:::true
-ext1:::
-ext2:::
-ext3:::
-ext4:::
-DONE
 id:::nlfbr_BusinessRelationshipspalvelu_liittymisen_status_c
 name:::palvelu_liittymisen_status_c
 vname:::LBL_PALVELU_LIITTYMISEN_STATUS
@@ -2549,28 +2527,6 @@ ext1:::
 ext2:::
 ext3:::
 ext4:::
-DONE
-id:::nlfbr_BusinessRelationshipssopimus_voimassa_c
-name:::sopimus_voimassa_c
-vname:::LBL_SOPIMUS_VOIMASSA
-comments:::Palvelukohtaiset sopimukset alasvetovalikkkoon sopimus-modulista. Määräaikaisista sopimuksista on hyvä saada varoitus kun päättymässä.
-help:::
-custom_module:::nlfbr_BusinessRelationships
-type:::multienum
-len:::100
-required:::0
-default_value:::^ei_sopimusta^
-date_modified:::2018-07-20 18:49:30
-deleted:::0
-audited:::1
-massupdate:::0
-duplicate_merge:::0
-reportable:::1
-importable:::true
-ext1:::sopimukset_moduulista_list
-ext2:::
-ext3:::
-ext4:::^ei_sopimusta^
 DONE
 id:::nlfbr_BusinessRelationshipswith_kimppa_c
 name:::with_kimppa_c
