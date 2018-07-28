@@ -3249,6 +3249,9 @@ function sugar_cleanup($exit = false)
 
       echo '<script>
 
+var isSuitePTheme = document.getElementById("quickcreatetop") !== null;
+if (!isSuitePTheme) {
+   // Assuming Suite 7 theme
 var p = document.getElementsByTagName("title")[0];
 var name = p.childNodes[0].textContent;
 
@@ -3277,7 +3280,45 @@ if ( pos >= 0 ) {
   while ( table );
 
 }
-      
+} else {
+    // Assuming Suite P theme
+    var brNameElem = $(".module-title-text");
+    var brName = brNameElem.text().trim();
+    var editPos = brName.indexOf("»Muokkaa");
+    if (editPos > 0) {
+        brName = brName.substring(0, editPos);
+    }
+    var delimPos = brName.indexOf("-");
+    if (delimPos >= 0) {
+        var serviceName = brName.substring(0, delimPos);
+        var panel;
+        var i = 0;
+        do {
+            panel = document.getElementById("top-panel-" + i);
+            if (panel) {
+                var panelHeader = panel.previousElementSibling;
+                var panelTitle = panelHeader.textContent;
+                if (panelTitle.indexOf("Asiakkuuden lisätiedot") > 0 && panelTitle.indexOf(serviceName + " - Asiakkuuden lisätiedot") < 0 ) {
+                    panel.parentElement.style.display = "none";
+                }
+            }
+            i ++;
+        } while (panel);
+        panel = null;
+        i = 0;
+        do {
+            panel = document.getElementById("detailpanel_" + i);
+            if (panel) {
+                var panelHeader = panel.previousElementSibling;
+                var panelTitle = panelHeader.textContent;
+                if (panelTitle.indexOf("Asiakkuuden lisätiedot") > 0 && panelTitle.indexOf(serviceName + " - Asiakkuuden lisätiedot") < 0 ) {
+                    panel.parentElement.style.display = "none";
+                }
+            }
+            i ++;
+        } while (panel);
+    }
+}
 </script>
 ';
 
