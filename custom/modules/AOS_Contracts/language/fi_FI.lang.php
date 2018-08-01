@@ -22,4 +22,5 @@ $mod_strings = array (
   'LBL_SHIPPING_AMOUNT' => 'Toimitusmaksu',
   'LBL_SHIPPING_TAX_AMT' => 'Toimituskulujen ALV',
   'LBL_SHIPPING_TAX' => 'Toimituskulujen ALV',
+  'LNK_NEW_RECORD' => 'Luo sopimus',
 );

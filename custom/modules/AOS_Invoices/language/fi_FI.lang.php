@@ -23,4 +23,5 @@ $mod_strings = array (
   'LBL_SHIPPING_TAX_AMT' => 'Toimituskulujen vero',
   'LBL_STATUS' => 'Tila',
   'LBL_GRAND_TOTAL' => 'Kokonaissumma',
+  'LNK_NEW_RECORD' => 'Luo lasku',
 );
