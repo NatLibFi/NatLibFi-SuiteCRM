@@ -583,3 +583,25 @@ $GLOBALS['app_list_strings']['finnanakyma_status_list']=array (
   'tyonalla' => 'Työn alla',
   'tuotannossa' => 'Tuotannossa',
 );
+
+$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
+  'br_projektinvetaja' => 'Projektinvetäjä',
+  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
+  'br_yhteyshenkilo' => 'Yhteyshenkilö',
+  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
+  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä',
+  'br_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
+  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
+  'br_ei_tiedossa' => 'Ei tiedossa',
+  'br_tietokannanyhteyshenkilo' => 'Tietokannan yhteyshenkilö',
+  'br_viestinnanyhteyshenkilo' => 'Viestinnän yhteyshenkilö',
+);
+$GLOBALS['app_list_strings']['contact_account_role_list']=array (
+  'account_ei_tiedossa' => 'Ei tiedossa',
+  'account_johtaja' => 'Johtaja',
+  'account_johtaja_osaston' => 'Osastonjohtaja/ Päällikkö',
+  'account_asiantuntija' => 'Asiantuntija',
+  'account_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
+  'account_ei_enaa' => 'Ei enää organisaation palveluksessa',
+  'account_tiedottaja' => 'Tiedottaja',
+);
