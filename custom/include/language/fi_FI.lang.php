@@ -166,14 +166,6 @@ $GLOBALS['app_list_strings']['record_type_display']=array (
   'Tasks' => 'Tehtävät',
   'nlfwg_WorkingGroups' => 'Työryhmä',
 );
-$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
-  'projektinvetaja' => 'Projektinvetäjä',
-  'sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
-  'yhteyshenkilo' => 'Yhteyshenkilö',
-  'tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
-  'hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä',
-  'poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
-);
 
 $GLOBALS['app_list_strings']['contact_alliance_role_list']=array (
   'projektinvetaja' => 'Projektinvetäjä',
@@ -187,20 +179,6 @@ $GLOBALS['app_list_strings']['contact_alliance_role_list']=array (
   'alliance_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö (all)',
   'alliance_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) all',
 );
-$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
-  'projektinvetaja' => 'Projektinvetäjä',
-  'sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
-  'yhteyshenkilo' => 'Yhteyshenkilö',
-  'tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
-  'hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä',
-  'poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
-  'br_projektinvetaja' => 'Projektinvetäjä (br)',
-  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö (br)',
-  'br_yhteyshenkilo' => 'Yhteyshenkilö (br)',
-  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö (br)',
-  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä (br)',
-  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) br',
-);
 $GLOBALS['app_list_strings']['contact_working_group_role_list']=array (
   'puheenjohtaja' => 'Puheenjohtaja',
   'varapuheenjohtaja' => 'Varapuheenjohtaja',
@@ -227,28 +205,12 @@ $GLOBALS['app_list_strings']['contact_working_group_role_list']=array (
   'wg_varajasen' => 'Varajäsen (wg)',
   'wg_sihteeri' => 'Sihteeri (wg)',
 );
-$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
-  'br_projektinvetaja' => 'Projektinvetäjä (br)',
-  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö (br)',
-  'br_yhteyshenkilo' => 'Yhteyshenkilö (br)',
-  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö (br)',
-  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä (br)',
-  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) br',
-);
 $GLOBALS['app_list_strings']['contact_alliance_role_list']=array (
   'alliance_projektinvetaja' => 'Projektinvetäjä',
   'alliance_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
   'alliance_yhteyshenkilo' => 'Yhteyshenkilö',
   'alliance_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
   'alliance_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
-);
-$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
-  'br_projektinvetaja' => 'Projektinvetäjä',
-  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
-  'br_yhteyshenkilo' => 'Yhteyshenkilö',
-  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
-  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä',
-  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
 );
 $GLOBALS['app_list_strings']['contact_role_list']=array (
   'puheenjohtaja' => 'Puheenjohtaja',
@@ -415,15 +377,6 @@ $GLOBALS['app_list_strings']['contact_working_group_role_list']=array (
   'wg_varajasen' => 'Varajäsen',
   'wg_sihteeri' => 'Sihteeri',
   'wg_ei_tiedossa' => 'Ei tiedossa',
-);
-$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
-  'br_projektinvetaja' => 'Projektinvetäjä',
-  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
-  'br_yhteyshenkilo' => 'Yhteyshenkilö',
-  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
-  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä',
-  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
-  'br_ei_tiedossa' => 'Ei tiedossa',
 );
 $GLOBALS['app_list_strings']['lead_source_dom']=array (
   '' => '',
@@ -494,14 +447,6 @@ $GLOBALS['app_list_strings']['haravointiformaatti_list']=array (
   'marc21' => 'MARC21',
   'muu' => 'Muu',
 );
-$GLOBALS['app_list_strings']['contact_account_role_list']=array (
-  'account_ei_tiedossa' => 'Ei tiedossa',
-  'account_johtaja' => 'Johtaja',
-  'account_johtaja_osaston' => 'Osastonjohtaja/ Päällikkö',
-  'account_asiantuntija' => 'Asiantuntija',
-  'account_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
-  'account_ei_enaa' => 'Ei enää organisaation palveluksessa',
-);
 $GLOBALS['app_list_strings']['taustajajestelma_list']=array (
   'unknown' => 'ei tiedossa',
   'abilita' => 'Abilita Kirjasto',
@@ -550,31 +495,10 @@ $GLOBALS['app_list_strings']['industry_dom']=array (
   'Other' => 'muu',
 );
 
-$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
-  'br_projektinvetaja' => 'Projektinvetäjä',
-  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
-  'br_yhteyshenkilo' => 'Yhteyshenkilö',
-  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
-  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä',
-  'br_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
-  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
-  'br_ei_tiedossa' => 'Ei tiedossa',
-);
 $GLOBALS['app_list_strings']['liittymismallit_list']=array (
   'iso_raatali' => 'Iso räätäli',
   'pikku_raatali' => 'Pikku räätäli',
   'kevyt' => 'Kevyt',
-);
-$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
-  'br_projektinvetaja' => 'Projektinvetäjä',
-  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
-  'br_yhteyshenkilo' => 'Yhteyshenkilö',
-  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
-  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä',
-  'br_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
-  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
-  'br_ei_tiedossa' => 'Ei tiedossa',
-  'br_tietokannanyhteyshenkilo' => 'Tietokannan yhteyshenkilö',
 );
 $GLOBALS['app_list_strings']['finnanakyma_status_list']=array (
   'eitietoa' => 'Ei tietoa',
