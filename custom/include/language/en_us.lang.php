@@ -95,13 +95,6 @@ $GLOBALS['app_list_strings']['contact_role_list']=array (
   'yhteyshenkilo' => 'Yhteyshenkilö',
   'tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
 );
-$GLOBALS['app_list_strings']['contact_alliance_role_list']=array (
-  'projektinvetaja' => 'Projektinvetäjä',
-  'sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
-  'yhteyshenkilo' => 'Yhteyshenkilö',
-  'tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
-  'poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
-);
 $GLOBALS['app_list_strings']['parent_type_display']=array (
   'Accounts' => 'Organisaatio',
   'Contacts' => 'Henkilö',
@@ -144,58 +137,6 @@ $GLOBALS['app_list_strings']['record_type_display']=array (
   'ProjectTask' => 'Project Task',
   'Tasks' => 'Task',
   'nlfwg_WorkingGroups' => 'Työryhmä',
-);
-$GLOBALS['app_list_strings']['contact_alliance_role_list']=array (
-  'projektinvetaja' => 'Projektinvetäjä',
-  'sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
-  'yhteyshenkilo' => 'Yhteyshenkilö',
-  'tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
-  'poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
-  'alliance_projektinvetaja' => 'Projektinvetäjä (all)',
-  'alliance_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö (all)',
-  'alliance_yhteyshenkilo' => 'Yhteyshenkilö (all)',
-  'alliance_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö (all)',
-  'alliance_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) all',
-);
-$GLOBALS['app_list_strings']['contact_working_group_role_list']=array (
-  'puheenjohtaja' => 'Puheenjohtaja',
-  'varapuheenjohtaja' => 'Varapuheenjohtaja',
-  'jasen' => 'Jäsen',
-  'varajasen' => 'Varajäsen',
-  'sihteeri' => 'Sihteeri',
-  'wg_puheenjohtaja' => 'Puheenjohtaja (wg)',
-  'wg_varapuheenjohtaja' => 'Varapuheenjohtaja (wg)',
-  'wg_jasen' => 'Jäsen (wg)',
-  'wg_varajasen' => 'Varajäsen (wg)',
-  'wg_sihteeri' => 'Sihteeri (wg)',
-);
-$GLOBALS['app_list_strings']['contact_alliance_role_list']=array (
-  'alliance_projektinvetaja' => 'Projektinvetäjä (all)',
-  'alliance_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö (all)',
-  'alliance_yhteyshenkilo' => 'Yhteyshenkilö (all)',
-  'alliance_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö (all)',
-  'alliance_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) all',
-);
-$GLOBALS['app_list_strings']['contact_working_group_role_list']=array (
-  'wg_puheenjohtaja' => 'Puheenjohtaja (wg)',
-  'wg_varapuheenjohtaja' => 'Varapuheenjohtaja (wg)',
-  'wg_jasen' => 'Jäsen (wg)',
-  'wg_varajasen' => 'Varajäsen (wg)',
-  'wg_sihteeri' => 'Sihteeri (wg)',
-);
-$GLOBALS['app_list_strings']['contact_alliance_role_list']=array (
-  'alliance_projektinvetaja' => 'Projektinvetäjä (all)',
-  'alliance_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö (all)',
-  'alliance_yhteyshenkilo' => 'Yhteyshenkilö (all)',
-  'alliance_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö (all)',
-  'alliance_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) all',
-);
-$GLOBALS['app_list_strings']['contact_working_group_role_list']=array (
-  'wg_puheenjohtaja' => 'Puheenjohtaja (wg)',
-  'wg_varapuheenjohtaja' => 'Varapuheenjohtaja (wg)',
-  'wg_jasen' => 'Jäsen (wg)',
-  'wg_varajasen' => 'Varajäsen (wg)',
-  'wg_sihteeri' => 'Sihteeri (wg)',
 );
 $GLOBALS['app_list_strings']['contact_role_list']=array (
   'puheenjohtaja' => 'Puheenjohtaja',
