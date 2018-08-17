@@ -694,27 +694,23 @@
              class="sidebar">
                 
                 <div id="actionMenuSidebar" class="actionMenuSidebar">
-                    {foreach from=$moduleTopMenu item=module key=name name=moduleList}
-                        {if $name == $MODULE_TAB}
-                            <ul>
-                                {if count($shortcutTopMenu.$name) > 0}
-                                    <h2 class="recent_h3">{$APP.LBL_LINK_ACTIONS}</h2>
-                                    {foreach from=$shortcutTopMenu.$name item=item}
-                                        {if $item.URL == "-"}
-                                            <li><a></a><span>&nbsp;</span></li>
-                                        {else}
-                                            <li class="actionmenulinks" role="presentation">
-                                                <a href="{$item.URL}" >
-                                                    <div class="side-bar-{$item.MODULE_NAME} side-bar-action-icon"></div>
-                                                    <div class="actionmenulink">{$item.LABEL}</div>
-                                                </a>
-                                            </li>
-                                        {/if}
-                                    {/foreach}
-                                {/if}
-                            </ul>
-                        {/if}
-                    {/foreach}
+                    {if count($shortcutTopMenu.$MODULE_TAB) > 0}
+                        <ul>
+                            <h2 class="recent_h3">{$APP.LBL_LINK_ACTIONS}</h2>
+                                {foreach from=$shortcutTopMenu.$MODULE_TAB item=item}
+                                    {if $item.URL == "-"}
+                                        <li><a></a><span>&nbsp;</span></li>
+                                    {else}
+                                        <li class="actionmenulinks" role="presentation">
+                                            <a href="{$item.URL}" >
+                                                <div class="side-bar-{$item.MODULE_NAME} side-bar-action-icon"></div>
+                                                <div class="actionmenulink">{$item.LABEL}</div>
+                                            </a>
+                                        </li>
+                                    {/if}
+                                {/foreach}
+                        </ul>
+                    {/if}
                 </div>
                 
                 <div id="recentlyViewedSidebar" class="recentlyViewedSidebar">
