@@ -8,6 +8,11 @@ $subpanel_layout['list_fields'] = array (
     'width' => '45%',
     'default' => true,
   ),
+  'account_count_for_system' => array(
+    'vname' => 'LBL_ACCOUNT_COUNT_FOR_SYSTEM',
+    'width' => '15%',
+    'sortable' => false,
+  ),
   'date_modified' => 
   array (
     'vname' => 'LBL_DATE_MODIFIED',
