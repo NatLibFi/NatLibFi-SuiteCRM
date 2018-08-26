@@ -16,12 +16,6 @@ array (
     ),
     'advanced_search' => 
     array (
-      'name' => 
-      array (
-        'name' => 'name',
-        'default' => true,
-        'width' => '10%',
-      ),
       'related_service_enum' => 
       array (
         'type' => 'enum',
@@ -37,21 +31,28 @@ array (
         'default' => true,
         'name' => 'related_service_enum',
       ),
-      'assigned_user_id' => 
+      'name' => 
       array (
-        'name' => 'assigned_user_id',
-        'label' => 'LBL_ASSIGNED_TO',
-        'type' => 'enum',
-        'function' => 
-        array (
-          'name' => 'get_user_array',
-          'params' => 
-          array (
-            0 => false,
-          ),
-        ),
+        'name' => 'name',
         'default' => true,
         'width' => '10%',
+      ),
+      'tyyppi_c' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_TYYPPI',
+        'width' => '10%',
+        'name' => 'tyyppi_c',
+      ),
+      'ohjelmistotoimittaja_c' => 
+      array (
+        'type' => 'varchar',
+        'default' => true,
+        'label' => 'LBL_OHJELMISTOTOIMITTAJA',
+        'width' => '10%',
+        'name' => 'ohjelmistotoimittaja_c',
       ),
     ),
   ),
