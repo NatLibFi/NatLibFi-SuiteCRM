@@ -112,14 +112,6 @@ array (
         'width' => '10%',
         'name' => 'account_administration',
       ),
-      'nlfbr_businessrelationships_account_alliances' => 
-      array (
-        'type' => 'enum',
-        'label' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'nlfbr_businessrelationships_account_alliances',
-      ),
       'palvelu_liittymisen_status_c' => 
       array (
         'type' => 'enum',
