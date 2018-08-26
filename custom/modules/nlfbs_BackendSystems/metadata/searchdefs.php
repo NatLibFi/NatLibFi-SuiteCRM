@@ -16,6 +16,12 @@ array (
     ),
     'advanced_search' => 
     array (
+      'name' => 
+      array (
+        'name' => 'name',
+        'default' => true,
+        'width' => '10%',
+      ),
       'related_service_enum' => 
       array (
         'type' => 'enum',
@@ -30,12 +36,6 @@ array (
         'width' => '10%',
         'default' => true,
         'name' => 'related_service_enum',
-      ),
-      'name' => 
-      array (
-        'name' => 'name',
-        'default' => true,
-        'width' => '10%',
       ),
       'tyyppi_c' => 
       array (
