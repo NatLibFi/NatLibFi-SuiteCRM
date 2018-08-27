@@ -21,6 +21,7 @@ $dictionary["Contact"]["fields"]["nlfbr_businessrelationships_contacts_1_contact
   'table' => 'contacts',
   'module' => 'Contacts',
   'rname' => 'name',
+  'required' => true,
 //  array (
 //    0 => 'first_name',
 //    1 => 'last_name',
