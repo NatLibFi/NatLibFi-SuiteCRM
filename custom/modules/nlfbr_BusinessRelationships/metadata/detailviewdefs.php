@@ -109,6 +109,11 @@ array (
             'label' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
           ),
         ),
+        2 => 
+        array (
+          0 => '',
+          1 => 'assigned_user_name',
+        ),
       ),
       'lbl_editview_panel1' => 
       array (
