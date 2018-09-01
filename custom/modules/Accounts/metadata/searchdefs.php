@@ -152,6 +152,14 @@ array (
         'default' => true,
         'name' => 'br_service_start_date',
       ),
+      'br_production_date' => 
+      array (
+        'type' => 'date',
+        'label' => 'LBL_BR_PRODUCTION_DATE',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'br_production_date',
+      ),
     ),
   ),
   'templateMeta' => 

@@ -439,4 +439,28 @@ $searchFields['Accounts'] = array (
     'db_field' => array('br_cus.nfl_business_relation_begins_c'),
     'date_join_query' => 'accounts.id IN (SELECT accounts.id FROM accounts JOIN accounts_nlfbr_businessrelationships_1_c br_rel ON accounts.id=br_rel.accounts_nlfbr_businessrelationships_1accounts_ida JOIN nlfbr_businessrelationships_cstm br_cus ON br_rel.accounts_n824donships_idb=br_cus.id_c WHERE accounts.deleted=0 AND br_rel.deleted=0 AND ',
   ),
+  'range_br_production_date' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
+    'db_field' => array('br_cus.production_date_c'),
+    'date_join_query' => 'accounts.id IN (SELECT accounts.id FROM accounts JOIN accounts_nlfbr_businessrelationships_1_c br_rel ON accounts.id=br_rel.accounts_nlfbr_businessrelationships_1accounts_ida JOIN nlfbr_businessrelationships_cstm br_cus ON br_rel.accounts_n824donships_idb=br_cus.id_c WHERE accounts.deleted=0 AND br_rel.deleted=0 AND ',
+  ),
+  'start_range_br_production_date' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
+    'db_field' => array('br_cus.production_date_c'),
+    'date_join_query' => 'accounts.id IN (SELECT accounts.id FROM accounts JOIN accounts_nlfbr_businessrelationships_1_c br_rel ON accounts.id=br_rel.accounts_nlfbr_businessrelationships_1accounts_ida JOIN nlfbr_businessrelationships_cstm br_cus ON br_rel.accounts_n824donships_idb=br_cus.id_c WHERE accounts.deleted=0 AND br_rel.deleted=0 AND ',
+  ),
+  'end_range_br_production_date' => 
+  array (
+    'query_type' => 'default',
+    'enable_range_search' => true,
+    'is_date_field' => true,
+    'db_field' => array('br_cus.production_date_c'),
+    'date_join_query' => 'accounts.id IN (SELECT accounts.id FROM accounts JOIN accounts_nlfbr_businessrelationships_1_c br_rel ON accounts.id=br_rel.accounts_nlfbr_businessrelationships_1accounts_ida JOIN nlfbr_businessrelationships_cstm br_cus ON br_rel.accounts_n824donships_idb=br_cus.id_c WHERE accounts.deleted=0 AND br_rel.deleted=0 AND ',
+  ),
 );
