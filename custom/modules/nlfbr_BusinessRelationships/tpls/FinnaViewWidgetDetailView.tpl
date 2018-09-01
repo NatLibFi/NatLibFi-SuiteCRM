@@ -14,13 +14,10 @@
         </tr>
         <tr>
             <td>
-                {$mod_strings.LBL_FINNA_VIEW_ADMIN_ACCESS_TITLE}
-                <input type="checkbox" disabled="disabled" {if $view.admin_access} checked="checked"{/if}/>
-            </td>
-            <td>
                 {$mod_strings.LBL_FINNA_VIEW_PRODUCTION_DATE_TITLE}
                 {$view.production_date}
             </td>
+            <td></td>
         </tr>
         <tr class="multirow-last">
             <td>

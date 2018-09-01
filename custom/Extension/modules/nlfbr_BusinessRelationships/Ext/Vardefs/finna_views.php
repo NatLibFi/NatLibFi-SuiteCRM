@@ -35,14 +35,6 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['finna_view_url'] = array(
   'massupdate' => false,
 );
 // This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
-$dictionary["nlfbr_BusinessRelationships"]["fields"]['finna_view_data_access'] = array(
-  'name' => 'finna_view_data_access',
-  'vname' => 'LBL_FINNA_VIEW_ADMIN_ACCESS_TITLE',
-  'type' => 'varchar',
-  'source' => 'non-db',
-  'studio' => array('visible' => false),
-  'massupdate' => false,
-);// This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
 $dictionary["nlfbr_BusinessRelationships"]["fields"]['finna_view_status'] = array(
   'name' => 'finna_view_status',
   'vname' => 'LBL_FINNA_VIEW_STATUS_TITLE',

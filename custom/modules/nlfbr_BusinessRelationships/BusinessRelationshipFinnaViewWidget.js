@@ -46,7 +46,6 @@
                     o[i].record_id,
                     o[i].view_status,
                     o[i].view_url,
-                    o[i].admin_access,
                     o[i].production_date,
                     o[i].description
                 );
@@ -69,7 +68,7 @@
 		    return false;
 		},//freezeEvent
 		
-		addFinnaView : function (tableId, recordId, viewStatus, viewUrl, hasAdminAccess, productionDate, viewDescription) {
+		addFinnaView : function (tableId, recordId, viewStatus, viewUrl, productionDate, viewDescription) {
 			if (this.addInProgress)
 			    return;
 			this.addInProgress = true;
@@ -83,7 +82,6 @@
 
 		    var newContentRecordId = document.createElement("input");
 		    var newContentViewUrl = document.createElement("input");
-		    var newContentAdminAccessFlag = document.createElement("input");
             var newContentProductionDate = document.createElement("input");
 		    var newContentDescription = document.createElement("input");
 		    var removeButton = document.createElement("button");
@@ -168,16 +166,6 @@
 		    newContentDescription.setAttribute("enabled", "true");
             newContentDescription.setAttribute("tabindex", tabIndexCount);
 
-            newContentAdminAccessFlag.setAttribute("type", "checkbox");
-		    newContentAdminAccessFlag.setAttribute("name", "finna_view_admin_access" + this.numberViews);
-		    newContentAdminAccessFlag.setAttribute("id", "finna_view_admin_access" + this.numberViews);
-		    newContentAdminAccessFlag.setAttribute("value", this.id + "view" + this.numberViews);
-		    newContentAdminAccessFlag.setAttribute("enabled", "true");
-            newContentAdminAccessFlag.setAttribute("tabindex", tabIndexCount);
-            if (hasAdminAccess) {
-                newContentAdminAccessFlag.setAttribute('checked', 'checked');
-            }
-
             // This is more or less mocking include/SugarFields/Fields/Datetime/EditView.tpl to enable date picker
             newContentProductionDateWrapper = document.createElement('span');
             newContentProductionDateWrapper.setAttribute('class', 'dateTime');
@@ -211,7 +199,7 @@
 		    this.view = (this.view == '') ? 'EditView' : this.view;
 		    
 		    tr.setAttribute("id", this.id + "brFinnaViewRow" + this.numberViews);
-		    tr2.setAttribute("id", this.id + "brFinnaViewRowAdminAccess" + this.numberViews);
+		    tr2.setAttribute("id", this.id + "brFinnaViewRowProductionDate" + this.numberViews);
 		    tr3.setAttribute("id", this.id + "brFinnaViewRowDesc" + this.numberViews);
 		    
 		    td1.appendChild(newContentRecordId);
@@ -235,32 +223,31 @@
 		       td3.appendChild(removeButton);
             }
 
-            newAdminAccessLabel = document.createElement('span');
-            newAdminAccessLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_FINNA_VIEW_ADMIN_ACCESS_TITLE')
-            td4.appendChild(newAdminAccessLabel);
-            td4.appendChild(newContentAdminAccessFlag);
-
             newContactProductionDateLabel = document.createElement('span');
             newContactProductionDateLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_FINNA_VIEW_PRODUCTION_DATE_TITLE')
-            td5.appendChild(newContactProductionDateLabel);
-            td5.appendChild(newContentProductionDateWrapper);
+            td4.appendChild(newContactProductionDateLabel);
+            td4.appendChild(newContentProductionDateWrapper);
 
 		    spanNodeRow3 = document.createElement('span');
 		    spanNodeRow3.innerHTML = '&nbsp;';
-		    td6.appendChild(spanNodeRow3);
+		    td5.appendChild(spanNodeRow3);
+
+		    spanNodeRow4 = document.createElement('span');
+		    spanNodeRow4.innerHTML = '&nbsp;';
+		    td6.appendChild(spanNodeRow4);
 
             newContactDescriptionLabel = document.createElement('span');
             newContactDescriptionLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_FINNA_VIEW_DESCRIPTION_TITLE')
             td7.appendChild(newContactDescriptionLabel);
             td7.appendChild(newContentDescription);
 		    
-		    spanNodeRow4 = document.createElement('span');
-		    spanNodeRow4.innerHTML = '&nbsp;';
-		    td8.appendChild(spanNodeRow4);
-
 		    spanNodeRow5 = document.createElement('span');
 		    spanNodeRow5.innerHTML = '&nbsp;';
-		    td9.appendChild(spanNodeRow5);
+		    td8.appendChild(spanNodeRow5);
+
+		    spanNodeRow6 = document.createElement('span');
+		    spanNodeRow6.innerHTML = '&nbsp;';
+		    td9.appendChild(spanNodeRow6);
 
 		    tr.appendChild(td1);
 		    tr.appendChild(td2);
@@ -316,11 +303,11 @@
 		removeFinnaView : function(index) {
 			removeFromValidate(this.view, this.id + 'brFinnaView' + index);
             var oNodeToRemove = Dom.get(this.id +  'brFinnaViewRow' + index);
-            var oNodeToRemoveAdminAccess = Dom.get(this.id +  'brFinnaViewRowAdminAccess' + index);
+            var oNodeToRemoveProductionDate = Dom.get(this.id +  'brFinnaViewRowProductionDate' + index);
             var oNodeToRemoveDesc = Dom.get(this.id +  'brFinnaViewRowDesc' + index);
             var form = Dom.getAncestorByTagName(oNodeToRemove, "form");
             oNodeToRemove.parentNode.removeChild(oNodeToRemove);
-            oNodeToRemoveAdminAccess.parentNode.removeChild(oNodeToRemoveAdminAccess);
+            oNodeToRemoveProductionDate.parentNode.removeChild(oNodeToRemoveProductionDate);
             oNodeToRemoveDesc.parentNode.removeChild(oNodeToRemoveDesc);
 
             var removedIndex = parseInt(index);
@@ -334,7 +321,7 @@
                    rButton.setAttribute("name", (x-1));
                    rButton.setAttribute("id", this.id + "removeButton" + (x-1));
                    Dom.get(this.id + 'brFinnaViewRow' + x).setAttribute("id", this.id + 'brFinnaViewRow' + (x-1));
-                   Dom.get(this.id + 'brFinnaViewRowAdminAccess' + x).setAttribute("id", this.id + 'brFinnaViewRowAdminAccess' + (x-1));
+                   Dom.get(this.id + 'brFinnaViewRowProductionDate' + x).setAttribute("id", this.id + 'brFinnaViewRowProductionDate' + (x-1));
                    Dom.get(this.id + 'brFinnaViewRowDesc' + x).setAttribute("id", this.id + 'brFinnaViewRowDesc' + (x-1));
                }
             }

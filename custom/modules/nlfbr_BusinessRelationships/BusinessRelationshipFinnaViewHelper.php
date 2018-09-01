@@ -10,7 +10,7 @@ class BusinessRelationshipFinnaViewHelper {
         $db = $GLOBALS['db'];
 
         $query = 'SELECT view.id AS view_id, view.view_status AS view_status, view.view_url AS view_url,' .
-            'view.admin_access AS admin_access, view.view_production_date AS production_date, ' .
+            'view.view_production_date AS production_date, ' .
             'view.description AS description ' .
             'FROM nlfbr_businessrelationships_finna_views view ' .
             'JOIN nlfbr_businessrelationships br ' .
@@ -32,7 +32,6 @@ class BusinessRelationshipFinnaViewHelper {
                 'record_id' => $row['view_id'],
                 'view_status' => $row['view_status'],
                 'view_url' => (string)$row['view_url'],
-                'admin_access' => (string)($row['admin_access']) === '1',
                 'production_date' => $productionDate,
                 'description' => (string)$row['description'],
             );

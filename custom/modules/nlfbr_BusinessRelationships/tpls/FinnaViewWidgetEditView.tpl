@@ -18,7 +18,7 @@ var brFinnaViewWidgetLoaded = false;
                         <td scope="row" NOWRAP>
                             <input type=hidden id="{$module}_finna_view_widget_id" name="{$module}_finna_view_widget_id" value="">
                             <input type=hidden id='brFinnaViewWidget' name='brFinnaViewWidget' value='1'>
-                            {capture assign="other_attributes"}id="{$module}_finna_view_widget_add" onclick="javascript:SUGAR.BusinessRelationshipFinnaViewWidget.instances.{$module}.addFinnaView('{$module}FinnaViewsTable', '', 'eitietoa', '', false, '', '');"{/capture}
+                            {capture assign="other_attributes"}id="{$module}_finna_view_widget_add" onclick="javascript:SUGAR.BusinessRelationshipFinnaViewWidget.instances.{$module}.addFinnaView('{$module}FinnaViewsTable', '', 'eitietoa', '', '', '');"{/capture}
                             <button type="button" {$other_attributes}>{sugar_getimage name="id-ff-add" alt="$app_strings.LBL_ID_FF_ADD" ext=".png"}</button>
                         </td>
                     </tr>
@@ -47,7 +47,7 @@ function init{$module}FinnaView(){ldelim}
 	    if(prefillViewData == 'true') {ldelim}
 	        brfvw.prefillViewData('{$module}FinnaViewsTable', viewData);
 		{rdelim} else if(addDefaultView == 'true') {ldelim}
-	        brfvw.addFinnaView('{$module}FinnaViewsTable', 'eitietoa', '','', false, '');
+	        brfvw.addFinnaView('{$module}FinnaViewsTable', 'eitietoa', '','', '');
 		{rdelim}
 		if('{$module}_finna_view_widget_id') {ldelim}
 		   document.getElementById('{$module}_finna_view_widget_id').value = brfvw.count;
