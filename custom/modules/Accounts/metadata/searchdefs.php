@@ -160,6 +160,14 @@ array (
         'default' => true,
         'name' => 'br_production_date',
       ),
+      'date_entered' => 
+      array (
+        'type' => 'datetime',
+        'label' => 'LBL_DATE_ENTERED',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'date_entered',
+      ),
     ),
   ),
   'templateMeta' => 
