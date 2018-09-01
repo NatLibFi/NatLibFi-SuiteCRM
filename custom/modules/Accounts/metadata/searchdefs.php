@@ -144,6 +144,14 @@ array (
         'width' => '10%',
         'name' => 'organisaatio_status_c',
       ),
+      'br_service_start_date' => 
+      array (
+        'type' => 'date',
+        'label' => 'LBL_BR_SERVICE_START_DATE',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'br_service_start_date',
+      ),
     ),
   ),
   'templateMeta' => 
