@@ -202,12 +202,25 @@ array (
         array (
           0 => 
           array (
+            'name' => 'finna_admin_access_c',
+            'label' => 'LBL_FINNA_ADMIN_ACCESS',
+          ),
+          1 => 
+          array (
+            'name' => 'finna_admin_handle_c',
+            'label' => 'LBL_FINNA_ADMIN_HANDLE',
+          ),
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
             'name' => 'finna_view1',
             'studio' => false,
             'label' => 'LBL_FINNA_VIEW_TITLE',
           ),
         ),
-        1 => 
+        2 => 
         array (
           0 => 
           array (

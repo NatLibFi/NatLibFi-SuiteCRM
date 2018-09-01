@@ -1,5 +1,5 @@
 <?php
-// created: 2018-07-04 14:48:41
+// created: 2018-09-01 19:51:43
 $mod_strings = array (
   'LBL_NLFBR_BUSINESSRELATIONSHIPS_NLFSE_SERVICES_1_FROM_NLFSE_SERVICES_TITLE' => 'Palvelu',
   'LBL_NAME' => 'Nimi',
@@ -70,4 +70,6 @@ $mod_strings = array (
   'LBL_LUETTELOIJATUNNUKSEN_ETULIIT' => 'Luetteloijatunnuksen etuliite',
   'LBL_MELINDA_LIITTYMISMALLI' => 'Liittymismalli',
   'LBL_EDITVIEW_PANEL9' => 'Palveluun liitettävät tietolähteet',
+  'LBL_FINNA_ADMIN_HANDLE' => 'Organisaatiotunnus',
+  'LBL_FINNA_ADMIN_ACCESS' => 'Pääsy hallintaliittymään',
 );
