@@ -392,6 +392,11 @@ class ContactRoleAwareSearchForm extends SearchForm
                              $type = $this->seed->field_defs[$parms['db_field'][0]]['type'];
                          }
 
+                         // NLF-custom: handle joins for date fields from other module tables 
+                         if (isset($parms['is_date_field']) && $parms['is_date_field'] && isset($parms['date_join_query'])) {
+                             $where .= ' ' . $parms['date_join_query'] . ' ';
+                         }
+
                          switch(strtolower($operator)) {
                              case 'subquery':
                                  $in = 'IN';
@@ -611,6 +616,11 @@ class ContactRoleAwareSearchForm extends SearchForm
                                      $where .=  ' OR ' . $db_field . " in (".$field_value.')';
                                  break;
                          }
+                     }
+
+                     // NLF-custom: handle joins for date fields from other module tables 
+                     if (isset($parms['is_date_field']) && $parms['is_date_field'] && isset($parms['date_join_query'])) {
+                         $where .= ')';
                      }
                  }
 
