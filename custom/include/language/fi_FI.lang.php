@@ -477,3 +477,14 @@ $GLOBALS['app_list_strings']['contact_account_role_list']=array (
   'account_ei_enaa' => 'Ei enää organisaation palveluksessa',
   'account_tiedottaja' => 'Tiedottaja',
 );
+
+$GLOBALS['app_list_strings']['contact_alliance_role_list']=array (
+  'alliance_projektinvetaja' => 'Projektinvetäjä',
+  'alliance_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
+  'alliance_yhteyshenkilo' => 'Yhteyshenkilö',
+  'alliance_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
+  'alliance_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
+  'alliance_tietokannanyhteyshenkilo' => 'Tietokannan yhteyshenkilö',
+  'alliance_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
+  'alliance_ei_tiedossa' => 'Ei tiedossa',
+);

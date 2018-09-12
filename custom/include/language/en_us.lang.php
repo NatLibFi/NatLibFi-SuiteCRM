@@ -448,3 +448,35 @@ $GLOBALS['app_list_strings']['contact_account_role_list']=array (
   'account_ei_enaa' => 'Ei enää organisaation palveluksessa',
   'account_tiedottaja' => 'Tiedottaja',
 );
+
+$GLOBALS['app_list_strings']['contact_account_role_list']=array (
+  'account_johtaja' => 'Johtaja (acc)',
+  'account_asiantuntija' => 'Asiantuntija (acc)',
+  'account_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) acc',
+  'account_ei_tiedossa' => 'Ei tiedossa',
+  'account_johtaja_osaston' => 'Osastonjohtaja/ Päällikkö',
+  'account_ei_enaa' => 'Ei enää organisaation palveluksessa',
+  'account_tiedottaja' => 'Tiedottaja',
+);
+$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
+  'br_projektinvetaja' => 'Projektinvetäjä (br)',
+  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö (br)',
+  'br_yhteyshenkilo' => 'Yhteyshenkilö (br)',
+  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö (br)',
+  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä (br)',
+  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) br',
+  'br_ei_tiedossa' => 'Ei tiedossa',
+  'br_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
+  'br_tietokannanyhteyshenkilo' => 'Tietokannan yhteyshenkilö',
+  'br_viestinnanyhteyshenkilo' => 'Viestinnän yhteyshenkilö',
+);
+$GLOBALS['app_list_strings']['contact_alliance_role_list']=array (
+  'alliance_projektinvetaja' => 'Projektinvetäjä (all)',
+  'alliance_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö (all)',
+  'alliance_yhteyshenkilo' => 'Yhteyshenkilö (all)',
+  'alliance_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö (all)',
+  'alliance_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) all',
+  'alliance_ei_tiedossa' => 'Ei tiedossa',
+  'alliance_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
+  'alliance_tietokannanyhteyshenkilo' => 'Tietokannan yhteyshenkilö',
+);
