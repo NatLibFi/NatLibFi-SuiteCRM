@@ -7,5 +7,6 @@ if (empty($_REQUEST['alliance_id']) || empty($_REQUEST['contact_id'])) {
     echo json_encode(array(
         'roles' => $app_list_strings['contact_alliance_role_list'],
         'selected' => getAllianceRolesForContact($_REQUEST['contact_id'], $_REQUEST['alliance_id']),
+        'description' => getAllianceRoleDescriptionForContact($_REQUEST['contact_id'], $_REQUEST['alliance_id']),
     ));
 }

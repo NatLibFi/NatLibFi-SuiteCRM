@@ -59,6 +59,11 @@ $dictionary["nlfal_alliances_contacts_1"] = array (
       'type' => 'varchar',
       'len' => 200,
     ),
+    6 =>
+    array (
+      'name' => 'description',
+      'type' => 'text',
+    ),
   ),
   'indices' => 
   array (

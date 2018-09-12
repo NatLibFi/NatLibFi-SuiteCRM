@@ -13,7 +13,7 @@ $dictionary["nlfal_Alliances"]["fields"]["nlfal_alliances_contacts_1"] = array (
 $dictionary["nlfal_Alliances"]["fields"]['contact_role_fields'] = array(
   'name' => 'contact_role_fields',
   'rname' => 'id',
-  'relationship_fields' => array('id' => 'nlfal_alliances_contacts_1_id', 'role' => 'nlfal_alliances_contacts_1_role'),
+  'relationship_fields' => array('id' => 'nlfal_alliances_contacts_1_id', 'role' => 'nlfal_alliances_contacts_1_role', 'description' => 'nlfal_alliances_contacts_1_description'),
   'vname' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_CONTACT_TITLE',
   'type' => 'relate',
   'link' => 'nlfal_alliances_contacts_1',
@@ -47,6 +47,20 @@ $dictionary["nlfal_Alliances"]["fields"]["nlfal_alliances_contacts_1_role_enum"]
   'function' => array( 'name' => 'getAllianceRolesForContactHtml', 'returns' => 'html' ),
   'source' => 'non-db',
   'vname' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_ROLE',
+);
+
+$dictionary["nlfal_Alliances"]["fields"]["nlfal_alliances_contacts_1_description"] = array (
+  'name' => 'nlfal_alliances_contacts_1_description',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'vname' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_DESCRIPTION',
+);
+$dictionary["nlfal_Alliances"]["fields"]["nlfal_alliances_contacts_1_description_form"] = array (
+  'name' => 'nlfal_alliances_contacts_1_description_form',
+  'type' => 'varchar',
+  'function' => array( 'name' => 'getAllianceRoleDescriptionForContactHtml', 'returns' => 'html' ),
+  'source' => 'non-db',
+  'vname' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_DESCRIPTION',
 );
 
 $dictionary["nlfal_Alliances"]["fields"]["nlfal_alliances_contacts_1_alliance_enum"] = array (

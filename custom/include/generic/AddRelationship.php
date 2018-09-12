@@ -47,6 +47,11 @@ $additionalFields = array();
 if (isset($_REQUEST['role'])) {
     $additionalFields['role'] = encodeMultienumValue($_REQUEST['role']);
 }
+if ($relationship === 'nlfal_alliances_contacts_1') {
+    if (isset($_REQUEST['nlfal_alliances_contacts_1_description'])) {
+        $additionalFields['description'] = $_REQUEST['nlfal_alliances_contacts_1_description'];
+    }
+}
 
 require('include/modules.php');
 

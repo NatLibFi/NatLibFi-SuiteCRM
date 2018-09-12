@@ -22,6 +22,10 @@ if ($returnModule === 'Contacts') {
                 'idName' => 'role',
             ),
         ),
+        array(
+            'name' => 'nlfal_alliances_contacts_1_description_form',
+            'displayParams' => array( 'idName' => 'nlfal_alliances_contacts_1_description' ),
+        ),
     ) );
 }
 

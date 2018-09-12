@@ -29,7 +29,7 @@ $subpanel_layout = array(
 			'vname' => 'LBL_LIST_NAME',
 			'widget_class' => 'SubPanelDetailViewLink',
 		 	'module' => 'Contacts',
-			'width' => '45%',
+			'width' => '35%',
 		),
                 'contact_alliance_role_fields' => array(
                         'usage' => 'query_only',
@@ -44,9 +44,15 @@ $subpanel_layout = array(
                  //       'type' => 'enum',
 	 		'width' => '20%',
                 ),
+        'nlfal_alliances_contacts_1_description' => array(
+            'name' => 'nlfal_alliances_contacts_1_description',
+	 		'vname' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_DESCRIPTION',
+			'sortable' => false,
+	 		'width' => '20%',
+        ),
 		'date_modified'=>array(
 	 		'vname' => 'LBL_DATE_MODIFIED',
-	 		'width' => '20%',
+	 		'width' => '10%',
 		),
 		'remove_button'=>array(
 			'vname' => 'LBL_REMOVE',

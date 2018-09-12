@@ -1,8 +1,10 @@
-function updateAllianceRoleSelector(records, selected) {
+function updateAllianceRoleSelector(records, selected, description) {
     var roleSelectParent = document.getElementById('nlfal_alliances_contacts_1_role_enum_span');
     var roleSelect = (roleSelectParent.getElementsByTagName('select'))[0];
     roleSelectParent.removeChild(roleSelect);
     roleSelectParent.appendChild(newAllianceRoleSelect(records, selected));
+    var roleDescription = document.getElementById('nlfal_alliances_contacts_1_description');
+    roleDescription.setAttribute('value', description);
 }
 
 function newAllianceRoleSelect(records, selected) {
@@ -57,7 +59,7 @@ function handleAllianceContactChange() {
          {
              success: function(data) {
                  roleData = YAHOO.lang.JSON.parse(data.responseText);
-                 updateAllianceRoleSelector(roleData.roles, roleData.selected);
+                 updateAllianceRoleSelector(roleData.roles, roleData.selected, roleData.description);
              }
          }
     );

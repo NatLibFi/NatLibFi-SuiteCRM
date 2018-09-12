@@ -74,6 +74,59 @@ function getAllianceRolesForContact($contactId = null, $allianceId = null) {
     return $roles;
 }
 
+function getAllianceRoleDescriptionForContactHtml($focus, $name, $value, $view) {
+    $allianceId = null;
+    $contactId = null;
+
+    if ($view !== 'DetailView') {
+        $activeAlliances = getAllActiveAlliances(); // TODO: move here from NLFRoles utils
+        if (!empty($activeAlliances)) {
+            $allianceId = reset(array_keys($activeAlliances));
+        }
+    }
+
+    $contactId = getContactIdForAddAllianceRoleForm($_REQUEST);
+    if ($contactId !== null) {
+        $relatedAlliances = getAlliancesForContact($contactId);
+        if (!empty($relatedAlliances)) {
+            $allianceId = $relatedAlliances[0];
+        }
+    }
+
+    $description = '';
+    if ($allianceId !== null && $allianceId !== null) {
+        $description = getAllianceRoleDescriptionForContact($contactId, $allianceId);
+    }
+
+    return '<input type="text" size="30" id="nlfal_alliances_contacts_1_description" name="nlfal_alliances_contacts_1_description" value="' . htmlentities($description) . '"/>';
+}
+
+
+function getAllianceRoleDescriptionForContact($contactId = null, $allianceId = null) {
+    if ($contactId === null) {
+        return array();
+    }
+
+    if ($allianceId === null) {
+        return array();
+    }
+
+    $roles = array();
+
+    $db = $GLOBALS['db'];
+    $query = 'SELECT roles.description FROM nlfal_alliances_contacts_1_c roles ' .
+        'WHERE roles.deleted=0 AND ' .
+        'roles.nlfal_alliances_contacts_1nlfal_alliances_ida="' . $db->quote($allianceId) . '" AND ' .
+        'roles.nlfal_alliances_contacts_1contacts_idb="' . $db->quote($contactId) . '"';
+    $result = $db->query($query);
+
+    if ($row = $db->fetchByAssoc($result)) {
+        return $row['description'];
+    }
+
+    return '';
+}
+
 function getAlliancesForContact($contactId = null) {
     if ($contactId === null) {
         return array();

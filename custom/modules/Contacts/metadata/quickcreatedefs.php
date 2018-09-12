@@ -66,6 +66,9 @@ if ($returnModule === 'Accounts') {
                 'idName' => 'role',
             ),
         ),
+        array(
+            'name' => 'nlfal_alliances_contacts_1_description',
+        ),
     ) );
 } elseif ($returnModule === 'Leads') {
     $fields = array( array(

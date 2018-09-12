@@ -44,7 +44,7 @@ $dictionary["Contact"]["fields"]["nlfal_alliances_contacts_1_name"] = array (
 $dictionary["Contact"]["fields"]['contact_alliance_role_fields'] = array(
   'name' => 'contact_alliance_role_fields',
   'rname' => 'id',
-  'relationship_fields' => array('id' => 'nlfal_alliances_contacts_1_id', 'role' => 'nlfal_alliances_contacts_1_role'),
+  'relationship_fields' => array('id' => 'nlfal_alliances_contacts_1_id', 'role' => 'nlfal_alliances_contacts_1_role', 'description' => 'nlfal_alliances_contacts_1_description'),
   'vname' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_CONTACT_TITLE',
   'type' => 'relate',
   //'link' => 'contacts',
@@ -80,3 +80,13 @@ $dictionary["Contact"]["fields"]["nlfal_alliances_contacts_1_role_enum"] = array
   'source' => 'non-db',
   'vname' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_ROLE',
 );
+
+$dictionary["Contact"]["fields"]['nlfal_alliances_contacts_1_description'] = array(
+  'name' => 'nlfal_alliances_contacts_1_description',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'vname' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_DESCRIPTION',
+  'studio' => array('visible' => false),
+);
+
+
