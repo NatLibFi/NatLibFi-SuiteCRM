@@ -55,7 +55,54 @@ array (
     ),
     'advanced_search' => 
     array (
-      'nlfwg_workinggroups_contacts_1_id' => 
+      'related_service' => 
+      array (
+        'type' => 'enum',
+        'studio' => 
+        array (
+          'listview' => false,
+          'detailview' => false,
+          'editview' => false,
+          'searchview' => true,
+        ),
+        'label' => 'LBL_RELATED_SERVICE_TITLE',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'related_service',
+      ),
+      'search_name' => 
+      array (
+        'label' => 'LBL_NAME',
+        'type' => 'name',
+        'default' => true,
+        'width' => '10%',
+        'name' => 'search_name',
+      ),
+      'contact_roles_all' => 
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_CONTACT_ROLES_ALL',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'contact_roles_all',
+      ),
+      'title' => 
+      array (
+        'type' => 'varchar',
+        'label' => 'LBL_TITLE',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'title',
+      ),
+      'account_industry' => 
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_CONTACT_ACCOUNT_INDUSTRY',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'account_industry',
+      ),
+      'nlfwg_workinggroups_contacts_1_name' => 
       array (
         'type' => 'varchar',
         'studio' => 
@@ -79,14 +126,6 @@ array (
         'default' => true,
         'name' => 'nlfal_alliances_contacts_1_id',
       ),
-      'search_name' => 
-      array (
-        'label' => 'LBL_NAME',
-        'type' => 'name',
-        'default' => true,
-        'width' => '10%',
-        'name' => 'search_name',
-      ),
       'phone' => 
       array (
         'name' => 'phone',
@@ -102,22 +141,6 @@ array (
         'label' => 'LBL_NO_MAILING',
         'width' => '10%',
         'name' => 'no_mailing_c',
-      ),
-      'account_industry' => 
-      array (
-        'type' => 'enum',
-        'label' => 'LBL_CONTACT_ACCOUNT_INDUSTRY',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'account_industry',
-      ),
-      'contact_roles_all' => 
-      array (
-        'type' => 'enum',
-        'label' => 'LBL_CONTACT_ROLES_ALL',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'contact_roles_all',
       ),
     ),
   ),
