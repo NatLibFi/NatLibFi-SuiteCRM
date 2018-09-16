@@ -20,4 +20,4 @@ $sugar_config['default_decimal_seperator'] = ',';
 // This is UTF-code for non-breaking space:
 $sugar_config['default_number_grouping_seperator'] = "\xc2\xa0";                     
 
-
+$sugar_config['email_sugarclient_listviewmaxselect'] = 20;
