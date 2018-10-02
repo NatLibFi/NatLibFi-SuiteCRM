@@ -30,8 +30,21 @@ if (empty($data['listViewExternalClient']) && !isset($data['forQuickCreate'])) {
             $contactRole = $_REQUEST['contactRole'];
         }
 
+        $ids = explode(",", $_REQUEST['uid']);
+        $module = $_REQUEST['action_module'];
+        if (isset($_REQUEST['current_post']) && !empty($_REQUEST['current_post'])) {
+            $query = json_decode(html_entity_decode($_REQUEST['current_post']), true);
+
+            require_once('include/ListView/ListViewData.php');
+            require_once('custom/include/RecordIdListLoader.php');
+
+            $listViewData = new ListViewData();
+            $listLoader = new RecordIdListLoader($listViewData);
+            $ids = $listLoader->loadRecordIdsMatchingQuery($module, $query);
+        }
+
         $email = new CustomEmail();
-        $namePlusEmail = $email->getNamePlusEmailAddressesForCompose($_REQUEST['action_module'], (explode(",", $_REQUEST['uid'])), $contactRole);
+        $namePlusEmail = $email->getNamePlusEmailAddressesForCompose($module, $ids, $contactRole);
         $ret = array(
             'to_email_addrs' => $namePlusEmail,
         );
