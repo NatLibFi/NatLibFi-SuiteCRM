@@ -82,11 +82,11 @@ class security_utilsTest extends PHPUnit_Framework_TestCase
                 'AOR_Scheduled_Reports' => 'AOR_Scheduled_Reports',
                 'SecurityGroups' => 'SecurityGroups',
                 'nlfal_Alliances' => 'nlfal_Alliances',
-                'nlfbs_BackendSystems' => 'nlfbs_BackendSystems',
-                'nlfbr_BusinessRelationships' => 'nlfbr_BusinessRelationships',
                 'nlfro_Roles' => 'nlfro_Roles',
+                'nlfbr_BusinessRelationships' => 'nlfbr_BusinessRelationships',
                 'nlfse_Services' => 'nlfse_Services',
                 'nlfwg_WorkingGroups' => 'nlfwg_WorkingGroups',
+                'nlfbs_BackendSystems' => 'nlfbs_BackendSystems',
         );
 
         $allowed = query_module_access_list(new User('1'));

@@ -156,8 +156,8 @@ class LogicHookTest extends PHPUnit_Framework_TestCase {
                         array(78, 'updateRelatedProjectGeocodeInfo', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'updateRelatedProjectGeocodeInfo'),
                         array(79, 'updateRelatedOpportunitiesGeocodeInfo', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'updateRelatedOpportunitiesGeocodeInfo'),
                         array(80, 'updateRelatedCasesGeocodeInfo', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'updateRelatedCasesGeocodeInfo'),
-			array(2, 'Update Alliance industry list to keep it in sync with the Account', 'custom/modules/Accounts/afterSaveHook.php', 'AccountAfterSaveHook', 'updateAllianceIndustryData'),
 			array(1, 'Update Back End System data of the Business Relationships, to keep it in sync with the Account', 'custom/modules/Accounts/afterSaveHook.php', 'AccountAfterSaveHook', 'updateBRBackendSystemData'),
+			array(2, 'Update Alliance industry list to keep it in sync with the Account', 'custom/modules/Accounts/afterSaveHook.php', 'AccountAfterSaveHook', 'updateAllianceIndustryData'),
                 ),
                 'after_relationship_add' => array(
                         array(77, 'addRelationship', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'addRelationship'),
@@ -302,8 +302,8 @@ class LogicHookTest extends PHPUnit_Framework_TestCase {
 						array (78, 'updateRelatedProjectGeocodeInfo', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'updateRelatedProjectGeocodeInfo', ),
 						array (79, 'updateRelatedOpportunitiesGeocodeInfo', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'updateRelatedOpportunitiesGeocodeInfo',),
 						array (80, 'updateRelatedCasesGeocodeInfo', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'updateRelatedCasesGeocodeInfo',),
-                        array(2, 'Update Alliance industry list to keep it in sync with the Account', 'custom/modules/Accounts/afterSaveHook.php', 'AccountAfterSaveHook', 'updateAllianceIndustryData'),
 						array(1, 'Update Back End System data of the Business Relationships, to keep it in sync with the Account', 'custom/modules/Accounts/afterSaveHook.php', 'AccountAfterSaveHook', 'updateBRBackendSystemData'),
+                        array(2, 'Update Alliance industry list to keep it in sync with the Account', 'custom/modules/Accounts/afterSaveHook.php', 'AccountAfterSaveHook', 'updateAllianceIndustryData'),
 				),
 				'after_relationship_add' =>
 				array (
