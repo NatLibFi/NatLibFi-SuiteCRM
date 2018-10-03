@@ -353,7 +353,7 @@ class ListViewData {
 
    		while(($row = $this->db->fetchByAssoc($result)) != null)
         {
-   			if($count < $limit)
+   			if($limit < 0 || $count < $limit)
             {
    				$id_list .= ',\''.$row[$id_field].'\'';
    				$idIndex[$row[$id_field]][] = count($rows);
