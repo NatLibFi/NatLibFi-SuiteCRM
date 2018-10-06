@@ -127,13 +127,13 @@ array (
         'default' => true,
         'name' => 'account_roles',
       ),
-      'accounts_nlfbs_backendsystems_enum' => 
+      'related_system' => 
       array (
-        'type' => 'relatemultienum',
-        'label' => 'LBL_ACCOUNTS_NLFBS_BACKENDSYSTEMS_1_FROM_NLFBS_BACKENDSYSTEMS_TITLE',
+        'type' => 'enum',
+        'label' => 'LBL_RELATED_SYSTEM',
         'width' => '10%',
         'default' => true,
-        'name' => 'accounts_nlfbs_backendsystems_enum',
+        'name' => 'related_system',
       ),
       'organisaatio_status_c' => 
       array (

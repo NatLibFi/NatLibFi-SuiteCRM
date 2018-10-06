@@ -30,6 +30,7 @@ $dictionary["Account"]["fields"]["accounts_nlfbs_backendsystems_enum"] = array (
   'vname' => 'LBL_ACCOUNTS_NLFBS_BACKENDSYSTEMS_1_FROM_NLFBS_BACKENDSYSTEMS_TITLE',
   'id_name' => 'accounts_nlfbs_backendsystems_1nlfbs_backendsystems_idb',
   'audited' => true,
+  'studio' => array('listview' => false, 'detailview' => true, 'editview' => true, 'searchview' => false),
 );
 
 // This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
@@ -41,4 +42,14 @@ $dictionary["Account"]["fields"]['backend_system_id'] = array(
   'studio' => array('visible' => false),
 );
 
+
+$dictionary["Account"]["fields"]['related_system'] = array(
+  'name' => 'related_system',
+  'vname' => 'LBL_RELATED_SYSTEM',
+  'type' => 'enum',
+  'source' => 'non-db',
+  'studio' => array('listview' => false, 'detailview' => false, 'editview' => false, 'searchview' => true),
+  'id_name' => 'accounts_nlfbs_backendsystems_1nlfbs_backendsystems_idb',
+  'function' => 'getAllActiveBackEndSystems',
+);
 

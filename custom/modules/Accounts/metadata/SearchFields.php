@@ -350,6 +350,17 @@ $searchFields['Accounts'] = array (
     ),
     'vname' => 'LBL_RELATED_ALLIANCE',
   ),
+  'related_system' => 
+  array (
+    'query_type' => 'format',
+    'operator' => 'subquery',
+    'subquery' => 'SELECT accounts.id FROM accounts JOIN accounts_nlfbs_backendsystems_1_c rel ON rel.accounts_nlfbs_backendsystems_1accounts_ida=accounts.id WHERE accounts.deleted=0 AND rel.deleted=0 AND rel.accounts_nlfbs_backendsystems_1nlfbs_backendsystems_idb IN ({0})',
+    'db_field' => 
+    array (
+      0 => 'id',
+    ),
+    'vname' => 'LBL_RELATED_SYSTEM',
+  ),
   'production_status' => 
   array (
     'query_type' => 'format',
