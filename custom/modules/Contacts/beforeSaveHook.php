@@ -66,7 +66,7 @@ class ContactBeforeSaveHook
 
         foreach ($accountIds as $id) {
             if (!array_key_exists($id, $newAccountIds)) {
-                $bean->{self::FIELD_ACCOUNT_RELATIONSHIP}->delete($id);
+                $bean->{self::FIELD_ACCOUNT_RELATIONSHIP}->delete($bean->id, $id);
                 $auditData = array(
                     'field_name' => 'account_id',
                     'data_type' => 'relate',
