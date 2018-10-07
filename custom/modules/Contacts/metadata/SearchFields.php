@@ -299,6 +299,17 @@ $searchFields['Contacts'] = array (
     ),
     'vname' => 'LBL_RELATED_SERVICE_TITLE',
   ),
+  'related_system' => 
+  array (
+    'query_type' => 'format',
+    'operator' => 'subquery',
+    'subquery' => 'SELECT contacts.id FROM contacts JOIN accounts_contacts acc_rel ON contacts.id=acc_rel.contact_id JOIN accounts_nlfbs_backendsystems_1_c bs_rel ON bs_rel.accounts_nlfbs_backendsystems_1accounts_ida=acc_rel.account_id WHERE contacts.deleted=0 AND acc_rel.deleted=0 AND bs_rel.deleted=0 AND bs_rel.accounts_nlfbs_backendsystems_1nlfbs_backendsystems_idb IN ({0})',
+    'db_field' => 
+    array (
+      0 => 'id',
+    ),
+    'vname' => 'LBL_RELATED_SYSTEM',
+  ),
   'description' => 
   array (
     'query_type' => 'default',

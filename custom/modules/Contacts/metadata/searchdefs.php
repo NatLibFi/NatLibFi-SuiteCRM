@@ -138,6 +138,14 @@ array (
         'width' => '10%',
         'name' => 'no_mailing_c',
       ),
+      'related_system' => 
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_RELATED_SYSTEM',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'related_system',
+      ),
     ),
   ),
   'templateMeta' => 
