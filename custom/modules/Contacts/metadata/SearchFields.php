@@ -303,7 +303,9 @@ $searchFields['Contacts'] = array (
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
-    'subquery' => 'SELECT contacts.id FROM contacts JOIN accounts_contacts acc_rel ON contacts.id=acc_rel.contact_id JOIN accounts_nlfbs_backendsystems_1_c bs_rel ON bs_rel.accounts_nlfbs_backendsystems_1accounts_ida=acc_rel.account_id WHERE contacts.deleted=0 AND acc_rel.deleted=0 AND bs_rel.deleted=0 AND bs_rel.accounts_nlfbs_backendsystems_1nlfbs_backendsystems_idb IN ({0})',
+    'subquery' => 'SELECT contacts.id FROM contacts JOIN accounts_contacts acc_rel ON contacts.id=acc_rel.contact_id JOIN accounts_nlfbs_backendsystems_1_c bs_rel ON bs_rel.accounts_nlfbs_backendsystems_1accounts_ida=acc_rel.account_id WHERE contacts.deleted=0 AND acc_rel.deleted=0 AND bs_rel.deleted=0 AND bs_rel.accounts_nlfbs_backendsystems_1nlfbs_backendsystems_idb IN ({0}) ' .
+        'UNION ' .
+        'SELECT contacts.id FROM contacts JOIN nlfbr_businessrelationships_contacts_1_c br_rel ON contacts.id=br_rel.nlfbr_businessrelationships_contacts_1contacts_idb JOIN nlfbr_businessrelationships_data_sources bs_rel ON bs_rel.businessrelationship_id=br_rel.nlfbr_busic409onships_ida WHERE contacts.deleted=0 AND br_rel.deleted=0 AND bs_rel.deleted=0 AND bs_rel.backend_system LIKE CONCAT("%^", {0}, "^%")',
     'db_field' => 
     array (
       0 => 'id',
