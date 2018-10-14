@@ -2,6 +2,7 @@
 
 if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
+require_once 'modules/nlfal_Alliances/nlfal_Alliances.php';
 require_once 'modules/nlfse_Services/nlfse_Services.php';
 require_once 'modules/nlfbs_BackendSystems/nlfbs_BackendSystems.php';
 
@@ -99,6 +100,45 @@ class AccountProcessRecordHook
         }
 
         $bean->{self::FIELD_BACKEND_SYSTEM_NAMES} = $systemNames;
+    }
+
+    const FIELD_ACCOUNT_ALLIANCE_REL = 'nlfal_alliances_accounts_1';
+    const FIELD_ALLIANCE_NAMES = 'account_alliance_names';
+
+    function setAccountAllianceNames($bean, $event, $arguments)
+    {
+        $id = $bean->id;
+        if (!isset($id)) {
+            return;
+        }
+
+        if (!$bean->load_relationship(self::FIELD_ACCOUNT_ALLIANCE_REL)) {
+            return;
+        }
+
+        $allianceIds = $bean->{self::FIELD_ACCOUNT_ALLIANCE_REL}->get(true);
+
+        $allianceNames = '';
+        foreach ($allianceIds as $allianceId) {
+            $alliance = new nlfal_Alliances();
+            $alliance->retrieve($allianceId);
+
+            if (!$alliance) {
+                continue;
+            }
+
+            if (!$alliance->name) {
+                continue;
+            }
+
+            if ($allianceNames !== '') {
+                $allianceNames .= ', '; // TODO: i18n this
+            }
+            $allianceNames .= $alliance->name;
+
+        }
+
+        $bean->{self::FIELD_ALLIANCE_NAMES} = $allianceNames;
     }
 
 }

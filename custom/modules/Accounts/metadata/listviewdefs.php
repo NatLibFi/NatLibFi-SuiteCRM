@@ -31,6 +31,14 @@ array (
     'width' => '10%',
     'default' => true,
   ),
+  'ACCOUNT_ALLIANCE_NAMES' => 
+  array (
+    'type' => 'varchar',
+    'label' => 'LBL_ACCOUNT_ALLIANCE_NAMES',
+    'width' => '10%',
+    'default' => true,
+    'sortable' => false,
+  ),
   'INDUSTRY' => 
   array (
     'width' => '10%',
