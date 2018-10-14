@@ -5,7 +5,7 @@ $subpanel_layout['list_fields'] = array (
   array (
     'vname' => 'LBL_LIST_ACCOUNT_NAME',
     'widget_class' => 'SubPanelDetailViewLink',
-    'width' => '45%',
+    'width' => '30%',
     'default' => true,
   ),
   'parent_name' => 
@@ -20,10 +20,17 @@ $subpanel_layout['list_fields'] = array (
     'target_module' => 'Accounts',
     'target_record_key' => 'parent_id',
   ),
+  'account_alliance_names' => 
+  array (
+    'vname' => 'LBL_ACCOUNT_ALLIANCE_NAMES',
+    'width' => '15%',
+    'default' => true,
+    'sortable' => false,
+  ),
   'billing_address_city' => 
   array (
     'vname' => 'LBL_LIST_CITY',
-    'width' => '20%',
+    'width' => '10%',
     'default' => true,
   ),
   'account_type' => 
