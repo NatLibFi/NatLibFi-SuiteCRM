@@ -37,6 +37,14 @@ array (
     'label' => 'LBL_INDUSTRY',
     'default' => true,
   ),
+  'ACCOUNT_BACKEND_SYSTEM_NAMES' => 
+  array (
+    'type' => 'varchar',
+    'label' => 'LBL_ACCOUNT_BACKEND_SYSTEMS_TITLE',
+    'width' => '10%',
+    'default' => true,
+    'sortable' => false,
+  ),
   'ACCOUNT_TYPE' => 
   array (
     'width' => '10%',
@@ -54,16 +62,10 @@ array (
   'ACCOUNT_SERVICE_NAMES' => 
   array (
     'type' => 'varchar',
-    'studio' => 
-    array (
-      'detailview' => false,
-      'editview' => false,
-      'listview' => true,
-      'searchview' => false,
-    ),
     'label' => 'LBL_ACCOUNT_SERVICES_TITLE',
     'width' => '10%',
     'default' => true,
+    'sortable' => false,
   ),
   'ORGANISAATIO_STATUS_C' => 
   array (
@@ -72,13 +74,6 @@ array (
     'studio' => 'visible',
     'label' => 'LBL_ORGANISAATIO_STATUS',
     'width' => '10%',
-  ),
-  'ACCOUNTS_NLFBS_BACKENDSYSTEMS_ENUM' => 
-  array (
-    'type' => 'relatemultienum',
-    'label' => 'LBL_ACCOUNTS_NLFBS_BACKENDSYSTEMS_1_FROM_NLFBS_BACKENDSYSTEMS_TITLE',
-    'width' => '10%',
-    'default' => false,
   ),
   'SOPIMUS_FINNA_C' => 
   array (
