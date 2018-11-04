@@ -81,9 +81,17 @@ array (
         ),
         2 => 
         array (
-          0 => 'description',
+          0 => 
+          array (
+            'name' => 'alliances_c',
+            'label' => 'LBL_ALLIANCES',
+          ),
         ),
         3 => 
+        array (
+          0 => 'description',
+        ),
+        4 => 
         array (
           0 => 
           array (
@@ -92,7 +100,7 @@ array (
           ),
           1 => '',
         ),
-        4 => 
+        5 => 
         array (
           0 => 
           array (
@@ -101,7 +109,7 @@ array (
             'label' => 'LBL_COMMERCIAL_DESCRIPTION',
           ),
         ),
-        5 => 
+        6 => 
         array (
           0 => 
           array (
