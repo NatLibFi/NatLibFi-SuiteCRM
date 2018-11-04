@@ -275,7 +275,7 @@ $searchFields['Leads'] = array (
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
-    'subquery' => 'SELECT leads.id FROM leads JOIN contacts ON leads.contact_id=contacts.id WHERE leads.converted=1 AND contacts.deleted=0 AND contacts.last_name LIKE \'%{0}%\' UNION SELECT leads.id FROM leads WHERE leads.converted=0 AND leads.last_name IS NOT NULL AND leads.first_name IS NOT NULL AND leads.last_name!=\'\' AND leads.first_name!=\'\' AND leads.last_name LIKE \'%{0}%\' UNION SELECT leads.id FROM leads JOIN contacts_leads_1_c acc_rel ON leads.id=acc_rel.contacts_leads_1leads_idb JOIN contacts ON contacts.id=acc_rel.contacts_leads_1contacts_ida WHERE leads.converted=0 AND ((leads.last_name IS NULL AND leads.first_name IS NULL) OR (leads.last_name=\'\' AND leads.first_name=\'\')) AND acc_rel.deleted=0 AND contacts.deleted=0 AND contacts.last_name LIKE \'%{0}%\' ',
+    'subquery' => 'SELECT leads.id FROM leads JOIN contacts ON leads.contact_id=contacts.id WHERE leads.converted=1 AND contacts.deleted=0 AND contacts.last_name LIKE \'%{0}%\' UNION SELECT leads.id FROM leads WHERE leads.converted=0 AND leads.last_name IS NOT NULL AND leads.first_name IS NOT NULL AND leads.last_name!=\'\' AND leads.first_name!=\'\' AND leads.last_name LIKE \'%{0}%\' UNION SELECT leads.id FROM leads JOIN contacts_leads_2_c acc_rel ON leads.id=acc_rel.contacts_leads_2leads_idb JOIN contacts ON contacts.id=acc_rel.contacts_leads_2contacts_ida WHERE leads.converted=0 AND ((leads.last_name IS NULL AND leads.first_name IS NULL) OR (leads.last_name=\'\' AND leads.first_name=\'\')) AND acc_rel.deleted=0 AND contacts.deleted=0 AND contacts.last_name LIKE \'%{0}%\' ',
     'db_field' => 
     array (
       0 => 'id',
@@ -285,7 +285,7 @@ $searchFields['Leads'] = array (
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
-    'subquery' => 'SELECT leads.id FROM leads JOIN contacts ON leads.contact_id=contacts.id WHERE leads.converted=1 AND contacts.deleted=0 AND contacts.first_name LIKE \'%{0}%\' UNION SELECT leads.id FROM leads WHERE leads.converted=0 AND leads.last_name IS NOT NULL AND leads.first_name IS NOT NULL AND leads.last_name!=\'\' AND leads.first_name!=\'\' AND leads.first_name LIKE \'%{0}%\' UNION SELECT leads.id FROM leads JOIN contacts_leads_1_c acc_rel ON leads.id=acc_rel.contacts_leads_1leads_idb JOIN contacts ON contacts.id=acc_rel.contacts_leads_1contacts_ida WHERE leads.converted=0 AND ((leads.last_name IS NULL AND leads.first_name IS NULL) OR (leads.last_name=\'\' AND leads.first_name=\'\')) AND acc_rel.deleted=0 AND contacts.deleted=0 AND contacts.first_name LIKE \'%{0}%\' ',
+    'subquery' => 'SELECT leads.id FROM leads JOIN contacts ON leads.contact_id=contacts.id WHERE leads.converted=1 AND contacts.deleted=0 AND contacts.first_name LIKE \'%{0}%\' UNION SELECT leads.id FROM leads WHERE leads.converted=0 AND leads.last_name IS NOT NULL AND leads.first_name IS NOT NULL AND leads.last_name!=\'\' AND leads.first_name!=\'\' AND leads.first_name LIKE \'%{0}%\' UNION SELECT leads.id FROM leads JOIN contacts_leads_2_c acc_rel ON leads.id=acc_rel.contacts_leads_2leads_idb JOIN contacts ON contacts.id=acc_rel.contacts_leads_2contacts_ida WHERE leads.converted=0 AND ((leads.last_name IS NULL AND leads.first_name IS NULL) OR (leads.last_name=\'\' AND leads.first_name=\'\')) AND acc_rel.deleted=0 AND contacts.deleted=0 AND contacts.first_name LIKE \'%{0}%\' ',
     'db_field' => 
     array (
       0 => 'id',
