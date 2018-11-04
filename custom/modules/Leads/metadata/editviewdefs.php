@@ -118,25 +118,6 @@ array (
           ),
         ),
       ),
-      'lbl_editview_panel1' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            'name' => 'contacts_leads_1_name',
-          ),
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            'name' => 'other_contacts_c',
-            'studio' => 'visible',
-            'label' => 'LBL_OTHER_CONTACTS',
-          ),
-        ),
-      ),
       'LBL_PANEL_ADVANCED' => 
       array (
         0 => 
