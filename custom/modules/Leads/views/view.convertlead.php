@@ -118,10 +118,13 @@ class CustomViewConvertLead extends ViewConvertLead
             $filter .= '&name_advanced=' . urlencode($this->focus->account_name);
         }
         // NLF custom: if there is an existing Contact related to the Lead, use its first and last name in the search filter string
-        if (!empty($this->focus->{'accounts_leads_1_name'}))
+        $contactData = $this->getContactData($this->focus->id);
+        if (!empty($contactData))
         {
-            $filter .= '&first_name_advanced=' . urlencode($this->focus->{'contacts_leads_1_first_name'});
-            $filter .= '&last_name_advanced=' . urlencode($this->focus->{'contacts_leads_1_last_name'});
+            $contact = new Contact();
+            $contact->retrieve($contactData[0]['id']);
+            $filter .= '&first_name_advanced=' . urlencode($contact->first_name);
+            $filter .= '&last_name_advanced=' . urlencode($contact->last_name);
         } else {
             // Check if Lead First name is available
             if (!empty($this->focus->first_name))
@@ -166,25 +169,7 @@ class CustomViewConvertLead extends ViewConvertLead
         // NLF custom: if there is an existing Contact related to the Lead,
         // prefill its data in the Contact form field (by injecting it to contact_def).
         // Note: This is quite a hack!
-        $contactData = array();
-        $db = $GLOBALS['db'];
-        $query = 'SELECT contacts_leads_2contacts_ida AS contact_id, role FROM contacts_leads_2_c ' .
-            'WHERE deleted=0 AND contacts_leads_2leads_idb="' . $db->quote($this->focus->id) . '"';
-        $result = $db->query($query);
-        while ($row = $db->fetchByAssoc($result)) {
-            $contactId = $row['contact_id'];
-            $contact = new Contact();
-            $contact->retrieve($contactId);
-            if (!$contact) {
-                continue;
-            }
-            $contactName = $contact->name;
-
-            $contactData[] = array(
-                'id' => $contactId,
-                'name' => $contactName,
-            );
-        }
+        $contactData = $this->getContactData($this->focus->id);
 
         if ($contactData) {
             $contact = $contactData[0];
@@ -601,5 +586,29 @@ class CustomViewConvertLead extends ViewConvertLead
         }
 
         return $service->name . '-' . $account->name;
+    }
+
+    private function getContactData($leadId) {
+        $contactData = array();
+        $db = $GLOBALS['db'];
+        $query = 'SELECT contacts_leads_2contacts_ida AS contact_id, role FROM contacts_leads_2_c ' .
+            'WHERE deleted=0 AND contacts_leads_2leads_idb="' . $db->quote($leadId) . '"';
+        $result = $db->query($query);
+        while ($row = $db->fetchByAssoc($result)) {
+            $contactId = $row['contact_id'];
+            $contact = new Contact();
+            $contact->retrieve($contactId);
+            if (!$contact) {
+                continue;
+            }
+            $contactName = $contact->name;
+
+            $contactData[] = array(
+                'id' => $contactId,
+                'name' => $contactName,
+            );
+        }
+
+        return $contactData;
     }
 }
