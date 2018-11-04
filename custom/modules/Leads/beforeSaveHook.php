@@ -196,10 +196,9 @@ class LeadBeforeSaveHook
 
         $bean->{'date_converted_c'} = TimeDate::getInstance()->nowDb();
 
-        $contactId = $bean->{'contact_id'};
         $accountId = $bean->{'account_id'};
         $serviceId = $bean->{'nlfse_services_leads_1nlfse_services_ida'};
-        if (!$contactId || !$accountId || !$serviceId) {
+        if (!$accountId || !$serviceId) {
             return;
         }
 
@@ -257,24 +256,9 @@ class LeadBeforeSaveHook
         $account->save();
         $service->save();
 
-        $contactBeanName = $beanList['Contacts'];
-        require_once($beanFiles[$contactBeanName]);
-        $contact = new $contactBeanName();
-        $contact->retrieve($contactId);
-        // TODO: check if exists and stop if not?
-
         if (!$brBean->load_relationship('nlfbr_businessrelationships_contacts_1')) {
              return;
         }
-
-        $contactBrRole = 'br_yhteyshenkilo';
-        if (isset($_REQUEST['Contactslead_contact_br_role'])) {
-            $contactBrRole = $_REQUEST['Contactslead_contact_br_role'];
-        }
-
-        $brBean->{'nlfbr_businessrelationships_contacts_1'}->get(true);
-
-        $brBean->{'nlfbr_businessrelationships_contacts_1'}->add($contactId, array('role' => encodeMultienumValue(array($contactBrRole))));
 
         if (!$brBean->load_relationship('nlfbr_businessrelationships_leads_1')) {
              return;
