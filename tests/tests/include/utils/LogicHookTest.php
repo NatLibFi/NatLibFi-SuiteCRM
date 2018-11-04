@@ -167,6 +167,7 @@ class LogicHookTest extends PHPUnit_Framework_TestCase {
                         array(77, 'deleteRelationship', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'deleteRelationship'),
                 ),
 		'process_record' => array(
+			array(4, 'List names of Alliances related to the Account', 'custom/modules/Accounts/processRecordHook.php', 'AccountProcessRecordHook', 'setAccountAllianceNames'),
 			array(3, 'List names of Backend Systems related to the Account', 'custom/modules/Accounts/processRecordHook.php', 'AccountProcessRecordHook', 'setAccountBackendSystemNames'),
 			array(2, 'List names of Services related to the Account', 'custom/modules/Accounts/processRecordHook.php', 'AccountProcessRecordHook', 'setAccountServiceNames'),
 		),
@@ -315,6 +316,7 @@ class LogicHookTest extends PHPUnit_Framework_TestCase {
 						array ( 77, 'deleteRelationship', 'modules/Accounts/AccountsJjwg_MapsLogicHook.php', 'AccountsJjwg_MapsLogicHook', 'deleteRelationship',),
 				),
 				'process_record' => array(
+                        array(4, 'List names of Alliances related to the Account', 'custom/modules/Accounts/processRecordHook.php', 'AccountProcessRecordHook', 'setAccountAllianceNames'),
                         array(3, 'List names of Backend Systems related to the Account', 'custom/modules/Accounts/processRecordHook.php', 'AccountProcessRecordHook', 'setAccountBackendSystemNames'),
 						array(2, 'List names of Services related to the Account', 'custom/modules/Accounts/processRecordHook.php', 'AccountProcessRecordHook', 'setAccountServiceNames'),
 				),
