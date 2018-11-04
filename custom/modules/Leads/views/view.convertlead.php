@@ -357,23 +357,6 @@ class CustomViewConvertLead extends ViewConvertLead
             // Note: This is quite a hack!
             $ev->th->ss->assign('nlf_service_name', $this->focus->{'nlfse_services_leads_1_name'});
 
-            // NLF custom: this is pretty hacky!
-            // If there is an existing Account and/or Contact related to the lead
-            // do not use "create" as the default action, so the data form (of the new Account/Contact record)
-            // is hidden by default.
-            if ($module === 'Accounts') {
-                 if ($vdef[$ev->view]['default_action'] === 'create' && $this->focus->{'accounts_leads_1accounts_ida'}) {
-                     $vdef[$ev->view]['default_action'] = '';
-                     $ev->defs['default_action'] = '';
-                 }
-            } elseif ($module === 'Contacts') {
-                 if ($vdef[$ev->view]['default_action'] === 'create' && $this->focus->{'contacts_leads_1contacts_ida'}) {
-                     $vdef[$ev->view]['default_action'] = '';
-                     $ev->defs['default_action'] = '';
-                 }
-            }
-
-
             $ev->process();
             echo($ev->display(false));
             echo($this->getValidationJS($module, $focus, $vdef[$ev->view]));
