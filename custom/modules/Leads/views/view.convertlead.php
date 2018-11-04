@@ -522,8 +522,6 @@ class CustomViewConvertLead extends ViewConvertLead
     }
 
     // Also adds a link to a new Business Relationship record
-    // TODO: will not be necessary once BR is also part of $beans, it is converted
-    // as other modules.
     protected function displaySaveResults($beans) {
         global $beanList;
     	echo "<div><ul>";
@@ -546,57 +544,54 @@ class CustomViewConvertLead extends ViewConvertLead
                 if(empty($module_name)) {
                     $module_name = translate($beanName);
                 }
+                if ($beanName === 'nlfbr_BusinessRelationships' && $bean->get_summary_text() === '-') {
+                    $bean->name = $this->getNewBusinessRelationshipName($_REQUEST);
+                }
                 echo "<li>" . translate("LBL_CREATED_NEW") . ' ' . $module_name . " -
                     <a href='index.php?module={$bean->module_dir}&action=DetailView&record={$bean->id}'>
                        {$bean->get_summary_text()}
                     </a></li>";
-                if ($beanName === 'Account') {
-                    $brData = $this->getNewBusinessRelationshipData($bean);
-                    if ($brData) {
-                        echo '<li>' .
-                            translate("LBL_CREATED_NEW") .
-                            ' ' .
-                            $app_list_strings['moduleListSingular']['nlfbr_BusinessRelationships'] .
-                            ' - ' . 
-                            "<a href='index.php?module=nlfbr_BusinessRelationships&action=DetailView&record=" . $brData['id'] . "'>" .
-                            $brData['name'] .
-                            '</a></li>';
-                    }
-                }
              }
         }
 
     	echo "</ul></div>";
     }
 
-    private function getNewBusinessRelationshipData($bean) {
+    private function getNewBusinessRelationshipName(array $postData) {
+        if (!isset($postData['module']) || $postData['module'] !== 'Leads') {
+            return '';
+        }
+
+        if (!isset($postData['record']) || !$postData['record']) {
+            return '';
+        }
+        $leadId = $postData['record'];
+
+        $lead = new Lead();
+        $lead->retrieve($leadId);
+
+        if (!$lead) {
+            return '';
+        }
+
+        $accountId = $postData['account_id'];
+        $serviceId = $lead->{'nlfse_services_leads_1nlfse_services_ida'};
+        if (!$accountId || !$serviceId) {
+            return '';
+        }
+
         $account = new Account();
-        $account->retrieve($bean->id);
-
+        $account->retrieve($accountId);
         if (!$account) {
-            return array();
+            return '';
         }
 
-        if (!$account->load_relationship('accounts_nlfbr_businessrelationships_1')) {
-            return array();
+        $service = new nlfse_Services();
+        $service->retrieve($serviceId);
+        if (!$service) {
+            return '';
         }
 
-        $brIds = $account->{'accounts_nlfbr_businessrelationships_1'}->get(true);
-
-        if (!$brIds) {
-            return array();
-        }
-
-        $brId = $brIds[count($brIds)-1];
-
-        require_once 'modules/nlfbr_BusinessRelationships/nlfbr_BusinessRelationships.php';
-        $br = new nlfbr_BusinessRelationships();
-        $br->retrieve($brId);
-
-        if (!$br) {
-            return array();
-        }
-
-        return array('id' => $brId, 'name' => $br->name);
+        return $service->name . '-' . $account->name;
     }
 }
