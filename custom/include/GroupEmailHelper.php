@@ -3,6 +3,7 @@
 class GroupEmailHelper
 {
      const MODULE_ACCOUNTS = 'Accounts';
+     const MODULE_LEADS = 'Leads';
      const MODULE_WORKING_GROUPS = 'nlfwg_WorkingGroups';
 
     /**
@@ -132,6 +133,9 @@ class GroupEmailHelper
     private function getRelationshipField($parentType) {
         if ($parentType === self::MODULE_ACCOUNTS) {
             return 'contacts';
+        }
+        if ($parentType === self::LEADS) {
+            return 'contacts_leads_2';
         }
         if ($parentType === self::MODULE_WORKING_GROUPS) {
             return 'nlfwg_workinggroups_contacts_1';
@@ -269,6 +273,9 @@ class GroupEmailHelper
         if ($parentType === self::MODULE_ACCOUNTS) {
             return 'accounts_contacts';
         }
+        if ($parentType === self::MODULE_LEADS) {
+            return 'contacts_leads_2_c';
+        }
         if ($parentType === self::MODULE_WORKING_GROUPS) {
             return 'nlfwg_workinggroups_contacts_1_c';
         }
@@ -278,6 +285,9 @@ class GroupEmailHelper
    private function getParentTable($parentType) {
         if ($parentType === self::MODULE_ACCOUNTS) {
             return 'accounts';
+        }
+        if ($parentType === self::MODULE_LEADS) {
+            return 'leads';
         }
         if ($parentType === self::MODULE_WORKING_GROUPS) {
             return 'nlfwg_workinggroups';
@@ -289,6 +299,9 @@ class GroupEmailHelper
         if ($parentType === self::MODULE_ACCOUNTS) {
             return 'account_id';
         }
+        if ($parentType === self::MODULE_LEADS) {
+            return 'contacts_leads_2leads_idb';
+        }
         if ($parentType === self::MODULE_WORKING_GROUPS) {
             return 'nlfwg_workinggroups_contacts_1nlfwg_workinggroups_ida';
         }
@@ -298,6 +311,9 @@ class GroupEmailHelper
    private function getContactColumn($parentType) {
         if ($parentType === self::MODULE_ACCOUNTS) {
             return 'contact_id';
+        }
+        if ($parentType === self::MODULE_LEADS) {
+            return 'contacts_leads_2contacts_ida';
         }
         if ($parentType === self::MODULE_WORKING_GROUPS) {
             return 'nlfwg_workinggroups_contacts_1contacts_idb';
