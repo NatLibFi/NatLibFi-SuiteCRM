@@ -276,12 +276,6 @@ class LeadBeforeSaveHook
 
         $brBean->{'nlfbr_businessrelationships_contacts_1'}->add($contactId, array('role' => encodeMultienumValue(array($contactBrRole))));
 
-        $brAlliances = '';
-        if (isset($_REQUEST['nlfbr_BusinessRelationshipsalliances_c']) && $_REQUEST['nlfbr_BusinessRelationshipsalliances_c']) {
-            $brAlliances = encodeMultienumValue($_REQUEST['nlfbr_BusinessRelationshipsalliances_c']);
-        }
-        $brBean->{'nlfbr_businessrelationships_account_alliances'} = $brAlliances;
-
         if (!$brBean->load_relationship('nlfbr_businessrelationships_leads_1')) {
              return;
         }
@@ -503,6 +497,12 @@ class LeadBeforeSaveHook
         if (isset($postData['nlfbr_BusinessRelationshipslead_commercial_description'])) {
             $br->{'maksullisen_lisatiedot2_c'} = $postData['nlfbr_BusinessRelationshipslead_commercial_description'];
         }
+
+        $brAlliances = '';
+        if (isset($postData['nlfbr_BusinessRelationshipsnlfbr_businessrelationships_account_alliances']) && $postData['nlfbr_BusinessRelationshipsnlfbr_businessrelationships_account_alliances']) {
+            $brAlliances = encodeMultienumValue($postData['nlfbr_BusinessRelationshipsnlfbr_businessrelationships_account_alliances']);
+        }
+        $br->{'nlfbr_businessrelationships_account_alliances'} = $brAlliances;
     }
 
     // Copied from SugarFieldDatetime::save

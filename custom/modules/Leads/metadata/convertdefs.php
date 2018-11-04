@@ -246,12 +246,12 @@ $viewdefs['nlfbr_BusinessRelationships']['ConvertLead'] = array(
                 ),
 
             ),
-            /*array (
+            array (
                 array (
-                    'name' => 'alliances_c',
+                    'name' => 'nlfbr_businessrelationships_account_alliances',
                     'label' => 'LBL_LEAD_ALLIANCES',
                 ),
-            ),*/
+            ),
             array(
                 'lead_commercial',
             ),

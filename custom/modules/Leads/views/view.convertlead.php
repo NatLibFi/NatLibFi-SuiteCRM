@@ -264,6 +264,10 @@ class CustomViewConvertLead extends ViewConvertLead
 	                {
 	                    $focus->lead_commercial_description = $this->focus->commercial_description_c;
 	                }
+	                elseif ($module === 'nlfbr_BusinessRelationships' && $field === 'nlfbr_businessrelationships_account_alliances')
+	                {
+	                    $focus->nlfbr_businessrelationships_account_alliances = $this->focus->alliances_c;
+	                }
 	                elseif ($module === 'nlfbr_BusinessRelationships' && $field === 'lead_description')
 	                {
 	                    $focus->lead_description = $this->focus->description;
