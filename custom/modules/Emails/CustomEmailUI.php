@@ -75,7 +75,7 @@ class CustomEmailUI extends EmailUI {
                     // For Leads, take the other relationship so contacts of unconverted leads are also included in search
                     if ($relatedBeanInfoArr['related_bean_type'] === 'Leads') {
                         if ($searchBean === 'contacts') {
-                            $relationship = 'contacts_leads_1';
+                            $relationship = 'contacts_leads_2';
                         }
                     }
 
@@ -109,7 +109,7 @@ class CustomEmailUI extends EmailUI {
                 // For Leads, take the other relationship so contacts of unconverted leads are also included in search
                 if ($relatedBeanInfoArr['related_bean_type'] === 'Leads') {
                     if ($searchBean === 'contacts') {
-                        $relationship = 'contacts_leads_1';
+                        $relationship = 'contacts_leads_2';
                     }
                 }
 
@@ -345,17 +345,17 @@ class CustomEmailUI extends EmailUI {
 				$clause = $current_user->db->quote($whereArr['name']);
                 $notConvertedLeadsQuery = "SELECT leads.id, leads.first_name first_name, leads.last_name last_name, leads.account_name account_name, eabr.primary_address, ea.email_address, 'Leads' module " .
                 'FROM leads ' .
-                'LEFT JOIN contacts_leads_1_c con_rel ON leads.id=con_rel.contacts_leads_1leads_idb ' .
+                'LEFT JOIN contacts_leads_2_c con_rel ON leads.id=con_rel.contacts_leads_2leads_idb ' .
                 'JOIN email_addr_bean_rel eabr ON (leads.id = eabr.bean_id and eabr.deleted=0) ' .
                 'JOIN email_addresses ea ON (eabr.email_address_id = ea.id) ' .
                 'WHERE (leads.deleted = 0 AND eabr.primary_address = 1) ' . 
                 "AND (leads.first_name LIKE '{$clause}%' OR leads.last_name LIKE '{$clause}%' OR leads.account_name LIKE '{$clause}%' OR email_address LIKE '{$clause}%') " .
-                "AND (leads.status='New' AND (leads.account_id IS NULL OR leads.account_id='') AND (leads.contact_id IS NULL OR leads.contact_id='') AND con_rel.contacts_leads_1leads_idb IS NULL)";
+                "AND (leads.status='New' AND (leads.account_id IS NULL OR leads.account_id='') AND (leads.contact_id IS NULL OR leads.contact_id='') AND con_rel.contacts_leads_2leads_idb IS NULL)";
 
                 $notConvertedButContactLeadsQuery = "SELECT leads.id, contacts.first_name first_name, contacts.last_name last_name, accounts.name account_name, eabr.primary_address, ea.email_address, 'Leads' module " .
                 'FROM leads ' .
-                'JOIN contacts_leads_1_c con_rel ON leads.id=con_rel.contacts_leads_1leads_idb ' .
-                'JOIN contacts ON contacts.id=con_rel.contacts_leads_1contacts_ida ' .
+                'JOIN contacts_leads_2_c con_rel ON leads.id=con_rel.contacts_leads_2leads_idb ' .
+                'JOIN contacts ON contacts.id=con_rel.contacts_leads_2contacts_ida ' .
                 'JOIN contacts_cstm ON (contacts.id=contacts_cstm.id_c AND contacts_cstm.no_mailing_c=0) ' .
                 'JOIN accounts_contacts acc_con_rel ON contacts.id=acc_con_rel.contact_id ' .
                 'JOIN accounts ON accounts.id=acc_con_rel.account_id ' .
