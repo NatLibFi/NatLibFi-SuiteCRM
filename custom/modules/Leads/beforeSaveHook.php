@@ -203,6 +203,17 @@ class LeadBeforeSaveHook
             return;
         }
 
+        if (!$bean->load_relationship('nlfbr_businessrelationships_leads_1')) {
+                return;
+        }
+        $brIds = $bean->{'nlfbr_businessrelationships_leads_1'}->get(true);
+
+        // TODO: maybe not reset. the last ID needed
+        $brId = reset($brIds);
+        if (!$brId) {
+            return;
+        }
+
         require('include/modules.php');
 
         $accountBeanName = $beanList['Accounts'];
@@ -210,10 +221,6 @@ class LeadBeforeSaveHook
         $account = new $accountBeanName();
         $account->retrieve($accountId);
         // TODO: check if exists and stop if not?
-
-        if ($_REQUEST['newAccounts'] === 'yes') {
-            $this->setAccountData($account, $bean, $_REQUEST);
-        }
 
         $serviceBeanName = $beanList['nlfse_Services'];
         require_once($beanFiles[$serviceBeanName]);
@@ -225,6 +232,7 @@ class LeadBeforeSaveHook
         require_once($beanFiles[$brBeanName]);
 
         $brBean = new $brBeanName();
+        $brBean->retrieve($brId);
 
         $brBean->{'accounts_nlfbr_businessrelationships_1_name'} = $account->name;
         $brBean->{'nlfse_services_nlfbr_businessrelationships_1_name'} = $service->name;
@@ -232,8 +240,6 @@ class LeadBeforeSaveHook
         $this->setBusinessRelationshipData($brBean, $bean, $_REQUEST);
 
         $brBean->save();
-
-        $brId = $brBean->{'id'};
 
         if (!$account->load_relationship('accounts_nlfbr_businessrelationships_1')) {
             return;
@@ -271,8 +277,8 @@ class LeadBeforeSaveHook
         $brBean->{'nlfbr_businessrelationships_contacts_1'}->add($contactId, array('role' => encodeMultienumValue(array($contactBrRole))));
 
         $brAlliances = '';
-        if (isset($_REQUEST['Accountsalliances_c']) && $_REQUEST['Accountsalliances_c']) {
-            $brAlliances = encodeMultienumValue($_REQUEST['Accountsalliances_c']);
+        if (isset($_REQUEST['nlfbr_BusinessRelationshipsalliances_c']) && $_REQUEST['nlfbr_BusinessRelationshipsalliances_c']) {
+            $brAlliances = encodeMultienumValue($_REQUEST['nlfbr_BusinessRelationshipsalliances_c']);
         }
         $brBean->{'nlfbr_businessrelationships_account_alliances'} = $brAlliances;
 
@@ -299,6 +305,9 @@ class LeadBeforeSaveHook
         }
 
         $brBean->save();
+
+        // as of ASKI-274, contact/account roles are expected to be set before conversion
+        return;
 
         $accountRole = 'account_ei_tiedossa';
         if (isset($_REQUEST['Contactscontact_account_role_c']) && $_REQUEST['Contactscontact_account_role_c']) {
@@ -483,16 +492,16 @@ class LeadBeforeSaveHook
         $br->{'palvelu_liittymisen_status_c'} = 'ilmoittautunut';
         $br->{'nfl_business_relation_begins_c'} = $this->formatDate(date('d.m.Y'));
 
-        if (isset($postData['Accountslead_description'])) {
-            $br->description = $postData['Accountslead_description'];
+        if (isset($postData['nlfbr_BusinessRelationshipslead_description'])) {
+            $br->description = $postData['nlfbr_BusinessRelationshipslead_description'];
         }
 
-        if (isset($postData['Accountslead_commercial'])) {
-            $br->{'commercial'} = $postData['Accountslead_commercial'];
+        if (isset($postData['nlfbr_BusinessRelationshipslead_commercial'])) {
+            $br->{'commercial'} = $postData['nlfbr_BusinessRelationshipslead_commercial'];
         }
 
-        if (isset($postData['Accountslead_commercial_description'])) {
-            $br->{'maksullisen_lisatiedot2_c'} = $postData['Accountslead_commercial_description'];
+        if (isset($postData['nlfbr_BusinessRelationshipslead_commercial_description'])) {
+            $br->{'maksullisen_lisatiedot2_c'} = $postData['nlfbr_BusinessRelationshipslead_commercial_description'];
         }
     }
 

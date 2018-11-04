@@ -178,9 +178,6 @@ $viewdefs['Contacts']['ConvertLead'] = array(
             array(
                 'lead_contact_br_role',
             ),
-            /*array(
-                'description'
-            ),*/
         )
     ),
 );
@@ -218,6 +215,57 @@ $viewdefs['Contacts']['ConvertLead'] = array(
         )
     ),
 );*/
+
+$viewdefs['nlfbr_BusinessRelationships']['ConvertLead'] = array(
+    'copyData' => true,
+    'required' => true,
+    'default_action' => 'create',
+    'relationship' => 'nlfbr_businessrelationships_leads_1',
+    'templateMeta' => array(
+        'form'=>array(
+            'hidden'=>array(
+                '<input type="hidden" name="opportunity_id" value="{$smarty.request.opportunity_id}">',
+                '<input type="hidden" name="case_id" value="{$smarty.request.case_id}">',
+                '<input type="hidden" name="bug_id" value="{$smarty.request.bug_id}">',
+                '<input type="hidden" name="email_id" value="{$smarty.request.email_id}">',
+                '<input type="hidden" name="inbound_email_id" value="{$smarty.request.inbound_email_id}">'
+            )
+        ),
+        'maxColumns' => '2', 
+        'widths' => array(
+            array('label' => '10', 'field' => '30'), 
+            array('label' => '10', 'field' => '30'),    
+        ),
+    ),
+    'panels' =>array (
+        'LNK_NEW_BUSINESS_RELATIONSHIP' => array (
+            array(
+                array (
+                    'label' => 'LBL_NLFSE_SERVICES_LEADS_1_FROM_NLFSE_SERVICES_TITLE_SINGULAR',
+                    'customCode' => '<span>{$nlf_service_name}</span>',
+                ),
+
+            ),
+            /*array (
+                array (
+                    'name' => 'alliances_c',
+                    'label' => 'LBL_LEAD_ALLIANCES',
+                ),
+            ),*/
+            array(
+                'lead_commercial',
+            ),
+            array(
+                'lead_commercial_description',
+            ),
+            array(
+                'lead_description',
+            ),
+        )
+    ),
+);
+
+
 $viewdefs['Notes']['ConvertLead'] = array(
     'copyData' => false,
     'required' => false,
@@ -400,6 +448,8 @@ $viewdefs['Tasks']['ConvertLead'] = array(
         )
     ),
 );
+
+
 
 
 ?>

@@ -51,4 +51,5 @@ $mod_strings = array (
   'LBL_ACCOUNT_PARENT_ACCOUNT_ID' => 'Kuuluu organisaatioon (related Organisaatio ID)',
   'LBL_ACCOUNT_PARENT' => 'Kuuluu organisaatioon',
   'LBL_OTHER_PHONE' => 'Toinen puhelin:',
+  'LNK_NEW_BUSINESS_RELATIONSHIP' => 'Luo asiakassuhde',
 );

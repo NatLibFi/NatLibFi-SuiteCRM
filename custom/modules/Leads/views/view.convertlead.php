@@ -264,6 +264,18 @@ class CustomViewConvertLead extends ViewConvertLead
 	                {
 	                    $focus->lead_commercial_description = $this->focus->commercial_description_c;
 	                }
+	                elseif ($module === 'nlfbr_BusinessRelationships' && $field === 'lead_description')
+	                {
+	                    $focus->lead_description = $this->focus->description;
+	                }
+	                elseif ($module === 'nlfbr_BusinessRelationships' && $field === 'lead_commercial')
+	                {
+	                    $focus->lead_commercial = $this->focus->commercial_c;
+	                }
+	                elseif ($module === 'nlfbr_BusinessRelationships' && $field === 'lead_commercial_description')
+	                {
+	                    $focus->lead_commercial_description = $this->focus->commercial_description_c;
+	                }
 	                elseif ($module === 'Contacts' && $field === 'lead_address')
 	                {
 	                    $focus->lead_address = $this->getOneLineContactAddress($this->focus);

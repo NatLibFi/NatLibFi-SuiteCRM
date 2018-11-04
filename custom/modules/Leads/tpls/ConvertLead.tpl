@@ -54,12 +54,8 @@ sqs_objects['{{$form_name}}_{$selectFields.{{$module}}}'] = {ldelim}
 mod_array.push('{{$module}}');//Bug#50590 add all required modules to mod_array
 </script>
 {/if}
-{if !$def.required || !empty($def.select)}
-{if !empty($def.select)}
-<input class="checkbox" type="radio" name="new{{$module}}" id="new{{$module}}" value="yes" onclick="if (document.getElementById('create{{$module}}').style.display !== 'none') {ldelim} return;{rdelim} toggleDisplay('create{{$module}}');if (typeof(addRemoveDropdownElement) == 'function') addRemoveDropdownElement('{{$module}}');{if !empty($def.select)}toggle{{$module}}Select();{/if}">
-{else}
+{if !$def.required && empty($def.select)}
 <input class="checkbox" type="checkbox" name="new{{$module}}" id="new{{$module}}" onclick="toggleDisplay('create{{$module}}');if (typeof(addRemoveDropdownElement) == 'function') addRemoveDropdownElement('{{$module}}');{if !empty($def.select)}toggle{{$module}}Select();{/if}">
-{/if}
 <script type="text/javascript">
 {{if !empty($selectRelation)}}
 {if !empty($def.select)}
@@ -88,10 +84,12 @@ mod_array.push('{{$module}}');//Bug#50590 add all required modules to mod_array
         {{/if}}
 	{rdelim});
  {/if}
-{/if}
 </script>
+{/if}
 </td><td>
+{if !$def.required || ($def.required && empty($def.select))}
 {sugar_translate label='{{$label}}' module='Leads'}
+{/if}
 </td><td>&nbsp;</td></tr>
 </table>
 </h4>
