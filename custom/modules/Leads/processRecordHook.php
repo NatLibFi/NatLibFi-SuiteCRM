@@ -45,11 +45,11 @@ class LeadProcessRecordHook
             return;
         }
 
-        if (!$bean->load_relationship('contacts_leads_1')) {
+        if (!$bean->load_relationship('contacts_leads_2')) {
             return;
         }
 
-        $contactIds = $bean->{'contacts_leads_1'}->get(true);
+        $contactIds = $bean->{'contacts_leads_2'}->get(true);
 
         if ($contactIds) {
             $contactId = reset($contactIds);
