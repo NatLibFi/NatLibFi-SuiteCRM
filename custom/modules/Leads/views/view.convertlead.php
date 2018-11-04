@@ -533,8 +533,12 @@ class CustomViewConvertLead extends ViewConvertLead
                     <a href='index.php?module={$bean->module_dir}&action=DetailView&record={$bean->id}'>
                        {$bean->get_summary_text()}
                     </a></li>";
-            }
-            else {
+            } elseif ( $beanName === 'Account' && (isset($_REQUEST["newAccounts"]) && $_REQUEST["newAccounts"] !== "yes") ) {
+                echo "<li>" . translate("LBL_EXISTING_ACCOUNT") . " -
+                    <a href='index.php?module={$bean->module_dir}&action=DetailView&record={$bean->id}'>
+                       {$bean->get_summary_text()}
+                    </a></li>";
+            } else {
                 global $app_list_strings;
                 if(!empty($app_list_strings['moduleListSingular'][$bean->module_dir])) {
                     $module_name = $app_list_strings['moduleListSingular'][$bean->module_dir];
