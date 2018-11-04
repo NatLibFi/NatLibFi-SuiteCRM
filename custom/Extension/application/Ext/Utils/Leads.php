@@ -44,9 +44,9 @@ function getLeadsForContactSubpanelQueryParts($params) {
     $query = array(
             'select' => 'SELECT leads.*',
             'from' => 'FROM leads',
-            'where' => 'WHERE leads.deleted=0 AND (leads.contact_id="' . $db->quote($contactId) . '" OR (rel.contacts_leads_1contacts_ida="' . $db->quote($contactId) . '" AND rel.deleted=0))',
-            'join' => ' LEFT JOIN contacts_leads_1_c rel ' .
-            'ON rel.contacts_leads_1leads_idb=leads.id ',
+            'where' => 'WHERE leads.deleted=0 AND (leads.contact_id="' . $db->quote($contactId) . '" OR (rel.contacts_leads_2contacts_ida="' . $db->quote($contactId) . '" AND rel.deleted=0))',
+            'join' => ' LEFT JOIN contacts_leads_2_c rel ' .
+            'ON rel.contacts_leads_2leads_idb=leads.id ',
             'join_tables' => '',
             );
 
