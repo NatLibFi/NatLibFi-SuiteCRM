@@ -15,6 +15,7 @@
 {if !empty($def.select)}
 <tr><td>
   <input class="checkbox" type="radio" name="new{{$module}}" id="useExisting{{$module}}" value="no" onclick="if (document.getElementById('create{{$module}}').style.display === 'none') {ldelim} return;{rdelim} toggleDisplay('create{{$module}}');if (typeof(addRemoveDropdownElement) == 'function') addRemoveDropdownElement('{{$module}}');{if !empty($def.select)}toggle{{$module}}Select();{/if}" {if empty($def.default_action) || $def.default_action != "create"} checked="checked"{/if}>
+  <input type="hidden" name="new{{$module}}0" id="new{{$module}}">
 </td><td>
     {sugar_translate label='LNK_SELECT_{{$module|strtoupper}}' module='Leads'}
     {if $def.required }
