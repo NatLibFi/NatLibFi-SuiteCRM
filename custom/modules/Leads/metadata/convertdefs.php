@@ -219,13 +219,13 @@ $viewdefs['nlfbr_BusinessRelationships']['ConvertLead'] = array(
                 ),
             ),
             array(
+                'lead_description',
+            ),
+            array(
                 'lead_commercial',
             ),
             array(
                 'lead_commercial_description',
-            ),
-            array(
-                'lead_description',
             ),
         )
     ),
