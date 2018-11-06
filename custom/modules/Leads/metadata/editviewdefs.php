@@ -43,11 +43,6 @@ array (
           'newTab' => false,
           'panelDefault' => 'expanded',
         ),
-        'LBL_EDITVIEW_PANEL1' => 
-        array (
-          'newTab' => false,
-          'panelDefault' => 'expanded',
-        ),
         'LBL_PANEL_ADVANCED' => 
         array (
           'newTab' => false,
@@ -131,14 +126,13 @@ array (
           array (
             'name' => 'status_description',
           ),
-          1 => 
-          array (
-            'name' => 'lead_source_description',
-          ),
         ),
         2 => 
         array (
-          0 => 'campaign_name',
+          0 => 
+          array (
+            'name' => 'lead_source_description',
+          ),
         ),
         3 => 
         array (
