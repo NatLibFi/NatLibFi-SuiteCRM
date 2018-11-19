@@ -102,16 +102,6 @@ array (
         'default' => true,
         'name' => 'account_industry',
       ),
-      'nlfwg_workinggroups_contacts_1_name' => 
-      array (
-        'type' => 'relate',
-        'link' => true,
-        'label' => 'LBL_NLFWG_WORKINGGROUPS_CONTACTS_1_NAME',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'nlfwg_workinggroups_contacts_1_name',
-        'id' => 'NLFWG_WORKINGGROUPS_CONTACTS_1_NLFWG_WORKINGGROUPS_IDA',
-      ),
       'nlfal_alliances_contacts_1_name' => 
       array (
         'type' => 'relate',
@@ -121,6 +111,24 @@ array (
         'default' => true,
         'name' => 'nlfal_alliances_contacts_1_name',
         'id' => 'NLFAL_ALLIANCES_CONTACTS_1_NLFAL_ALLIANCES_IDA',
+      ),
+      'related_system' => 
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_RELATED_SYSTEM',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'related_system',
+      ),
+      'nlfwg_workinggroups_contacts_1_name' => 
+      array (
+        'type' => 'relate',
+        'link' => true,
+        'label' => 'LBL_NLFWG_WORKINGGROUPS_CONTACTS_1_NAME',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'nlfwg_workinggroups_contacts_1_name',
+        'id' => 'NLFWG_WORKINGGROUPS_CONTACTS_1_NLFWG_WORKINGGROUPS_IDA',
       ),
       'phone' => 
       array (
@@ -137,14 +145,6 @@ array (
         'label' => 'LBL_NO_MAILING',
         'width' => '10%',
         'name' => 'no_mailing_c',
-      ),
-      'related_system' => 
-      array (
-        'type' => 'enum',
-        'label' => 'LBL_RELATED_SYSTEM',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'related_system',
       ),
     ),
   ),
