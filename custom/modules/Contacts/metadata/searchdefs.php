@@ -78,6 +78,14 @@ array (
         'width' => '10%',
         'name' => 'search_name',
       ),
+      'related_account' => 
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_RELATED_ACCOUNT',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'related_account',
+      ),
       'contact_roles_all' => 
       array (
         'type' => 'enum',
