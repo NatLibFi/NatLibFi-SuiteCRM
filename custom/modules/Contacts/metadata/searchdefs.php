@@ -154,6 +154,14 @@ array (
         'width' => '10%',
         'name' => 'no_mailing_c',
       ),
+      'lead_br_role' => 
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_LEAD_BR_ROLE',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'lead_br_role',
+      ),
     ),
   ),
   'templateMeta' => 

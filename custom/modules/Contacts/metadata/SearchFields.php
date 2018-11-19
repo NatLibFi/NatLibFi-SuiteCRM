@@ -323,6 +323,18 @@ $searchFields['Contacts'] = array (
     ),
     'vname' => 'LBL_RELATED_SYSTEM',
   ),
+  'lead_br_role' => 
+  array (
+    'query_type' => 'format',
+    'operator' => 'subquery',
+    'subquery' => 'SELECT contacts.id FROM contacts JOIN contacts_leads_2_c lead_rel ON contacts.id=lead_rel.contacts_leads_2contacts_ida WHERE contacts.deleted=0 AND lead_rel.deleted=0 AND lead_rel.role REGEXP {0}',
+    'subquery_with_multienum_regexp' => true,
+    'db_field' => 
+    array (
+      0 => 'id',
+    ),
+    'vname' => 'LBL_LEAD_BR_ROLE',
+  ),
   'description' => 
   array (
     'query_type' => 'default',
