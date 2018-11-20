@@ -1,8 +1,15 @@
 <?php
 
 require_once 'custom/include/MVC/View/views/view.list.php';
+require_once 'custom/modules/nlfwg_WorkingGroups/CustomWorkingGroupsListViewSmarty.php';
 
 class nlfwg_WorkingGroupsViewList extends CustomViewList {
+
+    public function preDisplay() {
+        parent::preDisplay();
+
+        $this->lv = new CustomWorkingGroupsListViewSmarty();
+    }
 
     /*public */function prepareSearchForm()
     {
