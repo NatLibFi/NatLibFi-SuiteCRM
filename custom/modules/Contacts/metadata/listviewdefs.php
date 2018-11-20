@@ -29,8 +29,6 @@ array (
       0 => 'first_name',
       1 => 'last_name',
       2 => 'salutation',
-      3 => 'account_name',
-      4 => 'account_id',
     ),
   ),
   'CONTACT_ACCOUNT_NAMES' => 
