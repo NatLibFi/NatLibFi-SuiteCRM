@@ -33,34 +33,12 @@ array (
       4 => 'account_id',
     ),
   ),
-  'ACCOUNT_NAME' => 
+  'CONTACT_ACCOUNT_NAMES' => 
   array (
-    'width' => '34%',
-    'label' => 'LBL_LIST_ACCOUNT_NAME',
-    'module' => 'Accounts',
-    'id' => 'ACCOUNT_ID',
-    'link' => true,
-    'contextMenu' => 
-    array (
-      'objectType' => 'sugarAccount',
-      'metaData' => 
-      array (
-        'return_module' => 'Contacts',
-        'return_action' => 'ListView',
-        'module' => 'Accounts',
-        'parent_id' => '{$ACCOUNT_ID}',
-        'parent_name' => '{$ACCOUNT_NAME}',
-        'account_id' => '{$ACCOUNT_ID}',
-        'account_name' => '{$ACCOUNT_NAME}',
-      ),
-    ),
+    'type' => 'varchar',
+    'label' => 'LBL_CONTACT_ACCOUNT_NAMES',
+    'width' => '10%',
     'default' => true,
-    'sortable' => true,
-    'ACLTag' => 'ACCOUNT',
-    'related_fields' => 
-    array (
-      0 => 'account_id',
-    ),
   ),
   'CONTACT_ALL_ROLE_NAMES' => 
   array (
