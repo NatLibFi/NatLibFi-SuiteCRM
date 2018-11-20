@@ -79,7 +79,8 @@ class ContactProcessRecordHook
             if ($accountNames !== '') {
                 $accountNames .= ', '; // TODO: i18n this
             }
-            $accountNames .= $account->name;
+            $accountLink = 'index.php?module=Accounts&action=DetailView&record=' . htmlentities($accountId);
+            $accountNames .= '<a href="' . ajaxLink($accountLink) . '">' . $account->name . '</a>';
         }
 
         $bean->{self::ACCOUNT_NAMES_FIELD} = $accountNames;
