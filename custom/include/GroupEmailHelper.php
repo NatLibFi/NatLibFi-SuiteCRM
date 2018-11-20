@@ -4,6 +4,7 @@ class GroupEmailHelper
 {
      const MODULE_ACCOUNTS = 'Accounts';
      const MODULE_LEADS = 'Leads';
+     const MODULE_ALLIANCES = 'nlfal_Alliances';
      const MODULE_WORKING_GROUPS = 'nlfwg_WorkingGroups';
 
     /**
@@ -91,6 +92,9 @@ class GroupEmailHelper
         if ($parentType === self::MODULE_WORKING_GROUPS) {
             // Note: no dedicated contact person role for Working group emails - send to all
         }
+        if ($parentType === self::MODULE_ALLIANCES) {
+            // Note: no dedicated contact person role for Alliance emails - send to all
+        }
         if ($parentType === self::MODULE_ACCOUNTS) {
             // Note: no dedicated contact person role for Account group emails - send to all
         }
@@ -136,6 +140,9 @@ class GroupEmailHelper
         }
         if ($parentType === self::LEADS) {
             return 'contacts_leads_2';
+        }
+        if ($parentType === self::MODULE_ALLIANCES) {
+            return 'nlfal_alliances_contacts_1';
         }
         if ($parentType === self::MODULE_WORKING_GROUPS) {
             return 'nlfwg_workinggroups_contacts_1';
@@ -276,6 +283,9 @@ class GroupEmailHelper
         if ($parentType === self::MODULE_LEADS) {
             return 'contacts_leads_2_c';
         }
+        if ($parentType === self::MODULE_ALLIANCES) {
+            return 'nlfal_alliances_contacts_1_c';
+        }
         if ($parentType === self::MODULE_WORKING_GROUPS) {
             return 'nlfwg_workinggroups_contacts_1_c';
         }
@@ -288,6 +298,9 @@ class GroupEmailHelper
         }
         if ($parentType === self::MODULE_LEADS) {
             return 'leads';
+        }
+        if ($parentType === self::MODULE_ALLIANCES) {
+            return 'nlfal_alliances';
         }
         if ($parentType === self::MODULE_WORKING_GROUPS) {
             return 'nlfwg_workinggroups';
@@ -302,6 +315,9 @@ class GroupEmailHelper
         if ($parentType === self::MODULE_LEADS) {
             return 'contacts_leads_2leads_idb';
         }
+        if ($parentType === self::MODULE_ALLIANCES) {
+            return 'nlfal_alliances_contacts_1nlfal_alliances_ida';
+        }
         if ($parentType === self::MODULE_WORKING_GROUPS) {
             return 'nlfwg_workinggroups_contacts_1nlfwg_workinggroups_ida';
         }
@@ -314,6 +330,9 @@ class GroupEmailHelper
         }
         if ($parentType === self::MODULE_LEADS) {
             return 'contacts_leads_2contacts_ida';
+        }
+        if ($parentType === self::MODULE_ALLIANCES) {
+            return 'nlfal_alliances_contacts_1contacts_idb';
         }
         if ($parentType === self::MODULE_WORKING_GROUPS) {
             return 'nlfwg_workinggroups_contacts_1contacts_idb';
