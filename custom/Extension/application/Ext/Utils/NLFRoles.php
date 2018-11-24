@@ -596,3 +596,15 @@ function getAllContactRoles()
         )
     );
 }
+
+
+
+function getLeadContactRoles() {
+    global $app_list_strings;
+
+    $roles = array();
+    foreach ($app_list_strings['contact_business_relationship_role_list'] as $key => $role) {
+        $roles['lead_' . $key] = $role;
+    }
+    return $roles;
+}

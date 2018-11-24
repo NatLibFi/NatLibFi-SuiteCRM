@@ -485,3 +485,8 @@ $GLOBALS['app_list_strings']['industry_dom']=array (
   'media' => 'Media',
   'Other' => 'muu',
 );
+$app_list_strings['contact_lead_role_list'] = array();
+
+foreach ($app_list_strings['contact_business_relationship_role_list'] as $key => $value) {
+    $app_list_strings['contact_lead_role_list']['lead_' . $key] = $value;
+}

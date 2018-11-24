@@ -61,7 +61,7 @@ function getLeadRolesForContactHtml($focus, $name, $value, $view) {
 
     // TODO: no more logic really needed until no quick create form on the Contact side!
 
-    return makeHtmlOfEnumOptions($app_list_strings['contact_business_relationship_role_list'], $selectedRoles, $view);;
+    return makeHtmlOfEnumOptions(getLeadContactRoles(), $selectedRoles, $view);;
 }
 
 function getLeadRolesForContact($contactId = null, $leadId = null) {

@@ -278,6 +278,10 @@ class LeadBeforeSaveHook
         while ($row = $db->fetchByAssoc($result)) {
             $id = $row['contact_id'];
             $additionalContactRoles = unencodeMultienum($row['role']);
+            $additionalContactRoles = array_map(
+                function($x) { return substr($x, strlen('lead_')); },
+                $additionalContactRoles
+            );
 
             $brBean->{'nlfbr_businessrelationships_contacts_1'}->add($id, array('role' => encodeMultienumValue($additionalContactRoles)));
         }

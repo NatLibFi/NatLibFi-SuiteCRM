@@ -50,7 +50,7 @@ $dictionary["Contact"]["fields"]['contacts_leads_2_id'] = array(
 $dictionary["Contact"]["fields"]["contacts_leads_2_role"] = array (
   'name' => 'contacts_leads_2_role',
   'type' => 'multienum',
-  'options' => 'contact_business_relationship_role_list',
+  'options' => 'contact_lead_role_list',
   'source' => 'non-db',
   'vname' => 'LBL_CONTACTS_LEADS_2_ROLE',
 );
