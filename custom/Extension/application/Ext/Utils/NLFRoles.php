@@ -577,7 +577,7 @@ function getAllContactRoles()
 {
     global $app_list_strings, $app_strings;
 
-    return array_merge(
+    $roles = array_merge(
         array_map(
             function($x) use ($app_strings) { return $x . ' (' . $app_strings['LBL_ROLE_LIST_SUFFIX_WORKING_GROUP'] . ')'; },
             $app_list_strings['contact_working_group_role_list']
@@ -595,6 +595,12 @@ function getAllContactRoles()
             $app_list_strings['contact_business_relationship_role_list']
         )
     );
+
+    foreach ($app_list_strings['contact_business_relationship_role_list'] as $key => $role) {
+        $roles['lead_' . $key] = $role . ' (' . $app_strings['LBL_ROLE_LIST_SUFFIX_LEAD'] . ')';
+    }
+
+    return $roles;
 }
 
 
