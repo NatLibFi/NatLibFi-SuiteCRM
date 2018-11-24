@@ -140,12 +140,3 @@ $dictionary["Contact"]["fields"]["contact_account_names"] = array (
     'studio' => array('detailview' => false, 'editview' => false, 'listview' => true, 'searchview' => false),
     'sortable' => false,
 );
-
-$dictionary["Contact"]["fields"]['related_account'] = array(
-  'name' => 'related_account',
-  'vname' => 'LBL_RELATED_ACCOUNT',
-  'type' => 'enum',
-  'source' => 'non-db',
-  'studio' => array('listview' => false, 'detailview' => false, 'editview' => false, 'searchview' => true),
-  'function' => 'getAllActiveAccounts',
-);

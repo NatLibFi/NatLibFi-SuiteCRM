@@ -299,17 +299,6 @@ $searchFields['Contacts'] = array (
     ),
     'vname' => 'LBL_RELATED_SERVICE_TITLE',
   ),
-  'related_account' => 
-  array (
-    'query_type' => 'format',
-    'operator' => 'subquery',
-    'subquery' => 'SELECT contacts.id FROM contacts JOIN accounts_contacts acc_rel ON contacts.id=acc_rel.contact_id WHERE contacts.deleted=0 AND acc_rel.deleted=0 AND acc_rel.account_id IN ({0})',
-    'db_field' => 
-    array (
-      0 => 'id',
-    ),
-    'vname' => 'LBL_RELATED_ACCOUNT',
-  ),
   'related_system' => 
   array (
     'query_type' => 'format',
