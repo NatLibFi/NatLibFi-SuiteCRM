@@ -109,5 +109,37 @@ function getAllContactRoleString($contactId) {
         }
     }
 
+    $query = 'SELECT lead.account_name AS lead_name, acc.name AS lead_name_alt, rel.role AS role FROM leads lead ' .
+        'JOIN contacts_leads_2_c rel ' .
+        'ON rel.contacts_leads_2leads_idb=lead.id ' .
+        'JOIN accounts_leads_1_c acc_rel ' .
+        'ON acc_rel.accounts_leads_1leads_idb=lead.id ' .
+        'JOIN accounts acc ' .
+        'ON acc.id=acc_rel.accounts_leads_1accounts_ida ' . 
+        'WHERE lead.deleted=0 AND rel.deleted=0 AND acc.deleted=0 AND acc_rel.deleted=0 ' .
+        'AND rel.contacts_leads_2contacts_ida="' . $db->quote($contactId) . '"';
+
+    $result = $db->query($query);
+
+    $leadRoles = array();
+    while ($row = $db->fetchByAssoc($result)) {
+        $leadName = $row['lead_name'];
+        if (!$leadName) {
+            $leadName = $row['lead_name_alt'];
+        }
+        $leadRoles[$leadName] = unencodeMultienum($row['role']);
+    }
+
+    $allLeadRoles = getLeadContactRoles();
+    foreach ($leadRoles as $leadName => $roles) {
+        foreach ($roles as $role) {
+            if (array_key_exists($role, $allLeadRoles)) {
+                $allRoles[] = $allLeadRoles[$role] . ' ' . translate('LBL_ROLE_IN_LEAD_INFIX') . ': ' . $leadName;
+            } else {
+                $allRoles[] = $role . ' ' . translate('LBL_ROLE_IN_LEAD_INFIX') . ': ' . $leadName;
+            }
+        }
+    }
+
     return implode(', ' , $allRoles);
 }
