@@ -1856,7 +1856,7 @@ type:::bool
 len:::255
 required:::0
 default_value:::0
-date_modified:::2018-09-01 16:43:48
+date_modified:::2018-09-01 16:51:43
 deleted:::0
 audited:::1
 massupdate:::0
@@ -1878,7 +1878,7 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2018-09-01 16:44:32
+date_modified:::2018-09-01 16:51:06
 deleted:::0
 audited:::1
 massupdate:::0
@@ -2384,10 +2384,10 @@ type:::date
 len:::0
 required:::0
 default_value:::
-date_modified:::2018-04-21 18:11:05
+date_modified:::2018-12-02 13:30:55
 deleted:::0
 audited:::1
-massupdate:::0
+massupdate:::1
 duplicate_merge:::0
 reportable:::1
 importable:::true
