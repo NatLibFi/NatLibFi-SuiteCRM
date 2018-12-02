@@ -4,6 +4,7 @@ $dictionary['nlfbr_BusinessRelationships']['fields']['nlfbr_businessrelationship
 $dictionary['nlfbr_BusinessRelationships']['fields']['nlfbr_businessrelationships_account_alliances']['inline_edit']=true;
 $dictionary['nlfbr_BusinessRelationships']['fields']['nlfbr_businessrelationships_account_alliances']['options']='';
 $dictionary['nlfbr_BusinessRelationships']['fields']['nlfbr_businessrelationships_account_alliances']['merge_filter']='disabled';
+$dictionary['nlfbr_BusinessRelationships']['fields']['nlfbr_businessrelationships_account_alliances']['massupdate']='1';
 $dictionary['nlfbr_BusinessRelationships']['fields']['nlfbr_businessrelationships_account_alliances']['audited']=true;
 
  ?>
