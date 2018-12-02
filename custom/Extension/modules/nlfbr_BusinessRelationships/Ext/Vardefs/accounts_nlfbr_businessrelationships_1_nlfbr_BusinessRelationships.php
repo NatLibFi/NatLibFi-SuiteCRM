@@ -48,7 +48,6 @@ $dictionary["Account"]["fields"]["nlfbr_businessrelationships_account_alliances"
   'vname' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
   'id_name' => 'nlfbr_businessrelationships_account_alliances',
   'studio' => array('detailview' => false, 'editview' => false, 'listview' => false, 'searchview' => true),
-  'massupdate' => false,
 );
 
 $dictionary["nlfbr_BusinessRelationships"]["fields"]["alliance_names"] = array (
