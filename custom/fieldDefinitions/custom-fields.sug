@@ -2186,10 +2186,10 @@ type:::varchar
 len:::5
 required:::0
 default_value:::
-date_modified:::2018-06-05 19:43:22
+date_modified:::2018-12-09 17:11:10
 deleted:::0
 audited:::1
-massupdate:::0
+massupdate:::1
 duplicate_merge:::0
 reportable:::1
 importable:::true
@@ -2211,7 +2211,7 @@ default_value:::
 date_modified:::2018-06-06 07:50:13
 deleted:::0
 audited:::1
-massupdate:::0
+massupdate:::1
 duplicate_merge:::0
 reportable:::1
 importable:::true
@@ -2252,10 +2252,10 @@ type:::enum
 len:::100
 required:::0
 default_value:::
-date_modified:::2018-07-20 19:01:10
+date_modified:::2018-12-09 14:38:58
 deleted:::0
 audited:::1
-massupdate:::0
+massupdate:::1
 duplicate_merge:::0
 reportable:::1
 importable:::true
@@ -2406,10 +2406,10 @@ type:::varchar
 len:::255
 required:::0
 default_value:::
-date_modified:::2018-06-06 07:39:04
+date_modified:::2018-12-09 17:09:00
 deleted:::0
 audited:::1
-massupdate:::0
+massupdate:::1
 duplicate_merge:::0
 reportable:::1
 importable:::true
