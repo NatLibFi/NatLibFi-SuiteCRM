@@ -30,6 +30,7 @@ $dictionary["Account"]["fields"]["accounts_contacts_role"] = array (
   'options' => 'contact_account_role_list',
   'source' => 'non-db',
   'vname' => 'LBL_ACCOUNTS_CONTACTS_ROLE',
+  'massupdate' => false,
 );
 
 $dictionary["Account"]["fields"]["accounts_contacts_role_enum"] = array (
@@ -38,6 +39,7 @@ $dictionary["Account"]["fields"]["accounts_contacts_role_enum"] = array (
   'function' => array( 'name' => 'getAccountRolesForContactHtml', 'returns' => 'html' ),
   'source' => 'non-db',
   'vname' => 'LBL_ACCOUNTS_CONTACTS_ROLE',
+  'massupdate' => false,
 );
 
 $dictionary["Account"]["fields"]["accounts_contacts_account_enum"] = array (
@@ -47,4 +49,5 @@ $dictionary["Account"]["fields"]["accounts_contacts_account_enum"] = array (
   'source' => 'non-db',
   'vname' => 'LBL_ACCOUNTS_CONTACTS_ACCOUNT_TITLE',
   'id_name' => 'account_id',
+  'massupdate' => false,
 );

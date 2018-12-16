@@ -14,5 +14,6 @@ $dictionary["Account"]["fields"]['related_service'] = array(
   'module' => 'nlfse_Services',
   'rname' => 'name',*/
   'function' => 'getActiveServices',
+  'massupdate' => false,
 );
 

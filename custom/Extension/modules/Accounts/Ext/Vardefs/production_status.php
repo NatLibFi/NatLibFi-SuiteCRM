@@ -7,6 +7,7 @@ $dictionary["Account"]["fields"]["production_status"] = array (
     'source' => 'non-db',
     'vname' => 'LBL_PRODUCTION_STATUS_TITLE',
     'studio' => array('detailview' => false, 'editview' => false, 'listview' => false, 'searchview' => true),
+    'massupdate' => false,
 );
 
 $dictionary["Account"]["fields"]["service_production_usage_year"] = array (

@@ -7,4 +7,5 @@ $dictionary["Account"]["fields"]["account_backend_systems_c"] = array (
   'vname' => 'LBL_LEAD_BACKEND_SYSTEMS',
   'source' => 'non-db',
   'studio' => array('visible' => false),
+  'massupdate' => false,
 );

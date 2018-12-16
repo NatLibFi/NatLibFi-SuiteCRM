@@ -8,5 +8,5 @@ $dictionary["Account"]["fields"]['related_alliance'] = array(
   'studio' => array('listview' => false, 'detailview' => false, 'editview' => false, 'searchview' => true),
   'id_name' => 'nlfal_alliances_accounts_1nlfal_alliances_ida',
   'function' => 'getAllActiveAlliances',
+  'massupdate' => false,
 );
-

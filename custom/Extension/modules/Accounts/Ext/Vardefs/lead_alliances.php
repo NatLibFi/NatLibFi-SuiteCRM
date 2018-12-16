@@ -7,4 +7,5 @@ $dictionary["Account"]["fields"]["alliances_c"] = array (
   'vname' => 'LBL_LEAD_ALLIANCES',
   'source' => 'non-db',
   'studio' => array('visible' => false),
+  'massupdate' => false,
 );

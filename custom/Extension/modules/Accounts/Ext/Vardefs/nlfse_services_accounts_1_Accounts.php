@@ -45,4 +45,5 @@ $dictionary["Account"]["fields"]["nlfse_services_accounts_enum"] = array (
   'bean_name' => 'nlfse_Services',
   'vname' => 'LBL_NLFSE_SERVICES_ACCOUNTS_ENUM',
   'id_name' => 'nlfse_services_accounts_enum',
+  'massupdate' => false,
 );

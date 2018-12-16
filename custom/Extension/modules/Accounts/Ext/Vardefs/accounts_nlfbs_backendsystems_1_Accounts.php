@@ -51,5 +51,6 @@ $dictionary["Account"]["fields"]['related_system'] = array(
   'studio' => array('listview' => false, 'detailview' => false, 'editview' => false, 'searchview' => true),
   'id_name' => 'accounts_nlfbs_backendsystems_1nlfbs_backendsystems_idb',
   'function' => 'getAllActiveBackEndSystems',
+  'massupdate' => false,
 );
 

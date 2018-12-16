@@ -8,5 +8,6 @@ $dictionary["Account"]["fields"]['open_only_has_active_contract'] = array(
   'type' => 'bool',
   'source' => 'non-db',
   'studio' => array('listview' => false, 'detailview' => false, 'editview' => false, 'searchview' => true),
+  'massupdate' => false,
 );
 
