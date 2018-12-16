@@ -472,21 +472,22 @@ $GLOBALS['app_list_strings']['contact_alliance_role_list']=array (
   'alliance_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
   'alliance_ei_tiedossa' => 'Ei tiedossa',
 );
-$GLOBALS['app_list_strings']['industry_dom']=array (
-  '' => '',
-  'University' => 'Yliopisto',
-  'PublicLibrary' => 'Yleinen kirjasto',
-  'yhteiskirjasto' => 'Yhteiskirjasto',
-  'special_library' => 'Erikoiskirjasto',
-  'Polytechnic' => 'Ammattikorkeakoulu',
-  'Archive' => 'Arkisto',
-  'Museum' => 'Museo',
-  'julkishallinto' => 'Julkishallinto',
-  'media' => 'Media',
-  'Other' => 'muu',
-);
 $app_list_strings['contact_lead_role_list'] = array();
 
 foreach ($app_list_strings['contact_business_relationship_role_list'] as $key => $value) {
     $app_list_strings['contact_lead_role_list']['lead_' . $key] = $value;
 }
+
+$GLOBALS['app_list_strings']['industry_dom']=array (
+  '' => '',
+  'Archive' => 'Arkisto',
+  'Polytechnic' => 'Ammattikorkeakoulu',
+  'special_library' => 'Erikoiskirjasto',
+  'julkishallinto' => 'Julkishallinto',
+  'media' => 'Media',
+  'Museum' => 'Museo',
+  'Other' => 'muu',
+  'yhteiskirjasto' => 'Yhteiskirjasto',
+  'PublicLibrary' => 'Yleinen kirjasto',
+  'University' => 'Yliopisto',
+);

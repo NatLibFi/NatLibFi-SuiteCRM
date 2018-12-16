@@ -464,6 +464,7 @@ $GLOBALS['app_list_strings']['contact_alliance_role_list']=array (
   'alliance_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
   'alliance_tietokannanyhteyshenkilo' => 'Tietokannan yhteyshenkilö',
 );
+
 $GLOBALS['app_list_strings']['industry_dom']=array (
   '' => '',
   'Archive' => 'Archive',
