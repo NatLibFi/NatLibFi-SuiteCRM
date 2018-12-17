@@ -109,7 +109,6 @@ class ContactRoleAwareSearchForm extends SearchForm
                  continue;
              }
 
-
              if(isset($parms['value']) && $parms['value'] != "") {
 
                  $operator = $db->isNumericType($type)?'=':'like';
@@ -637,4 +636,122 @@ class ContactRoleAwareSearchForm extends SearchForm
 
          return $where_clauses;
     }
+    
+    function populateFromArray(&$array, $switchVar = null, $addAllBeanFields = true) {
+        parent::populateFromArray($array, $switchVar, $addAllBeanFields);
+
+        foreach ($this->searchFields as $field => $data) {
+            $type = (!empty($this->seed->field_name_map[$field]['type']))?$this->seed->field_name_map[$field]['type']:'';
+
+            if ($type !== 'enum') {
+                continue;
+            }
+            if (!isset($data['value'])) {
+                continue;
+            }
+            if (!is_array($data['value'])) {
+                continue;
+            }
+            if (count($data['value']) !== 1) {
+                continue;
+            }
+            if ($data['value'][0] === '') {
+                $this->searchFields[$field]['value'] = '';
+            }
+        }
+    }
+
+    function _build_field_defs() {
+        parent::_build_field_defs();
+
+        foreach ($this->fieldDefs as $field => &$def) {
+            if ($def['type'] !== 'enum' && $def['type'] !== 'multienum') {
+                continue;
+            }
+            if (!array_key_exists('options', $def)) {
+                continue;
+            }
+            if (!array_key_exists('', $def['options'])) {
+                $def['options'] = array('' => '') + $def['options'];
+            }
+        }
+    }
+
+    protected function getSearchInfo()
+    {
+        global $app_strings, $mod_strings;
+        $data = array();
+        $fields = array_merge($this->fieldDefs, (array)$this->customFieldDefs);
+        $fields = array_merge($fields, $this->searchFields);
+        foreach ($fields as $name => $defs) {
+            if (preg_match('/(.*)_basic$/', $name, $match)) {
+                if (isset($fields[$match[1]]['value']) && $fields[$match[1]]['value'] && (!isset($defs['value']) || !$defs['value'])) {
+                    $fields[$name] = array_merge((array)$fields[$name], (array)$fields[$match[1]]);
+                }
+            }
+            if (preg_match('/(.*)_advanced$/', $name, $match)) {
+                if (isset($fields[$match[1]]['value']) && $fields[$match[1]]['value'] && (!isset($defs['value']) || !$defs['value'])) {
+                    $fields[$name] = array_merge((array)$fields[$name], (array)$fields[$match[1]]);
+                }
+            }
+        }
+        $searchFieldsKeys = array_keys($this->searchFields);
+        foreach ($fields as $name => $defs) {
+            $searchTypeKey = false;
+            if (preg_match('/(.*)_basic$/', $name, $match)) {
+                $searchTypeKey = $match[1];
+            }
+            if (preg_match('/(.*)_advanced$/', $name, $match)) {
+                $searchTypeKey = $match[1];
+            }
+            if (in_array($name, $searchFieldsKeys) || ($searchTypeKey && in_array($searchTypeKey, $searchFieldsKeys))) {
+                $vname = isset($defs['vname']) ? $defs['vname'] : null;
+                $label = isset($defs['label']) ? $defs['label'] : null;
+                $value = isset($defs['value']) ? $defs['value'] : null;
+                if (($vname || $label) && $value) {
+                    $type = isset($defs['type']) ? $defs['type'] : null;
+                    // NLF custom: Skip enum arrays containing only empty item, as this is an indicator for "no value chosen"
+                    if ($type !== null && ($type === 'enum' || $type === 'multienum') && is_array($value) && count($value) === 1 && $value[0] === '') {
+                        continue;
+                    }
+
+                    if (isset($app_strings[$vname ? $vname : $label])) {
+                        $labelText = $app_strings[$vname ? $vname : $label];
+                    } elseif (isset($mod_strings[$vname ? $vname : $label])) {
+                        $labelText = $mod_strings[$vname ? $vname : $label];
+                    } else {
+                        $labelText = $vname ? $vname : $label;
+                    }
+                    if (!preg_match('/\:\s*/', $labelText)) {
+                        $labelText .= ':';
+                    }
+                    if (is_array($value)) {
+                        $values = array();
+                        foreach ($value as $key) {
+                            if (isset($defs['options'][$key]) && $defs['options'][$key]) {
+                                $values[$key] = $defs['options'][$key];
+                            } else {
+                                if (in_array($key, $value)) {
+                                    try {
+                                        $values[$key] = $this->findFieldOptionValue($fields, $key);
+                                    } catch (Exception $e) {
+                                        $values[$key] = $key;
+                                    }
+                                } elseif (isset($value[$key])) {
+                                    $values[$key] = $value[$key];
+                                } else {
+                                    $values[$key] = '?';
+                                }
+                            }
+                        }
+                        $value = implode(', ', $values);
+                    }
+                    $data[$labelText] = $type == 'bool' ? '&#10004' : $value;
+                }
+            }
+        }
+
+        return $data;
+    }
+
 }
