@@ -643,7 +643,7 @@ class ContactRoleAwareSearchForm extends SearchForm
         foreach ($this->searchFields as $field => $data) {
             $type = (!empty($this->seed->field_name_map[$field]['type']))?$this->seed->field_name_map[$field]['type']:'';
 
-            if ($type !== 'enum') {
+            if ($type !== 'enum' && $type !== 'multienum') {
                 continue;
             }
             if (!isset($data['value'])) {
