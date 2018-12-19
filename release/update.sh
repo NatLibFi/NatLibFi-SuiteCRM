@@ -38,6 +38,7 @@ fi
 
 php release/importCustomFields.php custom/fieldDefinitions/custom-fields.sug
 
+php release/concatJs.php
 php release/repair.php
 
 cd -
