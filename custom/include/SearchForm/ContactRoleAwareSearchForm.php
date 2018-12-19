@@ -665,10 +665,19 @@ class ContactRoleAwareSearchForm extends SearchForm
         parent::_build_field_defs();
 
         foreach ($this->fieldDefs as $field => &$def) {
+            if (!is_array($def)) {
+                continue;
+            }
+            if (!isset($def['type'])) {
+                continue;
+            }
             if ($def['type'] !== 'enum' && $def['type'] !== 'multienum') {
                 continue;
             }
             if (!array_key_exists('options', $def)) {
+                continue;
+            }
+            if (!is_array($def['options'])) {
                 continue;
             }
             if (!array_key_exists('', $def['options'])) {
