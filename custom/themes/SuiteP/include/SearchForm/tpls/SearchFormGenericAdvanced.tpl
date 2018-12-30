@@ -136,6 +136,47 @@
         </div>
     </div>
 
+    {if $displayType != 'popupView'}
+        <div>
+            <div class="submitButtonsAdvanced">
+                <input tabindex='2' title='{$APP.LBL_SEARCH_BUTTON_TITLE}' onclick='SUGAR.savedViews.setChooser()'
+                       class='button' type='submit' name='button' value='{$APP.LBL_SEARCH_BUTTON_LABEL}'
+                       id='search_form_submit_advanced_bottom'/>&nbsp;
+                <input tabindex='2' title='{$APP.LBL_CLEAR_BUTTON_TITLE}'
+                       onclick='SUGAR.searchForm.clear_form(this.form); if(document.getElementById("saved_search_select")){ldelim}document.getElementById("saved_search_select").options[0].selected=true;{rdelim} return false;'
+                       class='button' type='button' name='clear' id='search_form_clear_advanced_bottom'
+                       value='{$APP.LBL_CLEAR_BUTTON_LABEL}'/>
+                {if $DOCUMENTS_MODULE}
+                    &nbsp;
+                    <input title="{$APP.LBL_BROWSE_DOCUMENTS_BUTTON_TITLE}" type="button" class="button"
+                           value="{$APP.LBL_BROWSE_DOCUMENTS_BUTTON_LABEL}"
+                           onclick='open_popup("Documents", 600, 400, "&caller=Documents", true, false, "");'/>
+                {/if}
+                {if $searchFormInPopup}
+                <div>
+                    {/if}
+                    <a id="basic_search_link" href="javascript:void(0)"
+                       accesskey="{$APP.LBL_ADV_SEARCH_LNK_KEY}">{$APP.LNK_BASIC_FILTER}</a>
+        <span class='white-space'>
+            &nbsp;&nbsp;&nbsp;{if $SAVED_SEARCHES_OPTIONS}|&nbsp;&nbsp;&nbsp;<b>{$APP.LBL_SAVED_FILTER_SHORTCUT}</b>&nbsp;
+            {$SAVED_SEARCHES_OPTIONS} {/if}
+            <span id='go_btn_span' style='display:none'><input tabindex='2' title='go_select' id='go_select_bottom'
+                                                               onclick='SUGAR.searchForm.clear_form(this.form);'
+                                                               class='button' type='button' name='go_select'
+                                                               value=' {$APP.LBL_GO_BUTTON_LABEL} '/></span>
+        </span>
+                    {if $searchFormInPopup}
+                </div>
+                {/if}
+            </div>
+            <div class="help">
+                {if $DISPLAY_SEARCH_HELP}
+                    <img border='0' src='{sugar_getimagepath file="help-dashlet.gif"}' class="help-search">
+                {/if}
+            </div>
+        </div>
+    {/if}
+
     {if $DISPLAY_SAVED_SEARCH}
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-advanced-search">
             {if !$searchFormInPopup}
@@ -184,47 +225,6 @@
                 <div{if !$searchFormInPopup} style='{$DISPLAYSS}'{/if} id='inlineSavedSearch'>
                     {$SAVED_SEARCH}
                 </div>
-            </div>
-        </div>
-    {/if}
-
-    {if $displayType != 'popupView'}
-        <div>
-            <div class="submitButtonsAdvanced">
-                <input tabindex='2' title='{$APP.LBL_SEARCH_BUTTON_TITLE}' onclick='SUGAR.savedViews.setChooser()'
-                       class='button' type='submit' name='button' value='{$APP.LBL_SEARCH_BUTTON_LABEL}'
-                       id='search_form_submit_advanced_bottom'/>&nbsp;
-                <input tabindex='2' title='{$APP.LBL_CLEAR_BUTTON_TITLE}'
-                       onclick='SUGAR.searchForm.clear_form(this.form); if(document.getElementById("saved_search_select")){ldelim}document.getElementById("saved_search_select").options[0].selected=true;{rdelim} return false;'
-                       class='button' type='button' name='clear' id='search_form_clear_advanced_bottom'
-                       value='{$APP.LBL_CLEAR_BUTTON_LABEL}'/>
-                {if $DOCUMENTS_MODULE}
-                    &nbsp;
-                    <input title="{$APP.LBL_BROWSE_DOCUMENTS_BUTTON_TITLE}" type="button" class="button"
-                           value="{$APP.LBL_BROWSE_DOCUMENTS_BUTTON_LABEL}"
-                           onclick='open_popup("Documents", 600, 400, "&caller=Documents", true, false, "");'/>
-                {/if}
-                {if $searchFormInPopup}
-                <div>
-                    {/if}
-                    <a id="basic_search_link" href="javascript:void(0)"
-                       accesskey="{$APP.LBL_ADV_SEARCH_LNK_KEY}">{$APP.LNK_BASIC_FILTER}</a>
-        <span class='white-space'>
-            &nbsp;&nbsp;&nbsp;{if $SAVED_SEARCHES_OPTIONS}|&nbsp;&nbsp;&nbsp;<b>{$APP.LBL_SAVED_FILTER_SHORTCUT}</b>&nbsp;
-            {$SAVED_SEARCHES_OPTIONS} {/if}
-            <span id='go_btn_span' style='display:none'><input tabindex='2' title='go_select' id='go_select_bottom'
-                                                               onclick='SUGAR.searchForm.clear_form(this.form);'
-                                                               class='button' type='button' name='go_select'
-                                                               value=' {$APP.LBL_GO_BUTTON_LABEL} '/></span>
-        </span>
-                    {if $searchFormInPopup}
-                </div>
-                {/if}
-            </div>
-            <div class="help">
-                {if $DISPLAY_SEARCH_HELP}
-                    <img border='0' src='{sugar_getimagepath file="help-dashlet.gif"}' class="help-search">
-                {/if}
             </div>
         </div>
     {/if}
