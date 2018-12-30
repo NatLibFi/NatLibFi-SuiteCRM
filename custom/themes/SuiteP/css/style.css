@@ -5,3 +5,7 @@
 .col-advanced-search label {
     white-space: normal !important;
 }
+
+.modal-content .search_form .view select:not([multiple]) {
+    width: 100%;
+}
