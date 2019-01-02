@@ -1,5 +1,6 @@
 .detail-view-row .label, .edit-view-row-item .label {
     white-space: normal;
+    line-height: 1.5;
 }
 
 .col-advanced-search label {
