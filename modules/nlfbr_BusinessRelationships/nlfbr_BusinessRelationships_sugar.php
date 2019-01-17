@@ -85,6 +85,8 @@ class nlfbr_BusinessRelationships_sugar extends Basic {
          $ret_array = parent::create_new_list_query($order_by, $where, $filter, $params, $show_deleted, $join_type, true, $parentbean, $singleSelect, $ifListForExport);
 
          if (strpos($ret_array['where'],'nlfbr_businessrelationships_finna_views') !== false && strpos($ret_array['from'],'nlfbr_businessrelationships_finna_views') === false) {
+             // replace SELECT with SELECT DISTINCT (there can be multiple views per business relationship)
+             $ret_array['select'] = substr_replace($ret_array['select'], ' SELECT DISTINCT ', strpos($ret_array['select'], ' SELECT '), strlen( 'SELECT '));
              $ret_array['from'] .= ' LEFT JOIN nlfbr_businessrelationships_finna_views ON (nlfbr_businessrelationships.id=nlfbr_businessrelationships_finna_views.businessrelationship_id AND nlfbr_businessrelationships_finna_views.deleted=0) ';
          }
 
