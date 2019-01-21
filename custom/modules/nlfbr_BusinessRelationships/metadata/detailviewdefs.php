@@ -133,7 +133,11 @@ array (
             'name' => 'nfl_business_relation_begins_c',
             'label' => 'LBL_NFL_BUSINESS_RELATION_BEGINS',
           ),
-          1 => 'date_entered',
+          1 =>
+          array(
+            'name' => 'date_entered',
+            'customCode' => '{$fields.date_entered.value} {$APP.LBL_BY} {$fields.created_by_name.value}',
+          ),
         ),
         2 => 
         array (
