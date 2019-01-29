@@ -2084,10 +2084,6 @@ sugarListView.prototype.send_form_for_emails = function (select, currentModule, 
   }
 
   if (document.MassUpdate.select_entire_list.value == 1) {
-    if (totalCount > maxCount) {
-      alert(totalCountError);
-      return;
-    } // if
     select = false;
   }
   else if (document.MassUpdate.massall.checked == true)
@@ -2188,8 +2184,16 @@ sugarListView.prototype.send_form_for_emails = function (select, currentModule, 
   toPdf.value = true;
   newForm.appendChild(toPdf);
 
+  if (document.MassUpdate.select_entire_list.value == 1) {
+    var postTa = document.createElement('textarea');
+    postTa.name = 'current_post';
+    postTa.value = document.MassUpdate.current_query_by_page.value;
+    postTa.style.display = 'none';
+    newForm.appendChild(postTa);
+  }
+
   //Grab the Quick Compose package for the listview
-  YAHOO.util.Connect.setForm(newForm);
+  //YAHOO.util.Connect.setForm(newForm);
   var callback =
     {
       success: function (o) {
@@ -2203,7 +2207,14 @@ sugarListView.prototype.send_form_for_emails = function (select, currentModule, 
       }
     }
 
-  YAHOO.util.Connect.asyncRequest('POST', 'index.php', callback, null);
+  //YAHOO.util.Connect.asyncRequest('POST', 'index.php', callback, null);
+  var emailComposeUrl = 'index.php?module=Emails&action=Compose&ListView=true&uid=' + uidTa.value + '&action_module=' + action_module;
+  var emailLink = document.createElement('a');
+  emailLink.target = '_blank';
+  emailLink.href = emailComposeUrl;
+  document.body.appendChild(emailLink);
+  emailLink.click();
+  emailLink.parentNode.removeChild(emailLink);
 
   // awu Bug 18624: Fixing issue where a canceled Export and unselect of row will persist the uid field, clear the field
   document.MassUpdate.uid.value = '';

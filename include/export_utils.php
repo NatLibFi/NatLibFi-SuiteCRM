@@ -492,6 +492,7 @@ function generateSearchWhere($module, $query)
         }
     } else {
         require_once('include/SearchForm/SearchForm2.php');
+        require_once 'custom/include/SearchForm/ContactRoleAwareSearchForm.php';
 
         if (file_exists('custom/modules/'.$module.'/metadata/metafiles.php')) {
             require('custom/modules/'.$module.'/metadata/metafiles.php');
@@ -520,7 +521,7 @@ function generateSearchWhere($module, $query)
             //for some modules, such as iframe, it has massupdate, but it doesn't have search function, the where sql should be empty.
             return;
         }
-        $searchForm = new SearchForm($seed, $module);
+        $searchForm = new ContactRoleAwareSearchForm($seed, $module);
         $searchForm->setup($searchdefs, $searchFields, 'SearchFormGeneric.tpl');
     }
     $searchForm->populateFromArray(json_decode(html_entity_decode($query), true));

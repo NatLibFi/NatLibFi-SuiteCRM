@@ -1,0 +1,6 @@
+<?php
+
+$mod_strings['LBL_NLFAL_ALLIANCES_ACCOUNTS_1_FROM_NLFAL_ALLIANCES_TITLE'] = 'Yhteenliittymät';
+
+$mod_strings['LBL_ALLIANCE_ORGANISATION_ROLE_LEADER'] = 'Vetäjä';
+$mod_strings['LBL_ALLIANCE_ORGANISATION_ROLE_MEMBER'] = 'Jäsen';

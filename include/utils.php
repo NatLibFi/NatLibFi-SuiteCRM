@@ -3345,6 +3345,89 @@ function sugar_cleanup($exit = false)
             exit;
         }
     }
+
+    if ( isset($_REQUEST['module']) &&
+	 $_REQUEST['module'] == 'nlfbr_BusinessRelationships' &&
+	 ( $_REQUEST['action'] == 'DetailView' ||	   
+	   $_REQUEST['action'] == 'EditView' ) ) {
+
+      echo '<script>
+
+var isSuitePTheme = document.getElementById("quickcreatetop") !== null;
+if (!isSuitePTheme) {
+   // Assuming Suite 7 theme
+var p = document.getElementsByTagName("title")[0];
+var name = p.childNodes[0].textContent;
+
+if ( name.indexOf("Muokkaa » ") == 0 ) { // Strip EditView "prefix"
+  name = name.substr(10);
+}
+
+
+var pos = name.indexOf("-");
+
+if ( pos >= 0 ) {
+  name = name.substring(0, pos);
+  var table;
+  var i=1;
+
+  do {
+
+    table = document.getElementById("detailpanel_"+i);
+    if ( table && table.innerHTML.indexOf("Asiakkuuden lisätiedot") > 0 &&
+       table.innerHTML.indexOf(name + " - Asiakkuuden lisätiedot") < 0 ) {
+    //alert("TODO: piilota asiakassuhteeseen kuulumattomat tiedot: "+name+": "+table.innerHTML);
+      table.style.display = "none";
+    }
+    i++;
+  }
+  while ( table );
+
+}
+} else {
+    // Assuming Suite P theme
+    var brNameElem = $(".module-title-text");
+    var brName = brNameElem.text().trim();
+    var editPos = brName.indexOf("»Muokkaa");
+    if (editPos > 0) {
+        brName = brName.substring(0, editPos);
+    }
+    var delimPos = brName.indexOf("-");
+    if (delimPos >= 0) {
+        var serviceName = brName.substring(0, delimPos);
+        var panel;
+        var i = 0;
+        do {
+            panel = document.getElementById("top-panel-" + i);
+            if (panel) {
+                var panelHeader = panel.previousElementSibling;
+                var panelTitle = panelHeader.textContent;
+                if (panelTitle.indexOf("Asiakkuuden lisätiedot") > 0 && panelTitle.indexOf(serviceName + " - Asiakkuuden lisätiedot") < 0 ) {
+                    panel.parentElement.style.display = "none";
+                }
+            }
+            i ++;
+        } while (panel);
+        panel = null;
+        i = 0;
+        do {
+            panel = document.getElementById("detailpanel_" + i);
+            if (panel) {
+                var panelHeader = panel.previousElementSibling;
+                var panelTitle = panelHeader.textContent;
+                if (panelTitle.indexOf("Asiakkuuden lisätiedot") > 0 && panelTitle.indexOf(serviceName + " - Asiakkuuden lisätiedot") < 0 ) {
+                    panel.parentElement.style.display = "none";
+                }
+            }
+            i ++;
+        } while (panel);
+    }
+}
+</script>
+';
+
+    }
+
 }
 
 register_shutdown_function('sugar_cleanup');

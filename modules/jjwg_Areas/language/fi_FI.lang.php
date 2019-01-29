@@ -1,0 +1,44 @@
+<?php
+
+$mod_strings['LBL_ASSIGNED_TO_ID'] = 'Vastuuhenkilön tunnus';
+$mod_strings['LBL_ASSIGNED_TO_NAME'] = 'Käyttäjä';
+$mod_strings['LBL_ID'] = 'Tunnus';
+$mod_strings['LBL_DATE_ENTERED'] = 'Luontipvm';
+$mod_strings['LBL_DATE_MODIFIED'] = 'Muokkaus pvm';
+$mod_strings['LBL_MODIFIED'] = 'Muokkaaja';
+$mod_strings['LBL_MODIFIED_ID'] = 'Muokkaaja';
+$mod_strings['LBL_MODIFIED_NAME'] = 'Muokkaaja';
+$mod_strings['LBL_CREATED'] = 'Tekijä';
+$mod_strings['LBL_CREATED_ID'] = 'Tekijä';
+$mod_strings['LBL_DESCRIPTION'] = 'Kuvaus';
+$mod_strings['LBL_DELETED'] = 'Poistettu';
+$mod_strings['LBL_NAME'] = 'Nimi';
+$mod_strings['LBL_CREATED_USER'] = 'Tekijä';
+$mod_strings['LBL_MODIFIED_USER'] = 'Muokkaaja';
+$mod_strings['LBL_LIST_NAME'] = 'Nimi';
+$mod_strings['LBL_LIST_FORM_TITLE'] = 'Luettelo alueista';
+$mod_strings['LBL_MODULE_NAME'] = 'Alueet';
+$mod_strings['LBL_MODULE_TITLE'] = 'Alueet';
+$mod_strings['LBL_HOMEPAGE_TITLE'] = 'My Areas';
+$mod_strings['LNK_NEW_RECORD'] = 'Create Areas';
+$mod_strings['LNK_LIST'] = 'View Areas';
+$mod_strings['LNK_IMPORT_JJWG_AREAS'] = 'Import Areas';
+$mod_strings['LBL_SEARCH_FORM_TITLE'] = 'Search Areas';
+$mod_strings['LBL_HISTORY_SUBPANEL_TITLE'] = 'Historia';
+$mod_strings['LBL_ACTIVITIES_SUBPANEL_TITLE'] = 'Aktiviteetit';
+$mod_strings['LBL_JJWG_AREAS_SUBPANEL_TITLE'] = 'Alueet';
+$mod_strings['LBL_NEW_FORM_TITLE'] = 'New Areas';
+$mod_strings['LBL_CITY'] = 'Kaupunki/kunta';
+$mod_strings['LBL_STATE'] = 'Maakunta/lääni';
+$mod_strings['LBL_COUNTRY'] = 'Maa';
+$mod_strings['LBL_COORDINATES'] = 'Koordinaatit';
+$mod_strings['LBL_LIST_ASSIGNED_USER'] = 'Käyttäjä';
+$mod_strings['LBL_AREA_MAP'] = 'Area Map';
+
+$mod_strings['LBL_AREA_EDIT_TITLE'] = 'Area Creation Instructions:';
+$mod_strings['LBL_AREA_EDIT_DESC_1'] = 'Left click on the map, in a clockwise motion, to create marker points for the area.';
+$mod_strings['LBL_AREA_EDIT_DESC_2'] = 'Click on the first marker point to close the polygon area.';
+$mod_strings['LBL_AREA_EDIT_RESET'] = 'Reset';
+$mod_strings['LBL_AREA_EDIT_USE_AREA_COORDINATES'] = 'Use Area Coordinates';
+$mod_strings['LBL_AREA_EDIT_COORDINATE_RESULTS'] = 'Coordinate Results (lng,lat,elv):';
+$mod_strings['LBL_JJWG_MAPS_JJWG_AREAS_FROM_JJWG_MAPS_TITLE'] = 'Kartat';

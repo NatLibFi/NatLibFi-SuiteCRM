@@ -1,0 +1,26 @@
+<?php
+// created: 2018-03-28 17:40:49
+$mod_strings = array (
+  'LBL_LINE_ITEMS' => 'Maksullisen palvelun sopimuksen lisätiedot',
+  'LBL_CONTRACT_TYPE' => 'Sopimustyyppi',
+  'LBL_DELETED' => 'Poistettu',
+  'LBL_START_DATE' => 'Käyttöönotto',
+  'LBL_SOVELLETTAVAT_LIITTEET' => 'Sovellettavat liitteet',
+  'LBL_STATUS' => 'Tila',
+  'LBL_CONTRACT_ACCOUNT_ACCOUNT_ID' => 'Asiakas (related Asiakkaat ID)',
+  'LBL_CONTRACT_ACCOUNT' => 'Asiakas',
+  'LBL_BUSINESSRELATIONSHIP_COUNT_C' => 'Allekirjoitettujen sopimusten määrä',
+  'LBL_CONTACT' => 'Henkilö',
+  'LBL_NLFBR_BUSINESSRELATIONSHIPS_AOS_CONTRACTS_1_FROM_NLFBR_BUSINESSRELATIONSHIPS_TITLE' => 'Asiakassuhteet',
+  'LBL_ACCOUNTS_AOS_CONTRACTS_1_FROM_ACCOUNTS_TITLE' => 'Accounts',
+  'LBL_NAME' => 'Nimi',
+  'LBL_DESCRIPTION' => 'Kuvaus',
+  'LBL_END_DATE' => 'Vanhentumispäivä',
+  'LBL_CURRENCY' => 'Valuutta:',
+  'LBL_RENEWAL_REMINDER_DATE' => 'Sopimuksen uusinnan muistutus',
+  'LBL_GRAND_TOTAL' => 'Kokonaissumma',
+  'LBL_SHIPPING_AMOUNT' => 'Toimitusmaksu',
+  'LBL_SHIPPING_TAX_AMT' => 'Toimituskulujen ALV',
+  'LBL_SHIPPING_TAX' => 'Toimituskulujen ALV',
+  'LNK_NEW_RECORD' => 'Luo sopimus',
+);
