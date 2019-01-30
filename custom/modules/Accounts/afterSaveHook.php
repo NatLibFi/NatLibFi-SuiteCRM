@@ -31,7 +31,7 @@ class AccountAfterSaveHook
 
        $brIds = $bean->{self::FIELD_ACCOUNT_BUSINESS_RELATIONSHIP_REL}->get(true);
 
-       $db = $GLOBALS['db'];
+       $db = DBManagerFactory::getInstance();
        foreach($brIds as $brId) {
           $br = new nlfbr_BusinessRelationships();
           $br->retrieve($brId);

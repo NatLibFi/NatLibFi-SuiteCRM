@@ -590,7 +590,7 @@ class CustomViewConvertLead extends ViewConvertLead
 
     private function getContactData($leadId) {
         $contactData = array();
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
         $query = 'SELECT contacts_leads_2contacts_ida AS contact_id, role FROM contacts_leads_2_c ' .
             'WHERE deleted=0 AND contacts_leads_2leads_idb="' . $db->quote($leadId) . '"';
         $result = $db->query($query);

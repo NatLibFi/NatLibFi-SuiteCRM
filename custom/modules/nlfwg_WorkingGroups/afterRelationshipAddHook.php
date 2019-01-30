@@ -33,7 +33,7 @@ class WorkingGroupAfterRelationshipAddHook
         // Additional relationship fields cannot be accessed and edited using beans,
         // so let's do this directly to the database.
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT id, role FROM nlfwg_workinggroups_contacts_1_c ' .
             'WHERE nlfwg_workinggroups_contacts_1nlfwg_workinggroups_ida="' . $db->quote($wgId) . '" AND ' .

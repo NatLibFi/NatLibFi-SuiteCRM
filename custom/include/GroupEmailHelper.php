@@ -173,7 +173,7 @@ class GroupEmailHelper
             )
         );
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT contact_id FROM accounts_contacts ' .
             'WHERE deleted=0 AND ' .
@@ -201,7 +201,7 @@ class GroupEmailHelper
             )
         );
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT rel.nlfwg_workinggroups_contacts_1contacts_idb AS contact_id FROM nlfwg_workinggroups_contacts_1_c rel ' .
             'WHERE rel.deleted=0 AND ' .
@@ -227,7 +227,7 @@ class GroupEmailHelper
     private function getAllContactNamesAndAddresses($parentType, $parentId, array $contactPersonRoles = array()) {
         $items = array();
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $relationshipTable = $this->getRelationshipTable($parentType);
         $parentTable = $this->getParentTable($parentType);

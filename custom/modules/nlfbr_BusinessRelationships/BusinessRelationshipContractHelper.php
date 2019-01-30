@@ -14,7 +14,7 @@ class BusinessRelationshipContractHelper {
             return array();
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $serviceJoin = '';
         $serviceWhere = '';
@@ -66,7 +66,7 @@ class BusinessRelationshipContractHelper {
             return array();
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $serviceJoin = '';
         $serviceWhere = '';
@@ -147,7 +147,7 @@ class BusinessRelationshipContractHelper {
     }
 
     private function getActiveContracts($serviceId = null) {
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
         $serviceJoin = '';
         $serviceWhere = '';
         if ($serviceId !== null) {
@@ -172,7 +172,7 @@ class BusinessRelationshipContractHelper {
     }
 
     private function getNonActiveContracts($serviceId = null) {
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
         $serviceJoin = '';
         $serviceWhere = '';
         if ($serviceId !== null) {

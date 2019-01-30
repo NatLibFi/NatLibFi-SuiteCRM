@@ -59,7 +59,7 @@ function getAllianceRolesForContact($contactId = null, $allianceId = null) {
 
     $roles = array();
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT roles.role FROM nlfal_alliances_contacts_1_c roles ' .
         'WHERE roles.deleted=0 AND ' .
         'roles.nlfal_alliances_contacts_1nlfal_alliances_ida="' . $db->quote($allianceId) . '" AND ' .
@@ -113,7 +113,7 @@ function getAllianceRoleDescriptionForContact($contactId = null, $allianceId = n
 
     $roles = array();
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT roles.description FROM nlfal_alliances_contacts_1_c roles ' .
         'WHERE roles.deleted=0 AND ' .
         'roles.nlfal_alliances_contacts_1nlfal_alliances_ida="' . $db->quote($allianceId) . '" AND ' .
@@ -134,7 +134,7 @@ function getAlliancesForContact($contactId = null) {
 
     $allianceIds = array();
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT rel.nlfal_alliances_contacts_1nlfal_alliances_ida AS alliance_id FROM nlfal_alliances_contacts_1_c rel ' .
         'WHERE rel.deleted=0 AND ' .
         'rel.nlfal_alliances_contacts_1contacts_idb="' . $db->quote($contactId) . '"';
@@ -195,7 +195,7 @@ function getAllActiveAllianceMembers($allianceId) {
 
     $members = array('' => translate('LBL_NO_ALLIANCE_LEADER', 'nlfal_Alliances'));
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT rel.nlfal_alliances_accounts_1accounts_idb AS account_id, acc.name AS account_name '.
         'FROM nlfal_alliances_accounts_1_c rel ' .
         'JOIN accounts acc ' .
@@ -232,7 +232,7 @@ function geMemberCountForAlliance($id) {
         return 0;
     }
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'select count(id) from nlfal_alliances_accounts_1_c ' .
         ' WHERE nlfal_alliances_accounts_1nlfal_alliances_ida="' . $db->quote($id) . '" ' .
         ' AND deleted=0';
@@ -247,12 +247,14 @@ function geMemberCountForAlliance($id) {
 function getBusinessRelationshipForAllianceSubpanelQueryParts($params) {
     $allianceId = $params['alliance_id'];
 
+    $db = DBManagerFactory::getInstance();
+
     $query = array(
         'select' => 'SELECT nlfbr_businessrelationships.*',
         'from' => 'FROM nlfbr_businessrelationships',
         'where' => 'WHERE nlfbr_businessrelationships.deleted=0 AND acc_br_rel.deleted=0 AND acc_rel.deleted=0 ' .
-            'AND acc_rel.nlfal_alliances_accounts_1nlfal_alliances_ida="' . $GLOBALS['db']->quote($allianceId) . '" ' .
-            'AND nlfbr_businessrelationships.nlfbr_businessrelationships_account_alliances LIKE "%\\\\^' . $GLOBALS['db']->quote($allianceId) . '\\\\^%" ',
+            'AND acc_rel.nlfal_alliances_accounts_1nlfal_alliances_ida="' . $db->quote($allianceId) . '" ' .
+            'AND nlfbr_businessrelationships.nlfbr_businessrelationships_account_alliances LIKE "%\\\\^' . $db->quote($allianceId) . '\\\\^%" ',
         'join' => ' JOIN accounts_nlfbr_businessrelationships_1_c acc_br_rel ' .
             'ON acc_br_rel.accounts_n824donships_idb=nlfbr_businessrelationships.id ' .
             'JOIN nlfal_alliances_accounts_1_c acc_rel ' .
@@ -266,10 +268,12 @@ function getBusinessRelationshipForAllianceSubpanelQueryParts($params) {
 function getBusinessRelationshipForAllianceMembersSubpanelQueryParts($params) {
     $allianceId = $params['alliance_id'];
 
+    $db = DBManagerFactory::getInstance();
+
     $query = array(
         'select' => 'SELECT nlfbr_businessrelationships.*',
         'from' => 'FROM nlfbr_businessrelationships',
-        'where' => 'WHERE nlfbr_businessrelationships.deleted=0 AND br_rel.deleted=0 AND acc_rel.deleted=0 AND acc_rel.nlfal_alliances_accounts_1nlfal_alliances_ida="' . $GLOBALS['db']->quote($allianceId) . '"',
+        'where' => 'WHERE nlfbr_businessrelationships.deleted=0 AND br_rel.deleted=0 AND acc_rel.deleted=0 AND acc_rel.nlfal_alliances_accounts_1nlfal_alliances_ida="' . $db->quote($allianceId) . '"',
         'join' => ' JOIN accounts_nlfbr_businessrelationships_1_c br_rel ' .
             'ON br_rel.accounts_n824donships_idb=nlfbr_businessrelationships.id ' .
             'JOIN nlfal_alliances_accounts_1_c acc_rel ' .

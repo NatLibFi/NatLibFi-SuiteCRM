@@ -24,7 +24,7 @@ class ServiceProcessRecordHook
 
         $systemId = $_REQUEST['record'];
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT COUNT(a_rel.accounts_nlfbr_businessrelationships_1accounts_ida) AS acc_count ' .
             'FROM accounts_nlfbr_businessrelationships_1_c a_rel ' .

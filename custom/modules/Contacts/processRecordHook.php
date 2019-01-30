@@ -93,7 +93,7 @@ class ContactProcessRecordHook
             return;
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida AS service_id ' .
             'FROM nlfse_services_nlfbr_businessrelationships_1_c s_rel ' .

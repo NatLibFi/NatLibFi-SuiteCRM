@@ -63,7 +63,7 @@ if (isset($_REQUEST['emailUIAction']) && $_REQUEST['emailUIAction'] === 'getAddr
 	        $time = microtime(true);
 	        $r = $ie->db->query($countq);
 	        $GLOBALS['log']->debug("***QUERY counted in " . (microtime(true) - $time) . " milisec\n");
-	        if($row = $GLOBALS['db']->fetchByAssoc($r)){
+	        if($row = DBManagerFactory::getInstance()->fetchByAssoc($r)){
 	            $count = $row['c'];
 	        }
 	        $time = microtime(true);

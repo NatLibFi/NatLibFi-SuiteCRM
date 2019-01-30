@@ -18,7 +18,7 @@ class BusinessRelationshipProcessRecordHook
             return;
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
         $query = 'select count(id) from ' . self::TABLE_BUSINESS_RELATIONSHIPS_CONTRACTS .
             ' WHERE ' . self::FIELD_BUSINESS_RELATIONSHIP_ID . '="' . $db->quote($id) . '" ' .
             ' AND deleted=0';
@@ -35,7 +35,7 @@ class BusinessRelationshipProcessRecordHook
             return;
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
         $query = 'select id from ' . self::TABLE_BUSINESS_RELATIONSHIPS_CONTRACTS .
             ' WHERE ' . self::FIELD_BUSINESS_RELATIONSHIP_ID . '="' . $db->quote($id) . '" ' .
             ' AND active=1 ' .
@@ -120,7 +120,7 @@ class BusinessRelationshipProcessRecordHook
             return;
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT backend_system ' .
             'FROM nlfbr_businessrelationships_data_sources ' .
@@ -166,7 +166,7 @@ class BusinessRelationshipProcessRecordHook
             return;
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
         $query = 'SELECT nlfbr_businessrelationships_aos_contracts_1aos_contracts_idb AS contract_id from ' . self::TABLE_BUSINESS_RELATIONSHIPS_CONTRACTS .
             ' WHERE ' . self::FIELD_BUSINESS_RELATIONSHIP_ID . '="' . $db->quote($id) . '" ' .
             ' AND active=1 ' .

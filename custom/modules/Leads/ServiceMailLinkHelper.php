@@ -7,7 +7,7 @@ class ServiceMailLinkHelper {
             return array();
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT link.id AS link_id, link.link_url AS link_url,' .
             'link.description AS description ' .

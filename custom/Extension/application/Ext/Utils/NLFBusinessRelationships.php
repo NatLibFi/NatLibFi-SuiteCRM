@@ -12,7 +12,7 @@ function getAccountAlliances($focus, $name, $value, $view) {
 }
 
 function getAlliancesForAccount($accountId) {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $accountJoin = '';
     $accountWhere = '';
     if ($accountId !== null) {
@@ -71,7 +71,7 @@ function getActiveContractsHtml($focus, $name, $value, $view) {
 }
 
 function getAllActiveContracts($serviceId = null) {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $serviceJoin = '';
     $serviceWhere = '';
     if ($serviceId !== null) {
@@ -96,7 +96,7 @@ function getAllActiveContracts($serviceId = null) {
 }
 
 function getAllActiveContractsForAllServices() {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT contract.id, contract.name FROM aos_contracts contract ' .
         'WHERE contract.deleted=0 AND contract.status!="paattynyt" ' .
         'ORDER BY contract.name ASC';
@@ -111,7 +111,7 @@ function getAllActiveContractsForAllServices() {
 }
 
 function getAllContractsForAllServices() {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT contract.id, contract.name FROM aos_contracts contract ' .
         'WHERE contract.deleted=0 ' .
         'ORDER BY contract.name ASC';
@@ -126,7 +126,7 @@ function getAllContractsForAllServices() {
 }
 
 function getActiveContractsForBusinessRelationship($id, $serviceId = null) {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $serviceJoin = '';
     $serviceWhere = '';
     if ($serviceId !== null) {
@@ -230,7 +230,7 @@ function getBusinessRelationshipRolesForContact($contactId = null, $brId = null)
 
     $roles = array();
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT roles.role FROM nlfbr_businessrelationships_contacts_1_c roles ' .
         'WHERE roles.deleted=0 AND ' .
         'roles.nlfbr_busic409onships_ida="' . $db->quote($brId) . '" AND ' .
@@ -286,7 +286,7 @@ function getBackendSystemsRelatedToBusinessRelationship($id) {
 
     $systems = array();
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT source.backend_system AS systems FROM nlfbr_businessrelationships_data_sources source ' .
         'JOIN nlfbr_businessrelationships br ON br.id=source.businessrelationship_id ' .
         'WHERE source.deleted=0 AND br.deleted=0 AND ' .

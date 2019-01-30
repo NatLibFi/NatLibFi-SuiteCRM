@@ -7,7 +7,7 @@ class BusinessRelationshipFinnaViewHelper {
             return array();
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT view.id AS view_id, view.view_status AS view_status, view.view_url AS view_url,' .
             'view.view_production_date AS production_date, ' .
