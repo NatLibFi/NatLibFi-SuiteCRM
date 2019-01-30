@@ -110,15 +110,13 @@ array (
         'default' => true,
         'name' => 'account_industry',
       ),
-      'nlfal_alliances_contacts_1_name' => 
+      'related_alliance' => 
       array (
-        'type' => 'relate',
-        'link' => true,
-        'label' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_NAME',
+        'type' => 'enum',
+        'label' => 'LBL_RELATED_ALLIANCE',
         'width' => '10%',
         'default' => true,
-        'name' => 'nlfal_alliances_contacts_1_name',
-        'id' => 'NLFAL_ALLIANCES_CONTACTS_1_NLFAL_ALLIANCES_IDA',
+        'name' => 'related_alliance',
       ),
       'related_system' => 
       array (
