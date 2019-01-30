@@ -67,7 +67,7 @@ function getAccountRolesForContact($contactId = null, $accountId = null) {
 
     $roles = array();
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT rel.role FROM accounts_contacts rel ' .
         'WHERE rel.deleted=0 AND ' .
         'rel.account_id="' . $db->quote($accountId) . '" AND ' .
@@ -89,7 +89,7 @@ function getAccountsForContact($contactId = null) {
 
     $accountIds = array();
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT rel.account_id FROM accounts_contacts rel ' .
         'WHERE rel.deleted=0 AND ' .
         'rel.contact_id="' . $db->quote($contactId) . '"';
@@ -124,10 +124,12 @@ function getContactIdForAddAccountRoleForm($requestData) {
 function getBRContactsForAccountContactsSubpanelQueryParts($params) {
     $accountId = $params['account_id'];
 
+    $db = DBManagerFactory::getInstance();
+
     $query = array(
         'select' => 'SELECT contacts.*',
         'from' => 'FROM contacts',
-        'where' => 'WHERE contacts.deleted=0 AND br_rel.deleted=0 AND acc_rel.deleted=0 AND acc_rel.accounts_nlfbr_businessrelationships_1accounts_ida="' . $GLOBALS['db']->quote($accountId) . '"',
+        'where' => 'WHERE contacts.deleted=0 AND br_rel.deleted=0 AND acc_rel.deleted=0 AND acc_rel.accounts_nlfbr_businessrelationships_1accounts_ida="' . $db->quote($accountId) . '"',
         'join' => ' JOIN nlfbr_businessrelationships_contacts_1_c br_rel ' .
             'ON br_rel.nlfbr_businessrelationships_contacts_1contacts_idb=contacts.id ' .
             'JOIN accounts_nlfbr_businessrelationships_1_c acc_rel ' .
@@ -154,7 +156,7 @@ function getAccountAndBRRolesForContact($contactId, $accountId) {
         return array();
     }
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
 
     $query = 'SELECT role FROM accounts_contacts ' .
         'WHERE deleted=0 AND contact_id="' . $db->quote($contactId) . '" AND account_id="' . $db->quote($accountId) . '"';

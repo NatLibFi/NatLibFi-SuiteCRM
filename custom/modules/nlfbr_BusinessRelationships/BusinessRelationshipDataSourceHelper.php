@@ -7,7 +7,7 @@ class BusinessRelationshipDataSourceHelper {
             return array();
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT source.id AS source_id, source.source_name AS source_name, ' .
             'source.database_id AS database_id, source.backend_system AS backend_system,' .

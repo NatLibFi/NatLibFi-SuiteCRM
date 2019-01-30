@@ -24,7 +24,7 @@ function getActiveBackEndSystemsHtml($focus, $name, $value, $view) {
 }
 
 function getAllActiveBackEndSystems() {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT system.id, system.name FROM nlfbs_backendsystems system ' .
         'WHERE system.deleted=0 ' .
         'ORDER BY system.name ASC';
@@ -55,7 +55,7 @@ function getSelectedBackEndSystems($bean, $moduleName) {
 }
 
 function getSelectedBackEndSystemsForAccount($id) {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT system.id, system.name ' .
         'FROM nlfbs_backendsystems system ' .
         'JOIN accounts_nlfbs_backendsystems_1_c rel ' .
@@ -75,7 +75,7 @@ function getSelectedBackEndSystemsForAccount($id) {
 }
 
 function getSelectedBackEndSystemsForBusinessRelationship($id) {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT system.id, system.name ' .
         'FROM nlfbs_backendsystems system ' .
         'JOIN nlfbr_businessrelationships_nlfbs_backendsystems_1_c rel ' .
@@ -117,10 +117,12 @@ function getSelectedBackEndSystemsForLead($bean) {
 function getBackEndSystemsForAccountSubpanelQueryParts($params) {
     $accountId = $params['account_id'];
 
+    $db = DBManagerFactory::getInstance();
+
     $query = array(
         'select' => 'SELECT nlfbs_backendsystems.*',
         'from' => 'FROM nlfbs_backendsystems',
-        'where' => 'WHERE nlfbs_backendsystems.deleted=0 AND br_rel.deleted=0 AND acc_rel.deleted=0 AND acc_rel.accounts_nlfbr_businessrelationships_1accounts_ida="' . $GLOBALS['db']->quote($accountId) . '"',
+        'where' => 'WHERE nlfbs_backendsystems.deleted=0 AND br_rel.deleted=0 AND acc_rel.deleted=0 AND acc_rel.accounts_nlfbr_businessrelationships_1accounts_ida="' . $db->quote($accountId) . '"',
         'join' => ' JOIN nlfbr_businessrelationships_nlfbs_backendsystems_1_c br_rel ' .
         'ON br_rel.nlfbr_busi06f0systems_idb=nlfbs_backendsystems.id ' .
         'JOIN accounts_nlfbr_businessrelationships_1_c acc_rel ' .
@@ -135,10 +137,12 @@ function getBackEndSystemsForAccountSubpanelQueryParts($params) {
 function getBusinessRelationshipForBackendSystemSubpanelQueryParts($params) {
     $systemId = $params['system_id'];
 
+    $db = DBManagerFactory::getInstance();
+
     $query = array(
         'select' => 'SELECT nlfbr_businessrelationships.*',
         'from' => 'FROM nlfbr_businessrelationships',
-        'where' => 'WHERE nlfbr_businessrelationships.deleted=0 AND bs_rel.deleted=0 AND bs_rel.backend_system REGEXP "\\\\^' . $GLOBALS['db']->quote($systemId) . '\\\\^"',
+        'where' => 'WHERE nlfbr_businessrelationships.deleted=0 AND bs_rel.deleted=0 AND bs_rel.backend_system REGEXP "\\\\^' . $db->quote($systemId) . '\\\\^"',
         'join' => ' JOIN nlfbr_businessrelationships_data_sources bs_rel ' .
             'ON bs_rel.businessrelationship_id=nlfbr_businessrelationships.id',
         'join_tables' => '',
@@ -150,6 +154,8 @@ function getBusinessRelationshipForBackendSystemSubpanelQueryParts($params) {
 function getBackEndSystemsForServiceSubpanelQueryParts($params) {
     $serviceId = $params['service_id'];
 
+    $db = DBManagerFactory::getInstance();
+
     $query = array(
         'select' => 'SELECT nlfbs_backendsystems.id',
         'from' => 'FROM nlfbs_backendsystems',
@@ -159,7 +165,7 @@ function getBackEndSystemsForServiceSubpanelQueryParts($params) {
             'ON br_rel.backend_system REGEXP CONCAT("\\\\^", nlfbs_backendsystems.id, "\\\\^") ' .
             'JOIN nlfse_services_nlfbr_businessrelationships_1_c s_rel ' .
             'ON s_rel.nlfse_serva51aonships_idb=br_rel.businessrelationship_id ' .
-            'WHERE nlfbs_backendsystems.deleted=0 AND br_rel.deleted=0 AND s_rel.deleted=0 AND s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida="' . $GLOBALS['db']->quote($serviceId) . '" ' .
+            'WHERE nlfbs_backendsystems.deleted=0 AND br_rel.deleted=0 AND s_rel.deleted=0 AND s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida="' . $db->quote($serviceId) . '" ' .
             ')',
         'join' => '',
         'join_tables' => '',
@@ -171,6 +177,8 @@ function getBackEndSystemsForServiceSubpanelQueryParts($params) {
 function getServicesForBackendSystemSubpanelQueryParts($params) {
     $systemId = $params['system_id'];
 
+    $db = DBManagerFactory::getInstance();
+
     $query = array(
         'select' => 'SELECT nlfse_services.*',
         'from' => 'FROM nlfse_services',
@@ -180,7 +188,7 @@ function getServicesForBackendSystemSubpanelQueryParts($params) {
             'ON nlfse_services.id=br_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida ' .
             'JOIN nlfbr_businessrelationships_data_sources bs_rel ' .
             'ON bs_rel.businessrelationship_id=br_rel.nlfse_serva51aonships_idb ' .
-            'WHERE nlfse_services.deleted=0 AND bs_rel.deleted=0 AND bs_rel.backend_system REGEXP "\\\\^' . $GLOBALS['db']->quote($systemId) . '\\\\^" AND br_rel.deleted=0 ' .
+            'WHERE nlfse_services.deleted=0 AND bs_rel.deleted=0 AND bs_rel.backend_system REGEXP "\\\\^' . $db->quote($systemId) . '\\\\^" AND br_rel.deleted=0 ' .
             ')',
         'join' => '',
         'join_tables' => '',
@@ -193,6 +201,8 @@ function getServicesForBackendSystemSubpanelQueryParts($params) {
 function getContactsForBackendSystemSubpanelQueryParts($params) {
     $systemId = $params['system_id'];
 
+    $db = DBManagerFactory::getInstance();
+
     $query = array(
         'select' => 'SELECT contacts.*',
         'from' => 'FROM contacts',
@@ -202,14 +212,14 @@ function getContactsForBackendSystemSubpanelQueryParts($params) {
             'ON contacts.id=br_rel.nlfbr_businessrelationships_contacts_1contacts_idb ' .
             'JOIN nlfbr_businessrelationships_data_sources bs_rel ' .
             'ON bs_rel.businessrelationship_id=br_rel.nlfbr_busic409onships_ida ' .
-            'WHERE contacts.deleted=0 AND bs_rel.deleted=0 AND bs_rel.backend_system REGEXP "\\\\^' . $GLOBALS['db']->quote($systemId) . '\\\\^" AND br_rel.deleted=0 ' .
+            'WHERE contacts.deleted=0 AND bs_rel.deleted=0 AND bs_rel.backend_system REGEXP "\\\\^' . $db->quote($systemId) . '\\\\^" AND br_rel.deleted=0 ' .
             'UNION ' .
             'SELECT contacts.id FROM contacts ' .
             'JOIN accounts_contacts ac ' .
             'ON contacts.id=ac.contact_id ' .
             'JOIN accounts_nlfbs_backendsystems_1_c abs_rel ' .
             'ON ac.account_id=abs_rel.accounts_nlfbs_backendsystems_1accounts_ida ' .
-            'WHERE contacts.deleted=0 AND ac.deleted=0 AND abs_rel.deleted=0 AND abs_rel.accounts_nlfbs_backendsystems_1nlfbs_backendsystems_idb="' . $GLOBALS['db']->quote($systemId) . '" ' .
+            'WHERE contacts.deleted=0 AND ac.deleted=0 AND abs_rel.deleted=0 AND abs_rel.accounts_nlfbs_backendsystems_1nlfbs_backendsystems_idb="' . $db->quote($systemId) . '" ' .
             ')',
         'join' => '',
         'join_tables' => '',

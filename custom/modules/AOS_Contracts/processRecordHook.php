@@ -15,7 +15,7 @@ class ContractProcessRecordHook
             return;
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
         $query = 'select count(id) from ' . self::TABLE_BUSINESS_RELATIONSHIPS_CONTRACTS .
             ' WHERE ' . self::FIELD_CONTRACT_ID . '="' . $db->quote($id) . '" ' .
             ' AND deleted=0';

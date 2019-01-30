@@ -33,7 +33,7 @@ class BusinessRelationshipAfterRelationshipAddHook
         // Additional relationship fields cannot be accessed and edited using beans,
         // so let's do this directly to the database.
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT id, role FROM nlfbr_businessrelationships_contacts_1_c ' .
             'WHERE nlfbr_busic409onships_ida="' . $db->quote($brId) . '" AND ' .

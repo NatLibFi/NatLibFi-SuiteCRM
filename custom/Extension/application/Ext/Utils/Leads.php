@@ -22,7 +22,7 @@ function getLeadAccountEmailAddressWidget($focus, $field, $value, $view) {
 function getLeadsForAccountSubpanelQueryParts($params) {
     $accountId = $params['account_id'];
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
 
     $query = array(
             'select' => 'SELECT leads.*',
@@ -39,7 +39,7 @@ function getLeadsForAccountSubpanelQueryParts($params) {
 function getLeadsForContactSubpanelQueryParts($params) {
     $contactId = $params['contact_id'];
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
 
     $query = array(
             'select' => 'SELECT leads.*',
@@ -75,7 +75,7 @@ function getLeadRolesForContact($contactId = null, $leadId = null) {
 
     $roles = array();
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT rel.role FROM contacts_leads_2_c rel ' .
         'WHERE rel.deleted=0 AND ' .
         'rel.contacts_leads_2leads_idb="' . $db->quote($leadId) . '" AND ' .

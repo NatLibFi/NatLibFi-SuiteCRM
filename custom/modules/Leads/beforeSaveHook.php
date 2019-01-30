@@ -101,7 +101,7 @@ class LeadBeforeSaveHook
             }
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         foreach ($toDelete as $data) {
             $query = 'DELETE FROM lead_service_mail_links WHERE id="' . $db->quote($data['id']) . '"';
@@ -268,7 +268,7 @@ class LeadBeforeSaveHook
 
         // Additional relationship fields cannot be accessed and edited using beans,
         // so let's do this directly to the database.
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT contacts_leads_2contacts_ida AS contact_id, role FROM contacts_leads_2_c ' .
             'WHERE deleted=0 AND contacts_leads_2leads_idb="' . $db->quote($bean->id) . '"';

@@ -7,7 +7,7 @@ function getAllContactRoleString($contactId) {
         return '';
     }
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
 
     $query = 'SELECT rel.role AS role, acc.name AS account_name FROM accounts_contacts rel  ' .
         'JOIN accounts acc ON acc.id=rel.account_id ' .

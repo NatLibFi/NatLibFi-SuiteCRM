@@ -15,7 +15,7 @@ class ContactAccountHelper
             return;
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT accounts.id AS account_id, accounts.name AS account_name, ' .
             'rel.department AS account_department, rel.address AS account_address, rel.description AS account_description ' .

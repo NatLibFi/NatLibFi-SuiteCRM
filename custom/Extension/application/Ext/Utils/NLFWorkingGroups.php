@@ -129,7 +129,7 @@ function getWorkingGroupRolesForContact($contactId = null, $groupId = null) {
 
     $roles = array();
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT roles.role FROM nlfwg_workinggroups_contacts_1_c roles ' .
         'WHERE roles.deleted=0 AND ' .
         'roles.nlfwg_workinggroups_contacts_1nlfwg_workinggroups_ida="' . $db->quote($groupId) . '" AND ' .
@@ -151,7 +151,7 @@ function getWorkingGroupsForContact($contactId = null) {
 
     $groupIds = array();
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT rel.nlfwg_workinggroups_contacts_1nlfwg_workinggroups_ida AS group_id FROM nlfwg_workinggroups_contacts_1_c rel ' .
         'WHERE rel.deleted=0 AND ' .
         'rel.nlfwg_workinggroups_contacts_1contacts_idb="' . $db->quote($contactId) . '"';

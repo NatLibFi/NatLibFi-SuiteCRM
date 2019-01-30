@@ -4,7 +4,7 @@
 function getActiveServices()
 {
     $query = 'SELECT id, name FROM nlfse_services WHERE deleted=0 ORDER BY name ASC';
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $result = $db->query($query);
 
     $list = array();
