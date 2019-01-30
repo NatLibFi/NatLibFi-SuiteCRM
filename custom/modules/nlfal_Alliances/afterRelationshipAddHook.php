@@ -33,7 +33,7 @@ class AllianceAfterRelationshipAddHook
         // Additional relationship fields cannot be accessed and edited using beans,
         // so let's do this directly to the database.
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT id, role FROM nlfal_alliances_contacts_1_c ' .
             'WHERE nlfal_alliances_contacts_1nlfal_alliances_ida="' . $db->quote($allianceId) . '" AND ' .

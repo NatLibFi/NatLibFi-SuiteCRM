@@ -34,7 +34,7 @@ class BackendSystemProcessRecordHook
 
         $accountId = $_REQUEST['record'];
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida AS service_id ' .
             'FROM nlfse_services_nlfbr_businessrelationships_1_c s_rel ' .
@@ -96,7 +96,7 @@ class BackendSystemProcessRecordHook
 
         $serviceId = $_REQUEST['record'];
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT COUNT(a_rel.accounts_nlfbr_businessrelationships_1accounts_ida) AS acc_count ' .
             'FROM accounts_nlfbr_businessrelationships_1_c a_rel ' .

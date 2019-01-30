@@ -33,7 +33,7 @@ class AccountAfterRelationshipAddHook
         // Additional relationship fields cannot be accessed and edited using beans,
         // so let's do this directly to the database.
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT id, role FROM accounts_contacts ' .
             'WHERE account_id="' . $db->quote($accountId) . '" AND ' .
