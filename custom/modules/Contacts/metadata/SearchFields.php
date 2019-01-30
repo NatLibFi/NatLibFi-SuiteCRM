@@ -322,6 +322,19 @@ $searchFields['Contacts'] = array (
     ),
     'vname' => 'LBL_RELATED_SYSTEM',
   ),
+  'related_alliance' =>
+  array (
+    'query_type' => 'format',
+    'operator' => 'subquery',
+    'subquery' => 'SELECT contacts.id FROM contacts JOIN nlfal_alliances_contacts_1_c all_rel ON contacts.id=all_rel.nlfal_alliances_contacts_1contacts_idb WHERE contacts.deleted=0 AND all_rel.deleted=0 AND all_rel.nlfal_alliances_contacts_1nlfal_alliances_ida IN ({0}) ' .
+        'UNION ' .
+        'SELECT contacts.id FROM contacts JOIN accounts_contacts acc_rel ON contacts.id=acc_rel.contact_id JOIN nlfal_alliances_accounts_1_c acal_rel ON acc_rel.account_id=acal_rel.nlfal_alliances_accounts_1accounts_idb WHERE contacts.deleted=0 AND acc_rel.deleted=0 AND acal_rel.deleted=0 AND acal_rel.nlfal_alliances_accounts_1nlfal_alliances_ida IN ({0}) ',
+    'db_field' => 
+    array (
+      0 => 'id',
+    ),
+    'vname' => 'LBL_RELATED_ALLIANCE',
+  ),
   'description' => 
   array (
     'query_type' => 'default',
