@@ -71,7 +71,7 @@ $linkedAccounts = array($accountId => '');
 }
 
 function getAllActiveAccounts() {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT acc.id, acc.name FROM accounts acc ' .
         'WHERE acc.deleted=0 ' .
         'ORDER BY acc.name ASC';
@@ -86,7 +86,7 @@ function getAllActiveAccounts() {
 }
 
 function getActiveAccountsForRole($id) {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT acc.id, acc.name ' .
         'FROM accounts acc ' .
         'JOIN accounts_nlfro_roles_1_c rel ' .
@@ -170,7 +170,7 @@ function getActiveWorkingGroupsHtml($focus, $name, $value, $view) {
 }
 
 function getAllActiveWorkingGroups(/*$serviceId = null*/) {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     /*$serviceJoin = '';
     $serviceWhere = '';
     if ($serviceId !== null) {
@@ -195,7 +195,7 @@ function getAllActiveWorkingGroups(/*$serviceId = null*/) {
 }
 
 function getActiveWorkingGroupsForRole($id/*, $serviceId = null*/) {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     /*$serviceJoin = '';
     $serviceWhere = '';
     if ($serviceId !== null) {
@@ -279,7 +279,7 @@ function getActiveBusinessRelationshipsHtml($focus, $name, $value, $view) {
 // TODO: make accountId non nullable?
 // TODO: can be moved to ajax action file?
 function getAllActiveBusinessRelationships($accountId = null, $options = array()) {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $accountJoin = '';
     $accountWhere = '';
     if ($accountId !== null) {
@@ -316,7 +316,7 @@ function getAllianceNameString(array $ids) {
         return '';
     }
 
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $idString = implode(', ', array_map(
         function ($x) use ($db) {
             return '"' . $db->quote($x) . '"';
@@ -338,7 +338,7 @@ function getAllianceNameString(array $ids) {
 
 // TODO: this no longer needed?
 function getActiveBusinessRelationshipsForRole($id, $accountId = null) {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $accountJoin = '';
     $accountWhere = '';
     if ($accountId !== null) {
@@ -405,7 +405,7 @@ function getAllActiveAccountsInBusinessRelationshipsHtml($focus, $name, $value, 
 
 
 function getAllActiveAccountsInBusinessRelationships() {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT acc.id, acc.name FROM accounts acc ' .
         'WHERE acc.deleted=0 ' .
         'AND EXISTS(' .
@@ -532,7 +532,7 @@ function getActiveAlliancesHtml($focus, $name, $value, $view) {
 }
 
 function getAllActiveAlliances() {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT al.id, al.name FROM nlfal_alliances al ' .
         'WHERE al.deleted=0 ' .
         'ORDER BY al.name ASC';
@@ -547,7 +547,7 @@ function getAllActiveAlliances() {
 }
 
 function getActiveAlliancesForRole($id) {
-    $db = $GLOBALS['db'];
+    $db = DBManagerFactory::getInstance();
     $query = 'SELECT al.id, al.name ' .
         'FROM nlfal_alliances al ' .
         'JOIN nlfal_alliances_nlfro_roles_1_c rel ' .

@@ -158,7 +158,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             //else { $GLOBALS['log']->fatal('unchanged: ' . print_r($newData, true)); }
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         foreach ($toDelete as $data) {
             $query = 'DELETE FROM nlfbr_businessrelationships_aos_contracts_1_c WHERE id="' . $db->quote($data['id']) . '"';
@@ -405,7 +405,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             }
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         foreach ($toDelete as $data) {
             $query = 'DELETE FROM nlfbr_businessrelationships_finna_views WHERE id="' . $db->quote($data['id']) . '"';
@@ -630,7 +630,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             }
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         foreach ($toDelete as $data) {
             $query = 'DELETE FROM nlfbr_businessrelationships_data_sources WHERE id="' . $db->quote($data['id']) . '"';
@@ -915,7 +915,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             }
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         foreach ($toDelete as $data) {
             $query = 'DELETE FROM nlfbr_businessrelationships_finna_links WHERE id="' . $db->quote($data['id']) . '"';

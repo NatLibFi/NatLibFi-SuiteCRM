@@ -7,7 +7,7 @@ class AllianceNameHelper {
             return array();
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT name_fin_c, name_swe_c, name_eng_c, name_other_c, name_other_lang_c, name_default_lang_c ' .
             'FROM nlfal_alliances_cstm ' .

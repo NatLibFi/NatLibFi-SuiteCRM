@@ -117,7 +117,7 @@ class ContactBeforeSaveHook
                     $bean->db->save_audit_records($bean, $auditRow);
                 }
             } else{
-                $db = $GLOBALS['db'];
+                $db = DBManagerFactory::getInstance();
 
                 $oldData = $this->getContactAccountData($db, $bean->id, $id);
 

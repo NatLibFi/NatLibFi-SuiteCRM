@@ -54,7 +54,7 @@ class CustomEmail extends Email {
         }
 
         $filteredIds = array();
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $idString = implode(',', array_map( function($id) use ($db) {return '"' . $db->quote($id) . '"';}, $ids ) );
         $query = 'SELECT contacts.id FROM contacts ' .

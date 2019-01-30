@@ -78,7 +78,7 @@ class LeadProcessRecordHook
             return;
         }
 
-        $db = $GLOBALS['db'];
+        $db = DBManagerFactory::getInstance();
 
         $query = 'SELECT link_url FROM lead_service_mail_links ' .
             'WHERE lead_id="' . $db->quote($id) . '" ' .
