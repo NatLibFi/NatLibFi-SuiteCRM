@@ -116,10 +116,9 @@ array (
         array (
           0 => 
           array (
-            'name' => 'report_to_name',
-            'label' => 'LBL_REPORTS_TO',
+            'name' => 'description',
+            'label' => 'LBL_DESCRIPTION',
           ),
-          1 => 'campaign_name',
         ),
       ),
     ),
