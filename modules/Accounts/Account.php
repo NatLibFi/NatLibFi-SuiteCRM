@@ -417,13 +417,15 @@ class Account extends Company implements EmailInterface
 
     private function _create_proper_name_field()
     {
-        $this->name = $this->name_fin_c;
+        $this->name = isset($this->name_fin_c) ? $this->name_fin_c : '';
+        $defaultLang = isset($this->name_default_lang_c) ? $this->name_default_lang_c : 'fin';
+        $this->name_default_lang_c = $defaultLang;
 
-        if ($this->name_default_lang_c === 'swe') {
+        if ($defaultLang === 'swe') {
             $this->name = $this->name_swe_c;
-        } elseif ($this->name_default_lang_c === 'eng') {
+        } elseif ($defaultLang === 'eng') {
             $this->name = $this->name_eng_c;
-        } elseif ($this->name_default_lang_c === 'other') {
+        } elseif ($defaultLang === 'other') {
             $this->name = $this->name_other_c;
         }
     }
