@@ -35,7 +35,7 @@ class PopupPickerTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $this->assertContains('<body class="popupBody">', $output);
         $this->assertContains('<div class=\'moduleTitle\'>', $output);
         $this->assertContains('<img src="themes/default/images/print.gif', $output);
-        $this->assertContains('Fields audited in this module: Lawful Basis Date Reviewed, Do Not Call, Office Phone, Assigned User, Lawful Basis, Lawful Basis Source', $output);
+        $this->assertContains('Fields audited in this module: Lawful Basis Date Reviewed, Do Not Call, Title, Description, Email Address, First Name, Salutation, Last Name, Other Phone, Office Phone, Assigned User, Lawful Basis, Lawful Basis Source', $output);
         
         $state->popTable('aod_indexevent');
         $state->popTable('contacts_cstm');
