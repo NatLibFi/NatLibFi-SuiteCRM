@@ -682,7 +682,10 @@ class EmailTemplate extends SugarBean
                         $contactFieldName = $contact->$fieldName;
                     }
 
-                    $translated = translate($field_def['options'], 'Accounts', $contactFieldName);
+                    $translated = null;
+                    if (isset($field_def['options'])) {
+                        $translated = translate($field_def['options'], 'Accounts', $contactFieldName);
+                    }
 
                     if (isset($translated) && !is_array($translated)) {
                         $repl_arr = EmailTemplate::add_replacement($repl_arr, $field_def, array(
@@ -788,7 +791,7 @@ class EmailTemplate extends SugarBean
     {
         foreach ($replacement as $key => $value) {
             // @see defect #48641
-            if ('multienum' == $field_def['type']) {
+            if ('multienum' == $field_def['type'] && isset($field_def['options'])) {
                 $mVals = unencodeMultienum($value);
                 $translatedVals = array();
                 foreach ($mVals as $mVal) {
