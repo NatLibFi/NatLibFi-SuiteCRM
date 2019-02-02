@@ -181,7 +181,7 @@ class SAML2Authenticate extends SugarAuthenticate
         $this->samlLogoutArgs = array('returnTo' => $returnTo, 'parameters' => $paramters, 'nameId' => $nameId, 'sessionIndex' => $sessionIndex, 'false' => false, 'nameIdFormat' => $nameIdFormat);
     }
 
-    protected function postLoginAuthenticate() {
+    public function postLoginAuthenticate() {
         $parentResult = parent::postLoginAuthenticate();
         // User logged in using SAML, do not bother possibly expired "local" system password
         // (possibly never changed if only authenticating with SAML).
