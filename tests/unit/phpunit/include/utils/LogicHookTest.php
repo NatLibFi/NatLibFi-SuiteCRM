@@ -222,6 +222,20 @@ class LogicHookTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
                     'AccountsJjwg_MapsLogicHook',
                     'updateGeocodeInfo'
                 ),
+                array(
+                    1,
+                    'Update Account name field to be in sync with the current default language name',
+                    'custom/modules/Accounts/beforeSaveHook.php',
+                    'AccountBeforeSaveHook',
+                    'setAccountName',
+                ),
+                array(
+                    2,
+                    'Set Backend systems relationship with the newly created Account',
+                    'custom/modules/Accounts/beforeSaveHook.php',
+                    'AccountBeforeSaveHook',
+                    'setInitialBackendSystems',
+                ),
             ),
             'after_save' => array(
                 array(
@@ -252,6 +266,20 @@ class LogicHookTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
                     'AccountsJjwg_MapsLogicHook',
                     'updateRelatedCasesGeocodeInfo'
                 ),
+                array(
+                    1,
+                    'Update Back End System data of the Business Relationships, to keep it in sync with the Account',
+                    'custom/modules/Accounts/afterSaveHook.php',
+                    'AccountAfterSaveHook',
+                    'updateBRBackendSystemData',
+                ),
+                array(
+                    2,
+                    'Update Alliance industry list to keep it in sync with the Account',
+                    'custom/modules/Accounts/afterSaveHook.php',
+                    'AccountAfterSaveHook',
+                    'updateAllianceIndustryData',
+                ),
             ),
             'after_relationship_add' => array(
                 array(
@@ -261,6 +289,13 @@ class LogicHookTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
                     'AccountsJjwg_MapsLogicHook',
                     'addRelationship'
                 ),
+                array(
+                    1,
+                    'Always set valid contact role',
+                    'custom/modules/Accounts/afterRelationshipAddHook.php',
+                    'AccountAfterRelationshipAddHook',
+                    'setContactRole',
+                ),
             ),
             'after_relationship_delete' => array(
                 array(
@@ -269,6 +304,29 @@ class LogicHookTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
                     'modules/Accounts/AccountsJjwg_MapsLogicHook.php',
                     'AccountsJjwg_MapsLogicHook',
                     'deleteRelationship'
+                ),
+            ),
+            'process_record' => array(
+                array(
+                    4,
+                    'List names of Alliances related to the Account',
+                    'custom/modules/Accounts/processRecordHook.php',
+                    'AccountProcessRecordHook',
+                    'setAccountAllianceNames',
+                ),
+                array(
+                    3,
+                    'List names of Backend Systems related to the Account',
+                    'custom/modules/Accounts/processRecordHook.php',
+                    'AccountProcessRecordHook',
+                    'setAccountBackendSystemNames',
+                ),
+                array(
+                    2,
+                    'List names of Services related to the Account',
+                    'custom/modules/Accounts/processRecordHook.php',
+                    'AccountProcessRecordHook',
+                    'setAccountServiceNames',
                 ),
             ),
         );
@@ -420,6 +478,20 @@ class LogicHookTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
                         'AccountsJjwg_MapsLogicHook',
                         'updateGeocodeInfo',
                     ),
+                    array(
+                        1,
+                        'Update Account name field to be in sync with the current default language name',
+                        'custom/modules/Accounts/beforeSaveHook.php',
+                        'AccountBeforeSaveHook',
+                        'setAccountName',
+                    ),
+                    array(
+                        2,
+                        'Set Backend systems relationship with the newly created Account',
+                        'custom/modules/Accounts/beforeSaveHook.php',
+                        'AccountBeforeSaveHook',
+                        'setInitialBackendSystems',
+                    ),
                 ),
             'after_save' =>
                 array(
@@ -451,6 +523,20 @@ class LogicHookTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
                         'AccountsJjwg_MapsLogicHook',
                         'updateRelatedCasesGeocodeInfo',
                     ),
+                    array(
+                        1,
+                        'Update Back End System data of the Business Relationships, to keep it in sync with the Account',
+                        'custom/modules/Accounts/afterSaveHook.php',
+                        'AccountAfterSaveHook',
+                        'updateBRBackendSystemData',
+                    ),
+                    array(
+                        2,
+                        'Update Alliance industry list to keep it in sync with the Account',
+                        'custom/modules/Accounts/afterSaveHook.php',
+                        'AccountAfterSaveHook',
+                        'updateAllianceIndustryData',
+                    ),
                 ),
             'after_relationship_add' =>
                 array(
@@ -461,6 +547,13 @@ class LogicHookTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
                         'AccountsJjwg_MapsLogicHook',
                         'addRelationship',
                     ),
+                    array(
+                        1,
+                        'Always set valid contact role',
+                        'custom/modules/Accounts/afterRelationshipAddHook.php',
+                        'AccountAfterRelationshipAddHook',
+                        'setContactRole',
+                    ),
                 ),
             'after_relationship_delete' =>
                 array(
@@ -470,6 +563,30 @@ class LogicHookTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
                         'modules/Accounts/AccountsJjwg_MapsLogicHook.php',
                         'AccountsJjwg_MapsLogicHook',
                         'deleteRelationship',
+                    ),
+                ),
+             'process_record' =>
+                array(
+                    array(
+                        4,
+                        'List names of Alliances related to the Account',
+                        'custom/modules/Accounts/processRecordHook.php',
+                        'AccountProcessRecordHook',
+                        'setAccountAllianceNames',
+                    ),
+                    array(
+                        3,
+                        'List names of Backend Systems related to the Account',
+                        'custom/modules/Accounts/processRecordHook.php',
+                        'AccountProcessRecordHook',
+                        'setAccountBackendSystemNames',
+                    ),
+                    array(
+                        2,
+                        'List names of Services related to the Account',
+                        'custom/modules/Accounts/processRecordHook.php',
+                        'AccountProcessRecordHook',
+                        'setAccountServiceNames',
                     ),
                 ),
         );
