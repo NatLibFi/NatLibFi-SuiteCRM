@@ -29,12 +29,12 @@ function getAccountNameWidgetForEditView($id, $module, $view, $tabindex='0') {
 
     $smarty->assign('mod_strings', $mod_strings);
 
-    $smarty->assign('name_fin', $nameData['name_fin']);
-    $smarty->assign('name_swe', $nameData['name_swe']);
-    $smarty->assign('name_eng', $nameData['name_eng']);
-    $smarty->assign('name_other', $nameData['name_other']);
-    $smarty->assign('name_other_lang', $nameData['other_lang']);
-    $smarty->assign('name_default_lang', $nameData['default_lang']);
+    $smarty->assign('name_fin', array_key_exists('name_fin', $nameData) ? $nameData['name_fin'] : '');
+    $smarty->assign('name_swe', array_key_exists('name_swe', $nameData) ? $nameData['name_swe'] : '');
+    $smarty->assign('name_eng', array_key_exists('name_eng', $nameData) ? $nameData['name_eng'] : '');
+    $smarty->assign('name_other', array_key_exists('name_other', $nameData) ? $nameData['name_other'] : '');
+    $smarty->assign('name_other_lang', array_key_exists('other_lang', $nameData) ? $nameData['other_lang'] : '');
+    $smarty->assign('name_default_lang', array_key_exists('default_lang', $nameData) ? $nameData['default_lang'] : '');
 
     $templateFile = 'custom/modules/Accounts/tpls/NameWidgetEditView.tpl';
 
