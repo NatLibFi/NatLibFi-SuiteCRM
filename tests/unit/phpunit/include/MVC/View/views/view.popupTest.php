@@ -61,23 +61,26 @@ class ViewPopupTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         // test no custom module Popup picker
         // test module Popup picker exists
 
-        $this->assertFileNotExists($customPath);
-
-        $result = get_custom_file_if_exists($modulePath);
-
-        $this->assertSame($modulePath, $result);
+        $customFileExistsPriorToTest = false;
+        if (file_exists($customPath)) {
+            $customFileExistsPriorToTest = true;
+        }
 
         // Now add a custom module Popup picker
 
         // Create mock file
         // @TODO set up vfsStream and test get_custom_file_if_exists
 
+        $testHasCreatedDirectory = false;
         $dirname = dirname($customPath);
         if (!is_dir($dirname)) {
             mkdir($dirname, 0755, true);
+            $testHasCreatedDirectory = true;
         }
 
-        file_put_contents($customPath, '');
+        if (!$customFileExistsPriorToTest) {
+            file_put_contents($customPath, '');
+        }
 
         $this->assertFileExists($customPath);
 
@@ -86,8 +89,12 @@ class ViewPopupTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $this->assertSame($customPath, $result);
 
         // Cleanup
-        unlink($customPath);
-        rmdir($dirname);
+        if (!$customFileExistsPriorToTest) {
+            unlink($customPath);
+        }
+        if ($testHasCreatedDirectory) {
+            rmdir($dirname);
+        }
     }
 
     public function testdisplayGetCustomDefaultPopupPickerIdNoModulePopupPicker()
@@ -121,9 +128,11 @@ class ViewPopupTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         // Create mock file
         // @TODO set up vfsStream and test get_custom_file_if_exists
 
+        $testHasCreatedDirectory = false;
         $dirname = dirname($customPath);
         if (!is_dir($dirname)) {
             mkdir($dirname, 0755, true);
+            $testHasCreatedDirectory = true;
         }
 
         file_put_contents($customPath, '');
@@ -136,6 +145,8 @@ class ViewPopupTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
         // Cleanup
         unlink($customPath);
-        rmdir($dirname);
+        if ($testHasCreatedDirectory) {
+            rmdir($dirname);
+        }
     }
 }
