@@ -847,7 +847,7 @@ class UserTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $expected =
             '<a class="email-link"'
             . ' onclick="$(document).openComposeViewModal(this);" data-module="Accounts" '
-            . 'data-record-id="" data-module-name="test" data-email-address="abc@email.com">abc@email.com</a>';
+            . 'data-record-id="" data-module-name="" data-email-address="abc@email.com">abc@email.com</a>';
         $actual = $user->getEmailLink2("abc@email.com", $account);
         $this->assertSame($expected, $actual);
 
