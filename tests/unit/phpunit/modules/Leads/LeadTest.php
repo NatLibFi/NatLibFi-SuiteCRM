@@ -291,6 +291,15 @@ class LeadTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
             'prospect_lists',
             'fp_events_leads_1',
             'SecurityGroups',
+            'accounts_leads_1',
+            'accounts_leads_1accounts_ida',
+            'contacts_leads_1',
+            'contacts_leads_1contacts_ida',
+            'contacts_leads_2',
+            'nlfbr_busif7d0onships_ida',
+            'nlfbr_businessrelationships_leads_1',
+            'nlfse_services_leads_1',
+            'nlfse_services_leads_1nlfse_services_ida',
         );
         $actual = $lead->get_linked_fields();
         $this->assertTrue(is_array($actual));

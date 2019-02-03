@@ -402,6 +402,12 @@ class SecurityGroupTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
             'SurveyQuestions' => 'SurveyQuestions',
             'SurveyResponses' => 'SurveyResponses',
             'Surveys' => 'Surveys',
+            'nlfal_Alliances',
+            'nlfbr_BusinessRelationships',
+            'nlfbs_BackendSystems',
+            'nlfro_Roles',
+            'nlfse_Services',
+            'nlfwg_WorkingGroups',
         );
 
         $actual = $securityGroup->getSecurityModules();
