@@ -290,6 +290,7 @@ class SugarBeanTest extends SuitePHPUnit_Framework_TestCase
             72 => 'securitygroup_primary_group',
             73 => 'factor_auth',
             74 => 'factor_auth_interface',
+            75 => 'security_group_names',
         ), $bean->column_fields);
 
         $keys = array_keys($bean->field_name_map);
@@ -406,6 +407,7 @@ class SugarBeanTest extends SuitePHPUnit_Framework_TestCase
             72 => 'securitygroup_primary_group',
             73 => 'factor_auth',
             74 => 'factor_auth_interface',
+            75 => 'security_group_names',
         ), $bean->column_fields);
 
         $keys = array_keys($bean->field_name_map);
@@ -522,6 +524,7 @@ class SugarBeanTest extends SuitePHPUnit_Framework_TestCase
             72 => 'securitygroup_primary_group',
             73 => 'factor_auth',
             74 => 'factor_auth_interface',
+            75 => 'security_group_names',
         ), $bean->column_fields);
 
         $keys = array_keys($bean->field_name_map);
@@ -1438,7 +1441,10 @@ class SugarBeanTest extends SuitePHPUnit_Framework_TestCase
                     'boost' => 1
                 ),
                 'comment' => 'Work phone number of the contact',
-                'merge_filter' => 'enabled',
+                'merge_filter' => 'disabled',
+                'inline_edit' => true,
+                'comments' => 'Ensisijainen puhelinnumero',
+                'help' => 'puhelinnumero muodossa +358501234567',
             ),
             'lawful_basis' => array(
                 'name' => 'lawful_basis',
@@ -1479,6 +1485,115 @@ class SugarBeanTest extends SuitePHPUnit_Framework_TestCase
                 'options' => 'lawful_basis_source_dom',
                 'audited' => true,
                 'importable' => true,
+            ),
+            'description' => array(
+                'name' => 'description',
+                'vname' => 'LBL_DESCRIPTION',
+                'type' => 'text',
+                'comment' => 'Full text of the note',
+                'rows' => 6,
+                'cols' => 80,
+                'audited' => true,
+                'inline_edit' => true,
+                'comments' => 'Full text of the note',
+                'merge_filter' => 'disabled',
+            ),
+            'salutation' => array(
+                'name' => 'salutation',
+                'vname' => 'LBL_SALUTATION',
+                'type' => 'enum',
+                'options' => 'salutation_dom',
+                'massupdate' => '1',
+                'len' => 100,
+                'comment' => 'Contact salutation (e.g., Mr, Ms)',
+                'inline_edit' => true,
+                'comments' => 'Contact salutation (e.g., Mr, Ms)',
+                'merge_filter' => 'disabled',
+                'audited' => true,
+            ),
+            'first_name' => array(
+                'name' => 'first_name',
+                'vname' => 'LBL_FIRST_NAME',
+                'type' => 'varchar',
+                'len' => '100',
+                'unified_search' => true,
+                'full_text_search' => array(
+                    'boost' => 3,
+                ),
+                'comment' => 'First name of the contact',
+                'merge_filter' => 'disabled',
+                'audited' => true,
+                'inline_edit' => true,
+                'comments' => 'First name of the contact',
+            ),
+            'last_name' => array(
+                'name' => 'last_name',
+                'vname' => 'LBL_LAST_NAME',
+                'type' => 'varchar',
+                'len' => '100',
+                'unified_search' => true,
+                'full_text_search' => array(
+                    'boost' => 3,
+                ),
+                'comment' => 'Last name of the contact',
+                'merge_filter' => 'disabled',
+                'required' => true,
+                'importable' => 'required',
+                'audited' => true,
+                'inline_edit' => true,
+                'comments' => 'Last name of the contact',
+            ),
+            'title' => array(
+                'name' => 'title',
+                'vname' => 'LBL_TITLE',
+                'type' => 'varchar',
+                'len' => '100',
+                'comment' => 'The title of the contact',
+                'audited' => true,
+                'inline_edit' => true,
+                'comments' => 'The title of the contact',
+                'merge_filter' => 'disabled',
+            ),
+            'phone_other' => array(
+                'name' => 'phone_other',
+                'vname' => 'LBL_OTHER_PHONE',
+                'type' => 'phone',
+                'dbType' => 'varchar',
+                'len' => 100,
+                'unified_search' => true,
+                'full_text_search' => array(
+                    'boost' => 1,
+                ),
+                'comment' => 'Other phone number for the contact',
+                'merge_filter' => 'disabled',
+                'inline_edit' => true,
+                'comments' => 'Vaihtoehtoinen puhelinnumero',
+                'audited' => true,
+                'help' => 'puhelinnumero muodossa +358501234567',
+            ),
+            'email1' => array(
+                'name' => 'email1',
+                'vname' => 'LBL_EMAIL_ADDRESS',
+                'type' => 'varchar',
+                'function' => array(
+                    'name' => 'getEmailAddressWidget',
+                    'returns' => 'html',
+                ),
+                'source' => 'non-db',
+                'group' => 'email1',
+                'merge_filter' => 'disabled',
+                'studio' => array(
+                    'editview' => true,
+                    'editField' => true,
+                    'searchview' => false,
+                    'popupsearch' => false,
+                ),
+                'full_text_search' => array(
+                    'boost' => 3,
+                    'analyzer' => 'whitespace',
+                ),
+                'audited' => true,
+                'inline_edit' => true,
             ),
         ), $results);
     }
