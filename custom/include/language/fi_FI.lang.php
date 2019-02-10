@@ -472,6 +472,12 @@ $GLOBALS['app_list_strings']['contact_alliance_role_list']=array (
   'alliance_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
   'alliance_ei_tiedossa' => 'Ei tiedossa',
 );
+$app_list_strings['contact_lead_role_list'] = array();
+
+foreach ($app_list_strings['contact_business_relationship_role_list'] as $key => $value) {
+    $app_list_strings['contact_lead_role_list']['lead_' . $key] = $value;
+}
+
 $GLOBALS['app_list_strings']['industry_dom']=array (
   '' => '',
   'University' => 'Yliopisto',
@@ -485,8 +491,30 @@ $GLOBALS['app_list_strings']['industry_dom']=array (
   'media' => 'Media',
   'Other' => 'muu',
 );
-$app_list_strings['contact_lead_role_list'] = array();
-
-foreach ($app_list_strings['contact_business_relationship_role_list'] as $key => $value) {
-    $app_list_strings['contact_lead_role_list']['lead_' . $key] = $value;
-}
+$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
+  'br_ei_tiedossa' => 'Ei tiedossa',
+  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
+  'br_yhteyshenkilo' => 'Yhteyshenkilö',
+  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä',
+  'br_projektinvetaja' => 'Projektinvetäjä',
+  'br_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
+  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
+  'br_sfx' => 'SXF yhteyshenkilö',
+  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
+  'br_tietokannanyhteyshenkilo' => 'Tietokannan yhteyshenkilö',
+  'br_uxyhteyshenkilo' => 'UX yhteyshenkilö',
+  'br_viestinnanyhteyshenkilo' => 'Viestinnän yhteyshenkilö',
+);
+$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
+  'br_ei_tiedossa' => 'Ei tiedossa',
+  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
+  'br_yhteyshenkilo' => 'Yhteyshenkilö',
+  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä',
+  'br_projektinvetaja' => 'Projektinvetäjä',
+  'br_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
+  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
+  'br_sfx' => 'SXF yhteyshenkilö',
+  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
+  'br_tietokannanyhteyshenkilo' => 'Tietokannan yhteyshenkilö',
+  'br_viestinnanyhteyshenkilo' => 'Viestinnän yhteyshenkilö',
+);
