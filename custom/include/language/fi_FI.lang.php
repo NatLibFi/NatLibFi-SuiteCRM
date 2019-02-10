@@ -491,3 +491,30 @@ $GLOBALS['app_list_strings']['industry_dom']=array (
   'PublicLibrary' => 'Yleinen kirjasto',
   'University' => 'Yliopisto',
 );
+$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
+  'br_ei_tiedossa' => 'Ei tiedossa',
+  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
+  'br_yhteyshenkilo' => 'Yhteyshenkilö',
+  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä',
+  'br_projektinvetaja' => 'Projektinvetäjä',
+  'br_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
+  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
+  'br_sfx' => 'SXF yhteyshenkilö',
+  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
+  'br_tietokannanyhteyshenkilo' => 'Tietokannan yhteyshenkilö',
+  'br_uxyhteyshenkilo' => 'UX yhteyshenkilö',
+  'br_viestinnanyhteyshenkilo' => 'Viestinnän yhteyshenkilö',
+);
+$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
+  'br_ei_tiedossa' => 'Ei tiedossa',
+  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.)',
+  'br_yhteyshenkilo' => 'Yhteyshenkilö',
+  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä',
+  'br_projektinvetaja' => 'Projektinvetäjä',
+  'br_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
+  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö',
+  'br_sfx' => 'SXF yhteyshenkilö',
+  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö',
+  'br_tietokannanyhteyshenkilo' => 'Tietokannan yhteyshenkilö',
+  'br_viestinnanyhteyshenkilo' => 'Viestinnän yhteyshenkilö',
+);

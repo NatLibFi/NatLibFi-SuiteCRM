@@ -478,3 +478,30 @@ $GLOBALS['app_list_strings']['industry_dom']=array (
   'julkishallinto' => 'Julkishallinto',
   'media' => 'Media',
 );
+$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
+  'br_projektinvetaja' => 'Projektinvetäjä (br)',
+  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö (br)',
+  'br_yhteyshenkilo' => 'Yhteyshenkilö (br)',
+  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö (br)',
+  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä (br)',
+  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) br',
+  'br_ei_tiedossa' => 'Ei tiedossa',
+  'br_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
+  'br_tietokannanyhteyshenkilo' => 'Tietokannan yhteyshenkilö',
+  'br_viestinnanyhteyshenkilo' => 'Viestinnän yhteyshenkilö',
+  'br_sfx' => 'SXF yhteyshenkilö',
+  'br_uxyhteyshenkilo' => 'UX yhteyshenkilö',
+);
+$GLOBALS['app_list_strings']['contact_business_relationship_role_list']=array (
+  'br_projektinvetaja' => 'Projektinvetäjä (br)',
+  'br_sopimusyhdyshenkilo' => 'Sopimusyhdyshenkilö (br)',
+  'br_yhteyshenkilo' => 'Yhteyshenkilö (br)',
+  'br_tekninenyhteyshenkilo' => 'Tekninen yhteyshenkilö (br)',
+  'br_hallintaliittymanpaakayttaja' => 'Hallintaliittymän pääkäyttäjä (br)',
+  'br_poissa' => 'Poissa väliaikaisesti (virka-/hoitovapaa tms.) br',
+  'br_ei_tiedossa' => 'Ei tiedossa',
+  'br_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
+  'br_tietokannanyhteyshenkilo' => 'Tietokannan yhteyshenkilö',
+  'br_viestinnanyhteyshenkilo' => 'Viestinnän yhteyshenkilö',
+  'br_sfx' => 'SXF yhteyshenkilö',
+);
