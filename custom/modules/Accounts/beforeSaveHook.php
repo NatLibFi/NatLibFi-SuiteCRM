@@ -8,7 +8,10 @@ class AccountBeforeSaveHook
     {
         $oldName = $bean->name;
 
-        $bean->name = $bean->name_fin_c;
+        $bean->name = isset($bean->name_fin_c) ? $bean->name_fin_c : '';
+
+        $defaultLang = isset($this->name_default_lang_c) ? $this->name_default_lang_c : 'fin';
+        $bean->name_default_lang_c = $defaultLang;
 
         if ($bean->name_default_lang_c === 'swe') {
             $bean->name = $bean->name_swe_c;
