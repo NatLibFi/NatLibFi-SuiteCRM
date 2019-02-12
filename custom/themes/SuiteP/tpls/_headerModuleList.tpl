@@ -145,7 +145,7 @@
                                     {if $foundRecents || $foundFavorits || count($shortcutTopMenu.$name) > 0}
 
                                         <ul class="dropdown-menu" role="menu">
-                                            <li>
+                                            <li class="current-module-action-links">
                                                 <ul>
                                                     {if count($shortcutTopMenu.$name) > 0}
                                                         {foreach from=$shortcutTopMenu.$name item=item}
