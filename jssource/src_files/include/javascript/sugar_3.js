@@ -2205,6 +2205,10 @@ sugarListView.prototype.send_form_for_emails = function (select, currentModule, 
 
   //YAHOO.util.Connect.asyncRequest('POST', 'index.php', callback, null);
   var emailComposeUrl = 'index.php?module=Emails&action=Compose&ListView=true&uid=' + uidTa.value + '&action_module=' + action_module;
+  if (document.MassUpdate.select_entire_list.value == 1) {
+    emailComposeUrl += '&current_post=' + document.MassUpdate.current_query_by_page.value;
+  }
+
   var emailLink = document.createElement('a');
   emailLink.target = '_blank';
   emailLink.href = emailComposeUrl;
