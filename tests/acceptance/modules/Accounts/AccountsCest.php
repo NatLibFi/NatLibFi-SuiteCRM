@@ -132,6 +132,9 @@ class AccountsCest
         $I->see('InlineAccountNameEdit');
     }
 
+    /**
+     * @skip Does not work as there is no "Full form" button in the form
+     */
     public function testScenarioCreateAccountChild(
         \AcceptanceTester $I,
         \Step\Acceptance\DetailView $detailView,

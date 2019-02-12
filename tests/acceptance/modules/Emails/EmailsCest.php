@@ -33,6 +33,8 @@ class EmailsCest
     }
 
     /**
+     * @skip Temporarily
+     *
      * @param AcceptanceTester $I
      * @param ListView $listView
      * @param EmailsTester $emails
