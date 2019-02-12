@@ -54,6 +54,9 @@ class UsersCest
         $I->see('Connection completed successfully.');
     }
 
+    /**
+     * @skip Temporarily
+     */
     public function testShowCollapsedSubpanelHint(
         AcceptanceTester $I,
         DetailView $DetailView,
