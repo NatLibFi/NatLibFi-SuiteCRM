@@ -56,6 +56,8 @@ class CasesCest
     }
 
     /**
+     * @skip Temporarily
+     *
      * @param \AcceptanceTester $I
      * @param \Step\Acceptance\DetailView $detailView
      * @param \Step\Acceptance\ListView $listView
