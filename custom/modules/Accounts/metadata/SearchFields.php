@@ -328,6 +328,25 @@ $searchFields['Accounts'] = array (
     ),
     'vname' => 'LBL_HAS_ACTIVE_CONTRACT_TITLE',
   ),
+  'related_active_contract' => 
+  array (
+    'query_type' => 'format',
+    'operator' => 'subquery',
+    'subquery' => 'SELECT accounts.id FROM accounts JOIN accounts_nlfbr_businessrelationships_1_c br_rel ON br_rel.accounts_nlfbr_businessrelationships_1accounts_ida=accounts.id JOIN nlfbr_businessrelationships_aos_contracts_1_c contract_rel ON br_rel.accounts_n824donships_idb=contract_rel.nlfbr_busi9351onships_ida {related_subquery.service_join} WHERE accounts.deleted=0 AND br_rel.deleted=0 AND contract_rel.deleted=0  {related_subquery.service_where} AND contract_rel.active=1 AND contract_rel.nlfbr_businessrelationships_aos_contracts_1aos_contracts_idb IN ({0})',
+    'related_subquery_parts' => 
+    array (
+      'related_service' => 
+      array (
+        'service_join' => 'JOIN nlfse_services_nlfbr_businessrelationships_1_c s_rel ON br_rel.accounts_n824donships_idb=s_rel.nlfse_serva51aonships_idb',
+        'service_where' => 'AND s_rel.deleted=0 AND s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida IN ({0})',
+      ),
+    ),
+    'db_field' => 
+    array (
+      0 => 'id',
+    ),
+    'vname' => 'LBL_RELATED_ACTIVE_CONTRACT',
+  ),
   'related_contract' => 
   array (
     'query_type' => 'format',
