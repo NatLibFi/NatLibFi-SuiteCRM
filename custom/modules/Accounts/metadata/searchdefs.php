@@ -110,6 +110,14 @@ array (
         'default' => true,
         'name' => 'related_contract',
       ),
+      'contract_year' => 
+      array (
+        'type' => 'varchar',
+        'label' => 'LBL_CONTRACT_YEAR',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'contract_year',
+      ),
       'related_service' => 
       array (
         'type' => 'enum',

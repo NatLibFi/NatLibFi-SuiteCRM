@@ -19,3 +19,12 @@ $dictionary["Account"]["fields"]['related_contract'] = array(
   'studio' => array('listview' => false, 'detailview' => false, 'editview' => false, 'searchview' => true),
   'massupdate' => false,
 );
+
+$dictionary["Account"]["fields"]['contract_year'] = array(
+  'name' => 'contract_year',
+  'vname' => 'LBL_CONTRACT_YEAR',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'studio' => array('listview' => false, 'detailview' => false, 'editview' => false, 'searchview' => true),
+  'massupdate' => false,
+);
