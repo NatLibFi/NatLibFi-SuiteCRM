@@ -178,6 +178,14 @@ array (
         'width' => '10%',
         'name' => 'br_contract',
       ),
+      'contract_year' => 
+      array (
+        'type' => 'varchar',
+        'default' => true,
+        'label' => 'LBL_CONTRACT_YEAR',
+        'width' => '10%',
+        'name' => 'contract_year',
+      ),
       'business_relationship_roles' => 
       array (
         'type' => 'enum',
