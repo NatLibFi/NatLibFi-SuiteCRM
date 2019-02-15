@@ -94,6 +94,14 @@ array (
         'width' => '10%',
         'name' => 'open_only_has_active_contract',
       ),
+      'related_contract' => 
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_RELATED_CONTRACT',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'related_contract',
+      ),
       'related_service' => 
       array (
         'type' => 'enum',
