@@ -8,7 +8,12 @@ $layout_defs["Accounts"]["subpanel_setup"]['accounts_aos_contracts_1'] = array (
   'sort_by' => 'id',
   //'title_key' => 'LBL_ACCOUNTS_AOS_CONTRACTS_1_FROM_AOS_CONTRACTS_TITLE',
   'title_key' => 'AOS_Contracts',
-  'get_subpanel_data' => 'accounts_aos_contracts_1',
+  'get_subpanel_data' => 'function:getActiveContractsRelatedToAccountForSubpanelQueryParts',
+  'function_parameters' => array(
+    'import_function_file' => 'custom/Extension/application/Ext/Utils/Accounts.php',
+    'account_id' => $_REQUEST['record'],
+  ),
+  'generate_select' => true,
   'top_buttons' => '',
   /*array (
     0 => 

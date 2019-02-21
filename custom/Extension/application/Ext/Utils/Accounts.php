@@ -211,3 +211,19 @@ function getAccountAndBRRolesForContact($contactId, $accountId) {
 
     return $allRoles;
 }
+
+
+function getActiveContractsRelatedToAccountForSubpanelQueryParts($params) {
+    $accountId = $params['account_id'];
+
+    $db = $GLOBALS['db'];
+
+    return array(
+        'select' => 'SELECT aos_contracts.*',
+        'from' => 'FROM aos_contracts',
+        'where' => 'WHERE aos_contracts.deleted=0 AND aos_contracts.status!="paattynyt" AND br_rel.deleted=0 AND acc_rel.deleted=0 AND acc_rel.accounts_nlfbr_businessrelationships_1accounts_ida="' . $db->quote($accountId) . '"',
+        'join' => ' JOIN nlfbr_businessrelationships_aos_contracts_1_c br_rel ON br_rel.nlfbr_businessrelationships_aos_contracts_1aos_contracts_idb=aos_contracts.id ' .
+            'JOIN accounts_nlfbr_businessrelationships_1_c acc_rel ON acc_rel.accounts_n824donships_idb=br_rel.nlfbr_busi9351onships_ida',
+        'join_tables' => '',
+    );
+}
