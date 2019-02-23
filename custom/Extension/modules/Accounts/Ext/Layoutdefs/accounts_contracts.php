@@ -1,6 +1,6 @@
 <?php
  // created: 2017-03-07 23:06:24
-$layout_defs["Accounts"]["subpanel_setup"]['accounts_aos_contracts_1'] = array (
+$layout_defs["Accounts"]["subpanel_setup"]['accounts_contracts'] = array (
   'order' => 4,
   'module' => 'AOS_Contracts',
   'subpanel_name' => 'default',
