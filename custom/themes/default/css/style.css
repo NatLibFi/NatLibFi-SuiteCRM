@@ -19,6 +19,11 @@
     font-weight: bold;
 }
 
+tr.multirow-even
+{
+    background-color: #dfdfdf;
+}
+
 tr.multirow-last td
 {
     padding-bottom: 3em !important;
