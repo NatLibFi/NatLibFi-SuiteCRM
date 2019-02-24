@@ -23,6 +23,13 @@
                 {$mod_strings.LBL_FINNA_VIEW_PRODUCTION_DATE_TITLE}
                 {$view.production_date}
             </td>
+            <td> </td>
+        </tr>
+        <tr class="{$rowClass}">
+            <td>
+                {$mod_strings.LBL_FINNA_VIEW_PIWIK_ID_TITLE}
+                {$view.piwik_id}
+            </td>
             <td></td>
         </tr>
         <tr class="multirow-last {$rowClass}">

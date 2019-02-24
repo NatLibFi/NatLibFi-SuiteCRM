@@ -47,6 +47,7 @@
                     o[i].view_status,
                     o[i].view_url,
                     o[i].production_date,
+                    o[i].piwik_id,
                     o[i].description
                 );
 			}
@@ -68,7 +69,7 @@
 		    return false;
 		},//freezeEvent
 		
-		addFinnaView : function (tableId, recordId, viewStatus, viewUrl, productionDate, viewDescription) {
+		addFinnaView : function (tableId, recordId, viewStatus, viewUrl, productionDate, viewPiwikId, viewDescription) {
 			if (this.addInProgress)
 			    return;
 			this.addInProgress = true;
@@ -83,6 +84,7 @@
 		    var newContentRecordId = document.createElement("input");
 		    var newContentViewUrl = document.createElement("input");
             var newContentProductionDate = document.createElement("input");
+		    var newContentPiwikId = document.createElement("input");
 		    var newContentDescription = document.createElement("input");
 		    var removeButton = document.createElement("button");
             var removeButtonImg = document.createElement('img');
@@ -90,6 +92,7 @@
 		    var tr = document.createElement("tr");
 		    var tr2 = document.createElement("tr");
 		    var tr3 = document.createElement("tr");
+		    var tr4 = document.createElement("tr");
 		    var td1 = document.createElement("td");
 		    var td2 = document.createElement("td");
 		    var td3 = document.createElement("td");
@@ -99,6 +102,9 @@
 		    var td7 = document.createElement("td");
 		    var td8 = document.createElement("td");
 		    var td9 = document.createElement("td");
+		    var td10 = document.createElement("td");
+		    var td11 = document.createElement("td");
+		    var td12 = document.createElement("td");
 
             //use the value if the tabindex value for the field has been passed in from metadata (defined in include/EditView/EditView.tpl
             //else default to 0 
@@ -158,6 +164,14 @@
 		    newContentViewUrl.setAttribute("enabled", "true");
             newContentViewUrl.setAttribute("tabindex", tabIndexCount);
 
+		    newContentPiwikId.setAttribute("type", "text");
+		    newContentPiwikId.setAttribute("name", "finna_view_piwik_id" + this.numberViews);
+		    newContentPiwikId.setAttribute("id", "finna_view_piwik_id" + this.numberViews);
+		    newContentPiwikId.setAttribute("value", viewPiwikId);
+		    newContentPiwikId.setAttribute("size", "30");
+		    newContentPiwikId.setAttribute("enabled", "true");
+            newContentPiwikId.setAttribute("tabindex", tabIndexCount);
+
 		    newContentDescription.setAttribute("type", "text");
 		    newContentDescription.setAttribute("name", "finna_view_description" + this.numberViews);
 		    newContentDescription.setAttribute("id", "finna_view_description" + this.numberViews);
@@ -200,7 +214,8 @@
 		    
 		    tr.setAttribute("id", this.id + "brFinnaViewRow" + this.numberViews);
 		    tr2.setAttribute("id", this.id + "brFinnaViewRowProductionDate" + this.numberViews);
-		    tr3.setAttribute("id", this.id + "brFinnaViewRowDesc" + this.numberViews);
+            tr3.setAttribute("id", this.id + "brFinnaViewRowPiwikId" + this.numberViews);
+		    tr4.setAttribute("id", this.id + "brFinnaViewRowDesc" + this.numberViews);
 		    
 		    td1.appendChild(newContentRecordId);
 
@@ -236,11 +251,11 @@
 		    spanNodeRow4.innerHTML = '&nbsp;';
 		    td6.appendChild(spanNodeRow4);
 
-            newContactDescriptionLabel = document.createElement('span');
-            newContactDescriptionLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_FINNA_VIEW_DESCRIPTION_TITLE')
-            td7.appendChild(newContactDescriptionLabel);
-            td7.appendChild(newContentDescription);
-		    
+            newContactPiwikIdLabel = document.createElement('span');
+            newContactPiwikIdLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_FINNA_VIEW_PIWIK_ID_TITLE')
+		    td7.appendChild(newContactPiwikIdLabel);
+		    td7.appendChild(newContentPiwikId);
+
 		    spanNodeRow5 = document.createElement('span');
 		    spanNodeRow5.innerHTML = '&nbsp;';
 		    td8.appendChild(spanNodeRow5);
@@ -248,6 +263,19 @@
 		    spanNodeRow6 = document.createElement('span');
 		    spanNodeRow6.innerHTML = '&nbsp;';
 		    td9.appendChild(spanNodeRow6);
+
+            newContactDescriptionLabel = document.createElement('span');
+            newContactDescriptionLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_FINNA_VIEW_DESCRIPTION_TITLE')
+            td10.appendChild(newContactDescriptionLabel);
+            td10.appendChild(newContentDescription);
+		    
+		    spanNodeRow7 = document.createElement('span');
+		    spanNodeRow7.innerHTML = '&nbsp;';
+		    td11.appendChild(spanNodeRow7);
+
+		    spanNodeRow8 = document.createElement('span');
+		    spanNodeRow8.innerHTML = '&nbsp;';
+		    td12.appendChild(spanNodeRow8);
 
 		    tr.appendChild(td1);
 		    tr.appendChild(td2);
@@ -261,9 +289,14 @@
 		    tr3.appendChild(td8);
 		    tr3.appendChild(td9);
 
+		    tr4.appendChild(td10);
+		    tr4.appendChild(td11);
+		    tr4.appendChild(td12);
+
 		    tbody.appendChild(tr);
 		    tbody.appendChild(tr2);
 		    tbody.appendChild(tr3);
+		    tbody.appendChild(tr4);
 
             insertInto.appendChild(tbody);
 		    
@@ -304,10 +337,12 @@
 			removeFromValidate(this.view, this.id + 'brFinnaView' + index);
             var oNodeToRemove = Dom.get(this.id +  'brFinnaViewRow' + index);
             var oNodeToRemoveProductionDate = Dom.get(this.id +  'brFinnaViewRowProductionDate' + index);
+            var oNodeToRemovePiwikId = Dom.get(this.id +  'brFinnaViewRowPiwikId' + index);
             var oNodeToRemoveDesc = Dom.get(this.id +  'brFinnaViewRowDesc' + index);
             var form = Dom.getAncestorByTagName(oNodeToRemove, "form");
             oNodeToRemove.parentNode.removeChild(oNodeToRemove);
             oNodeToRemoveProductionDate.parentNode.removeChild(oNodeToRemoveProductionDate);
+            oNodeToRemovePiwikId.parentNode.removeChild(oNodeToRemovePiwikId);
             oNodeToRemoveDesc.parentNode.removeChild(oNodeToRemoveDesc);
 
             var removedIndex = parseInt(index);
@@ -322,6 +357,7 @@
                    rButton.setAttribute("id", this.id + "removeButton" + (x-1));
                    Dom.get(this.id + 'brFinnaViewRow' + x).setAttribute("id", this.id + 'brFinnaViewRow' + (x-1));
                    Dom.get(this.id + 'brFinnaViewRowProductionDate' + x).setAttribute("id", this.id + 'brFinnaViewRowProductionDate' + (x-1));
+                   Dom.get(this.id + 'brFinnaViewRowPiwikId' + x).setAttribute("id", this.id + 'brFinnaViewRowPiwikId' + (x-1));
                    Dom.get(this.id + 'brFinnaViewRowDesc' + x).setAttribute("id", this.id + 'brFinnaViewRowDesc' + (x-1));
                }
             }
