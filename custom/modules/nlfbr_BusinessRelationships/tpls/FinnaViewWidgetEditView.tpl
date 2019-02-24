@@ -47,7 +47,7 @@ function init{$module}FinnaView(){ldelim}
 	    if(prefillViewData == 'true') {ldelim}
 	        brfvw.prefillViewData('{$module}FinnaViewsTable', viewData);
 		{rdelim} else if(addDefaultView == 'true') {ldelim}
-	        brfvw.addFinnaView('{$module}FinnaViewsTable', 'eitietoa', '','', '');
+	        brfvw.addFinnaView('{$module}FinnaViewsTable', '', 'eitietoa', '','', '');
 		{rdelim}
 		if('{$module}_finna_view_widget_id') {ldelim}
 		   document.getElementById('{$module}_finna_view_widget_id').value = brfvw.count;
