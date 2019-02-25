@@ -1,8 +1,14 @@
 <?php
 
 require_once 'include/ListView/ListViewSmarty.php';
+require_once 'custom/include/CustomMassUpdate.php';
 
 class CustomListViewSmarty extends ListViewSmarty {
+
+    protected function getMassUpdate()
+    {
+        return new CustomMassUpdate();
+    }
 
     protected function buildMassUpdateLink($loc = 'top')
     {
