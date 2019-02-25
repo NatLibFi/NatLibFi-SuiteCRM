@@ -62,17 +62,26 @@ $searchFields['nlfal_Alliances'] = array (
     'enable_range_search' => true,
     'is_date_field' => true,
   ),
-  'alliance_roles' => 
+  'contact_roles' => 
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
-    'subquery' => 'SELECT al.id FROM nlfal_alliances al JOIN nlfal_alliances_contacts_1_c al_rel ON al.id=al_rel.nlfal_alliances_contacts_1nlfal_alliances_ida WHERE al.deleted=0 AND al_rel.deleted=0 AND al_rel.role REGEXP {0}',
+    'subquery' => 'SELECT al.id FROM nlfal_alliances al JOIN nlfal_alliances_contacts_1_c al_rel ON al.id=al_rel.nlfal_alliances_contacts_1nlfal_alliances_ida WHERE al.deleted=0 AND al_rel.deleted=0 AND al_rel.role REGEXP {0} ' .
+        'UNION SELECT al.id FROM nlfal_alliances al JOIN nlfal_alliances_accounts_1_c ac_rel ON al.id=ac_rel.nlfal_alliances_accounts_1nlfal_alliances_ida JOIN accounts_nlfbr_businessrelationships_1_c ac_br_rel ON ac_rel.nlfal_alliances_accounts_1accounts_idb=ac_br_rel.accounts_nlfbr_businessrelationships_1accounts_ida JOIN nlfbr_businessrelationships_contacts_1_c br_rel ON ac_br_rel.accounts_n824donships_idb=br_rel.nlfbr_busic409onships_ida {related_subquery.service_join} WHERE al.deleted=0 AND ac_rel.deleted=0 AND ac_br_rel.deleted=0 AND br_rel.deleted=0 {related_subquery.service_where} AND br_rel.role REGEXP {0} ',
+    'related_subquery_parts' =>
+    array (
+        'related_service' =>
+        array (
+            'service_join' => 'JOIN nlfal_alliances_nlfse_services_1_c s_rel ON al.id=s_rel.nlfal_alliances_nlfse_services_1nlfal_alliances_ida JOIN nlfse_services_nlfbr_businessrelationships_1_c s_br_rel ON (s_br_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida=s_rel.nlfal_alliances_nlfse_services_1nlfse_services_idb AND s_br_rel.nlfse_serva51aonships_idb=ac_br_rel.accounts_n824donships_idb)',
+            'service_where' => 'AND s_rel.deleted=0 AND s_br_rel.deleted=0 AND s_rel.nlfal_alliances_nlfse_services_1nlfse_services_idb IN ({0}) AND s_br_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida IN ({0})',
+        ),
+    ),
     'subquery_with_multienum_regexp' => true,
     'db_field' => 
     array (
       0 => 'id',
     ),
-    'vname' => 'LBL_ALLIANCE_ROLES',
+    'vname' => 'LBL_CONTACT_ROLES',
   ),
   'related_service' =>
   array (

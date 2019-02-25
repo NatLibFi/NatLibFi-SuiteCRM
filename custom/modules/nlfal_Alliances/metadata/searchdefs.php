@@ -41,13 +41,13 @@ array (
         'width' => '10%',
         'name' => 'nlfal_alliances_accounts_1_name',
       ),
-      'alliance_roles' => 
+      'contact_roles' => 
       array (
         'type' => 'enum',
-        'label' => 'LBL_ALLIANCE_ROLES',
+        'label' => 'LBL_CONTACT_ROLES',
         'width' => '10%',
         'default' => true,
-        'name' => 'alliance_roles',
+        'name' => 'contact_roles',
       ),
       'related_service' =>
       array (
