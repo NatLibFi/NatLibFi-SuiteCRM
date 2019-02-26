@@ -6,4 +6,5 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]["lead_commercial"] = array 
   'vname' => 'LBL_LEAD_COMMERCIAL',
   'source' => 'non-db',
   'studio' => array('visible' => false),
+  'massupdate' => false,
 );
