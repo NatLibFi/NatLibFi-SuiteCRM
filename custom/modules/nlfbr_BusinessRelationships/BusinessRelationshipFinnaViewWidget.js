@@ -47,7 +47,7 @@
                     o[i].view_status,
                     o[i].view_url,
                     o[i].production_date,
-                    o[i].piwik_id,
+                    o[i].matomo_id,
                     o[i].description
                 );
 			}
@@ -69,7 +69,7 @@
 		    return false;
 		},//freezeEvent
 		
-		addFinnaView : function (tableId, recordId, viewStatus, viewUrl, productionDate, viewPiwikId, viewDescription) {
+		addFinnaView : function (tableId, recordId, viewStatus, viewUrl, productionDate, viewMatomoId, viewDescription) {
 			if (this.addInProgress)
 			    return;
 			this.addInProgress = true;
@@ -84,7 +84,7 @@
 		    var newContentRecordId = document.createElement("input");
 		    var newContentViewUrl = document.createElement("input");
             var newContentProductionDate = document.createElement("input");
-		    var newContentPiwikId = document.createElement("input");
+		    var newContentMatomoId = document.createElement("input");
 		    var newContentDescription = document.createElement("input");
 		    var removeButton = document.createElement("button");
             var removeButtonImg = document.createElement('img');
@@ -164,13 +164,13 @@
 		    newContentViewUrl.setAttribute("enabled", "true");
             newContentViewUrl.setAttribute("tabindex", tabIndexCount);
 
-		    newContentPiwikId.setAttribute("type", "text");
-		    newContentPiwikId.setAttribute("name", "finna_view_piwik_id" + this.numberViews);
-		    newContentPiwikId.setAttribute("id", "finna_view_piwik_id" + this.numberViews);
-		    newContentPiwikId.setAttribute("value", viewPiwikId);
-		    newContentPiwikId.setAttribute("size", "30");
-		    newContentPiwikId.setAttribute("enabled", "true");
-            newContentPiwikId.setAttribute("tabindex", tabIndexCount);
+		    newContentMatomoId.setAttribute("type", "text");
+		    newContentMatomoId.setAttribute("name", "finna_view_matomo_id" + this.numberViews);
+		    newContentMatomoId.setAttribute("id", "finna_view_matomo_id" + this.numberViews);
+		    newContentMatomoId.setAttribute("value", viewMatomoId);
+		    newContentMatomoId.setAttribute("size", "30");
+		    newContentMatomoId.setAttribute("enabled", "true");
+            newContentMatomoId.setAttribute("tabindex", tabIndexCount);
 
 		    newContentDescription.setAttribute("type", "text");
 		    newContentDescription.setAttribute("name", "finna_view_description" + this.numberViews);
@@ -214,7 +214,7 @@
 		    
 		    tr.setAttribute("id", this.id + "brFinnaViewRow" + this.numberViews);
 		    tr2.setAttribute("id", this.id + "brFinnaViewRowProductionDate" + this.numberViews);
-            tr3.setAttribute("id", this.id + "brFinnaViewRowPiwikId" + this.numberViews);
+            tr3.setAttribute("id", this.id + "brFinnaViewRowMatomoId" + this.numberViews);
 		    tr4.setAttribute("id", this.id + "brFinnaViewRowDesc" + this.numberViews);
 		    
 		    td1.appendChild(newContentRecordId);
@@ -251,10 +251,10 @@
 		    spanNodeRow4.innerHTML = '&nbsp;';
 		    td6.appendChild(spanNodeRow4);
 
-            newContactPiwikIdLabel = document.createElement('span');
-            newContactPiwikIdLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_FINNA_VIEW_PIWIK_ID_TITLE')
-		    td7.appendChild(newContactPiwikIdLabel);
-		    td7.appendChild(newContentPiwikId);
+            newContactMatomoIdLabel = document.createElement('span');
+            newContactMatomoIdLabel.innerHTML = SUGAR.language.get('nlfbr_BusinessRelationships', 'LBL_FINNA_VIEW_MATOMO_ID_TITLE')
+		    td7.appendChild(newContactMatomoIdLabel);
+		    td7.appendChild(newContentMatomoId);
 
 		    spanNodeRow5 = document.createElement('span');
 		    spanNodeRow5.innerHTML = '&nbsp;';
@@ -337,12 +337,12 @@
 			removeFromValidate(this.view, this.id + 'brFinnaView' + index);
             var oNodeToRemove = Dom.get(this.id +  'brFinnaViewRow' + index);
             var oNodeToRemoveProductionDate = Dom.get(this.id +  'brFinnaViewRowProductionDate' + index);
-            var oNodeToRemovePiwikId = Dom.get(this.id +  'brFinnaViewRowPiwikId' + index);
+            var oNodeToRemoveMatomoId = Dom.get(this.id +  'brFinnaViewRowMatomoId' + index);
             var oNodeToRemoveDesc = Dom.get(this.id +  'brFinnaViewRowDesc' + index);
             var form = Dom.getAncestorByTagName(oNodeToRemove, "form");
             oNodeToRemove.parentNode.removeChild(oNodeToRemove);
             oNodeToRemoveProductionDate.parentNode.removeChild(oNodeToRemoveProductionDate);
-            oNodeToRemovePiwikId.parentNode.removeChild(oNodeToRemovePiwikId);
+            oNodeToRemoveMatomoId.parentNode.removeChild(oNodeToRemoveMatomoId);
             oNodeToRemoveDesc.parentNode.removeChild(oNodeToRemoveDesc);
 
             var removedIndex = parseInt(index);
@@ -357,7 +357,7 @@
                    rButton.setAttribute("id", this.id + "removeButton" + (x-1));
                    Dom.get(this.id + 'brFinnaViewRow' + x).setAttribute("id", this.id + 'brFinnaViewRow' + (x-1));
                    Dom.get(this.id + 'brFinnaViewRowProductionDate' + x).setAttribute("id", this.id + 'brFinnaViewRowProductionDate' + (x-1));
-                   Dom.get(this.id + 'brFinnaViewRowPiwikId' + x).setAttribute("id", this.id + 'brFinnaViewRowPiwikId' + (x-1));
+                   Dom.get(this.id + 'brFinnaViewRowMatomoId' + x).setAttribute("id", this.id + 'brFinnaViewRowMatomoId' + (x-1));
                    Dom.get(this.id + 'brFinnaViewRowDesc' + x).setAttribute("id", this.id + 'brFinnaViewRowDesc' + (x-1));
                }
             }

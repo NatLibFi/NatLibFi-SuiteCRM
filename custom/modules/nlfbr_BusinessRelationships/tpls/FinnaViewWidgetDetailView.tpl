@@ -27,8 +27,8 @@
         </tr>
         <tr class="{$rowClass}">
             <td>
-                {$mod_strings.LBL_FINNA_VIEW_PIWIK_ID_TITLE}
-                {$view.piwik_id}
+                {$mod_strings.LBL_FINNA_VIEW_MATOMO_ID_TITLE}
+                {$view.matomo_id}
             </td>
             <td></td>
         </tr>

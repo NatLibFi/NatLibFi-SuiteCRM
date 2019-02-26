@@ -349,7 +349,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             $viewStatus = '';
             $viewUrl = '';
             $viewProductionDate = '';
-            $piwikId = '';
+            $matomoId = '';
             $description = '';
             if (isset($_REQUEST['finna_view_status' . $index])) {
                 $viewStatus = $_REQUEST['finna_view_status' . $index];
@@ -360,8 +360,8 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
             if (isset($_REQUEST['finna_view_production_date' . $index])) {
                 $viewProductionDate = $this->formatDate($_REQUEST['finna_view_production_date' . $index]);
             }
-            if (isset($_REQUEST['finna_view_piwik_id' . $index])) {
-                $piwikId = $_REQUEST['finna_view_piwik_id' . $index];
+            if (isset($_REQUEST['finna_view_matomo_id' . $index])) {
+                $matomoId = $_REQUEST['finna_view_matomo_id' . $index];
             }
             if (isset($_REQUEST['finna_view_description' . $index])) {
                 $description = $_REQUEST['finna_view_description' . $index];
@@ -372,7 +372,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                     'view_status' => $viewStatus,
                     'view_url' => $viewUrl,
                     'production_date' => $viewProductionDate,
-                    'piwik_id' => $piwikId,
+                    'matomo_id' => $matomoId,
                     'description' => $description,
                 );
             } else {
@@ -380,7 +380,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                     'view_status' => $viewStatus,
                     'view_url' => $viewUrl,
                     'production_date' => $viewProductionDate,
-                    'piwik_id' => $piwikId,
+                    'matomo_id' => $matomoId,
                     'description' => $description,
                 );
             }
@@ -402,7 +402,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 $oldData['view_status'] !== $newData['view_status'] ||
                 $oldData['view_url'] !== $newData['view_url'] ||
                 $oldData['production_date'] !== $newData['production_date'] ||
-                $oldData['piwik_id'] !== $newData['piwik_id'] ||
+                $oldData['matomo_id'] !== $newData['matomo_id'] ||
                 $oldData['description'] !== $newData['description']
             ) {
                 $toUpdate[] = array(
@@ -433,7 +433,7 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 'SET view_status="' . $db->quote($data['new']['view_status']) . '", ' .
                 'view_url="' . $db->quote($data['new']['view_url']) . '", ' .
                 ($data['new']['production_date'] ? ('view_production_date="' . $db->quote($data['new']['production_date']) . '"') : 'view_production_date=NULL') . ', ' .
-                'piwik_id="' . $db->quote($data['new']['piwik_id']) . '", ' .
+                'matomo_id="' . $db->quote($data['new']['matomo_id']) . '", ' .
                 'description="' . $db->quote($data['new']['description']) . '", ' .
                 'date_modified=NOW() ' .
                 'WHERE id="' . $db->quote($data['new']['record_id']) . '"';
@@ -463,12 +463,12 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                     'after' => $data['new']['view_status'],
                 );
             }
-            if ($data['old']['piwik_id'] !== $data['new']['piwik_id']) {
+            if ($data['old']['matomo_id'] !== $data['new']['matomo_id']) {
                 $auditData[] = array(
-                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['new']['view_url'] . '|finna_view_piwik_id',
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['new']['view_url'] . '|finna_view_matomo_id',
                     'data_type' => 'varchar',
-                    'before' => $data['old']['piwik_id'],
-                    'after' => $data['new']['piwik_id'],
+                    'before' => $data['old']['matomo_id'],
+                    'after' => $data['new']['matomo_id'],
                 );
             }
 
@@ -489,14 +489,14 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
 
        foreach ($newViews as $data) {
             $query = 'INSERT INTO nlfbr_businessrelationships_finna_views ' .
-                '(id, businessrelationship_id, view_status, view_url, view_production_date, piwik_id, description, date_modified) ' .
+                '(id, businessrelationship_id, view_status, view_url, view_production_date, matomo_id, description, date_modified) ' .
                 'VALUES(' .
                 '"' . $db->quote(create_guid()) . '", ' .
                 '"' . $db->quote($bean->id) . '", ' .
                 '"' . $db->quote($data['view_status']) . '", ' .
                 '"' . $db->quote($data['view_url']) . '", ' .
                 ($data['production_date'] ? ('"' . $db->quote($data['production_date']) . '"') : 'NULL') . ', ' .
-                '"' . $db->quote($data['piwik_id']) . '", ' .
+                '"' . $db->quote($data['matomo_id']) . '", ' .
                 '"' . $db->quote($data['description']) . '", ' .
                 'NOW() )';
 
@@ -520,10 +520,10 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                     'after' => $data['production_date'] ? $data['production_date'] : 'NULL',
                 ),
                 array(
-                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['view_url'] . '|finna_view_piwik_id',
+                    'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['view_url'] . '|finna_view_matomo_id',
                     'data_type' => 'varchar',
                     'before' => '',
-                    'after' => $data['piwik_id'],
+                    'after' => $data['matomo_id'],
                 ),
                 array(
                     'field_name' => CustomAudit::COMPOSITE_FIELD_PREFIX . 'finna_view_url|' . $data['view_url'] . '|finna_view_description',

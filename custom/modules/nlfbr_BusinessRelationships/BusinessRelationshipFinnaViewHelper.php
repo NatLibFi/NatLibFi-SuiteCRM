@@ -11,7 +11,7 @@ class BusinessRelationshipFinnaViewHelper {
 
         $query = 'SELECT view.id AS view_id, view.view_status AS view_status, view.view_url AS view_url,' .
             'view.view_production_date AS production_date, ' .
-            'view.piwik_id AS piwik_id, ' .
+            'view.matomo_id AS matomo_id, ' .
             'view.description AS description ' .
             'FROM nlfbr_businessrelationships_finna_views view ' .
             'JOIN nlfbr_businessrelationships br ' .
@@ -34,7 +34,7 @@ class BusinessRelationshipFinnaViewHelper {
                 'view_status' => $row['view_status'],
                 'view_url' => (string)$row['view_url'],
                 'production_date' => $productionDate,
-                'piwik_id' => (string)$row['piwik_id'],
+                'matomo_id' => (string)$row['matomo_id'],
                 'description' => (string)$row['description'],
             );
         }

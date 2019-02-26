@@ -9,7 +9,7 @@ $dictionary["nlfbr_businessrelationships_finna_views"] = array (
         array('name' =>'view_url', 'type' =>'varchar', 'len'=>'255'),
         array('name' =>'admin_access', 'type' =>'bool', 'len'=>'1', 'default'=>'0'),
         array('name' =>'view_production_date','type' => 'datetime'),
-        array('name' =>'piwik_id', 'type' =>'varchar', 'len'=>'255'),
+        array('name' =>'matomo_id', 'type' =>'varchar', 'len'=>'255'),
         array('name' =>'description', 'type' =>'text'),
         array('name' =>'date_modified','type' => 'datetime'),
         array('name' =>'deleted', 'type' =>'bool', 'len'=>'1', 'default'=>'0', 'required'=>false),

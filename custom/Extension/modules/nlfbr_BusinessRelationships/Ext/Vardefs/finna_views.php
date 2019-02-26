@@ -54,9 +54,9 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]['finna_view_production_date
   'massupdate' => false,
 );
 // This field is only defined to have a "name" rendered properly in the Audit/Change log popup view
-$dictionary["nlfbr_BusinessRelationships"]["fields"]['finna_view_piwik_id'] = array(
-  'name' => 'finna_view_piwik_id',
-  'vname' => 'LBL_FINNA_VIEW_PIWIK_ID_TITLE',
+$dictionary["nlfbr_BusinessRelationships"]["fields"]['finna_view_matomo_id'] = array(
+  'name' => 'finna_view_matomo_id',
+  'vname' => 'LBL_FINNA_VIEW_MATOMO_ID_TITLE',
   'type' => 'varchar',
   'source' => 'non-db',
   'studio' => array('visible' => false),
