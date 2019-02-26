@@ -587,12 +587,12 @@ function getAllContactRoles()
             $app_list_strings['contact_account_role_list']
         ),
         array_map(
-            function($x) use ($app_strings) { return $x . ' (' . $app_strings['LBL_ROLE_LIST_SUFFIX_ALLIANCE'] . ')'; },
-            $app_list_strings['contact_alliance_role_list']
-        ),
-        array_map(
             function($x) use ($app_strings) { return $x . ' (' . $app_strings['LBL_ROLE_LIST_SUFFIX_BUSINESS_RELATIONSHIP'] . ')'; },
             $app_list_strings['contact_business_relationship_role_list']
+        ),
+        array_map(
+            function($x) use ($app_strings) { return $x . ' (' . $app_strings['LBL_ROLE_LIST_SUFFIX_ALLIANCE'] . ')'; },
+            $app_list_strings['contact_alliance_role_list']
         )
     );
 
