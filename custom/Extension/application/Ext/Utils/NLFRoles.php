@@ -579,10 +579,6 @@ function getAllContactRoles()
 
     $roles = array_merge(
         array_map(
-            function($x) use ($app_strings) { return $x . ' (' . $app_strings['LBL_ROLE_LIST_SUFFIX_WORKING_GROUP'] . ')'; },
-            $app_list_strings['contact_working_group_role_list']
-        ),
-        array_map(
             function($x) use ($app_strings) { return $x . ' (' . $app_strings['LBL_ROLE_LIST_SUFFIX_ACCOUNT'] . ')'; },
             $app_list_strings['contact_account_role_list']
         ),
@@ -600,7 +596,13 @@ function getAllContactRoles()
         $roles['lead_' . $key] = $role . ' (' . $app_strings['LBL_ROLE_LIST_SUFFIX_LEAD'] . ')';
     }
 
-    return $roles;
+    return array_merge(
+        $roles,
+        array_map(
+            function($x) use ($app_strings) { return $x . ' (' . $app_strings['LBL_ROLE_LIST_SUFFIX_WORKING_GROUP'] . ')'; },
+            $app_list_strings['contact_working_group_role_list']
+        )
+    );
 }
 
 
