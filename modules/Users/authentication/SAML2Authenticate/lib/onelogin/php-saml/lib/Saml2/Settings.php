@@ -117,7 +117,7 @@ class OneLogin_Saml2_Settings
                 );
             }
             $this->_addDefaultValues();
-        } else if (is_array($settings)) {
+        } elseif (is_array($settings)) {
             if (!$this->_loadSettingsFromArray($settings)) {
                 throw new OneLogin_Saml2_Error(
                     'Invalid array settings: %s',
@@ -125,7 +125,7 @@ class OneLogin_Saml2_Settings
                     array(implode(', ', $this->_errors))
                 );
             }
-        } else if ($settings instanceof OneLogin_Saml2_Settings) {
+        } elseif ($settings instanceof OneLogin_Saml2_Settings) {
             throw new OneLogin_Saml2_Error(
                 'Only instances of OneLogin_Saml_Settings are supported.',
                 OneLogin_Saml2_Error::UNSUPPORTED_SETTINGS_OBJECT,
@@ -155,7 +155,7 @@ class OneLogin_Saml2_Settings
     private function _loadPaths()
     {
         $basePath = dirname(dirname(__DIR__)).'/';
-        $this->_paths = array (
+        $this->_paths = array(
             'base' => $basePath,
             'config' => $basePath,
             'cert' => $basePath.'certs/',
@@ -278,10 +278,9 @@ class OneLogin_Saml2_Settings
 
             $this->_addDefaultValues();
             return true;
-        } else {
-            $this->_errors = $errors;
-            return false;
         }
+        $this->_errors = $errors;
+        return false;
     }
 
     /**
@@ -472,12 +471,12 @@ class OneLogin_Saml2_Settings
         if (isset($settings['compress'])) {
             if (!is_array($settings['compress'])) {
                 $errors[] = "invalid_syntax";
-            } else if (isset($settings['compress']['requests'])
+            } elseif (isset($settings['compress']['requests'])
                 && $settings['compress']['requests'] !== true
                 && $settings['compress']['requests'] !== false
             ) {
                 $errors[] = "'compress'=>'requests' values must be true or false.";
-            } else if (isset($settings['compress']['responses'])
+            } elseif (isset($settings['compress']['responses'])
                 && $settings['compress']['responses'] !== true
                 && $settings['compress']['responses'] !== false
             ) {
@@ -517,7 +516,7 @@ class OneLogin_Saml2_Settings
                 || empty($idp['singleSignOnService']['url'])
             ) {
                 $errors[] = 'idp_sso_not_found';
-            } else if (!filter_var($idp['singleSignOnService']['url'], FILTER_VALIDATE_URL)) {
+            } elseif (!filter_var($idp['singleSignOnService']['url'], FILTER_VALIDATE_URL)) {
                 $errors[] = 'idp_sso_url_invalid';
             }
 
@@ -587,7 +586,7 @@ class OneLogin_Saml2_Settings
                 || empty($sp['assertionConsumerService']['url'])
             ) {
                 $errors[] = 'sp_acs_not_found';
-            } else if (!filter_var($sp['assertionConsumerService']['url'], FILTER_VALIDATE_URL)) {
+            } elseif (!filter_var($sp['assertionConsumerService']['url'], FILTER_VALIDATE_URL)) {
                 $errors[] = 'sp_acs_url_invalid';
             }
 
