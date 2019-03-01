@@ -1,0 +1,4 @@
+<?php
+
+$mod_strings['LBL_ALLIANCES_BUSINESS_RELATIONSHIPS_SUBPANEL_TITLE'] = 'Asiakassuhteet';
+$mod_strings['LBL_ALLIANCES_BUSINESS_RELATIONSHIPS_FOR_MEMBER_ACCOUNTS_SUBPANEL_TITLE'] = 'Jäsenten kaikki asiakassuhteet';

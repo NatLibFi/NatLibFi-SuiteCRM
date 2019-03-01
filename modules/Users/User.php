@@ -111,6 +111,8 @@ class User extends Person implements EmailInterface
     public $emailAddress;
     public $new_schema = true;
 
+    public $saml_session_index = ''; // NVolk
+
     /**
      * @var bool
      */

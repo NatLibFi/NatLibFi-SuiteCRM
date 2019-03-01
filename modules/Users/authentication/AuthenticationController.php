@@ -49,7 +49,9 @@ class AuthenticationController
     public $authenticated = false;
     public $loginSuccess = false;// if a user has successfully logged in
 
-    protected static $authcontrollerinstance = null;
+	public $saml_session_index = '';
+
+	protected static $authcontrollerinstance = null;
 
     /**
      * @var SugarAuthenticate

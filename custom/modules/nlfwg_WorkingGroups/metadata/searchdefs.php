@@ -1,0 +1,96 @@
+<?php
+$module_name = 'nlfwg_WorkingGroups';
+$searchdefs [$module_name] = 
+array (
+  'layout' => 
+  array (
+    'basic_search' => 
+    array (
+      'name' => 
+      array (
+        'name' => 'name',
+        'default' => true,
+        'width' => '10%',
+      ),
+      'related_service' => 
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_RELATED_SERVICE_TITLE',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'related_service',
+      ),
+      'workinggroup_status_c' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_WORKINGGROUP_STATUS',
+        'width' => '10%',
+        'name' => 'workinggroup_status_c',
+      ),
+      'current_user_only' => 
+      array (
+        'name' => 'current_user_only',
+        'label' => 'LBL_CURRENT_USER_FILTER',
+        'type' => 'bool',
+        'default' => true,
+        'width' => '10%',
+      ),
+    ),
+    'advanced_search' => 
+    array (
+      'name' => 
+      array (
+        'name' => 'name',
+        'default' => true,
+        'width' => '10%',
+      ),
+      'wg_tyyppi_c' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_WG_TYYPPI',
+        'width' => '10%',
+        'name' => 'wg_tyyppi_c',
+      ),
+      'related_service' => 
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_RELATED_SERVICE_TITLE',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'related_service',
+      ),
+      'workinggroup_status_c' => 
+      array (
+        'type' => 'enum',
+        'default' => true,
+        'studio' => 'visible',
+        'label' => 'LBL_WORKINGGROUP_STATUS',
+        'width' => '10%',
+        'name' => 'workinggroup_status_c',
+      ),
+      'working_group_roles' => 
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_WORKING_GROUP_ROLES',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'working_group_roles',
+      ),
+    ),
+  ),
+  'templateMeta' => 
+  array (
+    'maxColumns' => '3',
+    'maxColumnsBasic' => '4',
+    'widths' => 
+    array (
+      'label' => '10',
+      'field' => '30',
+    ),
+  ),
+);
+?>

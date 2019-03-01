@@ -431,6 +431,10 @@ class ViewConvertLead extends SugarView
                     if ($module == 'Contacts') {
                         $beans[$module] = $bean;
                     }
+                    // NLF custom. Also allow Accounts to overwrite here
+                    if ($module === 'Accounts') {
+                        $beans[$module] = $bean;
+                    }
                 }
             }
         }

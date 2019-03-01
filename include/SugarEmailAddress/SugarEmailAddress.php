@@ -697,6 +697,7 @@ class SugarEmailAddress extends SugarBean
 
             $eabr_unlink = "update email_addr_bean_rel set deleted=1 where id in ({$delete})";
             $this->db->query($eabr_unlink);
+            //$this->addresses = array();
         }
         $this->stateBeforeWorkflow = null;
     }
@@ -846,7 +847,8 @@ class SugarEmailAddress extends SugarBean
         }
         $module = $this->getCorrectedModule($module);
         //One last check for the ConvertLead action in which case we need to change $module to 'Leads'
-        $module = (isset($_REQUEST) && isset($_REQUEST['action']) && $_REQUEST['action'] === 'ConvertLead') ? 'Leads' : $module;
+        // NLF adjustment: except when saved module is Accounts, it should not take email addresses related to Lead's Contact!
+        $module = (isset($_REQUEST) && isset($_REQUEST['action']) && $_REQUEST['action'] === 'ConvertLead' && $module !== 'Accounts') ? 'Leads' : $module;
 
         $post_from_email_address_widget = (isset($_REQUEST[$module . '_email_widget_id']));
         $primaryValue = $primary;
