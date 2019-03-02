@@ -363,7 +363,7 @@ var isAjaxCall=document.createElement('input');isAjaxCall.name='ajaxCall';isAjax
 var callback={success:function(o){var resp=YAHOO.lang.JSON.parse(o.responseText);var quickComposePackage=new Object();quickComposePackage.composePackage=resp;quickComposePackage.fullComposeUrl='index.php?module=Emails&action=Compose&ListView=true'+'&uid='+uidTa.value+'&action_module='+action_module;SUGAR.quickCompose.init(quickComposePackage);}}
 var emailComposeUrl='index.php?module=Emails&action=Compose&ListView=true&uid='+uidTa.value+'&action_module='+action_module;if(document.MassUpdate.select_entire_list.value==1){emailComposeUrl+='&current_post='+document.MassUpdate.current_query_by_page.value;}
 var emailLink=document.createElement('a');emailLink.target='_blank';emailLink.href=emailComposeUrl;document.body.appendChild(emailLink);emailLink.click();emailLink.parentNode.removeChild(emailLink);document.MassUpdate.uid.value='';return false;}
-sugarListView.prototype.send_form=function(select,currentModule,action,no_record_txt,action_module,return_info){if(document.MassUpdate.select_entire_list.value==1){if(sugarListView.get_checks_count()<1){alert(no_record_txt);return false;}
+sugarListView.prototype.send_form=function(select,currentModule,action,no_record_txt,action_module,return_info,ajax,callback){if(document.MassUpdate.select_entire_list.value==1){if(sugarListView.get_checks_count()<1){alert(no_record_txt);return false;}
 var href=action;if(action.indexOf('?')!=-1)
 href+='&module='+currentModule;else
 href+='?module='+currentModule;if(return_info)
