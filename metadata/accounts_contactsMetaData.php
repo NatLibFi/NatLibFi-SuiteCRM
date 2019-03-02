@@ -47,7 +47,7 @@ $dictionary['accounts_contacts'] = array( 'table' => 'accounts_contacts'
       , array('name' =>'contact_id', 'type' =>'varchar', 'len'=>'36')
       , array('name' =>'account_id', 'type' =>'varchar', 'len'=>'36')
       , array('name' => 'date_modified','type' => 'datetime')
-      , array('name' =>'deleted', 'type' =>'bool', 'len'=>'1', 'required'=>false, 'default'=>'0')
+      , array('name' =>'deleted', 'type' =>'bool', 'len'=>'1', 'required'=>false, 'default'=>'0'),
         array ('name' => 'role', 'type' => 'varchar','len' => 200, ),
         array ('name' => 'department', 'type' => 'varchar','len' => 255, ),
         array ('name' => 'address', 'type' => 'varchar','len' => 255, ),
