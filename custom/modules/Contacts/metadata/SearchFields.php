@@ -256,7 +256,7 @@ $searchFields['Contacts'] = array (
     'query_type' => 'format',
     'operator' => 'subquery',
     'subquery' => 'SELECT contacts.id FROM contacts JOIN accounts_contacts acc_rel ON contacts.id=acc_rel.contact_id {related_subquery.industry_join} {related_subquery.service_join_acc} WHERE contacts.deleted=0 AND acc_rel.deleted=0 {related_subquery.industry_where} {related_subquery.service_where} AND acc_rel.role REGEXP {0} ' .
-        'UNION SELECT contacts.id FROM contacts JOIN nlfbr_businessrelationships_contacts_1_c br_rel ON contacts.id=br_rel.nlfbr_businessrelationships_contacts_1contacts_idb {related_subquery.service_join_br} WHERE contacts.deleted=0 AND br_rel.deleted=0 {related_subquery.service_where} AND br_rel.role REGEXP {0} ' .
+        'UNION SELECT contacts.id FROM contacts JOIN nlfbr_businessrelationships_contacts_1_c br_rel ON contacts.id=br_rel.nlfbr_businessrelationships_contacts_1contacts_idb {related_subquery.service_join_br} {related_subquery.active_contract_join} WHERE contacts.deleted=0 AND br_rel.deleted=0 {related_subquery.service_where} {related_subquery.active_contract_where} AND br_rel.role REGEXP {0} ' .
         'UNION SELECT contacts.id FROM contacts JOIN nlfwg_workinggroups_contacts_1_c wg_rel ON contacts.id=wg_rel.nlfwg_workinggroups_contacts_1contacts_idb WHERE contacts.deleted=0 AND wg_rel.deleted=0 AND wg_rel.role REGEXP {0} ' .
         'UNION SELECT contacts.id FROM contacts JOIN nlfal_alliances_contacts_1_c all_rel ON contacts.id=all_rel.nlfal_alliances_contacts_1contacts_idb WHERE contacts.deleted=0 AND all_rel.deleted=0 AND all_rel.role REGEXP {0} ' .
         'UNION SELECT contacts.id FROM contacts JOIN contacts_leads_2_c lead_rel ON contacts.id=lead_rel.contacts_leads_2contacts_ida {related_subquery.industry_lead_join} {related_subquery.service_join_lead} WHERE contacts.deleted=0 AND lead_rel.deleted=0 {related_subquery.industry_lead_where} {related_subquery.service_where_lead} AND lead_rel.role REGEXP {0} ',
@@ -277,6 +277,11 @@ $searchFields['Contacts'] = array (
         'service_where' => 'AND s_rel.deleted=0 AND s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida IN ({0})',
 	'service_where_lead' => 'AND s_rel.deleted=0 AND s_rel.nlfse_services_leads_1nlfse_services_ida IN ({0})',
       ),
+      'related_active_contract' =>
+      array(
+        'active_contract_join' => 'JOIN nlfbr_businessrelationships_aos_contracts_1_c contract_rel ON br_rel.nlfbr_busic409onships_ida=contract_rel.nlfbr_busi9351onships_ida',
+        'active_contract_where' => 'AND contract_rel.deleted=0 AND contract_rel.active=1 AND contract_rel.nlfbr_businessrelationships_aos_contracts_1aos_contracts_idb IN ({0})',
+      ),
     ),
     'subquery_with_multienum_regexp' => true,
     'db_field' => 
@@ -284,6 +289,25 @@ $searchFields['Contacts'] = array (
       0 => 'id',
     ),
     'vname' => 'LBL_CONTACT_ROLES_ALL',
+  ),
+  'related_active_contract' => 
+  array (
+    'query_type' => 'format',
+    'operator' => 'subquery',
+    'subquery' => 'SELECT contacts.id FROM contacts JOIN nlfbr_businessrelationships_contacts_1_c br_rel ON contacts.id=br_rel.nlfbr_businessrelationships_contacts_1contacts_idb JOIN nlfbr_businessrelationships_aos_contracts_1_c contract_rel ON br_rel.nlfbr_busic409onships_ida=contract_rel.nlfbr_busi9351onships_ida {related_subquery.service_join} WHERE contacts.deleted=0 AND br_rel.deleted=0 AND contract_rel.deleted=0 {related_subquery.service_where} AND contract_rel.active=1 AND contract_rel.nlfbr_businessrelationships_aos_contracts_1aos_contracts_idb IN ({0})',
+    'related_subquery_parts' => 
+    array (
+      'related_service' => 
+      array (
+        'service_join' => 'JOIN nlfse_services_nlfbr_businessrelationships_1_c s_rel ON br_rel.nlfbr_busic409onships_ida=s_rel.nlfse_serva51aonships_idb',
+        'service_where' => 'AND s_rel.deleted=0 AND s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida IN ({0})',
+      ),
+    ),
+    'db_field' => 
+    array (
+      0 => 'id',
+    ),
+    'vname' => 'LBL_RELATED_ACTIVE_CONTRACT',
   ),
   'account_industry' => 
   array (
