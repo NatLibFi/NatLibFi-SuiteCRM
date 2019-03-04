@@ -94,6 +94,14 @@ array (
         'default' => true,
         'name' => 'contact_roles_all',
       ),
+      'related_active_contract' => 
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_RELATED_ACTIVE_CONTRACT',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'related_active_contract',
+      ),
       'title' => 
       array (
         'type' => 'varchar',
