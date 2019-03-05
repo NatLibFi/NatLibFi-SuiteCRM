@@ -78,14 +78,6 @@ array (
         'width' => '10%',
         'name' => 'search_name',
       ),
-      'account_name' => 
-      array (
-        'label' => 'LBL_ACCOUNT_NAME',
-        'type' => 'relate',
-        'default' => true,
-        'width' => '10%',
-        'name' => 'account_name',
-      ),
       'contact_roles_all' => 
       array (
         'type' => 'enum',
@@ -94,29 +86,13 @@ array (
         'default' => true,
         'name' => 'contact_roles_all',
       ),
-      'related_active_contract' => 
+      'account_name' => 
       array (
-        'type' => 'enum',
-        'label' => 'LBL_RELATED_ACTIVE_CONTRACT',
-        'width' => '10%',
+        'label' => 'LBL_ACCOUNT_NAME',
+        'type' => 'relate',
         'default' => true,
-        'name' => 'related_active_contract',
-      ),
-      'title' => 
-      array (
-        'type' => 'varchar',
-        'label' => 'LBL_TITLE',
         'width' => '10%',
-        'default' => true,
-        'name' => 'title',
-      ),
-      'account_industry' => 
-      array (
-        'type' => 'enum',
-        'label' => 'LBL_CONTACT_ACCOUNT_INDUSTRY',
-        'width' => '10%',
-        'default' => true,
-        'name' => 'account_industry',
+        'name' => 'account_name',
       ),
       'related_alliance' => 
       array (
@@ -134,6 +110,22 @@ array (
         'default' => true,
         'name' => 'related_system',
       ),
+      'related_active_contract' => 
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_RELATED_ACTIVE_CONTRACT',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'related_active_contract',
+      ),
+      'account_industry' => 
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_CONTACT_ACCOUNT_INDUSTRY',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'account_industry',
+      ),
       'nlfwg_workinggroups_contacts_1_name' => 
       array (
         'type' => 'relate',
@@ -143,6 +135,14 @@ array (
         'default' => true,
         'name' => 'nlfwg_workinggroups_contacts_1_name',
         'id' => 'NLFWG_WORKINGGROUPS_CONTACTS_1_NLFWG_WORKINGGROUPS_IDA',
+      ),
+      'title' => 
+      array (
+        'type' => 'varchar',
+        'label' => 'LBL_TITLE',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'title',
       ),
       'phone' => 
       array (
