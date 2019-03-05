@@ -110,6 +110,14 @@ array (
         'default' => true,
         'name' => 'related_system',
       ),
+      'open_only_has_active_contract' => 
+      array (
+        'type' => 'bool',
+        'default' => true,
+        'label' => 'LBL_HAS_ACTIVE_CONTRACT',
+        'width' => '10%',
+        'name' => 'open_only_has_active_contract',
+      ),
       'related_active_contract' => 
       array (
         'type' => 'enum',
@@ -117,6 +125,22 @@ array (
         'width' => '10%',
         'default' => true,
         'name' => 'related_active_contract',
+      ),
+      'related_contract' => 
+      array (
+        'type' => 'enum',
+        'label' => 'LBL_RELATED_CONTRACT',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'related_contract',
+      ),
+      'contract_year' => 
+      array (
+        'type' => 'varchar',
+        'label' => 'LBL_CONTRACT_YEAR',
+        'width' => '10%',
+        'default' => true,
+        'name' => 'contract_year',
       ),
       'account_industry' => 
       array (
