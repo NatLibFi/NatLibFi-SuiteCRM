@@ -30,7 +30,7 @@ class CustomEmailsController extends EmailsController
 
                     $idLine = '<input type="hidden" class="email-compose-view-to-list" ';
                     $idLine .= 'data-record-module="Contacts" ';
-                    $idLine .= 'data-record-id="' . 'TODO' . '" ';
+                    $idLine .= 'data-record-id="' . htmlspecialchars($recipient['id']) . '" ';
                     $idLine .= 'data-record-name="' . htmlspecialchars($formattedName) . '" ';
                     $idLine .= 'data-record-email="' . $recipient['email_address'] . '">';
                     echo $idLine;

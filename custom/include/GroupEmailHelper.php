@@ -247,7 +247,7 @@ class GroupEmailHelper
             );
         }
 
-        $query = 'SELECT contacts.first_name, contacts.last_name, contacts.salutation, contacts.title, ea.email_address ' .
+        $query = 'SELECT contacts.id, contacts.first_name, contacts.last_name, contacts.salutation, contacts.title, ea.email_address ' .
             'FROM contacts ' .
             "JOIN contacts_cstm cstm ON (cstm.id_c=contacts.id AND cstm.{$noMailingColumnm}=0) " .
             "JOIN {$relationshipTable} rel ON (rel.{$contactColumn}=contacts.id AND rel.deleted=0) " . 
@@ -265,6 +265,7 @@ class GroupEmailHelper
 
         while ($row = $db->fetchByAssoc($result)) {
             $items[] = array(
+                'id' => $row['id'],
                 'first_name' => $row['first_name'],
                 'last_name' => $row['last_name'],
                 'title' => $row['title'],
