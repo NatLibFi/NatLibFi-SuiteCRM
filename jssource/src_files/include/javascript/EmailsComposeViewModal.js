@@ -163,6 +163,7 @@
       var populateEmailAddress = '';
       var populateModule = '';
       var populateModuleRecord = '';
+      var recipientName = '';
       var dataEmailName = $(source).attr('data-module-name');
       var dataEmailAddress = $(source).attr('data-email-address');
 
@@ -183,6 +184,10 @@
             populateModuleName = populateEmailAddress;
           }
         }
+        recipientName = $(this).attr('data-record-name');
+        if (dataEmailName !== '') {
+            recipientName = dataEmailName;
+        }
         populateEmailAddress = $(this).attr('data-record-email');
         if (dataEmailAddress !== '') {
           populateEmailAddress = dataEmailAddress;
@@ -190,7 +195,7 @@
         if (targetCount > 0) {
           targetList = targetList + ',';
         }
-        targetList = targetList + dataEmailName + ' <' + populateEmailAddress + '>';
+        targetList = targetList + recipientName + ' <' + populateEmailAddress + '>';
         targetCount++;
       });
       if (targetCount > 0) {
