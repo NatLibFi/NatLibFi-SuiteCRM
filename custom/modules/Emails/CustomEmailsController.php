@@ -19,21 +19,38 @@ class CustomEmailsController extends EmailsController
             echo '<script src="cache/jsLanguage/Emails/'. $GLOBALS['current_language'] . '.js"></script>';
         }
         if (isset($_REQUEST['ids']) && isset($_REQUEST['targetModule'])) {
-            $recipientProvider = new GroupEmailHelper();
-
-            $toAddressIds = explode(',', rtrim($_REQUEST['ids'], ','));
-            foreach ($toAddressIds as $id) {
-                $recipientData = $recipientProvider->getRecipientNamesAndAddresses($_REQUEST['targetModule'], $id);
-
-                foreach ($recipientData as $recipient) {
-                    $formattedName = $locale->getLocaleFormattedName($recipient['first_name'], $recipient['last_name'], $recipient['salutation'], $recipient['title']);
+            if ($_REQUEST['targetModule'] === 'Contacts') {
+                $toAddressIds = explode(',', rtrim($_REQUEST['ids'], ','));
+                foreach ($toAddressIds as $id) {
+                    $contact = BeanFactory::getBean('Contacts', $id);
+                    if (!$contact) {
+                        continue;
+                    }
 
                     $idLine = '<input type="hidden" class="email-compose-view-to-list" ';
                     $idLine .= 'data-record-module="Contacts" ';
-                    $idLine .= 'data-record-id="' . htmlspecialchars($recipient['id']) . '" ';
-                    $idLine .= 'data-record-name="' . htmlspecialchars($formattedName) . '" ';
-                    $idLine .= 'data-record-email="' . $recipient['email_address'] . '">';
+                    $idLine .= 'data-record-id="' . htmlspecialchars($id) . '" ';
+                    $idLine .= 'data-record-name="' . htmlspecialchars($contact->name) . '" ';
+                    $idLine .= 'data-record-email="' . $contact->email1 . '">';
                     echo $idLine;
+                }
+            } else {
+                $recipientProvider = new GroupEmailHelper();
+
+                $toAddressIds = explode(',', rtrim($_REQUEST['ids'], ','));
+                foreach ($toAddressIds as $id) {
+                    $recipientData = $recipientProvider->getRecipientNamesAndAddresses($_REQUEST['targetModule'], $id);
+
+                    foreach ($recipientData as $recipient) {
+                        $formattedName = $locale->getLocaleFormattedName($recipient['first_name'], $recipient['last_name'], $recipient['salutation'], $recipient['title']);
+
+                        $idLine = '<input type="hidden" class="email-compose-view-to-list" ';
+                        $idLine .= 'data-record-module="Contacts" ';
+                        $idLine .= 'data-record-id="' . htmlspecialchars($recipient['id']) . '" ';
+                        $idLine .= 'data-record-name="' . htmlspecialchars($formattedName) . '" ';
+                        $idLine .= 'data-record-email="' . $recipient['email_address'] . '">';
+                        echo $idLine;
+                    }
                 }
             }
         }
