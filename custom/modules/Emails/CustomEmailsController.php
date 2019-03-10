@@ -21,6 +21,18 @@ class CustomEmailsController extends EmailsController
         if (isset($_REQUEST['ids']) && isset($_REQUEST['targetModule'])) {
             if ($_REQUEST['targetModule'] === 'Contacts') {
                 $toAddressIds = explode(',', rtrim($_REQUEST['ids'], ','));
+
+                if (isset($_REQUEST['current_post']) && !empty($_REQUEST['current_post'])) { 
+                    $query = json_decode(html_entity_decode($_REQUEST['current_post']), true); 
+
+                    require_once('include/ListView/ListViewData.php'); 
+                    require_once('custom/include/RecordIdListLoader.php'); 
+
+                    $listViewData = new ListViewData(); 
+                    $listLoader = new RecordIdListLoader($listViewData); 
+                    $toAddressIds = $listLoader->loadRecordIdsMatchingQuery($_REQUEST['targetModule'], $query); 
+                }
+
                 foreach ($toAddressIds as $id) {
                     $contact = BeanFactory::getBean('Contacts', $id);
                     if (!$contact) {
@@ -38,6 +50,18 @@ class CustomEmailsController extends EmailsController
                 $recipientProvider = new GroupEmailHelper();
 
                 $toAddressIds = explode(',', rtrim($_REQUEST['ids'], ','));
+
+                if (isset($_REQUEST['current_post']) && !empty($_REQUEST['current_post'])) { 
+                    $query = json_decode(html_entity_decode($_REQUEST['current_post']), true); 
+
+                    require_once('include/ListView/ListViewData.php'); 
+                    require_once('custom/include/RecordIdListLoader.php'); 
+
+                    $listViewData = new ListViewData(); 
+                    $listLoader = new RecordIdListLoader($listViewData); 
+                    $toAddressIds = $listLoader->loadRecordIdsMatchingQuery($_REQUEST['targetModule'], $query); 
+                }
+
                 foreach ($toAddressIds as $id) {
                     $recipientData = $recipientProvider->getRecipientNamesAndAddresses($_REQUEST['targetModule'], $id);
 

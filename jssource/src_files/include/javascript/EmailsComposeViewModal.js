@@ -143,6 +143,10 @@
       targetModule = $(source).attr('data-module');
     }
     var url = 'index.php?module=Emails&action=ComposeView&in_popup=1&targetModule=' + targetModule + ids + '&relatedModule=' + currentModule + '&relatedId=' + relatedId;
+    if (document.MassUpdate.select_entire_list.value == 1) {
+      url += '&current_post=' + document.MassUpdate.current_query_by_page.value;
+    }
+
     $.ajax({
       type: "GET",
       cache: false,
