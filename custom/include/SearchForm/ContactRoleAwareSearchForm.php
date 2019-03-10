@@ -177,7 +177,11 @@ class ContactRoleAwareSearchForm extends SearchForm
                                  if (!empty($field_value)) {
                                      $field_value .= ',';
                                  }
-                                 $field_value .= $db->quoteType($type, $val);
+                                 if ($operator === 'subquery') {
+                                    $field_value .= $val;
+                                 } else {
+                                    $field_value .= $db->quoteType($type, $val);
+                                 }
                              }
                                  // Bug 41209: adding a new operator "isnull" here
                                  // to handle the case when blank is selected from dropdown.
