@@ -189,13 +189,7 @@
           }
         }
         recipientName = $(this).attr('data-record-name');
-        if (dataEmailName !== '') {
-            recipientName = dataEmailName;
-        }
         populateEmailAddress = $(this).attr('data-record-email');
-        if (dataEmailAddress !== '') {
-          populateEmailAddress = dataEmailAddress;
-        }
         if (targetCount > 0) {
           targetList = targetList + ',';
         }
