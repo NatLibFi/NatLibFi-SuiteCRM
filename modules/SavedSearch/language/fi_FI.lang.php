@@ -1,11 +1,11 @@
 <?php
-if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
-/*********************************************************************************
+/**
+ *
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
-
- * SuiteCRM is an extension to SugarCRM Community Edition developed by Salesagility Ltd.
- * Copyright (C) 2011 - 2014 Salesagility Ltd.
+ *
+ * SuiteCRM is an extension to SugarCRM Community Edition developed by SalesAgility Ltd.
+ * Copyright (C) 2011 - 2018 SalesAgility Ltd.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -16,7 +16,7 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more
+ * FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
  * details.
  *
  * You should have received a copy of the GNU Affero General Public License along with
@@ -34,40 +34,30 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
  * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
  * these Appropriate Legal Notices must retain the display of the "Powered by
  * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
- * reasonably feasible for  technical reasons, the Appropriate Legal Notices must
- * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
- ********************************************************************************/
+ * reasonably feasible for technical reasons, the Appropriate Legal Notices must
+ * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
+ */
 
-/*********************************************************************************
+if (!defined('sugarEntry') || !sugarEntry) {
+    die('Not A Valid Entry Point');
+}
 
- * Description:  Defines the English language pack for the base application.
- * Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.
- * All Rights Reserved.
- * Contributor(s): ______________________________________..
- ********************************************************************************/
-
-$mod_strings = array (
-	'LBL_MODULE_TITLE' => 'Tallennetut hakuni',
-	'LBL_SEARCH_FORM_TITLE' => 'Tallennetut hakuni : Haku',
-	'LBL_LIST_FORM_TITLE' => 'Tallennetut hakuni', 
-	'LBL_DELETE_CONFIRM' => 'Haluatko varmasti poistaa tallennetun haun?',
-	'LBL_UPDATE_BUTTON_TITLE' => 'Päivitä tämä tallennettu haku',
-	'LBL_DELETE_BUTTON_TITLE' => 'Poista tämä tallennettu haku',
-	'LBL_SAVE_BUTTON_TITLE' => 'Tallenna tämä haku',
-	'LBL_LIST_NAME' => 'Nimi',
-	'LBL_LIST_MODULE' => 'Moduuli',
+$mod_strings = array(
+    'LBL_MODULE_TITLE' => 'Tallennetut suodattimet',
+    'LBL_SEARCH_FORM_TITLE' => 'Tallennetut suodattimet: Suodatin',
+    'LBL_LIST_FORM_TITLE' => 'Tallennetut suodattimet: Lista',
+    'LBL_DELETE_CONFIRM' => 'Haluatko varmasti poistaa valitun tallennetun suodattimen?',
+    'LBL_DELETE_BUTTON_TITLE' => 'Poista tämä tallennettu suodatin',
+    'LBL_SAVE_BUTTON_TITLE' => 'Tallenna nykyinen suodatin',
+    'LBL_LIST_NAME' => 'Nimi',
+    'LBL_LIST_MODULE' => 'Moduuli',
     'LBL_ORDER_BY_COLUMNS' => 'Järjestä kolumnin mukaan:',
     'LBL_DIRECTION' => 'Suunta:',
-    'LBL_SAVE_SEARCH_AS' => 'Tallenna haku nimellä:',
-    'LBL_SAVE_SEARCH_AS_HELP' => 'Tämä tallentaa näkymä asetuksesi ja suodattimet edistyneessä haussa.',
-    'LBL_PREVIOUS_SAVED_SEARCH' => 'Edelliset tallennetut haut:',
-    'LBL_PREVIOUS_SAVED_SEARCH_HELP' => 'Muokkaa tai poista olemassa olevia tallennettuja hakuja.',
-    'LBL_ASCENDING' => 'Nouseva', 
+    'LBL_SAVE_SEARCH_AS' => 'Tallenna suodatin nimellä:',
+    'LBL_ASCENDING' => 'Nouseva',
     'LBL_DESCENDING' => 'Laskeva',
-    'LBL_MODIFY_CURRENT_SEARCH'=> 'Muokkaa tätä hakua',
-    'LBL_CREATED_BY'=> 'Tekijä',
+    'LBL_MODIFY_CURRENT_FILTER' => 'Muokkaa nykyistä suodinta',
+
+    'LBL_CREATED_BY' => 'Tekijä',
 
 );
-
-
-?>

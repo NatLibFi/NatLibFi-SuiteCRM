@@ -1,10 +1,11 @@
 <?php
 /**
+ *
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
  *
  * SuiteCRM is an extension to SugarCRM Community Edition developed by SalesAgility Ltd.
- * Copyright (C) 2011 - 2016 SalesAgility Ltd.
+ * Copyright (C) 2011 - 2018 SalesAgility Ltd.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -15,7 +16,7 @@
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more
+ * FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
  * details.
  *
  * You should have received a copy of the GNU Affero General Public License along with
@@ -33,27 +34,30 @@
  * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
  * these Appropriate Legal Notices must retain the display of the "Powered by
  * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
- * reasonably feasible for  technical reasons, the Appropriate Legal Notices must
- * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
+ * reasonably feasible for technical reasons, the Appropriate Legal Notices must
+ * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  */
+
+if (!defined('sugarEntry') || !sugarEntry) {
+    die('Not A Valid Entry Point');
+}
+
 $mod_strings = array(
-    'LBL_ASSIGNED_TO_ID' => 'Vastuuhenkilön tunnus',
-    'LBL_ASSIGNED_TO_NAME' => 'Vastuuhenkilö',
+    'LBL_ASSIGNED_TO_ID' => 'Kohdistettu käyttäjätunnukselle',
+    'LBL_ASSIGNED_TO_NAME' => 'Vastuhenkilö',
     'LBL_SECURITYGROUPS' => 'Turvaryhmät',
     'LBL_SECURITYGROUPS_SUBPANEL_TITLE' => 'Turvaryhmät',
     'LBL_ID' => 'Tunnus',
-    'LBL_DATE_ENTERED' => 'Luonti pvm',
-    'LBL_DATE_MODIFIED' => 'Muokkaus pvm',
-    'LBL_MODIFIED' => 'Muokkaaja',
-    'LBL_MODIFIED_ID' => 'Muokkaajan tunnus',
-    'LBL_MODIFIED_NAME' => 'Muokkaaja',
+    'LBL_DATE_ENTERED' => 'Luontipäiväys:',
+    'LBL_DATE_MODIFIED' => 'Muokkauspäivämäärä',
+    'LBL_MODIFIED' => 'Muokkaaja:',
+    'LBL_MODIFIED_NAME' => 'Muokkaaja:',
     'LBL_CREATED' => 'Tekijä',
-    'LBL_CREATED_ID' => 'tekijän tunnus',
     'LBL_DESCRIPTION' => 'Kuvaus',
-    'LBL_DELETED' => 'Poistettu',
+    'LBL_DELETED' => 'Poistetti',
     'LBL_NAME' => 'Nimi',
-    'LBL_CREATED_USER' => 'Tekijä',
-    'LBL_MODIFIED_USER' => 'Muokkaaja',
+    'LBL_CREATED_USER' => 'Tekijä:',
+    'LBL_MODIFIED_USER' => 'Muokkaaja:',
     'LBL_LIST_NAME' => 'Nimi',
     'LBL_EDIT_BUTTON' => 'Muokkaa',
     'LBL_REMOVE' => 'Poista',
@@ -63,11 +67,9 @@ $mod_strings = array(
     'LBL_HOMEPAGE_TITLE' => 'My Pivot',
     'LNK_NEW_RECORD' => 'Create Pivot',
     'LNK_LIST' => 'View Pivot',
-    'LNK_IMPORT_PIVOT' => 'Import Pivot',
     'LBL_SEARCH_FORM_TITLE' => 'Search Pivot',
-    'LBL_HISTORY_SUBPANEL_TITLE' => 'Historia',
+    'LBL_HISTORY_SUBPANEL_TITLE' => 'Katso historia',
     'LBL_ACTIVITIES_SUBPANEL_TITLE' => 'Aktiviteetit',
-    'LBL_PIVOT_SUBPANEL_TITLE' => 'Pivot',
     'LBL_NEW_FORM_TITLE' => 'New Pivot',
     'LBL_CONFIG' => 'Config',
     'LBL_TYPE' => 'Area for Analysis',
@@ -75,16 +77,7 @@ $mod_strings = array(
     'LNK_SPOT_CREATE' => 'Create Spot',
 
     //Analytics
-    'LBL_AN_AREA_FOR_ANALYSIS' => 'Area for Analysis',
     'LBL_AN_CONFIGURATION' => 'Configuration',
-    'LBL_AN_SALES' => 'Myynti',
-    'LBL_AN_ACCOUNTS' => 'Accounts',
-    'LBL_AN_LEADS' => 'Liidit',
-    'LBL_AN_SERVICE' => 'Palvelu',
-    'LBL_AN_MARKETING' => 'Markkinointi',
-    'LBL_AN_MARKETING_ACTIVITY' => 'Marketing Activity',
-    'LBL_AN_ACTIVITIES' => 'Aktiviteetit',
-    'LBL_AN_QUOTES' => 'Tarjoukset',
 
     'LBL_AN_UNSUPPORTED_DB' => 'Sorry, Suite Spots are currently configured for MySQL and MS SQL only',
 
@@ -98,7 +91,7 @@ $mod_strings = array(
     'LBL_AN_LEADS_ASSIGNED_USER' => 'Vastuuhenkilö',
     'LBL_AN_LEADS_STATUS' => 'Tila',
     'LBL_AN_LEADS_LEAD_SOURCE' => 'Liidin lähde',
-    'LBL_AN_LEADS_CAMPAIGN_NAME' => 'Campaign Name',
+    'LBL_AN_LEADS_CAMPAIGN_NAME' => 'Kampanjan nimi',
     'LBL_AN_LEADS_YEAR' => 'Vuosi',
     'LBL_AN_LEADS_QUARTER' => 'Quarter',
     'LBL_AN_LEADS_MONTH' => 'Kuukausi',
@@ -107,7 +100,7 @@ $mod_strings = array(
 
     //Analytics labels for sales pivot
     'LBL_AN_SALES_ACCOUNT_NAME' => 'Asiakkaan nimi',
-    'LBL_AN_SALES_OPPORTUNITY_NAME' => 'Myyntimahdollisuuden nimi',
+    'LBL_AN_SALES_OPPORTUNITY_NAME' => 'Myyntimahdollisuus',
     'LBL_AN_SALES_ASSIGNED_USER' => 'Vastuuhenkilö',
     'LBL_AN_SALES_OPPORTUNITY_TYPE' => 'OpportunityType',
     'LBL_AN_SALES_LEAD_SOURCE' => 'Liidin lähde',
@@ -120,11 +113,11 @@ $mod_strings = array(
     'LBL_AN_SALES_WEEK' => 'Sales Week',
     'LBL_AN_SALES_DAY' => 'Sales Day',
     'LBL_AN_SALES_YEAR' => 'Sales Year',
-    'LBL_AN_SALES_CAMPAIGN' => 'Kampanjat',
+    'LBL_AN_SALES_CAMPAIGN' => 'Kampanja',
 
     //Analytics labels for service pivot
     'LBL_AN_SERVICE_ACCOUNT_NAME' => 'Asiakkaan nimi',
-    'LBL_AN_SERVICE_STATE' => 'Maakunta/lääni',
+    'LBL_AN_SERVICE_STATE' => 'Tila',
     'LBL_AN_SERVICE_STATUS' => 'Tila',
     'LBL_AN_SERVICE_PRIORITY' => 'Prioriteetti',
     'LBL_AN_SERVICE_CREATED_DAY' => 'Created Day',
@@ -147,21 +140,21 @@ $mod_strings = array(
     'LBL_AN_MARKETING_BUDGET' => 'Budjetti',
     'LBL_AN_MARKETING_EXPECTED_COST' => 'Expected Cost',
     'LBL_AN_MARKETING_EXPECTED_REVENUE' => 'Arvioitu tuotto',
-    'LBL_AN_MARKETING_OPPORTUNITY_NAME' => 'Myyntimahdollisuuden nimi',
+    'LBL_AN_MARKETING_OPPORTUNITY_NAME' => 'Myyntimahdollisuus',
     'LBL_AN_MARKETING_OPPORTUNITY_AMOUNT' => 'Myyntimahdollisuuden summa',
     'LBL_AN_MARKETING_OPPORTUNITY_SALES_STAGE' => 'Opportunity Sales Stage',
     'LBL_AN_MARKETING_OPPORTUNITY_ASSIGNED_TO' => 'Opportunity Assigned To',
     'LBL_AN_MARKETING_ACCOUNT_NAME' => 'Asiakkaan nimi',
 
     //Analytics labels for the marketing activities pivot
-    'LBL_AN_MARKETINGACTIVITY_CAMPAIGN_NAME' => 'Campaign Name',
+    'LBL_AN_MARKETINGACTIVITY_CAMPAIGN_NAME' => 'Kampanjan nimi',
     'LBL_AN_MARKETINGACTIVITY_ACTIVITY_DATE' => 'Aktiviteetin pvm',
     'LBL_AN_MARKETINGACTIVITY_ACTIVITY_TYPE' => 'Aktiviteettityyppi',
-    'LBL_AN_MARKETINGACTIVITY_RELATED_TYPE' => 'Liittyen Tyypi',
+    'LBL_AN_MARKETINGACTIVITY_RELATED_TYPE' => 'Liittyen Tyyppi',
     'LBL_AN_MARKETINGACTIVITY_RELATED_ID' => 'Related ID',
 
     //Analytics labels for the quotes pivot
-    'LBL_AN_QUOTES_OPPORTUNITY_NAME' => 'Myyntimahdollisuuden nimi',
+    'LBL_AN_QUOTES_OPPORTUNITY_NAME' => 'Myyntimahdollisuus',
     'LBL_AN_QUOTES_OPPORTUNITY_TYPE' => 'Myyntimahdollisuuden tyyppi',
     'LBL_AN_QUOTES_OPPORTUNITY_LEAD_SOURCE' => 'Opportunity Lead Source',
     'LBL_AN_QUOTES_OPPORTUNITY_SALES_STAGE' => 'Opportunity Sales Stage',
@@ -179,7 +172,7 @@ $mod_strings = array(
     'LBL_AN_QUOTES_ITEM_TOTAL' => 'Item Total',
     'LBL_AN_QUOTES_GRAND_TOTAL' => 'Kokonaissumma',
     'LBL_AN_QUOTES_ASSIGNED_TO' => 'Vastuuhenkilö',
-    'LBL_AN_QUOTES_DATE_CREATED' => 'Luonti pvm',
+    'LBL_AN_QUOTES_DATE_CREATED' => 'Luontipäiväys:',
     'LBL_AN_QUOTES_DAY_CREATED' => 'Day Created',
     'LBL_AN_QUOTES_WEEK_CREATED' => 'Week Created',
     'LBL_AN_QUOTES_MONTH_CREATED' => 'Month Created',
@@ -228,10 +221,10 @@ $mod_strings = array(
     'LBL_LOCALE_STRINGS_FILTER_RESULTS' => 'Filter results',
     'LBL_LOCALE_STRINGS_TOTALS' => 'Totals',
     'LBL_LOCALE_STRINGS_VS' => 'vs',
-    'LBL_LOCALE_STRINGS_BY' => 'by',
+    'LBL_LOCALE_STRINGS_BY' => '-',
     'LBL_LOCALE_STRINGS_OK' => 'OK',
 
-    'LBL_ACTIVITIES_CALL'=>'Puhelut',
-    'LBL_ACTIVITIES_MEETING'=>'Tapaamiset',
-    'LBL_ACTIVITIES_TASK'=>'Tehtävät',
+    'LBL_ACTIVITIES_CALL'=>'Puhelu',
+    'LBL_ACTIVITIES_MEETING'=>'Tapaaminen',
+    'LBL_ACTIVITIES_TASK'=>'Tehtävä',
 );

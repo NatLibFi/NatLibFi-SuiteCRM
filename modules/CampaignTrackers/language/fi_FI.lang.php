@@ -1,11 +1,11 @@
 <?php
-if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
-/*********************************************************************************
+/**
+ *
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
-
- * SuiteCRM is an extension to SugarCRM Community Edition developed by Salesagility Ltd.
- * Copyright (C) 2011 - 2014 Salesagility Ltd.
+ *
+ * SuiteCRM is an extension to SugarCRM Community Edition developed by SalesAgility Ltd.
+ * Copyright (C) 2011 - 2018 SalesAgility Ltd.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -16,7 +16,7 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more
+ * FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
  * details.
  *
  * You should have received a copy of the GNU Affero General Public License along with
@@ -34,45 +34,39 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
  * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
  * these Appropriate Legal Notices must retain the display of the "Powered by
  * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
- * reasonably feasible for  technical reasons, the Appropriate Legal Notices must
- * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
- ********************************************************************************/
+ * reasonably feasible for technical reasons, the Appropriate Legal Notices must
+ * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
+ */
 
-/*********************************************************************************
+if (!defined('sugarEntry') || !sugarEntry) {
+    die('Not A Valid Entry Point');
+}
 
- * Description:  Defines the English language pack for the base application.
- * Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.
- * All Rights Reserved.
- * Contributor(s): ______________________________________..
- ********************************************************************************/
+$mod_strings = array(
+    'LBL_ID' => 'Tunnus',
+    'LBL_TRACKER_KEY' => 'Seurantakoodin avain',
+    'LBL_TRACKER_URL' => 'Seurantakoodin URL',
+    'LBL_TRACKER_NAME' => 'Seurantakoodin nimi',
+    'LBL_CAMPAIGN_ID' => 'Kampanja Id',
+    'LBL_DATE_ENTERED' => 'Luonti pvm',
+    'LBL_DATE_MODIFIED' => 'Muokkaus pvm',
+    'LBL_MODIFIED_USER_ID' => 'Muokkaaja',
+    'LBL_CREATED_BY' => 'Tekijä',
+    'LBL_DELETED' => 'Poistettu',
+    'LBL_CAMPAIGN' => 'Kampanja',
+    'LBL_OPTOUT' => 'Estä lähetys',
 
-$mod_strings = array (
-	'LBL_ID'=>'Tunnus',
-	'LBL_TRACKER_KEY'=>'Seurantakoodin avain',
-	'LBL_TRACKER_URL'=>'Seurantakoodin URL',
-	'LBL_TRACKER_NAME'=>'Seurantakoodin nimi',
-	'LBL_CAMPAIGN_ID'=>'Kampanja Id',
-	'LBL_DATE_ENTERED'=>'Luonti pvm',
-	'LBL_DATE_MODIFIED'=>'Muokkaus pvm',
-	'LBL_MODIFIED_USER_ID'=>'Muokkaaja',
-	'LBL_CREATED_BY'=>'Tekijä',
-	'LBL_DELETED'=>'Poistettu',
-	'LBL_CAMPAIGN'=>'Kampanja',
-	'LBL_OPTOUT'=>'Estä lähetys',
-	
-	'LBL_MODULE_NAME'=>'Kampanjan seurantakoodit',
-	'LBL_EDIT_CAMPAIGN_NAME'=>'Kampanjan nimet:',
-	'LBL_EDIT_TRACKER_NAME'=>'Seurantakoodin nimi:',
-	'LBL_EDIT_TRACKER_URL'=>'Seurantakoodin URL:',
-	
-	'LBL_SUBPANEL_TRACKER_NAME'=>'Nimi',
-	'LBL_SUBPANEL_TRACKER_URL'=>'URL-osoite',
-	'LBL_SUBPANEL_TRACKER_KEY'=>'Avain',
-	'LBL_EDIT_MESSAGE_URL'=>'Kampanjaviestin URL:',
-	'LBL_EDIT_TRACKER_KEY'=>'Seurantakoodin avain:',
-	'LBL_EDIT_OPT_OUT'=>'Estä lähetys linkki?',
-	'LNK_CAMPAIGN_LIST'=>'Kampanjat',
-	'LBL_EDIT_LAYOUT' => 'Edit Layout' /*for 508 compliance fix*/,
+    'LBL_MODULE_NAME' => 'Kampanjan seurantakoodit',
+    'LBL_EDIT_CAMPAIGN_NAME' => 'Kampanjan nimet:',
+    'LBL_EDIT_TRACKER_NAME' => 'Seurantakoodin nimi:',
+    'LBL_EDIT_TRACKER_URL' => 'Seurantakoodin URL:',
+
+    'LBL_SUBPANEL_TRACKER_NAME' => 'Nimi',
+    'LBL_SUBPANEL_TRACKER_URL' => 'URL-osoite',
+    'LBL_SUBPANEL_TRACKER_KEY' => 'Avain',
+    'LBL_EDIT_MESSAGE_URL' => 'Kampanjaviestin URL:',
+    'LBL_EDIT_TRACKER_KEY' => 'Seurantakoodin avain:',
+    'LBL_EDIT_OPT_OUT' => 'Estä lähetys linkki?',
+    'LNK_CAMPAIGN_LIST' => 'Kampanjat',
+    'LBL_EDIT_LAYOUT' => 'Muuta layoutia' /*for 508 compliance fix*/,
 );
-
-?>
