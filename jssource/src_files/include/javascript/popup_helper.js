@@ -347,4 +347,9 @@ $(document).ready(function () {
   $("ul.clickMenu").each(function (index, node) {
     $(node).sugarActionMenu();
   });
+  if (window.document.forms['popup_query_form'] != null && typeof(window.document.forms['popup_query_form'].request_data) != 'undefined') {
+    if (window.document.forms['popup_query_form'].request_data.value == "") {
+      window.document.forms['popup_query_form'].request_data.value = window.opener.get_popup_request_data();
+    }
+  }
 });
