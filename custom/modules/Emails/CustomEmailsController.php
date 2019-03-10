@@ -2,6 +2,7 @@
 
 require_once 'modules/Emails/EmailsController.php';
 require_once 'custom/include/GroupEmailHelper.php';
+require_once 'custom/include/EmailRecipientProvider.php';
 
 class CustomEmailsController extends EmailsController
 {
@@ -19,63 +20,34 @@ class CustomEmailsController extends EmailsController
             echo '<script src="cache/jsLanguage/Emails/'. $GLOBALS['current_language'] . '.js"></script>';
         }
         if (isset($_REQUEST['ids']) && isset($_REQUEST['targetModule'])) {
-            if ($_REQUEST['targetModule'] === 'Contacts') {
-                $toAddressIds = explode(',', rtrim($_REQUEST['ids'], ','));
+            $recipientProvider = new EmailRecipientProvider(DBManagerFactory::getInstance(), $locale);
 
-                if (isset($_REQUEST['current_post']) && !empty($_REQUEST['current_post'])) { 
-                    $query = json_decode(html_entity_decode($_REQUEST['current_post']), true); 
+            $toAddressIds = explode(',', rtrim($_REQUEST['ids'], ','));
 
-                    require_once('include/ListView/ListViewData.php'); 
-                    require_once('custom/include/RecordIdListLoader.php'); 
+            if (isset($_REQUEST['current_post']) && !empty($_REQUEST['current_post'])) { 
+                $query = json_decode(html_entity_decode($_REQUEST['current_post']), true); 
 
-                    $listViewData = new ListViewData(); 
-                    $listLoader = new RecordIdListLoader($listViewData); 
-                    $toAddressIds = $listLoader->loadRecordIdsMatchingQuery($_REQUEST['targetModule'], $query); 
-                }
+                require_once('include/ListView/ListViewData.php'); 
+                require_once('custom/include/RecordIdListLoader.php'); 
 
-                foreach ($toAddressIds as $id) {
-                    $contact = BeanFactory::getBean('Contacts', $id);
-                    if (!$contact) {
-                        continue;
-                    }
+                $listViewData = new ListViewData(); 
+                $listLoader = new RecordIdListLoader($listViewData); 
+                $toAddressIds = $listLoader->loadRecordIdsMatchingQuery($_REQUEST['targetModule'], $query); 
+            }
 
-                    $idLine = '<input type="hidden" class="email-compose-view-to-list" ';
-                    $idLine .= 'data-record-module="Contacts" ';
-                    $idLine .= 'data-record-id="' . htmlspecialchars($id) . '" ';
-                    $idLine .= 'data-record-name="' . htmlspecialchars($contact->name) . '" ';
-                    $idLine .= 'data-record-email="' . $contact->email1 . '">';
-                    echo $idLine;
-                }
-            } else {
-                $recipientProvider = new GroupEmailHelper();
+            $recipientData = $recipientProvider->getRecipientNamesAndAddresses($_REQUEST['targetModule'], $toAddressIds);
 
-                $toAddressIds = explode(',', rtrim($_REQUEST['ids'], ','));
+            foreach ($recipientData as $recipient) {
+                $id = $recipient['id'];
+                $name = $recipient['name'];
+                $email = $recipient['email_address'];
 
-                if (isset($_REQUEST['current_post']) && !empty($_REQUEST['current_post'])) { 
-                    $query = json_decode(html_entity_decode($_REQUEST['current_post']), true); 
-
-                    require_once('include/ListView/ListViewData.php'); 
-                    require_once('custom/include/RecordIdListLoader.php'); 
-
-                    $listViewData = new ListViewData(); 
-                    $listLoader = new RecordIdListLoader($listViewData); 
-                    $toAddressIds = $listLoader->loadRecordIdsMatchingQuery($_REQUEST['targetModule'], $query); 
-                }
-
-                foreach ($toAddressIds as $id) {
-                    $recipientData = $recipientProvider->getRecipientNamesAndAddresses($_REQUEST['targetModule'], $id);
-
-                    foreach ($recipientData as $recipient) {
-                        $formattedName = $locale->getLocaleFormattedName($recipient['first_name'], $recipient['last_name'], $recipient['salutation'], $recipient['title']);
-
-                        $idLine = '<input type="hidden" class="email-compose-view-to-list" ';
-                        $idLine .= 'data-record-module="Contacts" ';
-                        $idLine .= 'data-record-id="' . htmlspecialchars($recipient['id']) . '" ';
-                        $idLine .= 'data-record-name="' . htmlspecialchars($formattedName) . '" ';
-                        $idLine .= 'data-record-email="' . $recipient['email_address'] . '">';
-                        echo $idLine;
-                    }
-                }
+                $idLine = '<input type="hidden" class="email-compose-view-to-list" ';
+                $idLine .= 'data-record-module="Contacts" ';
+                $idLine .= 'data-record-id="' . htmlspecialchars($id) . '" ';
+                $idLine .= 'data-record-name="' . htmlspecialchars($name) . '" ';
+                $idLine .= 'data-record-email="' . $email . '">';
+                echo $idLine;
             }
         }
         if (isset($_REQUEST['relatedModule']) && isset($_REQUEST['relatedId'])) {
