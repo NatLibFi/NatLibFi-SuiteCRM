@@ -1,10 +1,11 @@
 <?php
 /**
+ *
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
  *
  * SuiteCRM is an extension to SugarCRM Community Edition developed by SalesAgility Ltd.
- * Copyright (C) 2011 - 2016 SalesAgility Ltd.
+ * Copyright (C) 2011 - 2018 SalesAgility Ltd.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -15,7 +16,7 @@
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more
+ * FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
  * details.
  *
  * You should have received a copy of the GNU Affero General Public License along with
@@ -33,9 +34,13 @@
  * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
  * these Appropriate Legal Notices must retain the display of the "Powered by
  * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
- * reasonably feasible for  technical reasons, the Appropriate Legal Notices must
- * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
+ * reasonably feasible for technical reasons, the Appropriate Legal Notices must
+ * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  */
+
+if (!defined('sugarEntry') || !sugarEntry) {
+    die('Not A Valid Entry Point');
+}
 
 $mod_strings = array(
     'LBL_ASSIGNED_TO_ID' => 'Vastuuhenkilön tunnus',
@@ -44,10 +49,8 @@ $mod_strings = array(
     'LBL_DATE_ENTERED' => 'Luontipvm',
     'LBL_DATE_MODIFIED' => 'Muokkaus pvm',
     'LBL_MODIFIED' => 'Muokkaaja',
-    'LBL_MODIFIED_ID' => 'Muokkaaja',
     'LBL_MODIFIED_NAME' => 'Muokkaaja',
     'LBL_CREATED' => 'Tekijä',
-    'LBL_CREATED_ID' => 'Tekijä',
     'LBL_DESCRIPTION' => 'Kuvaus',
     'LBL_DELETED' => 'Poistettu',
     'LBL_NAME' => 'Nimi',
@@ -62,11 +65,9 @@ $mod_strings = array(
     'LBL_HOMEPAGE_TITLE' => 'My Reports',
     'LNK_NEW_RECORD' => 'Create Report',
     'LNK_LIST' => 'Raportit',
-    'LNK_IMPORT_AOR_REPORTS' => 'Tuo raportit',
     'LBL_SEARCH_FORM_TITLE' => 'Etsi raportit',
     'LBL_HISTORY_SUBPANEL_TITLE' => 'Historia',
     'LBL_ACTIVITIES_SUBPANEL_TITLE' => 'Aktiviteetit',
-    'LBL_AOR_REPORTS_SUBPANEL_TITLE' => 'Raportit',
     'LBL_NEW_FORM_TITLE' => 'New Reports',
     'LBL_REPORT_MODULE' => 'Raportti moduuli',
     'LBL_GRAPHS_PER_ROW' => 'Charts per row',
@@ -83,7 +84,8 @@ $mod_strings = array(
     'LBL_TOTAL' => 'Summa',
     'LBL_AOR_CHARTS_SUBPANEL_TITLE' => 'Kuvaajat',
     'LBL_ADD_CHART' => 'Add chart',
-    'LBL_ADD_PARENTHESIS' => 'Drop parenthesis',
+    'LBL_ADD_PARENTHESIS' => 'Drop parenthesis',// PR 5471 to be removed after merged
+    'LBL_INSERT_PARENTHESIS' => 'Insert parenthesis', // PR 5471
     'LBL_CHART_TITLE' => 'Otsikko',
     'LBL_CHART_TYPE' => 'Tyyppi',
     'LBL_CHART_X_FIELD' => 'X Axis',
@@ -95,7 +97,6 @@ $mod_strings = array(
     'LBL_DASHLET_SAVE' => 'Tallenna',
     'LBL_DASHLET_CHARTS' => 'Kuvaajat',
     'LBL_DASHLET_ONLY_CHARTS' => 'Only show charts',
-    'LBL_AOR_SCHEDULED_REPORTS_AOR_REPORTS_FROM_AOR_SCHEDULED_REPORTS_TITLE' => 'Ajastetut raportit',
     'LBL_UPDATE_PARAMETERS' => 'Päivitä',
     'LBL_PARAMETERS' => 'Parametrit',
     'LBL_TOOLTIP_DRAG_DROP_ELEMS' => 'Drag and drop elements into field or condition area',

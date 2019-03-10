@@ -5,7 +5,7 @@
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
  *
  * SuiteCRM is an extension to SugarCRM Community Edition developed by SalesAgility Ltd.
- * Copyright (C) 2011 - 2016 SalesAgility Ltd.
+ * Copyright (C) 2011 - 2018 SalesAgility Ltd.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -16,7 +16,7 @@
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more
+ * FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
  * details.
  *
  * You should have received a copy of the GNU Affero General Public License along with
@@ -34,12 +34,15 @@
  * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
  * these Appropriate Legal Notices must retain the display of the "Powered by
  * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
- * reasonably feasible for  technical reasons, the Appropriate Legal Notices must
- * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
+ * reasonably feasible for technical reasons, the Appropriate Legal Notices must
+ * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  */
 
+if (!defined('sugarEntry') || !sugarEntry) {
+    die('Not A Valid Entry Point');
+}
+
 $mod_strings['LBL_MAP'] = 'Kartta';
-$mod_strings['LBL_MAPS'] = 'Kartat';
 $mod_strings['LBL_MODULE_NAME'] = 'Kartat';
 $mod_strings['LBL_MODULE_TITLE'] = 'Kartat: etusivu';
 $mod_strings['LBL_MODULE_ID'] = 'Kartat';
@@ -53,10 +56,8 @@ $mod_strings['LBL_MODULE_TYPE'] = 'Näytettävän moduulin tyyppi:';
 $mod_strings['LBL_DISTANCE'] = 'Distance (Radius):';
 $mod_strings['LBL_UNIT_TYPE'] = 'Yksikön tyyppi:';
 
-$mod_strings['LBL_MAP_ACTION'] = 'Map It';
 $mod_strings['LBL_MAP_DISPLAY'] = 'Karttanäyttö';
 $mod_strings['LBL_MAP_LEGEND'] = 'Legend:';
-$mod_strings['LBL_MAP_USERS'] = 'Käyttäjät:';
 $mod_strings['LBL_MAP_USER_GROUPS'] = 'Ryhmät:';
 $mod_strings['LBL_MAP_GROUP'] = 'Ryhmä';
 $mod_strings['LBL_MAP_TYPE'] = 'Tyyppi';
@@ -67,11 +68,6 @@ $mod_strings['LBL_MAP_GOOGLE_MAPS_VIEW'] = 'Google Maps View';
 $mod_strings['LNK_NEW_MAP'] = 'Lisää uusi kartta';
 $mod_strings['LNK_NEW_RECORD'] = 'Lisää uusi kartta';
 $mod_strings['LNK_MAP_LIST'] = 'List Maps';
-$mod_strings['LNK_IMPORT_MAPS'] = 'Tuo Kartat';
-$mod_strings['LBL_MAP_GEOCODE_ADDRESSES'] = 'Geokoodi-osoitteet';
-$mod_strings['LBL_MAP_DONATE'] = 'Lahjoita';
-$mod_strings['LBL_MAP_DONATE_TO_THIS_PROJECT'] = 'Lahjoita tälle projektille';
-$mod_strings['LBL_BUG_FIX'] = 'Virheenkorjaus';
 
 $mod_strings['LBL_MAP_ADDRESS_TEST'] = 'Geocoding Test';
 $mod_strings['LBL_MAP_QUICK_RADIUS'] = 'Quick Radius Map';
@@ -80,10 +76,17 @@ $mod_strings['LBL_MAP_ADDRESS'] = 'Osoite';
 $mod_strings['LBL_MAP_PROCESS'] = 'Process It!';
 
 $mod_strings['LBL_MAP_LAST_STATUS'] = 'Last Geocode Status';
-$mod_strings['LBL_MAP_GEOCODED_COUNTS'] = 'Geocoded Counts';
 $mod_strings['LBL_GEOCODED_COUNTS'] = 'Module Geocoded Counts';
 $mod_strings['LBL_CRON_URL'] = 'Cron URL:';
 $mod_strings['LBL_MODULE_HEADING'] = 'Moduuli';
+
+$mod_strings['LBL_N/A'] = 'N/A';
+$mod_strings['LBL_ZERO_RESULTS'] = 'Zero Results';
+$mod_strings['LBL_OK'] = 'Ok';
+$mod_strings['LBL_INVALID_REQUEST'] = 'Invalid Request';
+$mod_strings['LBL_APPROXIMATE'] = 'Approximate';
+$mod_strings['LBL_EMPTY'] = 'Tyhjä';
+
 $mod_strings['LBL_MODULE_TOTAL_HEADING'] = 'Summa';
 $mod_strings['LBL_MODULE_RESET_HEADING'] = 'Reset';
 $mod_strings['LBL_GEOCODED_COUNTS_DESCRIPTION'] = 'The table shown belown shows the number of module objects geocoded, grouped by geocoding response. Keep in mind that the standard Google Maps usage limit is 2500 requests per day . This module will cache the addresses geocoding information during processing to reduce the overall number of requests needed.';
@@ -93,7 +96,6 @@ $mod_strings['LBL_EXPORT_ADDRESS_URL'] = 'Export URLs';
 $mod_strings['LBL_EXPORT_INSTRUCTIONS'] = 'Use the links below to export full addresses in need of geocodeing information. Then use an online or offline batch geocoding tool to geocode the addresses. When you are finished geocoding, import the addresses into the Address Cache module to be used with your maps. Note, the Address Cache module is optional. All geocoding information is stored in the representative module.';
 $mod_strings['LBL_ADDRESS_CACHE'] = 'Karttaosoitteiden välimuisti';
 $mod_strings['LBL_ADD_TO_TARGET_LIST'] = 'Add to Target List';
-$mod_strings['LBL_ADD_TO_TARGET_LIST_CONFIRM'] = 'Are you sure you want to add the Selected Items to the Target List?';
 $mod_strings['LBL_ADD_TO_TARGET_LIST_PROCESSING'] = 'Käsitellään...';
 
 
@@ -140,9 +142,10 @@ $mod_strings['LBL_CONFIG_GROUP_FIELD_FOR_PROSPECTS'] = 'Group Field for  Prospec
 
 $mod_strings['LBL_CONFIG_GEOCODING_SETTINGS_TITLE'] = 'Geocoding/Google Settings:';
 $mod_strings['LBL_CONFIG_GEOCODING_API_URL_TITLE'] = 'Geocoding API URL:';
-$mod_strings['LBL_CONFIG_GEOCODING_API_URL_DESC'] = 'The URL of the Google Maps API V3 or Proxy';
+$mod_strings['LBL_CONFIG_GEOCODING_API_URL_DESC'] = 'The URL of the Google Maps Geocoding API or Proxy'; // PR 3290
 $mod_strings['LBL_CONFIG_GEOCODING_API_SECRET_TITLE'] = 'Secret Phrase for Proxy:';
 $mod_strings['LBL_CONFIG_GEOCODING_API_SECRET_DESC'] = 'The Secret Phrase to be used with the Proxy MD5 comparison.';
+$mod_strings['LBL_CONFIG_GEOCODING_API_SECRET_GET_A_KEY'] = 'Get a free Google Maps Geocoding API key (to geocode a generous quota of addresses per day for free).'; // PR 3290
 $mod_strings['LBL_CONFIG_GEOCODING_LIMIT_TITLE'] = 'Geocoding Limit:';
 $mod_strings['LBL_CONFIG_GEOCODING_LIMIT_DESC'] = "'geocoding_limit' sets the query limit when selecting records to geocode.";
 $mod_strings['LBL_CONFIG_GOOGLE_GEOCODING_LIMIT_TITLE'] = 'Google Geocoding Limit:';
@@ -183,3 +186,7 @@ $mod_strings['LBL_CONFIG_CUSTOM_CONTROLLER_DESC'] = "Important Note: All saved s
 $mod_strings['LBL_JJWG_MAPS_JJWG_AREAS_FROM_JJWG_AREAS_TITLE'] = 'Alueet';
 $mod_strings['LBL_JJWG_MAPS_JJWG_MARKERS_FROM_JJWG_MARKERS_TITLE'] = 'Merkit';
 $mod_strings['LBL_PARENT_ID'] = 'Parent ID:';
+$mod_strings['LBL_JJWP_PARTNERS'] = 'JJWP Partners';
+$mod_strings['LBL_GET_GOOGLE_API_KEY'] = 'Get A Key';
+$mod_strings['LBL_GOOGLE_API_KEY'] = 'Google Api Key';
+$mod_strings['LBL_ERROR_NO_GOOGLE_API_KEY'] = 'Please set the Google Api Key in the Google Maps Administrative Panel.';

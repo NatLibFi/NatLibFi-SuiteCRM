@@ -1,65 +1,83 @@
 <?php
 /**
- * Advanced OpenReports, SugarCRM Reporting.
- * @package Advanced OpenReports for SugarCRM
- * @copyright SalesAgility Ltd http://www.salesagility.com
  *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE as published by
- * the Free Software Foundation; either version 3 of the License, or
- * (at your option) any later version.
+ * SugarCRM Community Edition is a customer relationship management program developed by
+ * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * SuiteCRM is an extension to SugarCRM Community Edition developed by SalesAgility Ltd.
+ * Copyright (C) 2011 - 2018 SalesAgility Ltd.
  *
- * You should have received a copy of the GNU AFFERO GENERAL PUBLIC LICENSE
- * along with this program; if not, see http://www.gnu.org/licenses
- * or write to the Free Software Foundation,Inc., 51 Franklin Street,
- * Fifth Floor, Boston, MA 02110-1301  USA
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Affero General Public License version 3 as published by the
+ * Free Software Foundation with the addition of the following permission added
+ * to Section 15 as permitted in Section 7(a): FOR ANY PART OF THE COVERED WORK
+ * IN WHICH THE COPYRIGHT IS OWNED BY SUGARCRM, SUGARCRM DISCLAIMS THE WARRANTY
+ * OF NON INFRINGEMENT OF THIRD PARTY RIGHTS.
  *
- * @author SalesAgility <info@salesagility.com>
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with
+ * this program; if not, see http://www.gnu.org/licenses or write to the Free
+ * Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ * 02110-1301 USA.
+ *
+ * You can contact SugarCRM, Inc. headquarters at 10050 North Wolfe Road,
+ * SW2-130, Cupertino, CA 95014, USA. or at email address contact@sugarcrm.com.
+ *
+ * The interactive user interfaces in modified source and object code versions
+ * of this program must display Appropriate Legal Notices, as required under
+ * Section 5 of the GNU Affero General Public License version 3.
+ *
+ * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
+ * these Appropriate Legal Notices must retain the display of the "Powered by
+ * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
+ * reasonably feasible for technical reasons, the Appropriate Legal Notices must
+ * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  */
 
-$mod_strings = array (
-  'LBL_ID' => 'Tunnus',
-  'LBL_DATE_ENTERED' => 'Luontipvm',
-  'LBL_DATE_MODIFIED' => 'Muokkaus pvm',
-  'LBL_MODIFIED' => 'Muokkaaja',
-  'LBL_MODIFIED_ID' => 'Muokkaaja',
-  'LBL_MODIFIED_NAME' => 'Muokkaaja',
-  'LBL_CREATED' => 'Tekijä',
-  'LBL_CREATED_ID' => 'Tekijä',
-  'LBL_DESCRIPTION' => 'Kuvaus',
-  'LBL_DELETED' => 'Poistettu',
-  'LBL_NAME' => 'Nimi',
-  'LBL_CREATED_USER' => 'Tekijä',
-  'LBL_MODIFIED_USER' => 'Muokkaaja',
-  'LBL_LIST_NAME' => 'Nimi',
-  'LBL_EDIT_BUTTON' => 'Muokkaa',
-  'LBL_REMOVE' => 'Poista',
-  'LBL_ASSIGNED_TO_ID' => 'Vastuuhenkilön tunnus',
-  'LBL_ASSIGNED_TO_NAME' => 'Kohdennettu hlölle',
-  'LBL_LIST_FORM_TITLE' => 'Edellytykset-luettelo',
-  'LBL_MODULE_NAME' => 'Ehdot',
-  'LBL_MODULE_TITLE' => 'Ehdot',
-  'LBL_HOMEPAGE_TITLE' => 'My Conditions',
-  'LNK_NEW_RECORD' => 'Create Conditions',
-  'LNK_LIST' => 'View Conditions',
-  'LNK_IMPORT_AOR_CONDITIONS' => 'Tuo ehdot',
-  'LBL_SEARCH_FORM_TITLE' => 'Search Conditions',
-  'LBL_HISTORY_SUBPANEL_TITLE' => 'Historia',
-  'LBL_ACTIVITIES_SUBPANEL_TITLE' => 'Aktiviteetit',
-  'LBL_NEW_FORM_TITLE' => 'New Conditions',
+if (!defined('sugarEntry') || !sugarEntry) {
+    die('Not A Valid Entry Point');
+}
+
+$mod_strings = array(
+    'LBL_ID' => 'Tunnus',
+    'LBL_DATE_ENTERED' => 'Luontipvm',
+    'LBL_DATE_MODIFIED' => 'Muokkaus pvm',
+    'LBL_MODIFIED' => 'Muokkaaja',
+    'LBL_MODIFIED_NAME' => 'Muokkaaja',
+    'LBL_CREATED' => 'Tekijä',
+    'LBL_DESCRIPTION' => 'Kuvaus',
+    'LBL_DELETED' => 'Poistettu',
+    'LBL_NAME' => 'Nimi',
+    'LBL_CREATED_USER' => 'Tekijä',
+    'LBL_MODIFIED_USER' => 'Muokkaaja',
+    'LBL_LIST_NAME' => 'Nimi',
+    'LBL_EDIT_BUTTON' => 'Muokkaa',
+    'LBL_REMOVE' => 'Poista',
+    'LBL_ASSIGNED_TO_ID' => 'Vastuuhenkilön tunnus',
+    'LBL_ASSIGNED_TO_NAME' => 'Kohdennettu hlölle',
+    'LBL_LIST_FORM_TITLE' => 'Edellytykset-luettelo',
+    'LBL_MODULE_NAME' => 'Ehdot',
+    'LBL_MODULE_TITLE' => 'Ehdot',
+    'LBL_HOMEPAGE_TITLE' => 'My Conditions',
+    'LNK_NEW_RECORD' => 'Create Conditions',
+    'LNK_LIST' => 'View Conditions',
+    'LBL_SEARCH_FORM_TITLE' => 'Search Conditions',
+    'LBL_HISTORY_SUBPANEL_TITLE' => 'Historia',
+    'LBL_ACTIVITIES_SUBPANEL_TITLE' => 'Aktiviteetit',
+    'LBL_NEW_FORM_TITLE' => 'New Conditions',
     'LBL_LOGIC_OP' => 'Logiikka',
-  'LBL_MODULE_PATH' => 'Moduuli',
-  'LBL_FIELD' => 'Kenttä',
-  'LBL_OPERATOR' => 'Operaattori',
-  'LBL_VALUE_TYPE' => 'Tyyppi',
-  'LBL_VALUE' => 'Arvo',
-  'LBL_ORDER' => 'Järjestys',
-  'LBL_CONDITION_OPERATOR' => 'Condition Operator',
-  'LBL_AOR_REPORT_ID' => 'Report Id',
-  'LBL_PARAMETER' => 'Parametri',
+    'LBL_MODULE_PATH' => 'Moduuli',
+    'LBL_FIELD' => 'Kenttä',
+    'LBL_OPERATOR' => 'Operaattori',
+    'LBL_VALUE_TYPE' => 'Tyyppi',
+    'LBL_VALUE' => 'Arvo',
+    'LBL_ORDER' => 'Järjestys',
+    'LBL_AOR_REPORT_ID' => 'Report Id',
+    'LBL_PARAMETER' => 'Parametri',
+    'LBL_CONDITION_AND' => 'AND', // Report condition PR 5473
+    'LBL_CONDITION_OR' => 'TAI', // Report condition PR 5473
 );

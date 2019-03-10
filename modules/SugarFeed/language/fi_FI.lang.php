@@ -1,10 +1,11 @@
 <?php
-/*********************************************************************************
+/**
+ *
  * SugarCRM Community Edition is a customer relationship management program developed by
  * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
  *
- * SuiteCRM is an extension to SugarCRM Community Edition developed by Salesagility Ltd.
- * Copyright (C) 2011 - 2016 Salesagility Ltd.
+ * SuiteCRM is an extension to SugarCRM Community Edition developed by SalesAgility Ltd.
+ * Copyright (C) 2011 - 2018 SalesAgility Ltd.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -15,7 +16,7 @@
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more
+ * FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
  * details.
  *
  * You should have received a copy of the GNU Affero General Public License along with
@@ -33,23 +34,23 @@
  * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
  * these Appropriate Legal Notices must retain the display of the "Powered by
  * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
- * reasonably feasible for  technical reasons, the Appropriate Legal Notices must
- * display the words  "Powered by SugarCRM" and "Supercharged by SuiteCRM".
- ********************************************************************************/
+ * reasonably feasible for technical reasons, the Appropriate Legal Notices must
+ * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
+ */
+
+if (!defined('sugarEntry') || !sugarEntry) {
+    die('Not A Valid Entry Point');
+}
 
 $mod_strings = array(
-    'LBL_TEAM' => 'Tiimi',
-    'LBL_TEAM_ID' => 'Ryhmä ID',
     'LBL_ASSIGNED_TO_ID' => 'Vastuuhenkilön tunnus',
     'LBL_ASSIGNED_TO_NAME' => 'Kohdennettu hlölle',
     'LBL_ID' => 'Tunnus',
     'LBL_DATE_ENTERED' => 'Luontipvm',
     'LBL_DATE_MODIFIED' => 'Muokkaus pvm',
     'LBL_MODIFIED' => 'Muokkaaja',
-    'LBL_MODIFIED_ID' => 'Muokkaaja',
     'LBL_MODIFIED_NAME' => 'Muokkaaja',
     'LBL_CREATED' => 'Tekijä',
-    'LBL_CREATED_ID' => 'Tekijä',
     'LBL_DESCRIPTION' => 'Kuvaus',
     'LBL_DELETED' => 'Poistettu',
     'LBL_NAME' => 'Nimi',
@@ -61,7 +62,6 @@ $mod_strings = array(
     'LBL_MODULE_NAME' => 'Viimeaikaiset toiminnat',
     'LBL_MODULE_TITLE' => 'Viimeaikaiset toiminnat',
     'LBL_DASHLET_DISABLED' => 'Warning: The Feed system is disabled, no new feed entries will be posted until it is activated',
-    'LBL_ADMIN_SETTINGS' => 'Feed Settings',
     'LBL_RECORDS_DELETED' => 'All previous Feed entries have been removed, if the Feed system is enabled, new entries will be generated automatically.',
     'LBL_CONFIRM_DELETE_RECORDS' => 'Are you sure you wish to delete all of the Feed entries?',
     'LBL_FLUSH_RECORDS' => 'Delete Feed Entries',
@@ -73,7 +73,6 @@ $mod_strings = array(
     'LBL_SEARCH_FORM_TITLE' => 'Search Feed',
     'LBL_HISTORY_SUBPANEL_TITLE' => 'Historia',
     'LBL_ACTIVITIES_SUBPANEL_TITLE' => 'Aktiviteetit',
-    'LBL_SUGAR_FEED_SUBPANEL_TITLE' => 'Syöte',
     'LBL_NEW_FORM_TITLE' => 'Uusi syöte',
     'LBL_ALL' => 'Kaikki',
     'LBL_USER_FEED' => 'User Feed',
@@ -85,8 +84,9 @@ $mod_strings = array(
     'LBL_ROWS' => 'Rivit',
     'LBL_CATEGORIES' => 'Moduulit',
     'LBL_TIME_LAST_WEEK' => 'Viime viikko',
-    'LBL_TIME_WEEKS' => 'Viikkoa',
-    'LBL_TIME_DAYS' => 'Päivää',
+    'LBL_TIME_WEEKS' => 'weeks',
+    'LBL_TIME_DAY' => 'päivä', // PR 6080
+    'LBL_TIME_DAYS' => 'päivää',
     'LBL_TIME_YESTERDAY' => 'Eilen',
     'LBL_TIME_HOURS' => 'Tuntia',
     'LBL_TIME_HOUR' => 'Tuntia',
@@ -94,13 +94,15 @@ $mod_strings = array(
     'LBL_TIME_MINUTE' => 'Minute',
     'LBL_TIME_SECONDS' => 'Seconds',
     'LBL_TIME_SECOND' => 'Second',
+    'LBL_TIME_AND' => 'and',
     'LBL_TIME_AGO' => 'ago',
-
+// Activity stream
     'CREATED_CONTACT' => 'loi <b>UUDEN</b> {0}',
     'CREATED_OPPORTUNITY' => 'loi <b>UUDEN</b> {0}',
     'CREATED_CASE' => 'loi <b>UUDEN</b> {0}',
     'CREATED_LEAD' => 'loi <b>UUDEN</b> {0}',
-    'FOR' => 'for',
+    'FOR' => 'for', // Activity stream for cases
+    'FOR_AMOUNT' => 'for amount', // Activity stream for opportunity
     'CLOSED_CASE' => '<b>CLOSED</b> a {0} ',
     'CONVERTED_LEAD' => '<b>CONVERTED</b> a {0}',
     'WON_OPPORTUNITY' => 'has <b>WON</b> an {0}',
@@ -112,18 +114,12 @@ $mod_strings = array(
 
     'LBL_SELECT' => 'Valitse',
     'LBL_POST' => 'Post',
-    'LBL_EXTERNAL_PREFIX' => 'External: ',
-    'LBL_EXTERNAL_WARNING' => 'Items labeled "external" require an <a href="?module=EAPM">external account</a>.',
     'LBL_AUTHENTICATE' => 'Connect to',
     'LBL_AUTHENTICATION_PENDING' => 'Not all of the external accounts you have selected have been authenticated. Click \'Cancel\' to return to the Options window to authenticate the external accounts, or click \'Ok\' to proceed without authenticating.',
-    'LBL_ADVANCED_SEARCH' => 'Tarkennettu haku' /*for 508 compliance fix*/,
-    'LBL_BASICSEARCH' => 'Yksinkertainen haku' /*for 508 compliance fix*/,
+    'LBL_ADVANCED_SEARCH' => 'Tarkempi suodin' /*for 508 compliance fix*/,
     'LBL_SHOW_MORE_OPTIONS' => 'Show More Options',
     'LBL_HIDE_OPTIONS' => 'Piilota  valinnat',
     'LBL_VIEW' => 'Katso',
     'LBL_POST_TITLE' => 'Post Status Update for ',
     'LBL_URL_LINK_TITLE' => 'URL Link to use',
-    'LBL_TEAM_VISIBILITY_TITLE' => 'team that can see this post',
-    'LBL_SOCIAL' => 'Sosiaalinen',
 );
-?>

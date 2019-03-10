@@ -1,30 +1,48 @@
 <?php
 /**
- * Products, Quotations & Invoices modules.
- * Extensions to SugarCRM
- * @package Advanced OpenSales for SugarCRM
- * @subpackage Products
- * @copyright SalesAgility Ltd http://www.salesagility.com
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE as published by
- * the Free Software Foundation; either version 3 of the License, or
- * (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * SugarCRM Community Edition is a customer relationship management program developed by
+ * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
  *
- * You should have received a copy of the GNU AFFERO GENERAL PUBLIC LICENSE
- * along with this program; if not, see http://www.gnu.org/licenses
- * or write to the Free Software Foundation,Inc., 51 Franklin Street,
- * Fifth Floor, Boston, MA 02110-1301  USA
+ * SuiteCRM is an extension to SugarCRM Community Edition developed by SalesAgility Ltd.
+ * Copyright (C) 2011 - 2018 SalesAgility Ltd.
  *
- * @author Salesagility Ltd <support@salesagility.com>
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Affero General Public License version 3 as published by the
+ * Free Software Foundation with the addition of the following permission added
+ * to Section 15 as permitted in Section 7(a): FOR ANY PART OF THE COVERED WORK
+ * IN WHICH THE COPYRIGHT IS OWNED BY SUGARCRM, SUGARCRM DISCLAIMS THE WARRANTY
+ * OF NON INFRINGEMENT OF THIRD PARTY RIGHTS.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with
+ * this program; if not, see http://www.gnu.org/licenses or write to the Free
+ * Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ * 02110-1301 USA.
+ *
+ * You can contact SugarCRM, Inc. headquarters at 10050 North Wolfe Road,
+ * SW2-130, Cupertino, CA 95014, USA. or at email address contact@sugarcrm.com.
+ *
+ * The interactive user interfaces in modified source and object code versions
+ * of this program must display Appropriate Legal Notices, as required under
+ * Section 5 of the GNU Affero General Public License version 3.
+ *
+ * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
+ * these Appropriate Legal Notices must retain the display of the "Powered by
+ * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
+ * reasonably feasible for technical reasons, the Appropriate Legal Notices must
+ * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
  */
 
-$mod_strings = array (
+if (!defined('sugarEntry') || !sugarEntry) {
+    die('Not A Valid Entry Point');
+}
+
+$mod_strings = array(
     'LBL_ASSIGNED_TO_NAME' => 'Sopimusvastaava',
     'LBL_CONTRACT_ACCOUNT' => 'Asiakas',
     'LBL_OPPORTUNITY' => 'Myyntimahdollisuus',
@@ -32,10 +50,8 @@ $mod_strings = array (
     'LBL_DATE_ENTERED' => 'Luonti pvm',
     'LBL_DATE_MODIFIED' => 'Muokkaus pvm',
     'LBL_MODIFIED' => 'Muokkaaja',
-    'LBL_MODIFIED_ID' => 'Muokkaaja ID',
     'LBL_MODIFIED_NAME' => 'Muokkaaja',
     'LBL_CREATED' => 'Tekijä',
-    'LBL_CREATED_ID' => 'Tekijä ID',
     'LBL_DESCRIPTION' => 'Kuvaus',
     'LBL_DELETED' => 'Poistetti',
     'LBL_NAME' => 'Nimi',
@@ -48,11 +64,9 @@ $mod_strings = array (
     'LBL_HOMEPAGE_TITLE' => 'Omat sopimukset',
     'LNK_NEW_RECORD' => 'Uusi sopimus',
     'LNK_LIST' => 'Sopimukset',
-    'LNK_IMPORT_AOS_CONTRACTS' => 'Tuo sopimuksia',
     'LBL_SEARCH_FORM_TITLE' => 'Sopimuksien haku',
     'LBL_HISTORY_SUBPANEL_TITLE' => 'Historia',
     'LBL_ACTIVITIES_SUBPANEL_TITLE' => 'Aktiviteetit',
-    'LBL_AOS_CONTRACTS_SUBPANEL_TITLE' => 'Sopimukset',
     'LBL_NEW_FORM_TITLE' => 'Luo sopimus',
     'LBL_CONTRACT_NAME' => 'Sopimuksen nimi',
     'LBL_REFERENCE_CODE ' => 'Sopimusnumero ',
@@ -75,7 +89,6 @@ $mod_strings = array (
     'LBL_PRODUCT_NOTE' => 'Muistio',
     'LBL_PRODUCT_DESCRIPTION' => 'Kuvaus',
     'LBL_LIST_PRICE' => 'Lista',
-    'LBL_DISCOUNT_TYPE' => 'Tyyppi',
     'LBL_DISCOUNT_AMT' => 'Alennus',
     'LBL_UNIT_PRICE' => 'Hinta',
     'LBL_TOTAL_PRICE' => 'Summa',
@@ -96,7 +109,7 @@ $mod_strings = array (
     'LBL_SHIPPING_TAX_AMT' => 'Toimituskulujen ALV',
     'LBL_ADD_PRODUCT_LINE' => 'Lisää tuoterivi',
     'LBL_ADD_SERVICE_LINE' => 'Lisää palvelutuoterivi',
-    'LBL_PRINT_AS_PDF' => 'Tulosta PDF:nä',
+    'LBL_PRINT_AS_PDF' => 'Tulosta PDF',
     'LBL_EMAIL_PDF' => 'Lähetä PDF sähköpostilla',
     'LBL_PDF_NAME' => 'Sopimus',
     'LBL_EMAIL_NAME' => 'Sopimus asiakkaalle',
@@ -107,12 +120,11 @@ $mod_strings = array (
     'LBL_TAX_AMOUNT_USDOLLAR' => 'Vero (Oletus valuutta)',
     'LBL_SHIPPING_AMOUNT_USDOLLAR' => 'Toimituskulut (Oletusvaluutta)',
     'LBL_TOTAL_AMT_USDOLLAR' => 'Yhteensä (Oletus valuutta)',
-    'LBL_SHIPPING_TAX_USDOLLAR' => 'Toimituskulujen vero (Oletusvaluutta)',
     'LBL_SHIPPING_TAX_AMT_USDOLLAR' => 'Toimituskulujen vero (Oletusvaluutta)',
     'LBL_GRAND_TOTAL_USDOLLAR' => 'Yhteensä (Oletus valuutta)',
-    'LBL_AOS_LINE_ITEM_GROUPS' => 'Line item groups',
-    'LBL_AOS_PRODUCT_QUOTES' => 'Product quotes',
-    'LBL_AOS_QUOTES_AOS_CONTRACTS' => 'Quotes : Contracts',
-    'LBL_AOS_CONTRACTS' => 'Sopimukset',
+
+    'LBL_CALL_ID' => 'Call ID',
+    'LBL_AOS_LINE_ITEM_GROUPS' => 'Tuoterivien ryhmät',
+    'LBL_AOS_PRODUCT_QUOTES' => 'Product Quotes',
+    'LBL_AOS_QUOTES_AOS_CONTRACTS' => 'Quotes: Contracts',
 );
-?>
