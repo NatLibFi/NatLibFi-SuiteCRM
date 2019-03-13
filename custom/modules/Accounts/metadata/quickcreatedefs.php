@@ -93,6 +93,11 @@ if ($returnModule === 'Contacts') {
     $includes[] = array( 'file' => 'custom/modules/Accounts/roles_accounts.js' );
 }
 
+$subpanelName = 'default';
+if ($returnModule === 'Contacts') {
+    $subpanelName = 'Contacts';
+}
+
 $viewdefs ['Accounts'] =
 array (
   'QuickCreate' => 
@@ -134,7 +139,7 @@ array (
     ),
     'panels' => 
     array (
-      'default' => $fields,
+      $subpanelName => $fields,
     ),
   ),
 );
