@@ -98,7 +98,7 @@ array (
       'nlfbr_businessrelationships_account_alliances' => 
       array (
         'type' => 'enum',
-        'label' => 'LBL_RELATED_ALLIANCE_IN_BUSINESS_RELATIONSHIP',
+        'label' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_ACCOUNT_ALLIANCES',
         'width' => '10%',
         'default' => true,
         'name' => 'nlfbr_businessrelationships_account_alliances',
