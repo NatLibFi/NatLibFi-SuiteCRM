@@ -21,3 +21,7 @@ $sugar_config['default_decimal_seperator'] = ',';
 $sugar_config['default_number_grouping_seperator'] = "\xc2\xa0";                     
 
 $sugar_config['email_sugarclient_listviewmaxselect'] = 200;
+
+// Added in SuiteCRM 7.10:
+$sugar_config['email_enable_auto_send_opt_in'] = false;
+$sugar_config['email_enable_confirm_opt_in'] = 'not-opt-in';
