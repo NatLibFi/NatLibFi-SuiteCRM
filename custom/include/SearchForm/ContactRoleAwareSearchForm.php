@@ -166,9 +166,9 @@ class ContactRoleAwareSearchForm extends SearchForm
                          }
                          if ($field_value !== '') {
                              $field_value = '(' . $field_value . ')';
-                             $field_value = $db->quoted($field_value);
+                             $field_value = $db->quote($field_value);
                          } else {
-                             $field_value = $db->quoted('.*');
+                             $field_value = $db->quote('.*');
                          }
                      } else {
                          $operator = $operator != 'subquery' ? 'in' : $operator;
