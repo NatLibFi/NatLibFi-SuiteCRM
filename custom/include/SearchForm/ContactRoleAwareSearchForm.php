@@ -454,7 +454,7 @@ class ContactRoleAwareSearchForm extends SearchForm
                                                              if (!empty($finalValue)) {
                                                                  $finalValue .= ',';
                                                              }
-                                                             $finalValue .= $db->quoteType('varchar', $val);
+                                                             $finalValue .= $val;
                                                          }
                                                      }
                                                      $relatedFieldValue = $finalValue;
