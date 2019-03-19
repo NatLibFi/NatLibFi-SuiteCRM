@@ -3,7 +3,7 @@
 require_once 'include/MVC/View/views/view.popup.php';
 require_once('custom/include/Popups/PopupSmarty.php');
 
-class ContactsViewPopup extends ViewPopup {
+class CustomViewPopup extends ViewPopup {
 
     // NLF-customized version, the only difference is using CustomPopupSmarty
 	public function display(){
