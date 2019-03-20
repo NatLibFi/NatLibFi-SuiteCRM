@@ -5,7 +5,7 @@ $searchFields['Accounts'] = array (
   array (
     'query_type' => 'format',
     'operator' => 'subquery',
-    'subquery' => 'SELECT accounts.id FROM accounts JOIN accounts_cstm ON accounts.id=accounts_cstm.id_c WHERE accounts_cstm.name_fin_c LIKE "%{0}%" OR accounts_cstm.name_swe_c LIKE "%{0}%" OR accounts_cstm.name_eng_c LIKE "%{0}%" OR accounts_cstm.name_other_c LIKE "%{0}%"',
+    'subquery' => 'SELECT accounts.id FROM accounts JOIN accounts_cstm ON accounts.id=accounts_cstm.id_c WHERE accounts_cstm.name_fin_c LIKE CONCAT("%",{0},"%") OR accounts_cstm.name_swe_c LIKE CONCAT("%",{0},"%") OR accounts_cstm.name_eng_c LIKE CONCAT("%",{0},"%") OR accounts_cstm.name_other_c LIKE CONCAT("%",{0},"%")',
     'db_field' => 
     array (
       0 => 'id',
