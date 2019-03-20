@@ -15,7 +15,7 @@ class ServiceProcessRecordHook
         if (!isset($_REQUEST['module']) || $_REQUEST['module'] !== 'nlfbs_BackendSystems') {
             return;
         }
-        if (!isset($_REQUEST['action']) || $_REQUEST['action'] !== 'SubPanelViewer') {
+        if (!isset($_REQUEST['action']) || ($_REQUEST['action'] !== 'SubPanelViewer' && $_REQUEST['action'] !== 'DetailView')) {
             return;
         }
         if (!isset($_REQUEST['record']) || $_REQUEST['record'] === '') {
