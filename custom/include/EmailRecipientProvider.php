@@ -28,6 +28,9 @@ class EmailRecipientProvider
         if ($relatedModule === self::MODULE_CONTACTS) {
             return $this->getContactNamesAndAddresses($relatedIds, $contactPersonRoles);
         }
+        if ($relatedModule === self::MODULE_LEADS) {
+            return $this->getLeadContactNamesAndAddresses($relatedIds, $contactPersonRoles);
+        }
         return $this->getRelatedContactNamesAndAddresses($relatedModule, $relatedIds, $contactPersonRoles);
     }
 
@@ -73,6 +76,80 @@ class EmailRecipientProvider
         while ($row = $this->db->fetchByAssoc($result)) {
             $items[] = array(
                 'id' => $row['id'],
+                'name' => $this->formatContactName(
+                    $row['first_name'],
+                    $row['last_name'],
+                    $row['salutation'],
+                    $row['title']
+                ),
+                'email_address' => $row['email_address'],
+            );
+        }
+
+        return $items;
+    }
+
+    private function getLeadContactNamesAndAddresses($leadIds, array $contactPersonRoles = array()) {
+        $items = array();
+
+        $noMailingColumn = self::COLUMN_NO_MAILING;
+
+        $roleCond = '';
+
+        if (!empty($contactPersonRoles)) {
+            $roleCond = implode(
+                '|',
+                array_map(
+                    function($x) { return '\^' . $x . '\^'; },
+                    $contactPersonRoles
+                )
+            );
+        }
+
+        $idString = implode(
+            ',',
+            array_map(
+                function($id) { return "'" . $this->db->quote($id) . "'"; },
+                $leadIds
+            )
+        );
+
+        $convertedLeadsQuery = 'SELECT leads.id AS lead_id, contacts.id AS contact_id, contacts.first_name, contacts.last_name, contacts.salutation, contacts.title, ea.email_address ' .
+            'FROM leads ' .
+            'JOIN accounts_contacts con_rel ON leads.account_id=con_rel.account_id ' .
+            'JOIN contacts ON contacts.id=con_rel.contact_id ' .
+            "JOIN contacts_cstm cstm ON (cstm.id_c=contacts.id AND cstm.{$noMailingColumn}=0) " .
+            'JOIN email_addr_bean_rel eabr ON (contacts.id = eabr.bean_id AND eabr.deleted=0) ' .
+            'JOIN email_addresses ea ON eabr.email_address_id = ea.id ' .
+            'WHERE leads.id IN (' . $idString . ') AND con_rel.deleted=0 AND contacts.deleted=0 ' .
+            'AND (leads.status="Converted") ' .
+            'AND eabr.primary_address = 1 ';
+
+        if ($roleCond) {
+            $convertedLeadsQuery .= ' AND con_rel.role REGEXP "' . $this->db->quote($roleCond) . '"';
+        }
+
+        $notConvertedLeadsQuery = 'SELECT leads.id AS lead_id, contacts.id AS contact_id, contacts.first_name, contacts.last_name, contacts.salutation, contacts.title, ea.email_address ' .
+            'FROM leads ' .
+            'JOIN contacts_leads_2_c con_rel ON leads.id=con_rel.contacts_leads_2leads_idb ' .
+            'JOIN contacts ON contacts.id=con_rel.contacts_leads_2contacts_ida ' .
+            "JOIN contacts_cstm cstm ON (cstm.id_c=contacts.id AND cstm.{$noMailingColumn}=0) " .
+            'JOIN email_addr_bean_rel eabr ON (contacts.id = eabr.bean_id AND eabr.deleted=0) ' .
+            'JOIN email_addresses ea ON eabr.email_address_id = ea.id ' .
+            'WHERE leads.id IN (' . $idString . ') AND con_rel.deleted=0 AND contacts.deleted=0 ' .
+            'AND (leads.status="New") ' .
+            'AND eabr.primary_address = 1 ';
+
+        if ($roleCond) {
+            $notConvertedLeadsQuery .= ' AND con_rel.role REGEXP "' . $this->db->quote($roleCond) . '"';
+        }
+
+        $query = "SELECT * FROM ({$convertedLeadsQuery} UNION {$notConvertedLeadsQuery}) AS lds";
+        $result = $this->db->query($query);
+
+        while ($row = $this->db->fetchByAssoc($result)) {
+            $items[] = array(
+                'id' => $row['contact_id'],
                 'name' => $this->formatContactName(
                     $row['first_name'],
                     $row['last_name'],
