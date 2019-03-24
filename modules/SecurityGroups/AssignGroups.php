@@ -120,7 +120,7 @@ class AssignGroups
                 //so ajaxui breaks this as it stays on the parent
                 $auto_popup = <<<EOQ
 <script type="text/javascript" language="javascript">
-	open_popup("SecurityGroups",600,400,"",true,true,{"call_back_function":"securitysuite_set_return_and_save_background","form_name":"DetailView","field_to_name_array":{"id":"subpanel_id"},"passthru_data":{"module":"$module","record":"$record_id","child_field":"$rel_name","return_url":"","link_field_name":"$rel_name","module_name":"$rel_name","refresh_page":"1"}},"MultiSelect",true);
+	open_popup("SecurityGroups",600,400,"",true,true,{"call_back_function":"set_return_and_save_background","form_name":"DetailView","field_to_name_array":{"id":"subpanel_id"},"passthru_data":{"module":"$module","record":"$record_id","child_field":"$rel_name","return_url":"","link_field_name":"$rel_name","module_name":"$rel_name","refresh_page":"1"}},"MultiSelect",true);
 </script>
 EOQ;
 

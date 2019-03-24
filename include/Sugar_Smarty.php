@@ -149,6 +149,14 @@ class Sugar_Smarty extends Smarty
             if (file_exists($test_path)) {
                 $resource_name = "themes" . DIRECTORY_SEPARATOR . $theme_directory . DIRECTORY_SEPARATOR . $resource_name;
             }
+
+            if (strpos($resource_name, 'custom' . DIRECTORY_SEPARATOR) === 0) {
+                $nameWithoutCustom = substr($resource_name, strlen('custom' . DIRECTORY_SEPARATOR));
+                $test_path = SUGAR_PATH . DIRECTORY_SEPARATOR . 'custom' . DIRECTORY_SEPARATOR . "themes" . DIRECTORY_SEPARATOR . $theme_directory . DIRECTORY_SEPARATOR . $nameWithoutCustom;
+                if (file_exists($test_path)) {
+                    $resource_name = 'custom' . DIRECTORY_SEPARATOR . "themes" . DIRECTORY_SEPARATOR . $theme_directory . DIRECTORY_SEPARATOR . $nameWithoutCustom;
+                }
+            }
         }
         ///
 

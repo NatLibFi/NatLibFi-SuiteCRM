@@ -349,8 +349,7 @@ sugarListView.prototype.use_external_mail_client_callback=function(o){if(o.respo
 location.href='mailto:'+o.responseText;}
 sugarListView.prototype.send_form_for_emails=function(select,currentModule,action,no_record_txt,action_module,totalCount,totalCountError){if(typeof(SUGAR.config.email_sugarclient_listviewmaxselect)==='undefined'){maxCount=10;}
 else{maxCount=SUGAR.config.email_sugarclient_listviewmaxselect;}
-if(document.MassUpdate.select_entire_list.value==1){if(totalCount>maxCount){alert(totalCountError);return;}
-select=false;}
+if(document.MassUpdate.select_entire_list.value==1){select=false;}
 else if(document.MassUpdate.massall.checked==true)
 select=false;else
 select=true;sugarListView.get_checks();var newForm=document.createElement('form');newForm.method='post';newForm.action=action;newForm.name='newForm';newForm.id='newForm';var uidTa=document.createElement('textarea');uidTa.name='uid';uidTa.style.display='none';if(select){uidTa.value=document.MassUpdate.uid.value;}

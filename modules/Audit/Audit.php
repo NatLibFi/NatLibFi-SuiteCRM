@@ -168,6 +168,7 @@ class Audit extends SugarBean
                             if (!empty($enum_values)) {
                                 $temp_list[$field['name']] = implode(', ', $enum_values);
                             }
+                            $temp_list[$field['name']] = $this->formatEnumValue($row['field_name'], $temp_list[$field['name']], $focus);
                             if ($temp_list['data_type']==='date') {
                                 $temp_list[$field['name']]=$timedate->to_display_date($temp_list[$field['name']], false);
                             }
@@ -238,4 +239,22 @@ class Audit extends SugarBean
             }
         }
     }
+
+    protected function formatEnumValue($fieldName, $value, $bean) {
+        global $app_list_strings;
+        $enum_keys = unencodeMultienum($value);
+        $enum_values = array();
+        foreach($enum_keys as $enum_key) {
+            if(isset($bean->field_defs[$fieldName]['options'])) {
+                $domain = $bean->field_defs[$fieldName]['options'];
+                if(isset($app_list_strings[$domain][$enum_key]))
+                    $enum_values[] = $app_list_strings[$domain][$enum_key];
+            }
+        }
+        if(!empty($enum_values)){
+            return implode(', ', $enum_values);
+        }
+        return $value;
+    }
+
 }

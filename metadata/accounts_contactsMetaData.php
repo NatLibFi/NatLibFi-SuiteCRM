@@ -47,8 +47,12 @@ $dictionary['accounts_contacts'] = array( 'table' => 'accounts_contacts'
       , array('name' =>'contact_id', 'type' =>'varchar', 'len'=>'36')
       , array('name' =>'account_id', 'type' =>'varchar', 'len'=>'36')
       , array('name' => 'date_modified','type' => 'datetime')
-      , array('name' =>'deleted', 'type' =>'bool', 'len'=>'1', 'required'=>false, 'default'=>'0')
-                                                      )                                  , 'indices' => array(
+      , array('name' =>'deleted', 'type' =>'bool', 'len'=>'1', 'required'=>false, 'default'=>'0'),
+        array ('name' => 'role', 'type' => 'varchar','len' => 200, ),
+        array ('name' => 'department', 'type' => 'varchar','len' => 255, ),
+        array ('name' => 'address', 'type' => 'varchar','len' => 255, ),
+        array ('name' => 'description', 'type' => 'text', ),
+                                                      )                                  , 'indices' => array (
        array('name' =>'accounts_contactspk', 'type' =>'primary', 'fields'=>array('id'))
       , array('name' => 'idx_account_contact', 'type'=>'alternate_key', 'fields'=>array('account_id','contact_id'))
       , array('name' => 'idx_contid_del_accid', 'type' => 'index', 'fields'=> array('contact_id', 'deleted', 'account_id'))

@@ -1,0 +1,27 @@
+<?php
+// created: 2018-03-28 19:28:02
+$mod_strings = array (
+  'LBL_BILLING_CONTACT' => 'Henkilö',
+  'LBL_BILLING_ACCOUNT' => 'Asiakas',
+  'LBL_DESCRIPTION' => 'Kuvaus',
+  'LBL_NAME' => 'Nimi',
+  'LBL_DUE_DATE' => 'Eräpäivä',
+  'LBL_INVOICE_DATE' => 'Laskutuspäivä',
+  'LBL_QUOTE_DATE' => 'Tarjouksen pvm',
+  'LBL_BILLING_ADDRESS_CITY' => 'Laskutusosoite Kaupunki/kunta:',
+  'LBL_BILLING_ADDRESS_POSTALCODE' => 'Laskutusosoite Postinumero:',
+  'LBL_BILLING_ADDRESS_STATE' => 'Laskutusosoite Maakunta/lääni:',
+  'LBL_BILLING_ADDRESS_STREET' => 'Laskutusosoite Katuosoite:',
+  'LBL_SHIPPING_ADDRESS_CITY' => 'Toimitusosoite Kaupunki/kunta:',
+  'LBL_SHIPPING_ADDRESS_COUNTRY' => 'Toimitusosoite Maa:',
+  'LBL_SHIPPING_ADDRESS_POSTALCODE' => 'Toimitusosoite Postinumero:',
+  'LBL_SHIPPING_ADDRESS_STATE' => 'Toimitusosoite Maakunta/lääni:',
+  'LBL_SHIPPING_ADDRESS_STREET' => 'Toimitusosoite Katuosoite:',
+  'LBL_CURRENCY' => 'Valuutta:',
+  'LBL_SHIPPING_TAX' => 'Toimituskulujen ALV',
+  'LBL_SHIPPING_AMOUNT' => 'Toimitusmaksu',
+  'LBL_SHIPPING_TAX_AMT' => 'Toimituskulujen vero',
+  'LBL_STATUS' => 'Tila',
+  'LBL_GRAND_TOTAL' => 'Kokonaissumma',
+  'LNK_NEW_RECORD' => 'Luo lasku',
+);

@@ -180,4 +180,15 @@ class SAML2Authenticate extends SugarAuthenticate
         $this->samlLogoutAuth = $auth;
         $this->samlLogoutArgs = array('returnTo' => $returnTo, 'parameters' => $paramters, 'nameId' => $nameId, 'sessionIndex' => $sessionIndex, 'false' => false, 'nameIdFormat' => $nameIdFormat);
     }
+
+    protected function postLoginAuthenticate() {
+        $parentResult = parent::postLoginAuthenticate();
+        // User logged in using SAML, do not bother possibly expired "local" system password
+        // (possibly never changed if only authenticating with SAML).
+        // See: https://jira.kansalliskirjasto.fi/projects/ASKI/issues/ASKI-263
+        if (isset($_SESSION['hasExpiredPassword']) && $_SESSION['hasExpiredPassword'] == '1') {
+            unset($_SESSION['hasExpiredPassword']);
+        }
+        return $parentResult || true;
+    }
 }

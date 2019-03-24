@@ -82,7 +82,7 @@ foreach ($modules as $the_module => $fields) {
 
     $table = $db->getTableDescription($mod->table_name."_cstm");
     foreach ($table as $row) {
-        $col = strtolower(empty($row['Field']) ? $row['field'] : $row['Field']);
+        $col = strtolower(empty($row['Name']) ? $row['name'] : $row['Name']);
         $the_field = $mod->custom_fields->getField($col);
         $type = strtolower(empty($row['Type']) ? $row['type'] : $row['Type']);
         if (!empty($row['data_precision']) && !empty($row['data_scale'])) {

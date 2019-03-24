@@ -350,7 +350,7 @@ class SearchForm
      * All user defined search parameters
      * @return array search parameters
      */
-    private function getSearchInfo()
+    protected function getSearchInfo()
     {
         global $app_strings, $mod_strings;
         $data = array();
@@ -439,7 +439,7 @@ class SearchForm
      * @return mixed value for key
      * @throws Exception value not found
      */
-    private function findFieldOptionValue($fields, $key)
+    protected function findFieldOptionValue($fields, $key)
     {
         foreach ($fields as $fkey => $fvalue) {
             if (isset($fvalue['options']) && is_array($fvalue['options'])) {
