@@ -67,7 +67,7 @@ $searchFields['nlfbs_BackendSystems'] = array (
         'ON br_rel.backend_system REGEXP CONCAT("\\\\^", nlfbs_backendsystems.id, "\\\\^") ' .
         'JOIN nlfse_services_nlfbr_businessrelationships_1_c s_rel ' .
         'ON s_rel.nlfse_serva51aonships_idb=br_rel.businessrelationship_id ' .
-        'WHERE nlfbs_backendsystems.deleted=0 AND br_rel.deleted=0 AND s_rel.deleted=0 AND s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida="{0}"' .
+        'WHERE nlfbs_backendsystems.deleted=0 AND br_rel.deleted=0 AND s_rel.deleted=0 AND s_rel.nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida={0}' .
         ')',
     'db_field' =>
     array (
