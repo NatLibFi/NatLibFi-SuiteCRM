@@ -75,16 +75,14 @@ class ListViewDataEmailsSearchOnCrm extends ListViewDataEmailsSearchAbstract
 
         // Filter imported emails based on the UID of the results from the IMap server
 
-        if (!empty($where)) {
-            $where .= ' AND ';
-        }
+        $crmWhere = $where;
         if ($inboundEmail->id) {
             $inboundEmailIdQuoted = DBManagerFactory::getInstance()->quote($inboundEmail->id);
+            $crmWhere = $where . " AND mailbox_id LIKE " ."'" . $inboundEmailIdQuoted . "'";
         } else {
             $inboundEmailIdQuoted = '';
             LoggerManager::getLogger()->warn('Unable to quote Inbound Email ID, Inbound Email is not set.');
         }
-        $crmWhere = $where . "mailbox_id LIKE " ."'" . $inboundEmailIdQuoted . "'";
 
 
         // Populates CRM fields

@@ -738,8 +738,7 @@ class ListViewDataEmails extends ListViewData
 
             $inboundEmail = $this->getInboundEmail($current_user, $folderObj);
             if (!$inboundEmail || $inboundEmail && !$inboundEmail->id) {
-                LoggerManager::getLogger()->warn('Unable get Inbound Email for List View. Please check your settings and try again.');
-                return false;
+                throw new SuiteException('Unable get Inbound Email for List View.');
             }
 
 
@@ -828,11 +827,40 @@ class ListViewDataEmails extends ListViewData
                     break;
             }
         } catch (SuiteException $e) {
-            $GLOBALS['log']->warn(
-                'Exception (class ' . get_class($e) .
-                ') message was: ' . $e->getMessage() .
-                " (code: " . $e->getCode() .
-                ")\ntrace info:\n" . $e->getTraceAsString()
+            require_once 'modules/Emails/EmailUI.php';
+            $eui = new EmailUI();
+            // TODO: does preflightUser create folders for a use who does not have any?
+            $eui->preflightUser($current_user);
+
+            // TODO:Get the "default" folder somehow?
+            $dynamicFolderType = 'draft';
+            if ($folderObj && $folderObj->id) {
+                $dynamicFolderType = $folderObj->getType();
+            }
+
+            if (!empty($where)) {
+                $where .= ' AND ';
+            }
+            $where .= ' (emails.status=' . $this->db->quoted($dynamicFolderType) . ' OR emails.type=' . $this->db->quoted($dynamicFolderType) .  ') AND emails.assigned_user_id=' . $this->db->quoted($current_user->id) . ' ';
+
+            $filter = $this->getFilter($filter_fields, $where, $request);
+
+            $limit = $sugar_config['list_max_entries_per_page'];
+
+            $search = new ListViewDataEmailsSearchOnCrm($this);
+            $ret = $search->search(
+                $filter_fields,
+                $request,
+                $where,
+                new InboundEmail(),
+                $params,
+                $seed,
+                $singleSelect,
+                $id,
+                $limit,
+                $current_user,
+                $id_field,
+                $offset
             );
         }
 
