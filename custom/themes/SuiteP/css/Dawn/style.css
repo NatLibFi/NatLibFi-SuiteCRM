@@ -10,3 +10,7 @@
 .modal-content .search_form .view select:not([multiple]) {
     width: 100%;
 }
+
+.dashletPanel .list tr th {
+    overflow-wrap: anywhere;
+}
