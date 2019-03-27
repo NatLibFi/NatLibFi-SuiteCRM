@@ -36,12 +36,11 @@ array (
     'default' => true,
     'link' => false,
   ),
-  'EMAIL1' => 
+  'LEAD_EMAIL' => 
   array (
     'width' => '16%',
-    'label' => 'LBL_LIST_EMAIL_ADDRESS',
+    'label' => 'LBL_LEAD_EMAIL',
     'sortable' => false,
-    'customCode' => '{$EMAIL1_LINK}{$EMAIL1}</a>',
     'default' => true,
   ),
   'DATE_ENTERED' => 

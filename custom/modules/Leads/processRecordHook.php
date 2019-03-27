@@ -4,12 +4,14 @@ if (!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
 require_once 'modules/Leads/Lead.php';
 require_once 'modules/Contacts/Contact.php';
+require_once 'custom/include/EmailRecipientProvider.php';
 
 class LeadProcessRecordHook
 {
     const CONVERTED_CONTACT_ID_FIELD = 'contact_id';
     const CONVERTED_CONTACT_NAME_FIELD = 'contact_name';
     const CONTACT_NAME_FIELD = 'lead_contact_name';
+    const EMAIL_FIELD = 'lead_email';
 
     function setContactName($bean, $event, $arguments)
     {
@@ -69,6 +71,27 @@ class LeadProcessRecordHook
             }
         }
 
+    }
+
+    function setLeadEmail($bean, $event, $arguments)
+    {
+        global $locale;
+        $db = DBManagerFactory::getInstance();
+
+        $id = $bean->id;
+        if (!isset($id)) {
+            return;
+        }
+
+        $recipientProvider = new EmailRecipientProvider($db, $locale);
+        $emailData = $recipientProvider->getRecipientNamesAndAddresses('Leads', [ $bean->id ]);
+
+        $email = '';
+        if ($emailData) {
+            $email = $emailData[0]['email_address'];
+        }
+
+        $bean->{self::EMAIL_FIELD} = $email;
     }
 
     function setServiceMailLinkUrls($bean, $event, $arguments)
