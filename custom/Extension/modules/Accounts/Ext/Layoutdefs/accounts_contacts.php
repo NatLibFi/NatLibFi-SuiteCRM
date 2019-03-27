@@ -55,7 +55,7 @@ $layout_defs["Accounts"]["subpanel_setup"]['contacts'] = array(
       'get_subpanel_data' => 'function:getBRContactsForAccountContactsSubpanelQueryParts',
       'function_parameters' => array(
         'import_function_file' => 'custom/Extension/application/Ext/Utils/Accounts.php', 
-        'account_id' => $this->_focus->id,
+        'account_id' => $_REQUEST['record'],
       ),
       'generate_select' => true,
       'set_subpanel_data' => 'nlfbr_businessrelationships_contacts_1',
