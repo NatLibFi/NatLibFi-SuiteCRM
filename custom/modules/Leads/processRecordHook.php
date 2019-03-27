@@ -12,6 +12,7 @@ class LeadProcessRecordHook
     const CONVERTED_CONTACT_NAME_FIELD = 'contact_name';
     const CONTACT_NAME_FIELD = 'lead_contact_name';
     const EMAIL_FIELD = 'lead_email';
+    const SERVICE_MAIL_URL_LINKS_FIELD = 'service_mail_link_urls';
 
     function setContactName($bean, $event, $arguments)
     {
@@ -131,7 +132,7 @@ class LeadProcessRecordHook
             $linkString .= '<a href="' . $row['link_url'] . '">' . $row['link_url'] . '</a>';
         }
 
-        $bean->{service_mail_link_urls} = $linkString;
+        $bean->{self::SERVICE_MAIL_URL_LINKS_FIELD} = $linkString;
     }
 
 }
