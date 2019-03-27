@@ -127,13 +127,12 @@ $dashletData['LeadsDashlet']['columns'] = array (
     'default' => false,
     'name' => 'phone_work',
   ),
-  'email1' => 
+  'lead_email' => 
   array (
     'width' => '30%',
-    'label' => 'LBL_EMAIL_ADDRESS',
+    'label' => 'LBL_LEAD_EMAIL',
     'sortable' => false,
-    'customCode' => '{$EMAIL1_LINK}{$EMAIL1}</a>',
     'default' => false,
-    'name' => 'email1',
+    'name' => 'lead_email',
   ),
 );
