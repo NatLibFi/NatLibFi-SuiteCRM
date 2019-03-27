@@ -39,15 +39,6 @@ class LeadProcessRecordHook
             return;
         }
 
-        $firstName = $bean->first_name;
-        $lastName = $bean->last_name;
-        $salutation = $bean->salutation;
-
-        if ($firstName || $lastName) {
-            $bean->{self::CONTACT_NAME_FIELD} = $locale->getLocaleFormattedName($firstName, $lastName, $salutation);
-            return;
-        }
-
         if (!$bean->load_relationship('contacts_leads_2')) {
             return;
         }
