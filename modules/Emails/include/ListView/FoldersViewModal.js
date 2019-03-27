@@ -79,7 +79,8 @@
         self.tree = $('<div></div>');
         self.tree.jstree({
           'core' : {
-            'data' : response
+            'data' : response,
+            'worker': false
           }
         }).on('select_node.jstree', function(e, data) {
           "use strict";
