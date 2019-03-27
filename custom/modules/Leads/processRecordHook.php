@@ -75,7 +75,7 @@ class LeadProcessRecordHook
 
     function setLeadEmail($bean, $event, $arguments)
     {
-        global $locale;
+        global $locale, $current_user;
         $db = DBManagerFactory::getInstance();
 
         $id = $bean->id;
@@ -86,12 +86,26 @@ class LeadProcessRecordHook
         $recipientProvider = new EmailRecipientProvider($db, $locale);
         $emailData = $recipientProvider->getRecipientNamesAndAddresses('Leads', [ $bean->id ]);
 
-        $email = '';
+        $emailLink = '';
         if ($emailData) {
             $email = $emailData[0]['email_address'];
+            //This is basically duplicating logic from EmailUI::createEmailLink. Would be nice to have this extracted
+            if ($current_user->getEmailClient() == 'sugar') {
+                $emailLink = '<a class="email-link"' .
+                    ' onclick="$(document).openComposeViewModal(this);"' .
+                    ' data-module="' . 'Contacts' .
+                    '" data-record-id="' . $emailData[0]['id'] .
+                    '" data-module-name="' . $emailData[0]['name'] .
+                    '" data-email-address="' . $email  . '">' .
+                    $email . '</a>'; 
+            } else {
+                $emailLink = '<a class="email-link"' .
+                    ' href="mailto:' .  $email . '">' .
+                    $email . '</a>';
+            }
         }
 
-        $bean->{self::EMAIL_FIELD} = $email;
+        $bean->{self::EMAIL_FIELD} = $emailLink;
     }
 
     function setServiceMailLinkUrls($bean, $event, $arguments)
