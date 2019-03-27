@@ -119,6 +119,23 @@ SUGAR.Emails.handleSelectedListViewItems =  function(
   });
 };
 
+function getCurrentFolderText(node, query) {
+    if (node.id === query.folders_id) {
+        return node.text;
+    } else if (node.id === query.inbound_email_record) {
+        let regExp = /\(([^)]+)\)/;
+        let match = regExp.exec(node.text);
+        return query.folder + ' ' + match[0];
+    }
+    for (let i = 0; i < node.children.length; i ++) {
+        let text = getCurrentFolderText(node.children[i], query);
+        if (text !== null) {
+            return text;
+        }
+    }
+    return null;
+}
+
 $(document).ready(function () {
 
   $.ajax({
@@ -131,20 +148,29 @@ $(document).ready(function () {
     let response = JSON.parse(data);
     let responses = response.response;
 
-    if(typeof query.folder === 'undefined' ||  query.folder === '') {
-      jQueryBtnEmailsCurrentFolder.remove();
-    } else if(query.folder === null) {
+    if(query.folder === null) {
       jQueryBtnEmailsCurrentFolder.html('<span class="glyphicon glyphicon-alert"></span>');
     }
 
+    jQueryBtnEmailsCurrentFolder.text();
+
+    let text = null;
     for (let i = 0; i < (responses.length); i++) {
-      if (responses[i].id === query.folders_id) {
-        jQueryBtnEmailsCurrentFolder.text(responses[(i)].text);
-      } else if (responses[i].id === query.inbound_email_record) {
-        let regExp = /\(([^)]+)\)/;
-        let match = regExp.exec(responses[(i)].text);
-        jQueryBtnEmailsCurrentFolder.text(query.folder + ' ' + match[0]);
-      }
+        text = getCurrentFolderText(responses[i], query);
+        if (text !== null) {
+            break;
+        }
     }
+
+    if (typeof query.folders_id === 'undefined' || query.folders_id === '') {
+        if (responses.length > 0) {
+            text = responses[0].text;
+        }
+    }
+            
+    if (text === null) {
+        text = '';
+    }
+    jQueryBtnEmailsCurrentFolder.text(text);
   });
 });
