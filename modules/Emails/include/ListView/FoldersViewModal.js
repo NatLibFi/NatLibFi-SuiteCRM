@@ -76,6 +76,10 @@
 
         response = response.response;
 
+        var selectedNode = '';
+        if (response.length > 0) {
+          response[0].state = {opened: true};
+        }
         self.tree = $('<div></div>');
         self.tree.jstree({
           'core' : {
