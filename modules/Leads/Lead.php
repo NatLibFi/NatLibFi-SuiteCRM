@@ -655,17 +655,26 @@ class Lead extends Person implements EmailInterface
         if (!$this->load_relationship('accounts_leads_1')) {
             $GLOBALS['log']->fatal('no rel');
         }
+        if (!$this->load_relationship('nlfse_services_leads_1')) {
+            $GLOBALS['log']->debug('Loading lead-service relationship failed.');
+        }
 //$GLOBALS['log']->fatal($this->name . ': ' . $this->accounts_leads_1_name);
 //$GLOBALS['log']->fatal($this->name . ' (' . $this->id . ')');
 //$GLOBALS['log']->fatal('acc id: ' . $this->account_id);
+        $name = '';
         if ($this->account_name) {
-            $this->name = $this->account_name;
-            $this->full_name = $this->account_name;
+            $name = $this->account_name;
  //           $GLOBALS['log']->fatal('changed to: ' . $this->name);
         } elseif (isset($this->accounts_leads_1_name) && $this->accounts_leads_1_name) {
-            $this->name = $this->accounts_leads_1_name;
-            $this->full_name = $this->accounts_leads_1_name;
+            $name = $this->accounts_leads_1_name;
         }
+
+        if ($this->nlfse_services_leads_1_name) {
+            $name .= '-' . $this->nlfse_services_leads_1_name;
+        }
+
+        $this->name = $name;
+        $this->full_name = $name;
     }
 
 }
