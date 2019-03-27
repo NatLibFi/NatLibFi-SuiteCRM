@@ -84,7 +84,7 @@ $dashletData['ContactsDashlet']['columns'] = array (
     'width' => '10%',
     'label' => 'LBL_EMAIL_ADDRESS',
     'sortable' => false,
-    'customCode' => '{$EMAIL1_LINK}{$EMAIL1}</a>',
+    'customCode' => '{$EMAIL1_LINK}',
     'name' => 'email1',
     'default' => true,
   ),
