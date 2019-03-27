@@ -9,21 +9,25 @@ if (isset($_REQUEST['return_module'])) {
 $fields = array();
 
 if ($returnModule === 'Contacts') {
-    $fields = array( array(
+    $fields = array(
         array(
-            'name' => 'accounts_contacts_account_enum',
-            'label' => 'LBL_ACCOUNTS_CONTACTS_ACCOUNT_TITLE',
-            'displayParams' => array( 'idName' => 'account_id' ),
-        ),
-        /*), array(*/ array(
-            'name' => 'accounts_contacts_role_enum',
-            'label' => 'LBL_ACCOUNTS_CONTACTS_ROLE',
-            'displayParams' =>
-            array (
-                'idName' => 'role',
+            array(
+                'name' => 'accounts_contacts_account_enum',
+                'label' => 'LBL_ACCOUNTS_CONTACTS_ACCOUNT_TITLE',
+                'displayParams' => array( 'idName' => 'account_id' ),
             ),
         ),
-    ) );
+        array(
+            array(
+                'name' => 'accounts_contacts_role_enum',
+                'label' => 'LBL_ACCOUNTS_CONTACTS_ROLE',
+                'displayParams' =>
+                array (
+                    'idName' => 'role',
+                ),
+            ),
+        )
+    );
 }
 
 if (empty($fields)) {
