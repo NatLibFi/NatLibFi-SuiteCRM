@@ -27,7 +27,7 @@ $layout_defs["nlfwg_WorkingGroups"]["subpanel_setup"]['activities'] = array (
             'get_subpanel_data' => 'function:getTasksForWorkingGroupActivitySubpanelQueryParts',
             'function_parameters' => array(
                 'import_function_file' => 'custom/Extension/application/Ext/Utils/NLFWorkingGroups.php', 
-                'group_id' => $this->_focus->id,
+                'group_id' => $_REQUEST['record'],
             ),
             'generate_select' => true,
             'set_subpanel_data' => 'tasks',
@@ -40,7 +40,7 @@ $layout_defs["nlfwg_WorkingGroups"]["subpanel_setup"]['activities'] = array (
             'get_subpanel_data' => 'function:getMeetingsForWorkingGroupActivitySubpanelQueryParts',
             'function_parameters' => array(
                 'import_function_file' => 'custom/Extension/application/Ext/Utils/NLFWorkingGroups.php', 
-                'group_id' => $this->_focus->id,
+                'group_id' => $_REQUEST['record'],
             ),
             'generate_select' => true,
             'set_subpanel_data' => 'meetings',
@@ -52,7 +52,7 @@ $layout_defs["nlfwg_WorkingGroups"]["subpanel_setup"]['activities'] = array (
             'get_subpanel_data' => 'function:getCallsForWorkingGroupActivitySubpanelQueryParts',
             'function_parameters' => array(
                 'import_function_file' => 'custom/Extension/application/Ext/Utils/NLFWorkingGroups.php', 
-                'group_id' => $this->_focus->id,
+                'group_id' => $_REQUEST['record'],
             ),
             'generate_select' => true,
             'set_subpanel_data' => 'calls',

@@ -36,7 +36,7 @@ $layout_defs["nlfwg_WorkingGroups"]["subpanel_setup"]['history'] = array (
             'get_subpanel_data' => 'function:getTasksForWorkingGroupActivitySubpanelQueryParts',
             'function_parameters' => array(
                 'import_function_file' => 'custom/Extension/application/Ext/Utils/NLFWorkingGroups.php', 
-                'group_id' => $this->_focus->id,
+                'group_id' => $_REQUEST['record'],
             ),
             'generate_select' => true,
             'set_subpanel_data' => 'tasks',
@@ -49,7 +49,7 @@ $layout_defs["nlfwg_WorkingGroups"]["subpanel_setup"]['history'] = array (
             'get_subpanel_data' => 'function:getMeetingsForWorkingGroupActivitySubpanelQueryParts',
             'function_parameters' => array(
                 'import_function_file' => 'custom/Extension/application/Ext/Utils/NLFWorkingGroups.php', 
-                'group_id' => $this->_focus->id,
+                'group_id' => $_REQUEST['record'],
             ),
             'generate_select' => true,
             'set_subpanel_data' => 'meetings',
@@ -61,7 +61,7 @@ $layout_defs["nlfwg_WorkingGroups"]["subpanel_setup"]['history'] = array (
             'get_subpanel_data' => 'function:getCallsForWorkingGroupActivitySubpanelQueryParts',
             'function_parameters' => array(
                 'import_function_file' => 'custom/Extension/application/Ext/Utils/NLFWorkingGroups.php', 
-                'group_id' => $this->_focus->id,
+                'group_id' => $_REQUEST['record'],
             ),
             'generate_select' => true,
             'set_subpanel_data' => 'calls',
@@ -73,7 +73,7 @@ $layout_defs["nlfwg_WorkingGroups"]["subpanel_setup"]['history'] = array (
             'get_subpanel_data' => 'function:getNotesForWorkingGroupSubpanelQueryParts',
             'function_parameters' => array(
                'import_function_file' => 'custom/Extension/application/Ext/Utils/NLFWorkingGaroups.php', 
-                'group_id' => $this->_focus->id,
+                'group_id' => $_REQUEST['record'],
             ),
             'generate_select' => true,
             'set_subpanel_data' => 'notes',
@@ -89,7 +89,7 @@ $layout_defs["nlfwg_WorkingGroups"]["subpanel_setup"]['history'] = array (
             'get_subpanel_data' => 'function:getEmailsForWorkingGroupHistorySubpanelQueryParts',
             'function_parameters' => array(
                 'import_function_file' => 'custom/Extension/application/Ext/Utils/NLFWorkingGroups.php', 
-                'group_id' => $this->_focus->id,
+                'group_id' => $_REQUEST['record'],
             ),
             'generate_select' => true,
             'set_subpanel_data' => 'emails',
