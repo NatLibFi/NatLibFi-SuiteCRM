@@ -514,6 +514,46 @@ EOQ;
                     }
                 }
 
+                // NLF custom: include multipliable Account fields
+                foreach (array_keys($_POST) as $field) {
+                    if (substr($field, 0, strlen('account_id')) === 'account_id') {
+                        $index = substr($field, strlen('account_id'));
+                    }
+
+                    if ($index === '') {
+                        continue;
+                    }
+
+                    if (!isset($_POST['account_id' . $index]) || !isset($_POST['account_name' . $index])) {
+                        continue;
+                    }
+
+                    $id = $_POST['account_id' . $index];
+                    $name = $_POST['account_name' . $index];
+                    $department = '';
+                    $address = '';
+                    $description = '';
+
+                    if (!$id || !$name) {
+                        continue;
+                    }
+
+                    if (isset($_POST['account_department' . $index])) {
+                        $department = $_POST['account_department' . $index];
+                    }
+                    if (isset($_POST['account_address' . $index])) {
+                        $address = $_POST['account_address' . $index];
+                    }
+                    if (isset($_POST['account_description' . $index])) {
+                        $description = $_POST['account_description' . $index];
+                    }
+
+                    $get .= "&Contactsaccount_id$index=" . urlencode($id) .
+                        "&Contactsaccount_name$index=" . urlencode($name) .
+                        "&Contactsaccount_department$index=" . urlencode($department) .
+                        "&Contactsaccount_address$index=" . urlencode($address) .
+                        "&Contactsaccount_description$index=" . urlencode($description);
+                }
 
                 $emailAddress = new SugarEmailAddress();
                 $get .= $emailAddress->getFormBaseURL($focus);
