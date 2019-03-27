@@ -10,21 +10,25 @@ if (isset($_REQUEST['return_module'])) {
 $fields = array();
 
 if ($returnModule === 'Contacts') {
-    $fields = array( array(
+    $fields = array(
         array(
-            'name' => 'nlfwg_workinggroups_contacts_1_workinggroup_enum',
-            'label' => 'LBL_NLFWG_WORKINGGROUPS_CONTACTS_1_WORKING_GROUP_TITLE',
-            'displayParams' => array( 'idName' => 'nlfwg_workinggroups_contacts_1nlfwg_workinggroups_ida' ),
-        ),
-       /* ), array(*/ array(
-            'name' => 'nlfwg_workinggroups_contacts_1_role_enum',
-            'label' => 'LBL_NLFWG_WORKINGGROUPS_CONTACTS_1_ROLE',
-            'displayParams' =>
-            array (
-                'idName' => 'role',
+            array(
+                'name' => 'nlfwg_workinggroups_contacts_1_workinggroup_enum',
+                'label' => 'LBL_NLFWG_WORKINGGROUPS_CONTACTS_1_WORKING_GROUP_TITLE',
+                'displayParams' => array( 'idName' => 'nlfwg_workinggroups_contacts_1nlfwg_workinggroups_ida' ),
             ),
         ),
-    ) );
+        array(
+            array(
+                'name' => 'nlfwg_workinggroups_contacts_1_role_enum',
+                'label' => 'LBL_NLFWG_WORKINGGROUPS_CONTACTS_1_ROLE',
+                'displayParams' =>
+                array (
+                    'idName' => 'role',
+                ),
+            ),
+        )
+    );
 }
 
 if (empty($fields)) {

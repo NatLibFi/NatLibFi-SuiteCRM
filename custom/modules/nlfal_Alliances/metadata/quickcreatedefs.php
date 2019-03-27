@@ -8,25 +8,29 @@ if (isset($_REQUEST['return_module'])) {
 $fields = array();
 
 if ($returnModule === 'Contacts') {
-    $fields = array( array(
+    $fields = array(
         array(
-            'name' => 'nlfal_alliances_contacts_1_alliance_enum',
-            'label' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_ALLIANCE_TITLE',
-            'displayParams' => array( 'idName' => 'nlfal_alliances_contacts_1nlfal_alliances_ida' ),
+            array(
+                'name' => 'nlfal_alliances_contacts_1_alliance_enum',
+                'label' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_ALLIANCE_TITLE',
+                'displayParams' => array( 'idName' => 'nlfal_alliances_contacts_1nlfal_alliances_ida' ),
+            ),
         ),
-        /*), array(*/ array(
-            'name' => 'nlfal_alliances_contacts_1_role_enum',
-            'label' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_ROLE',
-            'displayParams' =>
-            array (
-                'idName' => 'role',
+         array(
+            array(
+                'name' => 'nlfal_alliances_contacts_1_role_enum',
+                'label' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_ROLE',
+                'displayParams' =>
+                array (
+                    'idName' => 'role',
+                ),
             ),
         ),
         array(
             'name' => 'nlfal_alliances_contacts_1_description_form',
             'displayParams' => array( 'idName' => 'nlfal_alliances_contacts_1_description' ),
         ),
-    ) );
+    );
 }
 
 if (empty($fields)) {
