@@ -60,12 +60,6 @@ array (
             'studio' => 'visible',
             'label' => 'LBL_SEKTORIT',
           ),
-          1 => 
-          array (
-            'name' => 'date_entered',
-            'comment' => 'Date record created',
-            'label' => 'LBL_DATE_ENTERED',
-          ),
         ),
         3 => 
         array (
@@ -78,6 +72,15 @@ array (
               'idName' => 'kimpan_vetaja_c',
             ),
           ),
+        ),
+        4 =>
+        array(
+          0 => 
+          array (
+            'name' => 'date_entered',
+            'comment' => 'Date record created',
+            'label' => 'LBL_DATE_ENTERED',
+          ),
           1 => 
           array (
             'name' => 'date_modified',
@@ -85,7 +88,7 @@ array (
             'label' => 'LBL_DATE_MODIFIED',
           ),
         ),
-        4 => 
+        5 => 
         array (
           0 => 'description',
         ),
