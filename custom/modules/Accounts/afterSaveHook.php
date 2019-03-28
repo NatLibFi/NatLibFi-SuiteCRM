@@ -49,6 +49,33 @@ class AccountAfterSaveHook
        }
     }
 
+    public function updateBRName($bean, $event, $arguments)
+    {
+        $id = $bean->{self::FIELD_ID};
+
+        if (!$bean->load_relationship(self::FIELD_ACCOUNT_BUSINESS_RELATIONSHIP_REL)) {
+            if (isset($GLOBALS['log'])) {
+                $GLOBALS['log']->debug('No business relationship related to the account: ' . $bean->id);
+            }
+            return;
+        }
+
+        $brIds = $bean->{self::FIELD_ACCOUNT_BUSINESS_RELATIONSHIP_REL}->get(true);
+
+        foreach($brIds as $brId) {
+            $br = new nlfbr_BusinessRelationships();
+            $br->retrieve($brId);
+            if (!$br) {
+                continue;
+            }
+
+            $brName = $br->name;
+            if (substr($brName, -strlen($bean->name)-1) !== '-' . $bean->name) {
+                $br->save();
+            }
+        }
+    }
+
     const FIELD_ACCOUNT_ALLIANCE_REL = 'nlfal_alliances_accounts_1';
     const FIELD_ALLIANCE_INDUSTRY = 'sektorit_c';
 
