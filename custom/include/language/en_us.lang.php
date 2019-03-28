@@ -53,10 +53,6 @@ $GLOBALS['app_list_strings']['asiakassuhde_list']=array (
   'aktiivinen' => 'Aktiivinen',
   'paattynyt' => 'Päättynyt',
 );
-$GLOBALS['app_list_strings']['Finna_palvelusopimus_liitteet_list']=array (
-  'liite1' => 'Liite 1: Liite vapaasti käytettävissä olevasta metatiedosta',
-  'liite2' => 'Liite 2: palvelutasoliite',
-);
 $GLOBALS['app_list_strings']['liitteet_list']=array (
 );
 $GLOBALS['app_list_strings']['contract_type_list']=array (
@@ -463,6 +459,10 @@ $GLOBALS['app_list_strings']['contact_alliance_role_list']=array (
   'alliance_ei_tiedossa' => 'Ei tiedossa',
   'alliance_replikoinninyhteyshenkilo' => 'Replikoinnin yhteyshenkilö',
   'alliance_tietokannanyhteyshenkilo' => 'Tietokannan yhteyshenkilö',
+);
+$GLOBALS['app_list_strings']['Finna_palvelusopimus_liitteet_list']=array (
+  'liite1' => 'Liite 1: Liite vapaasti käytettävissä olevasta metatiedosta',
+  'liite2' => 'Liite 2: palvelutasoliite',
 );
 
 $GLOBALS['app_list_strings']['industry_dom']=array (
