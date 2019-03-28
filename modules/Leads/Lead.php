@@ -670,7 +670,7 @@ class Lead extends Person implements EmailInterface
         }
 
         if (isset($this->nlfse_services_leads_1_name) && $this->nlfse_services_leads_1_name) {
-            $name .= '-' . $this->nlfse_services_leads_1_name;
+            $name = $this->nlfse_services_leads_1_name . '-' . $name;
         }
 
         $this->name = $name;
