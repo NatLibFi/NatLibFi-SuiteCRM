@@ -59,19 +59,6 @@ class CustomMassUpdate extends MassUpdate {
             $evenByPanel[$panelName] = true;
         }
 
-		if($this->sugarbean->object_name == 'Contact')
-		{
-			$htmlByPanel['DEFAULT'] .= "<tr><td width='15%' scope='row'>$lang_sync</td><td width='35%' class='dataField'><select name='Sync'><option value=''>{$GLOBALS['app_strings']['LBL_NONE']}</option><option value='false'>{$GLOBALS['app_list_strings']['checkbox_dom']['2']}</option><option value='true'>{$GLOBALS['app_list_strings']['checkbox_dom']['1']}</option></select></td>";
-			$evenByPanel['DEFAULT'] = false;
-		} else if($this->sugarbean->object_name == 'Employee') {
-			$this->sugarbean->field_defs['employee_status']['type'] = 'enum';
-			$this->sugarbean->field_defs['employee_status']['massupdate'] = true;
-			$this->sugarbean->field_defs['employee_status']['options'] = 'employee_status_dom';
-		} else if($this->sugarbean->object_name == 'InboundEmail'){
-			$this->sugarbean->field_defs['status']['type'] = 'enum';
-			$this->sugarbean->field_defs['status']['options'] = 'user_status_dom';
-		}
-
 		//These fields should never appear on mass update form
 		static $banned = array('date_modified'=>1, 'date_entered'=>1, 'created_by'=>1, 'modified_user_id'=>1, 'deleted'=>1,'modified_by_name'=>1,);
 
@@ -170,15 +157,6 @@ class CustomMassUpdate extends MassUpdate {
 			}
 		}
 
-
-		if ($this->sugarbean->object_name == 'Contact' ||
-			$this->sugarbean->object_name == 'Account' ||
-			$this->sugarbean->object_name == 'Lead' ||
-			$this->sugarbean->object_name == 'Prospect') {
-
-			$htmlByPanel['DEFAULT'] .= "<tr><td width='15%'  scope='row' class='dataLabel'>$lang_optout_primaryemail</td><td width='35%' class='dataField'><select name='optout_primary'><option value=''>{$GLOBALS['app_strings']['LBL_NONE']}</option><option value='false'>{$GLOBALS['app_list_strings']['checkbox_dom']['2']}</option><option value='true'>{$GLOBALS['app_list_strings']['checkbox_dom']['1']}</option></select></td></tr>";
-
-			}
 
         foreach ($panelNames as $panelName) {
             if ($htmlByPanel[$panelName] === '') {
