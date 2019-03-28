@@ -10,3 +10,6 @@ $mod_strings['LBL_DESCRIPTION_TITLE'] = 'Lisätiedot:';
 
 $mod_strings['LBL_CONTRACT_ACTIVE'] = 'voimassa';
 $mod_strings['LBL_CONTRACT_FORMER'] = 'edellinen';
+
+$mod_strings['LBL_RELATED_CONTRACT_YEAR'] = 'Sopimuksen solmimisvuosi';
+$mod_strings['LBL_RELATED_CONTRACT_KRONODOC_ID'] = 'Sopimus Kronodocissa';

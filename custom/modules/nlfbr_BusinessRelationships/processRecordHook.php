@@ -9,6 +9,7 @@ class BusinessRelationshipProcessRecordHook
 {
     const TABLE_BUSINESS_RELATIONSHIPS_CONTRACTS = 'nlfbr_businessrelationships_aos_contracts_1_c';
     const FIELD_BUSINESS_RELATIONSHIP_ID = 'nlfbr_busi9351onships_ida';
+    const FIELD_CONTRACT_ID = 'nlfbr_businessrelationships_aos_contracts_1aos_contracts_idb';
     const FIELD_CONTRACT_COUNT = 'contract_count_c';
 
     function setContractCount($bean, $event, $arguments)
@@ -199,6 +200,41 @@ class BusinessRelationshipProcessRecordHook
         }
 
         $bean->{self::FIELD_ACTIVE_CONTRACT_NAMES} = $contractNames;
+    }
+
+    public function setContractData($bean, $event, $arguments)
+    {
+        // Only relevant when in the Contract module's subpanel
+        if (!isset($_REQUEST['module']) || $_REQUEST['module'] !== 'AOS_Contracts') {
+            return;
+        }
+
+        if (!isset($_REQUEST['action']) || $_REQUEST['action'] !== 'DetailView') {
+            return;
+        }
+
+        if (!isset($_REQUEST['record']) || empty($_REQUEST['record'])) {
+            return;
+        }
+
+        $id = $bean->id;
+        if (!isset($id)) {
+            return;
+        }
+
+        $contractId = $_REQUEST['record'];
+
+        $db = DBManagerFactory::getInstance();
+        $query = 'select kronodoc_id, year from ' . self::TABLE_BUSINESS_RELATIONSHIPS_CONTRACTS .
+            ' WHERE ' . self::FIELD_BUSINESS_RELATIONSHIP_ID . '="' . $db->quote($id) . '" ' .
+            ' AND deleted=0';
+
+        $result = $db->query($query);
+
+        if ($row = $db->fetchByAssoc($result)) {
+            $bean->{'related_contract_year'} = $row['year'];
+            $bean->{'related_contract_kronodoc_id'} = $row['kronodoc_id'];
+        }
     }
 
 

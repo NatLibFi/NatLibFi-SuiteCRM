@@ -187,3 +187,23 @@ $dictionary["nlfbr_BusinessRelationships"]["fields"]["active_contract_names"] = 
   'studio' => array('detailview' => false, 'editview' => false, 'listview' => true, 'searchview' => false),
   'sortable' => false,
 );
+
+$dictionary["nlfbr_BusinessRelationships"]["fields"]["related_contract_year"] = array (
+  'name' => 'related_contract_year',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'vname' => 'LBL_RELATED_CONTRACT_YEAR',
+  'studio' => array('detailview' => false, 'editview' => false, 'listview' => true, 'searchview' => false),
+  'sortable' => false,
+  'massupdate' => false,
+);
+
+$dictionary["nlfbr_BusinessRelationships"]["fields"]["related_contract_kronodoc_id"] = array (
+  'name' => 'related_contract_kronodoc_id',
+  'type' => 'varchar',
+  'source' => 'non-db',
+  'vname' => 'LBL_RELATED_CONTRACT_KRONODOC_ID',
+  'studio' => array('detailview' => false, 'editview' => false, 'listview' => true, 'searchview' => false),
+  'sortable' => false,
+  'massupdate' => false,
+);

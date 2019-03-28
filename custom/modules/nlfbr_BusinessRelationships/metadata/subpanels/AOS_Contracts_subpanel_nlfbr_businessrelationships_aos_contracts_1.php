@@ -24,11 +24,11 @@ $subpanel_layout['list_fields'] = array (
     'vname' => 'LBL_PALVELU_LIITTYMISEN_STATUS',
     'width' => '10%',
   ),
-  'sopimus_kronodoc_url_c' => 
+  'related_contract_kronodoc_id' => 
   array (
     'type' => 'url',
     'default' => true,
-    'vname' => 'LBL_SOPIMUS_KRONODOC_URL',
+    'vname' => 'LBL_RELATED_CONTRACT_KRONODOC_ID',
     'width' => '10%',
   ),
   'finna_sopimus_valtuutukset_c' => 
@@ -38,11 +38,11 @@ $subpanel_layout['list_fields'] = array (
     'vname' => 'LBL_FINNA_SOPIMUS_VALTUUTUKSET',
     'width' => '10%',
   ),
-  'sopimus_solmittu_c' => 
+  'related_contract_year' => 
   array (
     'type' => 'varchar',
     'default' => true,
-    'vname' => 'LBL_SOPIMUS_SOLMITTU',
+    'vname' => 'LBL_RELATED_CONTRACT_YEAR',
     'width' => '10%',
   ),
   'edit_button' => 
