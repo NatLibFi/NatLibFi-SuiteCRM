@@ -31,13 +31,6 @@ $subpanel_layout['list_fields'] = array (
     'vname' => 'LBL_RELATED_CONTRACT_KRONODOC_ID',
     'width' => '10%',
   ),
-  'finna_sopimus_valtuutukset_c' => 
-  array (
-    'type' => 'varchar',
-    'default' => true,
-    'vname' => 'LBL_FINNA_SOPIMUS_VALTUUTUKSET',
-    'width' => '10%',
-  ),
   'related_contract_year' => 
   array (
     'type' => 'varchar',
