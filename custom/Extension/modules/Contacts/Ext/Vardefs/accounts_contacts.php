@@ -11,6 +11,7 @@ $dictionary["Contact"]["fields"]["accounts_contacts_contact_name"] = array (
   'table' => 'contacts',
   'module' => 'Contacts',
   'rname' => 'name',
+  'massupdate' => false,
 //  array (
 //    0 => 'first_name',
 //    1 => 'last_name',
@@ -54,6 +55,7 @@ $dictionary["Contact"]["fields"]["accounts_contacts_role"] = array (
   'options' => 'contact_account_role_list',
   'source' => 'non-db',
   'vname' => 'LBL_ACCOUNTS_CONTACTS_ROLE',
+  'massupdate' => false,
 );
 $dictionary["Contact"]["fields"]["accounts_contacts_role_enum"] = array (
   'name' => 'accounts_contacts_role_enum',
@@ -61,6 +63,7 @@ $dictionary["Contact"]["fields"]["accounts_contacts_role_enum"] = array (
   'function' => array( 'name' => 'getAccountRolesForContactHtml', 'returns' => 'html' ),
   'source' => 'non-db',
   'vname' => 'LBL_ACCOUNTS_CONTACTS_ROLE',
+  'massupdate' => false,
 );
 
 /*$dictionary["Contact"]["fields"]["accounts_contacts_department"] = array (
@@ -139,4 +142,5 @@ $dictionary["Contact"]["fields"]["contact_account_names"] = array (
     'vname' => 'LBL_CONTACT_ACCOUNT_NAMES',
     'studio' => array('detailview' => false, 'editview' => false, 'listview' => true, 'searchview' => false),
     'sortable' => false,
+  'massupdate' => false,
 );

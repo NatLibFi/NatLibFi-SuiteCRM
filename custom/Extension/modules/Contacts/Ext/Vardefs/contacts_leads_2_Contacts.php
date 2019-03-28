@@ -22,6 +22,7 @@ $dictionary["Contact"]["fields"]["contacts_leads_2_contact_name"] = array (
   'module' => 'Contacts',
   'rname' => 'name',
   'massupdate' => false,
+  'massupdate' => false,
 );
 
 $dictionary["Contact"]["fields"]['contact_lead_br_role_fields'] = array(
@@ -53,6 +54,7 @@ $dictionary["Contact"]["fields"]["contacts_leads_2_role"] = array (
   'options' => 'contact_lead_role_list',
   'source' => 'non-db',
   'vname' => 'LBL_CONTACTS_LEADS_2_ROLE',
+  'massupdate' => false,
 );
 
 $dictionary["Contact"]["fields"]["contacts_leads_2_role_enum"] = array (
@@ -61,5 +63,6 @@ $dictionary["Contact"]["fields"]["contacts_leads_2_role_enum"] = array (
   'function' => array( 'name' => 'getLeadRolesForContactHtml', 'returns' => 'html' ),
   'source' => 'non-db',
   'vname' => 'LBL_CONTACTS_LEADS_2_ROLE',
+  'massupdate' => false,
 );
 

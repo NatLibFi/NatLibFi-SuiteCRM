@@ -7,5 +7,6 @@ $dictionary["Contact"]["fields"]['related_service'] = array(
   'source' => 'non-db',
   'studio' => array('listview' => false, 'detailview' => false, 'editview' => false, 'searchview' => true),
   'function' => 'getActiveServices',
+  'massupdate' => false,
 );
 

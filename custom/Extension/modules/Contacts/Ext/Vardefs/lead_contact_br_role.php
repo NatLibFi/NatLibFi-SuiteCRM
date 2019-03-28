@@ -8,4 +8,5 @@ $dictionary["Contact"]["fields"]["lead_contact_br_role"] = array (
   'default' => 'br_yhteyshenkilo',
   'source' => 'non-db',
   'studio' => array('visible' => false),
+  'massupdate' => false,
 );

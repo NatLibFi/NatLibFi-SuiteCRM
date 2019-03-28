@@ -22,6 +22,7 @@ $dictionary["Contact"]["fields"]["nlfbr_businessrelationships_contacts_1_contact
   'module' => 'Contacts',
   'rname' => 'name',
   'required' => true,
+  'massupdate' => false,
 //  array (
 //    0 => 'first_name',
 //    1 => 'last_name',
@@ -76,6 +77,7 @@ $dictionary["Contact"]["fields"]["nlfbr_businessrelationships_contacts_1_role"] 
   //'link' => 'nlfbr_businessrelationships_contacts_1',
   //'table' => 'contacts',
 //  'module' => 'Contacts',
+  'massupdate' => false,
 );
 
 $dictionary["Contact"]["fields"]["nlfbr_businessrelationships_contacts_1_role_enum"] = array (
@@ -91,5 +93,6 @@ $dictionary["Contact"]["fields"]["nlfbr_businessrelationships_contacts_1_role_en
   //'link' => 'nlfbr_businessrelationships_contacts_1',
   //'table' => 'contacts',
 //  'module' => 'Contacts',
+  'massupdate' => false,
 );
 

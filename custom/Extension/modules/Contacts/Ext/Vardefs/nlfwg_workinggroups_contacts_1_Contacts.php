@@ -21,6 +21,7 @@ $dictionary["Contact"]["fields"]["nlfwg_workinggroups_contacts_1_contact_name"] 
   'table' => 'contacts',
   'module' => 'Contacts',
   'rname' => 'name',
+  'massupdate' => false,
 //  array (
 //    0 => 'first_name',
 //    1 => 'last_name',
@@ -37,6 +38,7 @@ $dictionary["Contact"]["fields"]["nlfwg_workinggroups_contacts_1_name"] = array 
   'table' => 'nlfwg_workinggroups',
   'module' => 'nlfwg_WorkingGroups',
   'rname' => 'name',
+  'massupdate' => false,
 );
 
 
@@ -71,6 +73,7 @@ $dictionary["Contact"]["fields"]["nlfwg_workinggroups_contacts_1_role"] = array 
   'options' => 'contact_working_group_role_list',
   'source' => 'non-db',
   'vname' => 'LBL_NLFWG_WORKINGGROUPS_CONTACTS_1_ROLE',
+  'massupdate' => false,
 );
 $dictionary["Contact"]["fields"]["nlfwg_workinggroups_contacts_1_role_enum"] = array (
   'name' => 'nlfwg_workinggroups_contacts_1_role_enum',
@@ -78,4 +81,5 @@ $dictionary["Contact"]["fields"]["nlfwg_workinggroups_contacts_1_role_enum"] = a
   'function' => array( 'name' => 'getWorkingGroupRolesForContactHtml', 'returns' => 'html' ),
   'source' => 'non-db',
   'vname' => 'LBL_NLFWG_WORKINGGROUPS_CONTACTS_1_ROLE',
+  'massupdate' => false,
 );
