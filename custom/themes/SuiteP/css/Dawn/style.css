@@ -3,6 +3,10 @@
     line-height: 1.5;
 }
 
+.detail-view-field span#name1_span {
+    display: inline;
+}
+
 .col-advanced-search label {
     white-space: normal !important;
 }
