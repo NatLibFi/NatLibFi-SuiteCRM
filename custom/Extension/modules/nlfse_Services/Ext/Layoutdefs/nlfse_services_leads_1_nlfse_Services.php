@@ -14,10 +14,5 @@ $layout_defs["nlfse_Services"]["subpanel_setup"]['nlfse_services_leads_1'] = arr
     array (
       'widget_class' => 'SubPanelTopButtonQuickCreate',
     ),
-    1 => 
-    array (
-      'widget_class' => 'SubPanelTopSelectButton',
-      'mode' => 'MultiSelect',
-    ),
   ),
 );
