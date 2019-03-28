@@ -10,6 +10,7 @@ $dictionary['Contact']["fields"]["contact_roles_all"] = array (
   //'bean_name' => 'nlfse_Services',
   'vname' => 'LBL_CONTACT_ROLES_ALL',
   //'id_name' => 'nlfse_services_accounts_enum',
+  'massupdate' => false,
 );
 
 $dictionary['Contact']["fields"]["contact_roles_all_new"] = array (
@@ -22,6 +23,7 @@ $dictionary['Contact']["fields"]["contact_roles_all_new"] = array (
   //'bean_name' => 'nlfse_Services',
   'vname' => 'LBL_CONTACT_ROLES_ALL',
   //'id_name' => 'nlfse_services_accounts_enum',
+  'massupdate' => false,
 );
 
 $dictionary['Contact']["fields"]["contact_all_role_names"] = array (
@@ -31,6 +33,7 @@ $dictionary['Contact']["fields"]["contact_all_role_names"] = array (
   'vname' => 'LBL_CONTACT_ALL_ROLE_NAMES',
   'studio' => array('listview' => true, 'editview' => false, 'detailview' => false, 'searchview' => false),
   'sortable' => false,
+  'massupdate' => false,
 );
 
 

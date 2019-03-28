@@ -7,5 +7,6 @@ $dictionary["Contact"]["fields"]['related_system'] = array(
   'source' => 'non-db',
   'studio' => array('listview' => false, 'detailview' => false, 'editview' => false, 'searchview' => true),
   'function' => 'getAllActiveBackEndSystems',
+  'massupdate' => false,
 );
 

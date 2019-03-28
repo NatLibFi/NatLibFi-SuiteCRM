@@ -6,4 +6,5 @@ $dictionary['Contact']["fields"]["account_industry"] = array (
   'options' => 'industry_dom',
   'source' => 'non-db',
   'vname' => 'LBL_CONTACT_ACCOUNT_INDUSTRY',
+  'massupdate' => false,
 );

@@ -21,6 +21,7 @@ $dictionary["Contact"]["fields"]["nlfal_alliances_contacts_1_contact_name"] = ar
   'table' => 'contacts',
   'module' => 'Contacts',
   'rname' => 'name',
+  'massupdate' => false,
 //  array (
 //    0 => 'first_name',
 //    1 => 'last_name',
@@ -37,6 +38,7 @@ $dictionary["Contact"]["fields"]["nlfal_alliances_contacts_1_name"] = array (
   'table' => 'nlfal_alliances',
   'module' => 'nlfal_Alliances',
   'rname' => 'name',
+  'massupdate' => false,
 );
 
 
@@ -72,6 +74,7 @@ $dictionary["Contact"]["fields"]["nlfal_alliances_contacts_1_role"] = array (
   'options' => 'contact_alliance_role_list',
   'source' => 'non-db',
   'vname' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_ROLE',
+  'massupdate' => false,
 );
 $dictionary["Contact"]["fields"]["nlfal_alliances_contacts_1_role_enum"] = array (
   'name' => 'nlfal_alliances_contacts_1_role_enum',
@@ -79,6 +82,7 @@ $dictionary["Contact"]["fields"]["nlfal_alliances_contacts_1_role_enum"] = array
   'function' => array( 'name' => 'getAllianceRolesForContactHtml', 'returns' => 'html' ),
   'source' => 'non-db',
   'vname' => 'LBL_NLFAL_ALLIANCES_CONTACTS_1_ROLE',
+  'massupdate' => false,
 );
 
 $dictionary["Contact"]["fields"]['nlfal_alliances_contacts_1_description'] = array(
