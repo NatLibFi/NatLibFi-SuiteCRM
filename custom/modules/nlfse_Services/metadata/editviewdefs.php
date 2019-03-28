@@ -40,15 +40,15 @@ array (
         ),
         1 => 
         array (
-          0 => 'description',
-        ),
-        2 => 
-        array (
           0 => 
           array (
             'name' => 'additional_information_url',
             'label' => 'LBL_ADDITIONAL_INFORMATION_URL',
           ),
+        ),
+        2 => 
+        array (
+          0 => 'description',
         ),
       ),
     ),
