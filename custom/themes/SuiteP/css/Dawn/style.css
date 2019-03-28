@@ -11,6 +11,11 @@
     display: inline;
 }
 
+.contract-name,
+.data-source-name {
+    font-weight: bold;
+}
+
 .col-advanced-search label {
     white-space: normal !important;
 }
