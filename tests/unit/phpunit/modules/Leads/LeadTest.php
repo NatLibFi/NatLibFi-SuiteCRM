@@ -195,6 +195,7 @@ class LeadTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
 
         $lead->fill_in_additional_list_fields();
 
+        error_log($lead->name);
         $this->assertEquals("firstn lastn", $lead->name);
 
         
