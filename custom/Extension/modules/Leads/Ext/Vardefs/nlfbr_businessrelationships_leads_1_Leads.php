@@ -21,6 +21,7 @@ $dictionary["Lead"]["fields"]["nlfbr_businessrelationships_leads_1_name"] = arra
   'table' => 'nlfbr_businessrelationships',
   'module' => 'nlfbr_BusinessRelationships',
   'rname' => 'name',
+  'massupdate' => false,
 );
 $dictionary["Lead"]["fields"]["nlfbr_busif7d0onships_ida"] = array (
   'name' => 'nlfbr_busif7d0onships_ida',

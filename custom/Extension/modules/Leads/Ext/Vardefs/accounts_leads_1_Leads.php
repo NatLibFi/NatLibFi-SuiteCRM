@@ -23,6 +23,7 @@ $dictionary["Lead"]["fields"]["accounts_leads_1_name"] = array (
   'module' => 'Accounts',
   'rname' => 'name',
   'help' => 'Valitse organisaatio listasta',
+  'massupdate' => false,
 );
 $dictionary["Lead"]["fields"]["accounts_leads_1accounts_ida"] = array (
   'name' => 'accounts_leads_1accounts_ida',
