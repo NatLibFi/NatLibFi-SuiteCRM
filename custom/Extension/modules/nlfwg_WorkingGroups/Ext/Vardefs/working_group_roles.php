@@ -6,4 +6,5 @@ $dictionary['nlfwg_WorkingGroups']["fields"]["working_group_roles"] = array (
   'options' => 'contact_working_group_role_list',
   'source' => 'non-db',
   'vname' => 'LBL_WORKING_GROUP_ROLES',
+  'massupdate' => false,
 );
