@@ -24,6 +24,7 @@ $dictionary["Lead"]["fields"]["nlfse_services_leads_1_name"] = array (
   'rname' => 'name',
   'required' => true,
   'help' => 'Palvelu, josta liidi on kiinnostunut',
+  'massupdate' => false,
 );
 $dictionary["Lead"]["fields"]["nlfse_services_leads_1nlfse_services_ida"] = array (
   'name' => 'nlfse_services_leads_1nlfse_services_ida',

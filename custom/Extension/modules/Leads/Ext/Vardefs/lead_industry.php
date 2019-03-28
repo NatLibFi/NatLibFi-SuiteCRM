@@ -7,4 +7,5 @@ $dictionary["Lead"]["fields"]["lead_industry"] = array (
   'vname' => 'LBL_LEAD_INDUSTRY',
   'source' => 'non-db',
   'studio' => array('detailview' => false, 'editview' => false, 'listview' => false, 'searchview' => true),
+  'massupdate' => false,
 );

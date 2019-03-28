@@ -26,6 +26,7 @@ $dictionary["Lead"]["fields"]["contacts_leads_1_name"] = array (
     0 => 'first_name',
     1 => 'last_name',
   ),
+  'massupdate' => false,
 );
 $dictionary["Lead"]["fields"]["contacts_leads_1contacts_ida"] = array (
   'name' => 'contacts_leads_1contacts_ida',
@@ -49,6 +50,7 @@ $dictionary["Lead"]["fields"]["contacts_leads_1_first_name"] = array (
   'module' => 'Contacts',
   'rname' => 'first_name',
   'studio' => array('visible' => false),
+  'massupdate' => false,
 );
 $dictionary["Lead"]["fields"]["contacts_leads_1_last_name"] = array (
   'name' => 'contacts_leads_1_last_name',
@@ -62,5 +64,6 @@ $dictionary["Lead"]["fields"]["contacts_leads_1_last_name"] = array (
   'module' => 'Contacts',
   'rname' => 'last_name',
   'studio' => array('visible' => false),
+  'massupdate' => false,
 );
 
