@@ -3,7 +3,11 @@
     line-height: 1.5;
 }
 
-.detail-view-field span#name1_span {
+.detail-view-field span#name1_span,
+.detail-view-field span#contract1_span,
+.detail-view-field span#data_source1_span,
+.detail-view-field span#finna_view1_span,
+.detail-view-field span#finna_link1_span {
     display: inline;
 }
 
