@@ -476,22 +476,6 @@ eoq;
 
         $even = true;
 
-        if ($this->sugarbean->object_name == 'Contact') {
-            $html .= "<tr><td width='15%' scope='row'>$lang_sync</td><td width='35%' class='dataField'><select name='Sync'><option value=''>{$GLOBALS['app_strings']['LBL_NONE']}</option><option value='false'>{$GLOBALS['app_list_strings']['checkbox_dom']['2']}</option><option value='true'>{$GLOBALS['app_list_strings']['checkbox_dom']['1']}</option></select></td>";
-            $even = false;
-        } else {
-            if ($this->sugarbean->object_name == 'Employee') {
-                $this->sugarbean->field_defs['employee_status']['type'] = 'enum';
-                $this->sugarbean->field_defs['employee_status']['massupdate'] = true;
-                $this->sugarbean->field_defs['employee_status']['options'] = 'employee_status_dom';
-            } else {
-                if ($this->sugarbean->object_name == 'InboundEmail') {
-                    $this->sugarbean->field_defs['status']['type'] = 'enum';
-                    $this->sugarbean->field_defs['status']['options'] = 'user_status_dom';
-                }
-            }
-        }
-
         //These fields should never appear on mass update form
         static $banned = array(
             'date_modified' => 1,
@@ -627,42 +611,6 @@ eoq;
         }
 
 
-        if ($this->sugarbean->object_name == 'Contact' ||
-            $this->sugarbean->object_name == 'Account' ||
-            $this->sugarbean->object_name == 'Lead' ||
-            $this->sugarbean->object_name == 'Prospect'
-        ) {
-            $optOutPrimaryEmail =
-                "<tr>"
-                . "<td width='15%'  scope='row' class='dataLabel'>$lang_optout_primaryemail</td>"
-                . "<td width='35%' class='dataField'>"
-                . "<select name='optout_primary'>"
-                . "<option value=''>{$app_strings['LBL_NONE']}</option>"
-                . "<option value='false'>{$GLOBALS['app_list_strings']['checkbox_dom']['2']}</option>"
-                . "<option value='true'>{$GLOBALS['app_list_strings']['checkbox_dom']['1']}</option>"
-                . "</select>"
-                . "</td>" .
-                "</tr>";
-
-            $html .= $optOutPrimaryEmail;
-
-            if ($configurator->isConfirmOptInEnabled() || $configurator->isOptInEnabled()) {
-                $optInPrimaryEmail =
-                    '<tr>'
-                    . '<td width="15%" scope="row" class="dataLabel">'
-                    . $app_strings['LBL_OPT_IN_FLAG_PRIMARY']
-                    . '</td>'
-                    . '<td>'
-                    . "<select name='optin_primary'>"
-                    . "<option value=''>{$app_strings['LBL_NONE']}</option>"
-                    . "<option value='false'>{$GLOBALS['app_list_strings']['checkbox_dom']['2']}</option>"
-                    . "<option value='true'>{$GLOBALS['app_list_strings']['checkbox_dom']['1']}</option>"
-                    . "</select>"
-                    . '</td>'
-                    . '</tr>';
-                $html .= $optInPrimaryEmail;
-            }
-        }
         $html .= "</table>";
 
         $html .= "<table cellpadding='0' cellspacing='0' border='0' width='100%'><tr><td class='buttons'><input onclick='return sListView.send_mass_update(\"selected\", \"{$app_strings['LBL_LISTVIEW_NO_SELECTED']}\")' type='submit' id='update_button' name='Update' value='{$lang_update}' class='button'>&nbsp;<input onclick='javascript:toggleMassUpdateForm();' type='button' id='cancel_button' name='Cancel' value='{$GLOBALS['app_strings']['LBL_CANCEL_BUTTON_LABEL']}' class='button'>";
