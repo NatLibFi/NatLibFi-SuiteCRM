@@ -1,3 +1,0 @@
-PLACEHOLDER: QuickCreate
-<form action="index.php" method="POST" name="{$form_name}" id="{$form_id}" {$enctype}>
-</form>
