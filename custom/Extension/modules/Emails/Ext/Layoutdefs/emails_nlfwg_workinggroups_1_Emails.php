@@ -12,12 +12,12 @@ $layout_defs["Emails"]["subpanel_setup"]['emails_nlfwg_workinggroups_1'] = array
   array (
     0 => 
     array (
-      'widget_class' => 'SubPanelTopButtonQuickCreate',
+      'widget_class' => 'SubPanelTopSelectButton',
+      'mode' => 'MultiSelect',
     ),
     1 => 
     array (
-      'widget_class' => 'SubPanelTopSelectButton',
-      'mode' => 'MultiSelect',
+      'widget_class' => 'SubPanelTopButtonQuickCreate',
     ),
   ),
 );
