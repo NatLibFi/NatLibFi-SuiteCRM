@@ -267,6 +267,13 @@ class LogicHookTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
                     'updateRelatedCasesGeocodeInfo'
                 ),
                 array(
+                    3,
+                    'Update name of the Business Relationships, to keep it in sync with the Account',
+                    'custom/modules/Accounts/afterSaveHook.php',
+                    'AccountAfterSaveHook',
+                    'updateBRName',
+                ),
+                array(
                     1,
                     'Update Back End System data of the Business Relationships, to keep it in sync with the Account',
                     'custom/modules/Accounts/afterSaveHook.php',
@@ -304,6 +311,15 @@ class LogicHookTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
                     'modules/Accounts/AccountsJjwg_MapsLogicHook.php',
                     'AccountsJjwg_MapsLogicHook',
                     'deleteRelationship'
+                ),
+            ),
+            'before_delete' => array(
+                array(
+                    1,
+                    'Deletes related Business Relationships when the Account has been deleted',
+                    'custom/modules/Accounts/beforeDeleteHook.php',
+                    'AccountBeforeDeleteHook',
+                    'deleteBusinessRelationships',
                 ),
             ),
             'process_record' => array(
@@ -524,6 +540,13 @@ class LogicHookTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
                         'updateRelatedCasesGeocodeInfo',
                     ),
                     array(
+                        3,
+                        'Update name of the Business Relationships, to keep it in sync with the Account',
+                        'custom/modules/Accounts/afterSaveHook.php',
+                        'AccountAfterSaveHook',
+                        'updateBRName',
+                    ),
+                    array(
                         1,
                         'Update Back End System data of the Business Relationships, to keep it in sync with the Account',
                         'custom/modules/Accounts/afterSaveHook.php',
@@ -565,6 +588,15 @@ class LogicHookTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
                         'deleteRelationship',
                     ),
                 ),
+             'before_delete' => array(
+                array(
+                    1,
+                    'Deletes related Business Relationships when the Account has been deleted',
+                    'custom/modules/Accounts/beforeDeleteHook.php',
+                    'AccountBeforeDeleteHook',
+                    'deleteBusinessRelationships',
+                ),
+              ),
              'process_record' =>
                 array(
                     array(

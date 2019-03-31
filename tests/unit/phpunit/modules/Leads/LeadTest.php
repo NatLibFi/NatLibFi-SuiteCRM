@@ -190,12 +190,12 @@ class LeadTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         // test
         $lead = new Lead();
 
-        $lead->first_name = "firstn";
-        $lead->last_name = "lastn";
+        $lead->nlfse_services_leads_1_name = "sern";
+        $lead->accounts_leads_1_name = "accn";
 
         $lead->fill_in_additional_list_fields();
 
-        $this->assertEquals("firstn lastn", $lead->name);
+        $this->assertEquals("sern-accn", $lead->name);
 
         
         // clean up
@@ -213,12 +213,12 @@ class LeadTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
     {
         $lead = BeanFactory::getBean('Leads');
 
-        $lead->first_name = "firstn";
-        $lead->last_name = "lastn";
+        $lead->nlfse_services_leads_1_name = "sern";
+        $lead->accounts_leads_1_name = "accn";
 
         $lead->fill_in_additional_detail_fields();
 
-        $this->assertEquals("firstn lastn", $lead->name);
+        $this->assertEquals("sern-accn", $lead->name);
     }
 
     public function testget_list_view_data()
@@ -235,17 +235,13 @@ class LeadTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $lead = BeanFactory::getBean('Leads');
 
         $expected = array(
-            'NAME' => ' ',
+            'NAME' => '',
             'DELETED' => 0,
-            'FULL_NAME' => ' ',
+            'FULL_NAME' => '',
             'DO_NOT_CALL' => '0',
             'CONVERTED' => '0',
             'ENCODED_NAME' => ' ',
             'EMAIL1' => '',
-            'EMAIL1_LINK' =>
-                '<a class="email-link"'
-                . ' onclick="$(document).openComposeViewModal(this);" data-module="Leads"'
-                . ' data-record-id="" data-module-name=" " data-email-address=""></a>',
             'ACC_NAME_FROM_ACCOUNTS' => null,
         );
 
@@ -256,7 +252,6 @@ class LeadTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
         $this->assertEquals($expected['DELETED'], $actual['DELETED']);
         $this->assertEquals($expected['FULL_NAME'], $actual['FULL_NAME']);
         $this->assertEquals($expected['DO_NOT_CALL'], $actual['DO_NOT_CALL']);
-        $this->assertEquals($expected['EMAIL1_LINK'], $actual['EMAIL1_LINK']);
         
         // clean up
         
