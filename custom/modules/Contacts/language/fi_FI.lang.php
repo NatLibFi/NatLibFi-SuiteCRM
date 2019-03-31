@@ -1,5 +1,5 @@
 <?php
-// created: 2018-07-11 14:30:04
+// created: 2019-03-28 20:59:58
 $mod_strings = array (
   'LBL_LEAD_SOURCE' => 'Liidin lähde:',
   'LBL_LEAD_DESCRIPTION' => 'Liidin lisätieto',
@@ -46,4 +46,7 @@ $mod_strings = array (
   'LBL_TITLE' => 'Titteli:',
   'LBL_EMAIL_ADDRESS' => 'Sähköpostiosoite:',
   'LBL_ANY_PHONE' => 'Puhelin',
+  'LBL_LAWFUL_BASIS' => 'Oikeutettu peruste',
+  'LBL_LAWFUL_BASIS_SOURCE' => 'Oikeutetun perusteen lähde',
+  'LBL_DATE_REVIEWED' => 'Oikeutetun perusteen tarkistuspvm.',
 );
