@@ -1,5 +1,5 @@
 <?php
-// created: 2018-07-27 22:10:13
+// created: 2019-03-28 21:50:08
 $mod_strings = array (
   'LBL_PALVELU_NLFSE_SERVICES_ID' => 'Palvelu (related Palvelu ID)',
   'LBL_PALVELU' => 'Palvelu',
@@ -52,4 +52,7 @@ $mod_strings = array (
   'LBL_ACCOUNT_PARENT' => 'Kuuluu organisaatioon',
   'LBL_OTHER_PHONE' => 'Toinen puhelin:',
   'LNK_NEW_BUSINESS_RELATIONSHIP' => 'Luo asiakassuhde',
+  'LBL_LAWFUL_BASIS' => 'Oikeutettu peruste',
+  'LBL_LAWFUL_BASIS_SOURCE' => 'Oikeutetun perusteen lähde',
+  'LBL_DATE_REVIEWED' => 'Oikeutetun perusteen tarkistuspvm.',
 );
