@@ -12,7 +12,6 @@ require_once 'modules/Emails/EmailUI.php';
 class CustomEmailUI extends EmailUI {
 
     function getRelatedEmail($beanType, $whereArr, $relatedBeanInfoArr = '') {
-        //return parent::getRelatedEmail($beanType, $whereArr, $relatedBeanInfoArr);
     	global $beanList, $current_user, $app_strings, $db;
     	$finalQuery = '';
 		$searchBeans = null;
@@ -152,17 +151,6 @@ class CustomEmailUI extends EmailUI {
 			if (isset($whereArr['first_name'])) {
                 $whereArr['name'] = $whereArr['first_name'];
             }
-			/*if (isset($whereArr['first_name'])) {
-				$whereArr['leads.account_name'] = $whereArr['first_name'];
-				$whereArr['contacts.first_name'] = $whereArr['first_name'];
-				$whereArr['contacts_conv.first_name'] = $whereArr['first_name'];
-				$whereArr['leads.first_name'] = $whereArr['first_name'];
-			}
-			if (isset($whereArr['last_name'])) {
-				$whereArr['leads.last_name'] = $whereArr['last_name'];
-				$whereArr['contacts.last_name'] = $whereArr['last_name'];
-				$whereArr['contacts_conv.last_name'] = $whereArr['last_name'];
-			}*/
 			unset($whereArr['last_name']);
 			unset($whereArr['first_name']);
             // TODO: also search in the related account name (add join to acccount any way to get contact's account(s)

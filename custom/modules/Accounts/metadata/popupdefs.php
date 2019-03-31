@@ -13,17 +13,7 @@ $popupMeta = array (
   3 => 'account_type',
   4 => 'industry',
 ),
-    'create' => '',/*array (
-  'formBase' => 'AccountFormBase.php',
-  'formBaseClass' => 'AccountFormBase',
-  'getFormBodyParams' => 
-  array (
-    0 => '',
-    1 => '',
-    2 => 'AccountSave',
-  ),
-  'createButton' => 'LNK_NEW_ACCOUNT',
-),*/
+    'create' => '',
     'searchdefs' => array (
   'name' => 
   array (

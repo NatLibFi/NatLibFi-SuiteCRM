@@ -28,12 +28,6 @@ class GroupEmailHelper
             return json_encode(array('fullComposeUrl' => $fullLinkUrl,'composePackage' => $composeData));
         }
 
-        /*$class = $beanList[$composeData['parent_type']];
-        require_once($beanFiles[$class]);
-
-        $bean = new $class();
-        $bean->retrieve($composeData['parent_id']);*/
-  	
         $mainData = array('parent_id' => $composeData['parent_id'], 'parent_type' => $composeData['parent_type']);
 	require_once('modules/Emails/EmailUI.php');
 	$emailUI = new EmailUI();
@@ -43,10 +37,6 @@ class GroupEmailHelper
 
         $mainPackage = $mainComposeOptionsDecoded['composePackage'];
         $mainPackage['to_email_addrs'] = '';
-
-        /*$relationshipField = 'nlfwg_workinggroups_contacts_1';
-	$bean->load_relationship($relationshipField);
-	$contactIds = $bean->{$relationshipField}->get();*/
 
         // Version with roles stored in the contacts relationship below ($bean used when no specific roles are used)
 	$contactIds = $this->getRecipientIds($composeData['parent_type'], $composeData['parent_id']);

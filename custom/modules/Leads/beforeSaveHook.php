@@ -353,33 +353,6 @@ class LeadBeforeSaveHook
             'SET role="' . $db->quote($newRolesEncoded) . '" ' .
             'WHERE id="' . $db->quote($relId) . '"';
         $result = $db->query($query);
-         /*$roleBeanName = $beanList['nlfro_Roles'];
-        require_once($beanFiles[$roleBeanName]);
-        $role = new $roleBeanName();
-
-        $role->{'role_c'} = 'br_yhteyshenkilo';
-
-        $role->save();
-        $roleId = $role->{'id'};
-
-        if (!$brBean->load_relationship('nlfbr_businessrelationships_nlfro_roles_1')) {
-            return;
-        }
-
-        $brBean->{'nlfbr_businessrelationships_nlfro_roles_1'}->get(true);
-
-        $brBean->{'nlfbr_businessrelationships_nlfro_roles_1'}->add($roleId, array());
-        $brBean->save();
-
-        if (!$contact->load_relationship('contacts_nlfro_roles_1')) {
-            return;
-        } 
-
-        $contact->{'contacts_nlfro_roles_1'}->get(true);
-
-        $contact->{'contacts_nlfro_roles_1'}->add($roleId, array());
-        $contact->save();*/
-       
     }
 
     private function setAccountData(&$account, $lead, array $postData) {

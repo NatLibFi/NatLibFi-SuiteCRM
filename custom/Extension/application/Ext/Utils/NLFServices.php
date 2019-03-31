@@ -1,6 +1,5 @@
 <?php
 
-// Added 2016-12-04 (LM)
 function getActiveServices()
 {
     $query = 'SELECT id, name FROM nlfse_services WHERE deleted=0 ORDER BY name ASC';

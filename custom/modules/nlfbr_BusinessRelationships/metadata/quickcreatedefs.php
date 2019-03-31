@@ -2,10 +2,6 @@
 
 $subpanelName = 'default';
 
-//if (isset($_REQUEST['subpanel_name'])) {
-//    $subpanelName = $_REQUEST['subpanel_name'];
-//}
-
 $returnModule = 'default';
 if (isset($_REQUEST['return_module'])) {
     $returnModule = $_REQUEST['return_module'];
@@ -30,28 +26,13 @@ if ($returnModule === 'Contacts') {
             ),
         ), array (
             array (
-            //'name' => 'nlfro_roles_nlfbr_businessrelationships_enum',
-            //'name' => 'accounts_nlfbr_businessrelationships_1_name',
-            //'name' => 'nlfbr_businessrelationships_contacts_1_role',
                 'name' => 'nlfbr_businessrelationships_contacts_1_role_enum',
-            //'label' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_NLFRO_ROLES_1_FROM_NLFBR_BUSINESSRELATIONSHIPS_TITLE',
                 'label' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_CONTACTS_1_ROLE',
                 'displayParams' =>
                 array (
                     'idName' => 'role',
                 ),
             ),
-        /*array(
-            'name' => 'contacts_nlfro_roles_1_name',
-        ),
-        array (
-            'name' => 'business_relationship_role',
-            'label' => 'LBL_ROLES_ROLE',
-            'displayParams' =>
-            array(
-                'idName' => 'role_c',
-            ),
-        ),*/
         )
     );
 }

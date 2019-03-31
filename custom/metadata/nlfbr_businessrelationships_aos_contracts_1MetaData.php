@@ -53,12 +53,6 @@ $dictionary["nlfbr_businessrelationships_aos_contracts_1"] = array (
       'type' => 'varchar',
       'len' => 36,
     ),
-    /*5 => 
-    array (
-      'name' => 'details',
-      'type' => 'varchar',
-      'len' => 200,
-    ),*/
     5 =>
     array(
       'name' => 'active',

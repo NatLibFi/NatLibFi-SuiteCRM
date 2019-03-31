@@ -8,16 +8,5 @@ $layout_defs["AOS_Contracts"]["subpanel_setup"]['nlfbr_businessrelationships_aos
   'sort_by' => 'id',
   'title_key' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_AOS_CONTRACTS_1_FROM_NLFBR_BUSINESSRELATIONSHIPS_TITLE',
   'get_subpanel_data' => 'nlfbr_businessrelationships_aos_contracts_1',
-  'top_buttons' => '', // Changed 2017-02-28 (LM)
-  /*array (
-    0 => 
-    array (
-      'widget_class' => 'SubPanelTopButtonQuickCreate',
-    ),
-    1 => 
-    array (
-      'widget_class' => 'SubPanelTopSelectButton',
-      'mode' => 'MultiSelect',
-    ),
-  ),*/
+  'top_buttons' => '',
 );

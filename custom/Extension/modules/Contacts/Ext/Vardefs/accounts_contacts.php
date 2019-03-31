@@ -12,10 +12,6 @@ $dictionary["Contact"]["fields"]["accounts_contacts_contact_name"] = array (
   'module' => 'Contacts',
   'rname' => 'name',
   'massupdate' => false,
-//  array (
-//    0 => 'first_name',
-//    1 => 'last_name',
-//  ),
 );
 
 $dictionary["Contact"]["fields"]['contact_account_role_fields'] = array(
@@ -24,13 +20,9 @@ $dictionary["Contact"]["fields"]['contact_account_role_fields'] = array(
   'relationship_fields' => array(
     'id' => 'accounts_contacts_id',
     'role' => 'accounts_contacts_role'
-    /*'department' => 'accounts_contacts_department'
-    'address' => 'accounts_contacts_address'
-    'description' => 'accounts_contacts_description'*/
   ),
   'vname' => 'LBL_ACCOUNTS_CONTACTS_CONTACT_TITLE',
   'type' => 'relate',
-  //'link' => 'contacts',
   'link' => 'accounts',
   'link_type' => 'relationship_info',
   'join_link_name' => 'accounts_contacts',
@@ -66,30 +58,10 @@ $dictionary["Contact"]["fields"]["accounts_contacts_role_enum"] = array (
   'massupdate' => false,
 );
 
-/*$dictionary["Contact"]["fields"]["accounts_contacts_department"] = array (
-  'name' => 'accounts_contacts_department',
-  'type' => 'varchar',
-  'source' => 'non-db',
-  'vname' => 'LBL_ACCOUNTS_CONTACTS_ROLE',
-);
-$dictionary["Contact"]["fields"]["accounts_contacts_address"] = array (
-  'name' => 'accounts_contacts_address',
-  'type' => 'varchar',
-  'source' => 'non-db',
-  'vname' => 'LBL_ACCOUNTS_CONTACTS_ROLE',
-);
-$dictionary["Contact"]["fields"]["accounts_contacts_description"] = array (
-  'name' => 'accounts_contacts_description',
-  'type' => 'text',
-  'source' => 'non-db',
-  'vname' => 'LBL_ACCOUNTS_CONTACTS_ROLE',
-);*/
-
 
 $dictionary["Contact"]["fields"]["accounts_contacts_role_incl_businessrelationships"] = array (
   'name' => 'accounts_contacts_role_incl_businessrelationships',
   'type' => 'varchar',
-  //'function' => array( 'name' => 'getAccountAndBRRolesForContactSubpanelHtml', 'returns' => 'html' ),
   'source' => 'non-db',
   'vname' => 'LBL_ACCOUNTS_CONTACTS_ROLE',
   'studio' => array('detailview' => false, 'editview' => false),

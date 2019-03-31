@@ -1,12 +1,5 @@
 <?php
 
-/*$mod_strings['LBL_ROLE_LIST_ACCOUNTS_SUBPANEL_TITLE'] = 'Roolit organisaatioissa';
-$mod_strings['LBL_ROLE_LIST_WORKING_GROUPS_SUBPANEL_TITLE'] = 'Roolit työryhmissä';
-// Added 2017-03-24 (LM)
-$mod_strings['LBL_ROLE_LIST_NLFBR_BUSINESS_RELATIONSHIPS_SUBPANEL_TITLE'] = 'Roolit asiakassuhteissa';
-// Added 2017-03-26 (LM)
-$mod_strings['LBL_ROLE_LIST_NLFAL_ALLIANCES_SUBPANEL_TITLE'] = 'Roolit yhteenliitymissä';*/
-
 $mod_strings['LBL_ACCOUNTS_CONTACTS_SUBPANEL_TITLE'] = 'Roolit organisaatioissa';
 $mod_strings['LBL_WORKING_GROUPS_CONTACTS_SUBPANEL_TITLE'] = 'Roolit työryhmissä';
 $mod_strings['LBL_BUSINESS_RELATIONSHIPS_CONTACTS_SUBPANEL_TITLE'] = 'Roolit asiakassuhteissa';

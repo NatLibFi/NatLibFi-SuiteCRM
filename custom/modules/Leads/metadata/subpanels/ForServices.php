@@ -1,21 +1,8 @@
 <?php
 // created: 2017-05-06 19:52:53
 $subpanel_layout['list_fields'] = array (
-  /*'accounts_leads_1_name' => 
-  array (
-    'type' => 'relate',
-    'link' => true,
-    'vname' => 'LBL_ACCOUNTS_LEADS_1_FROM_ACCOUNTS_TITLE_SINGULAR',
-    'id' => 'ACCOUNTS_LEADS_1ACCOUNTS_IDA',
-    'width' => '10%',
-    'default' => true,
-    'widget_class' => 'SubPanelDetailViewLink',
-    'target_module' => 'Accounts',
-    'target_record_key' => 'accounts_leads_1accounts_ida',
-  ),*/
   'name' => 
   array (
-    //'vname' => 'LBL_LEAD_NAME_CONTACT_PERSON_TITLE',
     'vname' => 'LBL_NAME',
     'widget_class' => 'SubPanelDetailViewLink',
     'sort_order' => 'asc',

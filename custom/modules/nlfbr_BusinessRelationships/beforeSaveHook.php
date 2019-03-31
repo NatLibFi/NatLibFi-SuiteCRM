@@ -52,8 +52,6 @@ class BusinessRelationshipBeforeSaveHook
         if (!$serviceId) {
             return;
         }
-//$GLOBALS['log']->fatal(print_r($_REQUEST, true));
-        /*$accountIds = $bean->{self::FIELD_ACCOUNT_RELATIONSHIP}->get(true);*/
         $helper = new BusinessRelationshipContractHelper();
         $existingContracts = $helper->getContractData($bean->id, null, true);
 
@@ -119,9 +117,6 @@ class BusinessRelationshipBeforeSaveHook
             }
         }
 
-/*$GLOBALS['log']->fatal('old: ' . print_r($existingContracts, true));
-$GLOBALS['log']->fatal('upd: ' . print_r($updatedContracts, true));
-$GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
         $toUpdate = array();
         $toDelete = array();
         foreach ($existingContracts as $oldData) {
@@ -155,7 +150,6 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                     'old' => $oldData,
                 );
             }
-            //else { $GLOBALS['log']->fatal('unchanged: ' . print_r($newData, true)); }
         }
 
         $db = DBManagerFactory::getInstance();
@@ -170,7 +164,6 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 'after' => '',
             );
 
-            //$GLOBALS['log']->fatal('delrun: ' . $query);
             $result = $db->query($query);
             $db->save_audit_records($bean, $auditData);
         }
@@ -227,7 +220,6 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 );
             }
 
-            //$GLOBALS['log']->fatal('updrun: ' . $query);
             $result = $db->query($query);
             foreach ($auditData as $auditRow) {
                 $db->save_audit_records($bean, $auditRow);
@@ -287,7 +279,6 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
                 ),
             );
 
-            //$GLOBALS['log']->fatal('insrun: ' . $query);
             $result = $db->query($query);
             foreach ($auditData as $auditRow) {
                 $db->save_audit_records($bean, $auditRow);
@@ -821,12 +812,6 @@ $GLOBALS['log']->fatal('new: ' . print_r($newContracts, true));*/
 
     private function updateAccountBackendSystemData($bean)
     {
-       /*if (!$bean->load_relationship(self::FIELD_BUSINESS_RELATIONSHIP_BACKEND_SYSTEM_REL)) {
-           return;
-       }
-
-       $brSystems = $bean->{self::FIELD_BUSINESS_RELATIONSHIP_BACKEND_SYSTEM_REL}->get(true);
-       */
        $brSystems = getBackendSystemsRelatedToBusinessRelationship($bean->id);
 
        if (empty($brSystems) && isset($_REQUEST['record']) && $_REQUEST['record'] === '') {

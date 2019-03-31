@@ -4,9 +4,6 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 $module_name='nlfal_Alliances';
 $subpanel_layout = array(
 	'top_buttons' => array(
-    /*array (
-      'widget_class' => 'SubPanelTopButtonQuickCreate',
-    ),*/
       array (
         'widget_class' => 'SubPanelTopSelectButton',
         'mode' => 'MultiSelect',

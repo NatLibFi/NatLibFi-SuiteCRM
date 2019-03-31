@@ -7,7 +7,7 @@ function getAccountRolesForContactSubpanelQueryParts($params) {
         'select' => 'SELECT roles.*',
         'from' => 'FROM nlfro_roles',
         'where' => 'WHERE contacts.id="' . $contactId . '"',
-        'join' => //JOIN nlfro_roles_cstm ON nlfro_roles_cstm.id_c=roles.id ' .
+        'join' =>
             ' JOIN contacts_nlfro_roles_1_c contact_role_rel ON ' .
             'contact_role_rel.contacts_nlfro_roles_1nlfro_roles_idb=nlfro_roles.id AND contact_role_rel.deleted=0 ' .
             'JOIN accounts_nlfro_roles_1_c acc_role_rel ON ' .
@@ -26,7 +26,7 @@ function getAccountRolesForAccountSubpanelQueryParts($params) {
         'select' => 'SELECT roles.*',
         'from' => 'FROM nlfro_roles',
         'where' => 'WHERE accounts.id="' . $accountId . '"',
-        'join' => //JOIN nlfro_roles_cstm ON nlfro_roles_cstm.id_c=roles.id ' .
+        'join' =>
             ' JOIN contacts_nlfro_roles_1_c contact_role_rel ON ' .
             'contact_role_rel.contacts_nlfro_roles_1nlfro_roles_idb=nlfro_roles.id AND contact_role_rel.deleted=0 ' .
             'JOIN accounts_nlfro_roles_1_c acc_role_rel ON ' .
@@ -43,29 +43,14 @@ function getActiveAccountsHtml($focus, $name, $value, $view) {
     $activeAccounts = array();
     $linkedAccounts = array();
 
-    //$id = $focus->id;
-
     if ($view !== 'DetailView') {
         $activeAccounts = getAllActiveAccounts();
     }
 
-    /*if ($id) {
-        $linkedAccounts = getActiveAccountsForRole($id);
-    }*/
     $accountId = getAccountIdForRoleQuickCreate($_REQUEST);
     if ($accountId !== null) {
         $linkedAccounts = array($accountId => '');
     }
-
-/*$contactId = getContactIdForRoleQuickCreate($_REQUEST);
-    $accountId = null;
-
-    if ($contactId !== null) {
-        $accountId = getAccountIdForContact($contactId);
-    }
-if ($accountId !== null) {
-$linkedAccounts = array($accountId => '');
-}*/
 
     return makeHtmlOfEnumOptions($activeAccounts, $linkedAccounts, $view);
 }
@@ -114,7 +99,7 @@ function getWorkingGroupRolesForContactSubpanelQueryParts($params) {
         'select' => 'SELECT roles.*',
         'from' => 'FROM nlfro_roles',
         'where' => 'WHERE contacts.id="' . $contactId . '"',
-        'join' => //JOIN nlfro_roles_cstm ON nlfro_roles_cstm.id_c=roles.id ' .
+        'join' =>
             ' JOIN contacts_nlfro_roles_1_c contact_role_rel ON ' .
             'contact_role_rel.contacts_nlfro_roles_1nlfro_roles_idb=nlfro_roles.id AND contact_role_rel.deleted=0 ' .
             'JOIN nlfwg_workinggroups_nlfro_roles_1_c wg_role_rel ON ' .
@@ -133,7 +118,7 @@ function getWorkingGroupRolesForWorkingGroupSubpanelQueryParts($params) {
         'select' => 'SELECT roles.*',
         'from' => 'FROM nlfro_roles',
         'where' => 'WHERE groups.id="' . $groupId . '"',
-        'join' => //JOIN nlfro_roles_cstm ON nlfro_roles_cstm.id_c=roles.id ' .
+        'join' =>
             ' JOIN contacts_nlfro_roles_1_c contact_role_rel ON ' .
             'contact_role_rel.contacts_nlfro_roles_1nlfro_roles_idb=nlfro_roles.id AND contact_role_rel.deleted=0 ' .
             'JOIN nlfwg_workinggroups_nlfro_roles_1_c wg_role_rel ON ' .
@@ -152,37 +137,21 @@ function getActiveWorkingGroupsHtml($focus, $name, $value, $view) {
 
     $id = $focus->id;
 
-    /*$serviceId = null;
-    $serviceIdField = 'nlfse_services_nlfbr_businessrelationships_1nlfse_services_ida';
-    if (isset($focus->$serviceIdField)) {
-        $serviceId = $focus->$serviceIdField;
-    }*/
-
     if ($view !== 'DetailView') {
-        $activeGroups = getAllActiveWorkingGroups(/*$serviceId*/);
+        $activeGroups = getAllActiveWorkingGroups();
     }
 
     if ($id) {
-        $linkedGroups = getActiveWorkingGroupsForRole($id/*, $serviceId*/);
+        $linkedGroups = getActiveWorkingGroupsForRole($id);
     }
 
     return makeHtmlOfEnumOptions($activeGroups, $linkedGroups, $view);
 }
 
-function getAllActiveWorkingGroups(/*$serviceId = null*/) {
+function getAllActiveWorkingGroups() {
     $db = DBManagerFactory::getInstance();
-    /*$serviceJoin = '';
-    $serviceWhere = '';
-    if ($serviceId !== null) {
-        $serviceJoin = 'JOIN nlfse_services_aos_contracts_1_c rel_services ' .
-            'ON contract.id=rel_services.nlfse_services_aos_contracts_1aos_contracts_idb ';
-        $serviceWhere = 'AND rel_services.nlfse_services_aos_contracts_1nlfse_services_ida="' . $db->quote($serviceId) . '" ' .
-            'AND rel_services.deleted=0 ';
-    }*/
     $query = 'SELECT gr.id, gr.name FROM nlfwg_workinggroups gr ' .
-        //$serviceJoin .
         'WHERE gr.deleted=0 ' .
-        //$serviceWhere .
         'ORDER BY gr.name ASC';
     $result = $db->query($query);
 
@@ -194,24 +163,14 @@ function getAllActiveWorkingGroups(/*$serviceId = null*/) {
     return $list;
 }
 
-function getActiveWorkingGroupsForRole($id/*, $serviceId = null*/) {
+function getActiveWorkingGroupsForRole($id) {
     $db = DBManagerFactory::getInstance();
-    /*$serviceJoin = '';
-    $serviceWhere = '';
-    if ($serviceId !== null) {
-        $serviceJoin = 'JOIN nlfse_services_aos_contracts_1_c rel_services ' .
-            'ON contract.id=rel_services.nlfse_services_aos_contracts_1aos_contracts_idb ';
-        $serviceWhere = 'AND rel_services.nlfse_services_aos_contracts_1nlfse_services_ida="' . $db->quote($serviceId) . '" ' .
-            'AND rel_services.deleted=0 ';
-    }*/
     $query = 'SELECT gr.id, gr.name ' .
         'FROM nlfwg_workinggroups gr ' .
         'JOIN nlfwg_workinggroups_nlfro_roles_1_c rel ' .
         'ON gr.id=rel.nlfwg_workinggroups_nlfro_roles_1nlfwg_workinggroups_ida ' .
-        //$serviceJoin .
         'WHERE rel.nlfwg_workinggroups_nlfro_roles_1nlfro_roles_idb="' . $db->quote($id) . '" AND ' .
         'gr.deleted=0 AND rel.deleted=0 '.
-        //$serviceWhere .
         'ORDER BY gr.name ASC';
 
     $result = $db->query($query);
@@ -232,7 +191,7 @@ function getBusinessRelationshipRolesForContactSubpanelQueryParts($params) {
         'select' => 'SELECT roles.*',
         'from' => 'FROM nlfro_roles',
         'where' => 'WHERE contacts.id="' . $contactId . '"',
-        'join' => //JOIN nlfro_roles_cstm ON nlfro_roles_cstm.id_c=roles.id ' .
+        'join' =>
             ' JOIN contacts_nlfro_roles_1_c contact_role_rel ON ' .
             'contact_role_rel.contacts_nlfro_roles_1nlfro_roles_idb=nlfro_roles.id AND contact_role_rel.deleted=0 ' .
             'JOIN nlfbr_businessrelationships_nlfro_roles_1_c br_role_rel ON ' .
@@ -251,7 +210,7 @@ function getBusinessRelationshipRolesForBusinessRelationshipSubpanelQueryParts($
         'select' => 'SELECT roles.*',
         'from' => 'FROM nlfro_roles',
         'where' => 'WHERE br.id="' . $brId . '"',
-        'join' => //JOIN nlfro_roles_cstm ON nlfro_roles_cstm.id_c=roles.id ' .
+        'join' =>
             ' JOIN contacts_nlfro_roles_1_c contact_role_rel ON ' .
             'contact_role_rel.contacts_nlfro_roles_1nlfro_roles_idb=nlfro_roles.id AND contact_role_rel.deleted=0 ' .
             'JOIN nlfbr_businessrelationships_nlfro_roles_1_c br_role_rel ON ' .
@@ -376,15 +335,8 @@ function getDefaultBusinessRelationshipContactsHtml($focus, $name, $value, $view
 }
 
 function getAllActiveAccountsInBusinessRelationshipsHtml($focus, $name, $value, $view) {
-/*    $contactId = getContactIdForRoleQuickCreate($_REQUEST);
-    $accountId = null;
-
-    if ($contactId !== null) {
-        $accountId = getAccountIdForContact($contactId);
-    }*/
     $accountId = getAccountIdForRoleQuickCreate($_REQUEST);
 
-    //$options = getAllActiveAccountsInBusinessRelationships();
     $options = getAllActiveAccounts();
     $selectedOptions = array();
 

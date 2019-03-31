@@ -18,19 +18,7 @@ function getAllianceNameWidgetForEditView($id, $module, $view, $tabindex='0') {
     }
     if(!empty($id)) {
         $nameData = $helper->getNames($id);
-    }/* else if(isset($_REQUEST['full_form']) && !empty($_REQUEST['brContractWidget'])){
-        $widget_id = isset($_REQUEST[$module . '_contract_widget_id']) ? $_REQUEST[$module . '_contract_widget_id'] : '0';
-        $count = 0;
-        $key = $module . $widget_id . 'brContract' . $count;
-        while(isset($_REQUEST[$key])) {
-            $name = $_REQUEST[$key];
-            $contractDataArr[] = array(
-                // TODO: fix this!
-                //'contract_name' => $name,
-            );
-            $key = $module . $widget_id . 'brContract' . ++$count;
-        }
-    }*/
+    }
 
     $required = false;
     $vardefs = $dictionary[$beanList[$passedModule]]['fields'];

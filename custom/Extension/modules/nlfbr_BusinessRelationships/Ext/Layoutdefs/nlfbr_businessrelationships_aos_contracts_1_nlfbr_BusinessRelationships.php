@@ -9,15 +9,4 @@ $layout_defs["nlfbr_BusinessRelationships"]["subpanel_setup"]['nlfbr_businessrel
   'title_key' => 'LBL_NLFBR_BUSINESSRELATIONSHIPS_AOS_CONTRACTS_1_FROM_AOS_CONTRACTS_TITLE',
   'get_subpanel_data' => 'nlfbr_businessrelationships_aos_contracts_1',
   'top_buttons' => ''
-  /*array (
-    0 => 
-    array (
-      'widget_class' => 'SubPanelTopButtonQuickCreate',
-    ),
-    1 => 
-    array (
-      'widget_class' => 'SubPanelTopSelectButton',
-      'mode' => 'MultiSelect',
-    ),
-  ),*/
 );

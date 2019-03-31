@@ -5,7 +5,6 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 $module_name='Contacts';
 $subpanel_layout = array(
 	'top_buttons' => array(
-                //array('widget_class' => 'SubPanelTopButtonQuickCreate' ),
 		array('widget_class' => 'SubPanelTopButtonContactRoleAdd' ),
 	),
 
@@ -31,19 +30,6 @@ $subpanel_layout = array(
 		 	'module' => 'Contacts',
 			'width' => '20%',
 		),
-/*                'contact_account_role_fields' => array(
-                        'usage' => 'query_only',
-                ),
-                //'nlfbr_businessrelationships_contacts_1_id' => array(
-                //        'usage' => 'query_only',
-                //),
-                'accounts_contacts_role' => array(
-                        'name' => 'accounts_contacts_role',
-	 		'vname' => 'LBL_ACCOUNTS_CONTACTS_ROLE',
-			'sortable' => false,
-                 //       'type' => 'enum',
-	 		'width' => '20%',
-                ),*/
         'email1'=>array(
             'name'=>'email1',               
             'vname' => 'LBL_LIST_EMAIL',

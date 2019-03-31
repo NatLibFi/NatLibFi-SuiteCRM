@@ -3,15 +3,6 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
 require_once 'include/generic/SugarWidgets/SugarWidgetSubPanelTopButtonQuickCreate.php';
 class SugarWidgetSubPanelTopButtonQuickCreateNlfRole extends SugarWidgetSubPanelTopButtonQuickCreate {
-    /*function get_subpanel_relationship_name($defines) {
-$GLOBALS['log']->fatal('getting relname');
-        $relationship_name = '';
-        if(!empty($defines)) {
-            $relationship_name = isset($defines['relationship']) ? $defines['relationship'] : '';
-        }
-$GLOBALS['log']->fatal('final relname: ' . $relationship_name);
-        return $relationship_name;
-    }*/
 
 	function &_get_form($defines, $additionalFormFields = null, $asUrl = false)
 	{
@@ -153,7 +144,6 @@ $GLOBALS['log']->fatal('final relname: ' . $relationship_name);
         return $formName;
     }
 
-    //function &_get_form($defines, $additionalFormFields = null, $asUrl = false)
     function display($defines, $additionalFormFields = null, $nonbutton = false)
     {
         global $app_strings;
@@ -161,11 +151,6 @@ $GLOBALS['log']->fatal('final relname: ' . $relationship_name);
         $this->module = 'nlfro_Roles';
         $this->title = $app_strings['LBL_CONTACT_ROLE_ADD_NEW_TITLE'];
         $this->form_value = translate('LBL_CONTACT_ROLE_ADD_NEW_TITLE', 'nlfro_Roles');
-       /*if (!isset($defines['subpanel_definition']->name)) {
-            $GLOBALS['log']->fatal('no subpanel defs');
-            //return parent::_get_form($defines, $additionalFormFields, $asUrl);
-            return parent::display($defines, $additionalFormFields, $nonbutton);
-        }*/
 
         if (!is_array($additionalFormFields)) {
             $additionalFormFields = array();
@@ -173,13 +158,8 @@ $GLOBALS['log']->fatal('final relname: ' . $relationship_name);
 
         if (isset($defines['subpanel_definition']->name)) {
             $additionalFormFields['subpanel_name'] = $defines['subpanel_definition']->name;
-             //$this->form_value = $defines['subpanel_definition']->name . '_' . translate('LBL_QUICK_CREATE_TITLE', 'nlfro_Roles');
         }
-        //$GLOBALS['log']->fatal('aprenta: ');
-        //$GLOBALS['log']->fatal(parent::&_get_form($defines, $additionalFormFields, $asUrl));
 
-   //return 'Fooo';
-        //return parent::_get_form($defines, $additionalFormFields, $asUrl);
         return parent::display($defines, $additionalFormFields, $nonbutton);
     }
 }

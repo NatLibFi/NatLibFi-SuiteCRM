@@ -34,7 +34,6 @@ class CustomLeadsViewList extends LeadsViewList
         }
 
         $this->use_old_search = false;
-        //require_once('include/SearchForm/SearchForm2.php');
         require_once 'custom/include/SearchForm/ContactRoleAwareSearchForm.php';
 
         $searchMetaData = SearchForm::retrieveSearchDefs($this->module);

@@ -10,14 +10,5 @@ $layout_defs["nlfbs_BackendSystems"]["subpanel_setup"]['accounts_nlfbs_backendsy
   'get_subpanel_data' => 'accounts_nlfbs_backendsystems_1',
   'top_buttons' => 
   array (
-    /*0 => 
-    array (
-      'widget_class' => 'SubPanelTopButtonQuickCreate',
-    ),
-    1 => 
-    array (
-      'widget_class' => 'SubPanelTopSelectButton',
-      'mode' => 'MultiSelect',
-    ),*/
   ),
 );

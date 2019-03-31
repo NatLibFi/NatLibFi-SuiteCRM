@@ -6,41 +6,6 @@
         Dom = YAHOO.util.Dom
         SE = SUGAR.email2;
 
-    /*SE.addressBook.initFixForDatatableSort = function () {
-        //Workaround for YUI bug 2527707: http://yuilibrary.com/projects/yui2/ticket/913efafad48ce433199f3e72e4847b18, should be removed when YUI 2.8+ is used
-        YAHOO.widget.DataTable.prototype.getColumn = function(column) {
-            var oColumn = this._oColumnSet.getColumn(column);
-
-            if(!oColumn) {
-                // NLF custom: related to resizing
-                if (!('nodeName' in column)) {
-                    return oColumn;
-                }
-
-                // Validate TD element
-                var elCell = column.nodeName.toLowerCase() != "th" ? this.getTdEl(column) : false;
-                if(elCell) {
-                    oColumn = this._oColumnSet.getColumn(elCell.cellIndex);
-                }
-                // Validate TH element
-                else {
-                    elCell = this.getThEl(column);
-                    if(elCell) {
-                        // Find by TH el ID
-                        var allColumns = this._oColumnSet.flat;
-                        for(var i=0, len=allColumns.length; i<len; i++) {
-                            if(allColumns[i].getThEl().id === elCell.id) {
-                                oColumn = allColumns[i];
-                            }
-                        }
-                    }
-                }
-            }
-
-            return oColumn;
-        };
-    };*/
-
     SUGAR.email2.addressBook.selectContactsDialogue = SE.addressBook.selectContactsDialogue = function(destId) {
         if(!this.contactsDialogue) {
         	var dlg = this.contactsDialogue = new YAHOO.widget.Dialog("contactsDialogue", {

@@ -5,13 +5,7 @@ class ContactAccountHelper
 
     public function getAccountDataForContact($contactId)
     {
-        /*if ($contact->module_name !== 'Contacts') {
-            $GLOBALS['log']->fatal('not a contact');
-            return;
-        }*/
-
         if (!$contactId) {
-            //$GLOBALS['log']->fatal('no id');
             return;
         }
 
@@ -44,7 +38,6 @@ class ContactAccountHelper
     public function addRelateHtmlToAccountData(array &$accountData) {
        foreach ($accountData as $index => &$record) {
             $record['account_html'] = htmlspecialchars($this->getAccountHtmlData($index, $record['account_name'], $record['account_id']));
- //           $record['account_js'] = htmlspecialchars($this->getAutocompleteJsForField('EditView', 'Accounts', 'account_name' . $index, 'account_id' . $index));
         }
     }
 
@@ -53,7 +46,6 @@ class ContactAccountHelper
     }
 
     private function getAccountHtmlData($fieldIndex, $accountName, $accountId) {
-        //$relateTpl = 'include/SugarFields/Fields/Relate/EditView.tpl';
         $relateTpl = 'custom/modules/Contacts/tpls/AccountSelectEditView.tpl';
         $smarty = new Sugar_Smarty();
 
@@ -76,7 +68,7 @@ class ContactAccountHelper
                     "name" => "account_name" . $fieldIndex,
                 )
             )
-        ) ) ); // TODO: figure that out
+        ) ) );
         $smarty->assign('selectLabel', 'TODO'); // TODO: figure that out
         $smarty->assign('clearLabel', 'TODO'); // TODO: figure that out
 
