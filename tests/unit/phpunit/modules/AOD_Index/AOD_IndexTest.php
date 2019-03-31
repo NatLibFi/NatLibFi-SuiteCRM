@@ -226,7 +226,6 @@ class AOD_IndexTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
             'nlfal_Alliances' => 'nlfal_Alliances',
             'nlfbr_BusinessRelationships' => 'nlfbr_BusinessRelationships',
             'nlfbs_BackendSystems' => 'nlfbs_BackendSystems',
-            'nlfro_Roles' => 'nlfro_Roles',
             'nlfse_Services' => 'nlfse_Services',
             'nlfwg_WorkingGroups' => 'nlfwg_WorkingGroups',
         );

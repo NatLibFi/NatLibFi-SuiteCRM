@@ -405,7 +405,6 @@ class SecurityGroupTest extends SuiteCRM\StateCheckerPHPUnitTestCaseAbstract
             'nlfal_Alliances',
             'nlfbr_BusinessRelationships',
             'nlfbs_BackendSystems',
-            'nlfro_Roles',
             'nlfse_Services',
             'nlfwg_WorkingGroups',
         );
