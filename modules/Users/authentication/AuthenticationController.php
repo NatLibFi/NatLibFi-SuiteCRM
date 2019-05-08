@@ -95,7 +95,7 @@ class AuthenticationController
             $type = 'SugarAuthenticate';
         }
 
-        if (!empty($_REQUEST['no_saml'])
+        if (!empty($_REQUEST['no_saml'] && 0 ) // nvolk disabled this on 2019-05-08
             && (
                 (is_subclass_of($type, 'SAMLAuthenticate') || 'SAMLAuthenticate' == $type) ||
                 (is_subclass_of($type, 'SAML2Authenticate') || 'SAML2Authenticate' == $type)
@@ -134,7 +134,6 @@ class AuthenticationController
         //kbrill bug #13225
         $_SESSION['loginAttempts'] = (isset($_SESSION['loginAttempts']))? $_SESSION['loginAttempts'] + 1: 1;
         unset($GLOBALS['login_error']);
-
         if ($this->loggedIn) {
             return $this->loginSuccess;
         }
