@@ -1517,7 +1517,7 @@ function get_workflow_admin_modules_for_user($user)
         $workflow_mod_list[$module] = $module;
     }
 
-    // This list is taken from teh previous version of workflow_utils.php
+    // This list is taken from the previous version of workflow_utils.php
     $workflow_mod_list['Tasks'] = 'Tasks';
     $workflow_mod_list['Calls'] = 'Calls';
     $workflow_mod_list['Meetings'] = 'Meetings';
