@@ -1292,7 +1292,7 @@
             },
             "require": {
                 "php": ">=5.4",
-                "robrichards/xmlseclibs": "^3.0"
+                "robrichards/xmlseclibs": "^3.0.4 || ^3.1"
             },
             "require-dev": {
                 "pdepend/pdepend": "^2.5.0",
